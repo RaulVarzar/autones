@@ -8,7 +8,7 @@ export const Services = () => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end"],
+    offset: ["start end", "0.8 end"],
   });
 
   const contentSpring = useSpring(scrollYProgress, {
@@ -31,8 +31,8 @@ export const Services = () => {
         className={
           "stat justify-center gap-2 hover:bg-base-300 rounded-xl p-6 md:p-10 cursor-pointer transition-colors duration-200 " +
           (selectedTopic === 0
-            ? " bg-base-200 opacity-100"
-            : " hover:bg-base-300 opacity-80 hover:opacity-100")
+            ? " bg-base-300 opacity-100"
+            : " hover:bg-base-200 opacity-80 hover:opacity-100")
         }
       >
         <div className="stat-value whitespace-normal text-center text-3xl md:text-4xl xl:text-5xl">
@@ -51,8 +51,8 @@ export const Services = () => {
         className={
           "stat justify-center gap-2 border-none  rounded-xl p-6 md:p-10 cursor-pointer transition-colors duration-200 " +
           (selectedTopic === 1
-            ? " bg-base-200 opacity-100"
-            : " hover:bg-base-300 opacity-80 hover:opacity-100")
+            ? " bg-base-300 opacity-100"
+            : " hover:bg-base-200 opacity-80 hover:opacity-100")
         }
       >
         <div className="stat-value whitespace-normal text-center text-3xl md:text-4xl xl:text-5xl">
@@ -70,8 +70,8 @@ export const Services = () => {
         className={
           "stat justify-center gap-2 hover:bg-base-300 border-none rounded-xl p-6 md:p-10 cursor-pointer transition-colors duration-200 " +
           (selectedTopic === 2
-            ? " bg-base-200 opacity-100"
-            : " hover:bg-base-300 opacity-80 hover:opacity-100")
+            ? " bg-base-300 opacity-100"
+            : " hover:bg-base-200 opacity-80 hover:opacity-100")
         }
       >
         <div className="stat-value whitespace-normal text-center text-3xl md:text-4xl xl:text-5xl">

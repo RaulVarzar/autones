@@ -6,6 +6,8 @@ import { Hero } from "@/components/hero";
 import { Services } from "@/components/services";
 import { Logo } from "@/components/logo";
 
+const IMAGES = ["/main1.jpg", "/main2.jpg", "/main3.jpg"];
+
 export default function Home() {
   const ref = useRef(null);
 
@@ -43,7 +45,7 @@ export default function Home() {
         >
           <motion.img
             style={{ borderRadius, scale: photoScale, y: photoY }}
-            src="/main.jpg"
+            src={IMAGES[0]}
             className="mx-auto w-11/12 md:w-8/12 max-w-6xl mt-[2vh]"
           />
         </motion.div>
