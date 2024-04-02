@@ -37,10 +37,9 @@ export default function Home() {
           <div className=" md:min-h-48"></div>
         </section>
         <Services2 />
-        <About />
-        <section className="w-full py-24">
-          <Gallery />
-        </section>
+        {/* <About /> */}
+
+        <Gallery />
       </motion.div>
       <Footer />
     </main>
