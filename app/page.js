@@ -1,19 +1,20 @@
-'use client';
+"use client";
 
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { Hero } from '@/components/hero';
-import Navbar from '@/components/navbar';
-import Gallery from '@/components/gallery';
-import Footer from '@/components/footer';
-import About from '@/components/about';
-import Services2 from '@/components/services2';
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useRef } from "react";
+import Hero from "../components/hero.js";
+import Navbar from "../components/navbar";
+import Gallery from "../components/gallery";
+import Footer from "../components/footer";
+import About from "../components/about";
+import Services2 from "../components/services2";
+import Contact from "../components/contact";
 
 export default function Home() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['end', 'end center'],
+    offset: ["end", "end center"],
   });
 
   const contentSpring = useSpring(scrollYProgress, {
@@ -22,7 +23,7 @@ export default function Home() {
     mass: 0.2,
   });
 
-  const scale = useTransform(contentSpring, [0.1, 1], ['100%', '90%']);
+  const scale = useTransform(contentSpring, [0.1, 1], ["100%", "90%"]);
 
   return (
     <main className="flex flex-col items-center justify-between min-h-screen ">
@@ -37,10 +38,11 @@ export default function Home() {
           <div className=" md:min-h-48"></div>
         </section>
         <Services2 />
-        {/* <About /> */}
 
         <Gallery />
+        <Contact />
       </motion.div>
+
       <Footer />
     </main>
   );
