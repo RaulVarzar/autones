@@ -1,8 +1,8 @@
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
-import { Services } from "./services";
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { Services } from './services';
 
-const IMAGES = ["/main1.jpg", "/main2.jpg", "/main3.jpg"];
+const IMAGES = ['/main1.jpg', '/main2.jpg', '/main3.jpg'];
 
 const Services2 = () => {
   const ref = useRef(null);
@@ -14,7 +14,7 @@ const Services2 = () => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "start 0.5"],
+    offset: ['start end', 'start 0.5'],
   });
 
   const contentSpring = useSpring(scrollYProgress, {
@@ -23,16 +23,16 @@ const Services2 = () => {
     mass: 0.2,
   });
 
-  const photoScale = useTransform(contentSpring, [0, 1], ["40%", "100%"]);
-  const photoY = useTransform(contentSpring, [0, 1], ["-90%", "0%"]);
-  const borderRadius = useTransform(contentSpring, [0, 1], ["200px", "30px"]);
+  const photoScale = useTransform(contentSpring, [0, 1], ['25%', '100%']);
+  const photoY = useTransform(contentSpring, [0, 1], ['-75%', '0%']);
+  const borderRadius = useTransform(contentSpring, [0, 1], ['200px', '30px']);
 
   return (
     <section ref={ref} className="flex flex-col w-full min-h-screen gap-8 px-3">
       <motion.div
-        initial={{ opacity: 0, y: "30px", scale: 0.8 }}
+        initial={{ opacity: 0, y: '30px', scale: 0.8 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.9, delay: 0.85, ease: "easeInOut" }}
+        transition={{ duration: 0.9, delay: 0.85, ease: 'easeInOut' }}
       >
         <motion.img
           style={{ borderRadius, scale: photoScale, y: photoY }}

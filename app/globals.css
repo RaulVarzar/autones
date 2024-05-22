@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.contact-btn-container {
+  min-height: 50px;
+  min-width: 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-btn span {
+  transition: top 0.35s;
+}
+
+.btn-icon {
+  transition: scale 0.45s;
+}
+
+.contact-btn-text-one {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  transition: 0.2s;
+}
+
+.contact-btn-text-two {
+  position: absolute;
+  width: 100%;
+  top: 150%;
+  left: 0;
+  transition: 0.2s;
+
+  transform: translateY(-50%);
+}
+
+.contact-btn:hover .contact-btn-text-one {
+  top: -100%;
+}
+
+.contact-btn:hover .contact-btn-text-two {
+  top: 50%;
+}
+
+.contact-btn:hover .btn-icon {
+  scale: 1.1;
+}
