@@ -1,4 +1,4 @@
-import { motion, easeOut } from 'framer-motion';
+import { motion, easeOut } from "framer-motion";
 
 export default function ContactButton({ primary, secondary, href, icon }) {
   return (
@@ -11,11 +11,12 @@ export default function ContactButton({ primary, secondary, href, icon }) {
         transition: { duration: 0.5, delay: 0.4, ease: easeOut },
       }}
       href={href}
-      className="flex flex-col gap-4 px-8 py-4 border cursor-pointer contact-btn sm:px-16 sm:py-8 group border-opacity-20 hover:border-opacity-40 border-base-content hover:border-primary-content rounded-2xl backdrop-brightness-110 hover:backdrop-brightness-150"
+      target="_blank"
+      className="flex flex-col gap-4 px-8 py-4 text-center border cursor-pointer contact-btn sm:px-16 sm:py-8 group border-opacity-20 hover:border-opacity-40 border-base-content hover:border-primary-content rounded-2xl backdrop-brightness-110 hover:backdrop-brightness-150"
     >
       <i
         className={
-          'mx-auto text-3xl rounded-full btn-icon sm:text-4xl w-fit ' + icon
+          "mx-auto text-3xl rounded-full btn-icon sm:text-4xl w-fit " + icon
         }
       ></i>
 

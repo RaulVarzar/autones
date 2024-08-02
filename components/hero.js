@@ -1,12 +1,12 @@
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const Hero = () => {
   const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['end 0.9', 'end start'],
+    offset: ["end 0.9", "end start"],
   });
 
   const contentSpring = useSpring(scrollYProgress, {
@@ -15,22 +15,22 @@ const Hero = () => {
     mass: 0.2,
   });
 
-  const titleScale = useTransform(contentSpring, [0, 1], ['100%', '75%']);
-  const subTitleScale = useTransform(contentSpring, [0, 1], ['100%', '80%']);
-  const opacity = useTransform(contentSpring, [0.2, 1], ['100%', '10%']);
-  const y = useTransform(contentSpring, [0.05, 0.6], ['0vh', '-6vh']);
-  const subOpacity = useTransform(contentSpring, [0.1, 0.3], ['100%', '0%']);
-  const descOpacity = useTransform(contentSpring, [0.15, 0.45], ['60%', '0%']);
+  const titleScale = useTransform(contentSpring, [0, 1], ["100%", "75%"]);
+  const subTitleScale = useTransform(contentSpring, [0, 1], ["100%", "80%"]);
+  const opacity = useTransform(contentSpring, [0.2, 1], ["100%", "10%"]);
+  const y = useTransform(contentSpring, [0.05, 0.6], ["0vh", "-6vh"]);
+  const subOpacity = useTransform(contentSpring, [0.1, 0.3], ["100%", "0%"]);
+  const descOpacity = useTransform(contentSpring, [0.15, 0.45], ["60%", "0%"]);
 
   return (
     <div
       ref={ref}
-      className="flex flex-col items-center justify-center gap-2 md:gap-4 grow max-w-7xl "
+      className="flex flex-col items-center justify-center gap-2 text-center h-[90vh] md:gap-4 max-w-7xl grow"
     >
       <motion.div
-        initial={{ opacity: 0, y: '40px', scale: 0.85 }}
+        initial={{ opacity: 0, y: "40px", scale: 0.85 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 1, delay: 0.8, ease: 'easeInOut' }}
+        transition={{ duration: 1, delay: 0.8, ease: "easeInOut" }}
       >
         <motion.h1
           style={{ scale: titleScale, opacity, y }}
@@ -48,9 +48,9 @@ const Hero = () => {
         className="flex flex-row justify-center gap-0 w-fit sm:gap-x-4 sm:justify-stretch"
       >
         <motion.span
-          initial={{ opacity: 0, y: '-12px', scale: 0.95 }}
+          initial={{ opacity: 0, y: "-12px", scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 2, ease: 'easeInOut' }}
+          transition={{ duration: 0.8, delay: 2, ease: "easeInOut" }}
           className="flex items-center justify-center gap-4 px-6 py-3 border border-opacity-0 cursor-pointer grow border-base-content hover:border-opacity-20 rounded-xl"
         >
           <i className="text-4xl sm:text-3xl fa-brands fa-square-facebook"></i>
@@ -58,9 +58,9 @@ const Hero = () => {
         </motion.span>
 
         <motion.span
-          initial={{ opacity: 0, y: '-12px', scale: 0.95 }}
+          initial={{ opacity: 0, y: "-12px", scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 2, ease: 'easeInOut' }}
+          transition={{ duration: 0.8, delay: 2, ease: "easeInOut" }}
           className="flex items-center justify-center gap-4 px-6 py-3 border border-opacity-0 cursor-pointer grow border-base-content hover:border-opacity-20 rounded-xl"
         >
           <i className="text-4xl fa-brands sm:text-3xl fa-square-instagram "></i>
@@ -69,9 +69,9 @@ const Hero = () => {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: '60px', scale: 0.85 }}
+        initial={{ opacity: 0, y: "60px", scale: 0.85 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 1.1, delay: 1, ease: 'easeInOut' }}
+        transition={{ duration: 1.1, delay: 1, ease: "easeInOut" }}
         // style={{ opacity: descOpacity }}
       >
         <motion.h1
