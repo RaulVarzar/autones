@@ -1,4 +1,5 @@
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata = {
   title: "Autones",
@@ -12,7 +13,9 @@ export default function RootLayout({ children }) {
         {/* <script
           src="https://kit.fontawesome.com/d2dc86f0b2.js"
           crossorigin="anonymous"
-        ></script> */}
+          async
+        /> */}
+        <Script src="https://kit.fontawesome.com/d2dc86f0b2.js"></Script>
       </head>
       <body className="bg-accent">{children}</body>
     </html>
