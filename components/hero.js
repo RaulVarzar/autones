@@ -1,31 +1,36 @@
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { FaFacebookSquare } from "react-icons/fa";
 
 const Hero = () => {
   const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["end 0.9", "end start"],
+    offset: ["start", "end start"],
   });
 
-  const contentSpring = useSpring(scrollYProgress, {
-    stiffness: 150,
-    damping: 16,
-    mass: 0.2,
-  });
+  // const contentSpring = useSpring(scrollYProgress, {
+  //   stiffness: 150,
+  //   damping: 16,
+  //   mass: 0.2,
+  // });
 
-  const titleScale = useTransform(contentSpring, [0, 1], ["100%", "75%"]);
-  const subTitleScale = useTransform(contentSpring, [0, 1], ["100%", "80%"]);
-  const opacity = useTransform(contentSpring, [0.2, 1], ["100%", "10%"]);
-  const y = useTransform(contentSpring, [0.05, 0.6], ["0vh", "-6vh"]);
-  const subOpacity = useTransform(contentSpring, [0.1, 0.3], ["100%", "0%"]);
-  const descOpacity = useTransform(contentSpring, [0.15, 0.45], ["60%", "0%"]);
+  const titleScale = useTransform(scrollYProgress, [0, 0.8], ["100%", "60%"]);
+  const subTitleScale = useTransform(scrollYProgress, [0, 1], ["100%", "80%"]);
+  const opacity = useTransform(scrollYProgress, [0.1, 0.3], ["100%", "10%"]);
+  const y = useTransform(scrollYProgress, [0.05, 0.6], ["0vh", "-6vh"]);
+  const subOpacity = useTransform(scrollYProgress, [0.1, 0.4], ["100%", "0%"]);
+  const descOpacity = useTransform(
+    scrollYProgress,
+    [0.15, 0.45],
+    ["60%", "0%"]
+  );
 
   return (
     <div
       ref={ref}
-      className="flex flex-col items-center justify-center gap-2 text-center h-[90vh] md:gap-4 max-w-7xl grow"
+      className="flex flex-col items-center justify-center gap-2 text-center min-h-[75vh] md:gap-4 max-w-7xl "
     >
       <motion.div
         initial={{ opacity: 0, y: "40px", scale: 0.85 }}
@@ -34,12 +39,14 @@ const Hero = () => {
       >
         <motion.h1
           style={{ scale: titleScale, opacity, y }}
-          className="text-5xl font-bold md:text-6xl lg:text-7xl xl:text-9xl "
+          className="text-6xl font-bold md:text-6xl lg:text-7xl xl:text-9xl "
         >
           AUTONES
         </motion.h1>
         <motion.div style={{ opacity: subOpacity, y }}>
-          <h2 className="text-2xl opacity-60">Tractări auto | Cluj-Napoca</h2>
+          <h2 className="text-lg sm:text-xl md:text-2xl opacity-60">
+            Tractări auto | Cluj-Napoca
+          </h2>
         </motion.div>
       </motion.div>
 
@@ -53,7 +60,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 2, ease: "easeInOut" }}
           className="flex items-center justify-center gap-4 px-6 py-3 border border-opacity-0 cursor-pointer grow border-base-content hover:border-opacity-20 rounded-xl"
         >
-          <i className="text-4xl sm:text-3xl fa-brands fa-square-facebook"></i>
+          <FaFacebookSquare className="text-3xl" />
           <p className="hidden text-xl sm:block">Autones Tractari</p>
         </motion.span>
 

@@ -33,10 +33,10 @@ export const Topic = ({ selectedTopic, changeTopic }) => {
         viewport={{ once: true, margin: "-10%" }}
         onClick={() => changeTopic(0)}
         className={
-          "stat justify-center gap-2 hover:bg-secondary rounded-xl p-6 md:p-10 cursor-pointer transition-colors duration-200 " +
+          "stat justify-center gap-2 hover:bg-base-200 rounded-xl p-6 md:p-10 cursor-pointer transition-colors duration-200 " +
           (selectedTopic === 0
-            ? " bg-secondary opacity-100"
-            : " hover:bg-base-200 opacity-80 hover:opacity-100")
+            ? " bg-base-200 opacity-100"
+            : " hover:bg-base-300 opacity-80 hover:opacity-100")
         }
       >
         <div className="text-3xl text-center uppercase whitespace-normal stat-value md:text-4xl">
@@ -59,10 +59,10 @@ export const Topic = ({ selectedTopic, changeTopic }) => {
         }}
         viewport={{ once: true, margin: "-10%" }}
         className={
-          "stat justify-center gap-2 hover:bg-secondary border-none rounded-xl p-6 md:p-10 cursor-pointer transition-colors duration-200 " +
+          "stat justify-center gap-2 hover:bg-base-200 border-none rounded-xl p-6 md:p-10 cursor-pointer transition-colors duration-200 " +
           (selectedTopic === 1
-            ? " bg-secondary opacity-100"
-            : " hover:bg-base-200 opacity-80 hover:opacity-100")
+            ? " bg-base-200 opacity-100"
+            : " hover:bg-base-300 opacity-80 hover:opacity-100")
         }
       >
         <div className="text-3xl text-center uppercase whitespace-normal stat-value md:text-4xl ">
@@ -84,10 +84,10 @@ export const Topic = ({ selectedTopic, changeTopic }) => {
         }}
         viewport={{ once: true, margin: "-10%" }}
         className={
-          "stat justify-center gap-2 hover:bg-secondary border-none rounded-xl p-6 md:p-10 cursor-pointer transition-colors duration-200 " +
+          "stat justify-center gap-2 hover:bg-base-200 border-none rounded-xl p-6 md:p-10 cursor-pointer transition-colors duration-200 " +
           (selectedTopic === 2
-            ? " bg-secondary opacity-100"
-            : " hover:bg-primary opacity-80 hover:opacity-100")
+            ? " bg-base-200 opacity-100"
+            : " hover:bg-base-300 opacity-80 hover:opacity-100")
         }
       >
         <div className="text-3xl text-center uppercase whitespace-normal stat-value md:text-4xl ">

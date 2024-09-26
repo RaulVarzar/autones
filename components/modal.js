@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import Contact from './contact';
-import ModalActions from './modal-actions';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from "react";
+import Contact from "./form";
+import ModalActions from "./modal-actions";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Modal = () => {
   const [showForm, setShowForm] = useState(false);

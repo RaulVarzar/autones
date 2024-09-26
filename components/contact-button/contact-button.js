@@ -1,33 +1,42 @@
+"use client";
 import { motion, easeOut } from "framer-motion";
+import { useState } from "react";
 
-export default function ContactButton({ primary, secondary, href, icon }) {
+export default function ContactButton({
+  primary,
+  secondary,
+  href,
+  icon,
+  hideText,
+}) {
+  const [isHovering, setIsHovering] = useState(false);
+
   return (
     <motion.a
-      initial={{ y: 30, opacity: 0, scale: 0.9 }}
-      whileInView={{
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        transition: { duration: 0.5, delay: 0.4, ease: easeOut },
-      }}
       href={href}
       target="_blank"
-      className="flex flex-col gap-4 px-8 py-4 text-center border cursor-pointer contact-btn sm:px-16 sm:py-8 group border-opacity-20 hover:border-opacity-40 border-base-content hover:border-primary-content rounded-2xl backdrop-brightness-110 hover:backdrop-brightness-150"
+      layout
+      className="relative flex flex-col items-center justify-center gap-4 px-8 py-6 overflow-hidden text-center border cursor-pointer contact-btn sm:px-16 group border-opacity-20 border-base-content rounded-2xl "
     >
-      <i
-        className={
-          "mx-auto text-3xl rounded-full btn-icon sm:text-4xl w-fit " + icon
-        }
-      ></i>
-
-      <div className="contact-btn-container">
-        <span className="text-xl font-light contact-btn-text-one sm:text-2xl opacity-70">
-          {primary}
-        </span>
-        <span className="text-lg font-medium opacity-100 contact-btn-text-two sm:text-xl">
-          {secondary}
-        </span>
-      </div>
+      <div className="absolute inset-0 transition-all backdrop-brightness-150 opacity-20 group-hover:opacity-100" />
+      <motion.span layout className="text-4xl">
+        {icon}
+      </motion.span>
+      {!hideText && (
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ opacity: 1, y: 0, transition: { delay: 0.2 } }}
+          className="contact-btn-container"
+        >
+          <span className="text-xl font-light contact-btn-text-one sm:text-2xl opacity-70">
+            {primary}
+          </span>
+          <span className="text-lg font-medium opacity-100 contact-btn-text-two sm:text-xl">
+            {secondary}
+          </span>
+        </motion.div>
+      )}
+      {/* </motion.div> */}
     </motion.a>
   );
 }

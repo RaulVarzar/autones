@@ -1,5 +1,6 @@
 import "./globals.css";
-import Script from "next/script";
+import ScrollContext from "components/SmoothScroll";
+import Navbar from "components/navbar";
 
 export const metadata = {
   title: "Autones",
@@ -9,15 +10,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        {/* <script
-          src="https://kit.fontawesome.com/d2dc86f0b2.js"
-          crossorigin="anonymous"
-          async
-        /> */}
-        <Script src="https://kit.fontawesome.com/d2dc86f0b2.js"></Script>
-      </head>
-      <body className="bg-accent">{children}</body>
+      <body className="bg-accent">
+        <Navbar />
+        <ScrollContext>{children}</ScrollContext>
+      </body>
     </html>
   );
 }

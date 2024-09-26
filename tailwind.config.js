@@ -29,9 +29,9 @@ module.exports = {
       {
         black: {
           ...require("daisyui/src/theming/themes")["black"],
-          "base-100": "#080808",
-          "base-200": "#0C0E0D",
-          "base-300": "#101010",
+          "base-100": "#0c0d0e",
+          "base-200": "#101112",
+          "base-300": "#161718",
           accent: "#101111",
           primary: "#101511",
           secondary: "#111412",
