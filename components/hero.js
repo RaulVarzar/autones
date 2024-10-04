@@ -1,6 +1,6 @@
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { FaFacebookSquare } from "react-icons/fa";
+import { FaFacebookSquare, FaInstagramSquare } from "react-icons/fa";
 
 const Hero = () => {
   const ref = useRef(null);
@@ -9,12 +9,6 @@ const Hero = () => {
     target: ref,
     offset: ["start", "end start"],
   });
-
-  // const contentSpring = useSpring(scrollYProgress, {
-  //   stiffness: 150,
-  //   damping: 16,
-  //   mass: 0.2,
-  // });
 
   const titleScale = useTransform(scrollYProgress, [0, 0.8], ["100%", "60%"]);
   const subTitleScale = useTransform(scrollYProgress, [0, 1], ["100%", "80%"]);
@@ -28,9 +22,10 @@ const Hero = () => {
   );
 
   return (
-    <div
+    <motion.div
       ref={ref}
-      className="flex flex-col items-center justify-center gap-2 text-center min-h-[75vh] md:gap-4 max-w-7xl "
+      // style={{ scale: sectionScale }}
+      className="flex   top-0  flex-col items-center justify-center gap-2 text-center min-h-[75vh] md:gap-4 max-w-7xl "
     >
       <motion.div
         initial={{ opacity: 0, y: "40px", scale: 0.85 }}
@@ -39,7 +34,7 @@ const Hero = () => {
       >
         <motion.h1
           style={{ scale: titleScale, opacity, y }}
-          className="text-6xl font-bold md:text-6xl lg:text-7xl xl:text-9xl "
+          className="text-6xl font-bold md:text-8xl xl:text-9xl "
         >
           AUTONES
         </motion.h1>
@@ -70,7 +65,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 2, ease: "easeInOut" }}
           className="flex items-center justify-center gap-4 px-6 py-3 border border-opacity-0 cursor-pointer grow border-base-content hover:border-opacity-20 rounded-xl"
         >
-          <i className="text-4xl fa-brands sm:text-3xl fa-square-instagram "></i>
+          <FaInstagramSquare className="text-3xl" />
           <p className="hidden text-xl sm:block ">@autones</p>
         </motion.span>
       </motion.div>
@@ -83,7 +78,7 @@ const Hero = () => {
       >
         <motion.h1
           style={{ scale: subTitleScale, opacity: descOpacity, y }}
-          className="max-w-6xl px-6 text-lg text-pretty font-extralight text-base-content md:px-10 md:text-xl xl:text-2xl"
+          className="max-w-4xl px-6 text-lg text-pretty font-extralight text-base-content md:px-10 md:text-xl xl:text-2xl"
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla
           corporis blanditiis ex maxime adipisci incidunt totam ea ad ducimus
@@ -91,9 +86,7 @@ const Hero = () => {
           animi porro?
         </motion.h1>
       </motion.div>
-
-      {/* <div className="h-24"></div> */}
-    </div>
+    </motion.div>
   );
 };
 

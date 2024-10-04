@@ -11,7 +11,7 @@ export default function ModalActions({}) {
 
   return (
     <LayoutGroup>
-      <motion.div layout className="flex flex-col gap-16 ">
+      <motion.div layout className="flex flex-col gap-8 sm:gap-10 lg:gap-16 ">
         <AnimatePresence mode="sync">
           {!showForm && (
             <motion.div
@@ -25,22 +25,22 @@ export default function ModalActions({}) {
               key="hello"
               className="flex flex-col justify-center gap-3 text-3xl text-center"
             >
-              <span className="text-base font-light leading-tight text-balance opacity-40 sm:text-lg lg:text-xl">
+              <span className="text-lg font-light leading-tight text-balance opacity-40 sm:text-sx lg:text-2xl">
                 Ai nevoie de ajutorul nostru? Contacteaza-ne acum!
               </span>
               <div className="flex flex-col justify-center sm:flex-row gap-y-0 gap-x-2">
-                <h1 className="text-lg opacity-80 sm:text-2xl lg:text-3xl">
+                <h1 className="text-base opacity-80 sm:text-2xl lg:text-3xl">
                   Program
                 </h1>
-                <h3 className="text-xl font-bold uppercase sm:text-2xl lg:text-3xl">
+                <h3 className="text-lg font-bold uppercase sm:text-2xl lg:text-3xl">
                   NON-STOP
                 </h3>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-        <motion.div className="flex flex-col gap-8 ">
-          <div className="grid gap-4 max-sm:grid-rows-2 sm:grid-cols-2 md:flex-row">
+        <motion.div className="flex flex-col gap-4 ">
+          <div className="grid gap-4 max-sm:grid-cols-2 sm:grid-cols-2 md:flex-row">
             <ContactButton
               primary={"Telefon"}
               secondary={"0743 483 293"}
@@ -79,7 +79,7 @@ export default function ModalActions({}) {
                   damping: 8,
                   mass: 0.3,
                 }}
-                className="relative flex flex-row items-center justify-center gap-2 px-12 py-5 cursor-pointer md:py-8 sm:gap-4 group "
+                className="relative flex flex-row items-center justify-center gap-2 px-4 py-5 cursor-pointer md:px-8 lg:px-12 md:py-8 sm:gap-4 group "
               >
                 <div className="absolute inset-0 transition-all -z-10 backdrop-brightness-150 opacity-20 group-hover:opacity-100" />
                 <MdOutlineMessage />

@@ -14,30 +14,29 @@ const Services = () => {
 
   const { scrollYProgress } = useScroll({
     target: imageRef,
-    offset: ["start 0.75", "start 0.15"],
+    offset: ["0.45 end", "end 0.9"],
   });
 
   const photoScale = useTransform(scrollYProgress, [0, 1], ["40%", "100%"]);
-  const photoY = useTransform(scrollYProgress, [0, 1], ["-30%", "0%"]);
-  const borderRadius = useTransform(scrollYProgress, [0, 1], ["25vh", "2vh"]);
+
+  const borderRadius = useTransform(scrollYProgress, [0, 1], ["15vh", "0vh"]);
 
   return (
-    <section className="relative flex flex-col w-full min-h-screen gap-8 px-3 ">
+    <section className="relative flex flex-col items-center w-full min-h-screen gap-1 px-4 sm:px-6 md:px-8 lg:px-12">
       <motion.div
-        initial={{ opacity: 0, y: "30px", scale: 0.8 }}
+        initial={{ opacity: 0, y: "30%", scale: 0.8 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.9, delay: 0.85, ease: "easeInOut" }}
-        className=""
+        transition={{ duration: 0.9, delay: 1.2, ease: "easeOut" }}
+        className="w-full overflow-hidden rounded-3xl max-w-7xl"
         ref={imageRef}
       >
         <motion.img
-          style={{ borderRadius, scale: photoScale, y: photoY }}
+          style={{ borderRadius, scale: photoScale }}
           src={IMAGES[selectedTopic]}
-          className="object-cover w-full max-w-6xl mx-auto md:w-8/12 aspect-video"
+          className="object-cover w-full mx-auto origin-top max-w-7xl aspect-video"
         />
-
-        {/* <div className="absolute inset-0 border h-1/2"  /> */}
       </motion.div>
+
       <Topic selectedTopic={selectedTopic} changeTopic={changeTopic} />
     </section>
   );

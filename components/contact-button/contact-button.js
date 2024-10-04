@@ -16,10 +16,10 @@ export default function ContactButton({
       href={href}
       target="_blank"
       layout
-      className="relative flex flex-col items-center justify-center gap-4 px-8 py-6 overflow-hidden text-center border cursor-pointer contact-btn sm:px-16 group border-opacity-20 border-base-content rounded-2xl "
+      className="relative flex flex-col items-center justify-center px-4 py-1 overflow-hidden text-center border cursor-pointer sm:gap-2 md:gap-4 sm:py-6 contact-btn sm:px-16 group border-opacity-20 border-base-content rounded-2xl "
     >
       <div className="absolute inset-0 transition-all backdrop-brightness-150 opacity-20 group-hover:opacity-100" />
-      <motion.span layout className="text-4xl">
+      <motion.span layout className="pt-4 pb-1 text-4xl ">
         {icon}
       </motion.span>
       {!hideText && (
@@ -28,10 +28,10 @@ export default function ContactButton({
           animate={{ opacity: 1, y: 0, transition: { delay: 0.2 } }}
           className="contact-btn-container"
         >
-          <span className="text-xl font-light contact-btn-text-one sm:text-2xl opacity-70">
+          <span className="text-base font-light contact-btn-text-one sm:text-2xl opacity-70">
             {primary}
           </span>
-          <span className="text-lg font-medium opacity-100 contact-btn-text-two sm:text-xl">
+          <span className="text-base font-medium opacity-100 contact-btn-text-two sm:text-xl">
             {secondary}
           </span>
         </motion.div>
