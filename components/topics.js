@@ -1,9 +1,38 @@
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  LayoutGroup,
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import React, { useRef, useState } from "react";
+
+const TOPICS = [
+  {
+    id: 0,
+    title: "Tractări auto 24/7",
+    description:
+      "Tractări, remorcări și transportam autovehiculul pe platforma auto indiferent daca este accidentat sau este defect atat in Romania cat si in Europa",
+  },
+  {
+    id: 1,
+    title: "Transport auto intern",
+    description:
+      "Serviciul nostru de asistenta rutiera este non stop, o pana de cauciuc, combustibil, masina nu mai porneste",
+  },
+  {
+    id: 2,
+    title: "Transport utilaje",
+    description:
+      "Putem transporta pe platforma auto utilaje atat cu roti de cauciuc cat si cu senile cu o greutate de pana la 8 tone.",
+  },
+];
 
 export const Topic = ({ selectedTopic, changeTopic }) => {
   const ref = useRef(null);
 
+  const [hovering, setHovering] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "0.8 end"],
@@ -17,87 +46,104 @@ export const Topic = ({ selectedTopic, changeTopic }) => {
 
   const scale = useTransform(contentSpring, [0, 1], ["85%", "100%"]);
   const y = useTransform(contentSpring, [0, 1], ["12vh", "0vh"]);
+  const [selectedTab, setSelectedTab] = useState(TOPICS[0]);
 
   return (
-    <div
-      ref={ref}
-      className="gap-4 pt-4 pb-24 mx-auto overflow-hidden bg-transparent sm:pt-12 stats stats-vertical lg:stats-horizontal"
+    <>
+      <motion.div
+        onHoverEnd={() => setHovering(false)}
+        ref={ref}
+        className="grid grid-cols-1 gap-4 mx-auto mt-4 mb-24 overflow-hidden border md:grid-cols-3 sm:mt-12 max-w-7xl"
+      >
+        {TOPICS.map((item, i) => (
+          <Card
+            key={i}
+            selectedTopic={selectedTopic}
+            changeTopic={changeTopic}
+            hovering={hovering}
+            setHovering={setHovering}
+            {...item}
+          />
+        ))}
+      </motion.div>
+      <div className="window">
+        <ul className="flex w-full">
+          {TOPICS.map((item) => (
+            <li
+              key={item.id}
+              className="test"
+              onClick={() => setSelectedTab(item)}
+            >
+              CONTENT
+              {item === selectedTab && (
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 h-4 bg-indigo-700"
+                  layoutId="underline"
+                />
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
+  );
+};
+
+export const Card = ({
+  title,
+  description,
+  id,
+  selectedTopic,
+  changeTopic,
+  hovering,
+  setHovering,
+}) => {
+  return (
+    <motion.div
+      className="relative w-full max-w-4xl mx-auto cursor-pointer rounded-3xl"
+      onHoverStart={() => setHovering(id)}
+      key={id}
     >
       <motion.div
-        style={{ scale, y }}
-        initial={{ opacity: 0 }}
+        // style={{ scale }}
+        initial={{ opacity: 0, y: 50 }}
         whileInView={{
           opacity: 1,
+          y: 0,
           transition: { duration: 1.2, delay: 0.4 },
         }}
-        viewport={{ once: true, margin: "-10%" }}
-        onClick={() => changeTopic(0)}
-        className={
-          "stat justify-center gap-2 hover:bg-secondary rounded-xl p-6 md:p-10 cursor-pointer transition-colors duration-200 " +
-          (selectedTopic === 0
-            ? " bg-secondary opacity-100"
-            : " hover:bg-base-200 opacity-80 hover:opacity-100")
-        }
+        // viewport={{ once: true, margin: "-10%" }}
+        // onClick={() => changeTopic(id)}
+        className={`flex flex-col gap-2 border-neutral  h-full rounded-3xl border-opacity-100 p-6 md:p-10
+       `}
       >
         <div className="text-3xl text-center uppercase whitespace-normal stat-value md:text-4xl">
-          Tractări auto 24/7
+          {title}
         </div>
-        <div className="mx-auto text-lg leading-tight tracking-tighter text-center whitespace-normal stat-desc md:text-xl max-w-72 md:max-w-80">
-          Tractări, remorcări și transportam autovehiculul pe platforma auto
-          indiferent daca este accidentat sau este defect atat in Romania cat si
-          in Europa
+        <div className="mx-auto text-lg leading-tight text-center whitespace-normal stat-desc xl:text-xl max-w-72 md:max-w-80">
+          {description}
         </div>
       </motion.div>
 
-      <motion.div
-        style={{ scale, y }}
-        onClick={() => changeTopic(1)}
-        initial={{ opacity: 0 }}
-        whileInView={{
-          opacity: 1,
-          transition: { duration: 1.2, delay: 0.65 },
-        }}
-        viewport={{ once: true, margin: "-10%" }}
-        className={
-          "stat justify-center gap-2 hover:bg-secondary border-none rounded-xl p-6 md:p-10 cursor-pointer transition-colors duration-200 " +
-          (selectedTopic === 1
-            ? " bg-secondary opacity-100"
-            : " hover:bg-base-200 opacity-80 hover:opacity-100")
-        }
-      >
-        <div className="text-3xl text-center uppercase whitespace-normal stat-value md:text-4xl ">
-          Transport auto intern
-        </div>
-        <div className="mx-auto text-lg leading-tight tracking-tighter text-center whitespace-normal stat-desc md:text-xl max-w-72 md:max-w-80">
-          Serviciul nostru de asistenta rutiera este non stop, o pana de
-          cauciuc, combustibil, masina nu mai porneste
-        </div>
-      </motion.div>
-
-      <motion.div
-        style={{ scale, y }}
-        onClick={() => changeTopic(2)}
-        initial={{ opacity: 0 }}
-        whileInView={{
-          opacity: 1,
-          transition: { duration: 1.2, delay: 0.9 },
-        }}
-        viewport={{ once: true, margin: "-10%" }}
-        className={
-          "stat justify-center gap-2 hover:bg-secondary border-none rounded-xl p-6 md:p-10 cursor-pointer transition-colors duration-200 " +
-          (selectedTopic === 2
-            ? " bg-secondary opacity-100"
-            : " hover:bg-primary opacity-80 hover:opacity-100")
-        }
-      >
-        <div className="text-3xl text-center uppercase whitespace-normal stat-value md:text-4xl ">
-          Transport utilaje
-        </div>
-        <div className="mx-auto text-lg leading-tight tracking-tighter text-center whitespace-normal stat-desc md:text-xl max-w-72 md:max-w-80">
-          Putem transporta pe platforma auto utilaje atat cu roti de cauciuc cat
-          si cu senile cu o greutate de pana la 8 tone.
-        </div>
-      </motion.div>
-    </div>
+      {hovering === id && (
+        <motion.span
+          layoutId="cards"
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          initial={{ scale: 1.05, opacity: 0, y: "100%" }}
+          animate={{
+            scale: 1,
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.25, ease: "easeInOut" },
+          }}
+          exit={{
+            scale: 1.08,
+            opacity: 0,
+            transition: { duration: 0.15, ease: "easeInOut" },
+          }}
+          className="absolute inset-0 z-20 w-full h-full bg-indigo-900 rounded-3xl"
+        ></motion.span>
+      )}
+    </motion.div>
   );
 };

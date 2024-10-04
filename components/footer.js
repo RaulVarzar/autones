@@ -24,10 +24,7 @@ const Footer = () => {
   );
 
   return (
-    <div
-      ref={ref}
-      className="w-full px-4 py-4 mx-auto md:px-24 lg:px-48 h-fit "
-    >
+    <div ref={ref} className="w-full px-4 py-4 mx-auto md:px-24 lg:px-48 h-fit">
       <motion.div
         style={{ scale, y, opacity }}
         className="flex flex-col justify-center gap-6 mb-8 gap-y-8 md:flex-row md:gap-24 h-fit "

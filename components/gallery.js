@@ -31,7 +31,7 @@ const Gallery = () => {
     >
       <div className="flex flex-row flex-wrap ">
         {imageList.map((image, index) => (
-          <div key={index} className="w-full p-2 sm:w-1/2 lg:w-1/3 aspect-auto">
+          <div key={index} className="w-full p-8 sm:w-1/2 aspect-auto">
             <PhotoProvider>
               <PhotoView src={image.default.src}>
                 <motion.img

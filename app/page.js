@@ -3,13 +3,9 @@
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Hero from "../components/hero.js";
-import Navbar from "../components/navbar";
 import Gallery from "../components/gallery";
 import Footer from "../components/footer";
-import About from "../components/about";
 import Services from "../components/services.js";
-import Contact from "../components/contact";
-import ScrollContext from "../components/ScrollContext.js";
 
 export default function Home() {
   const ref = useRef(null);
@@ -24,25 +20,21 @@ export default function Home() {
     mass: 0.1,
   });
 
-  const scale = useTransform(contentSpring, [0.1, 1], ["100%", "85%"]);
-  const y = useTransform(contentSpring, [0.1, 1], ["0vh", "10vh"]);
+  const scale = useTransform(contentSpring, [0.1, 1], ["100%", "92%"]);
+  const y = useTransform(contentSpring, [0.1, 1], ["0vh", "3vh"]);
 
   return (
-    <ScrollContext>
-      <main className="flex flex-col items-center justify-between min-h-screen bg-primary">
-        <Navbar />
-        <motion.div
-          ref={ref}
-          style={{ scale, y }}
-          className="z-10 flex flex-col items-center w-full pb-24 rounded-b-2xl bg-base-200"
-        >
-          <Hero />
-          <Services />
-          <Gallery />
-          {/*  <Contact />  */}
-        </motion.div>
-        <Footer />
-      </main>
-    </ScrollContext>
+    <main>
+      <motion.div
+        ref={ref}
+        style={{ scale, y }}
+        className="z-10 flex flex-col items-center w-full pb-24 rounded-b-2xl bg-base-100"
+      >
+        <Hero />
+        <Services />
+        <Gallery />
+      </motion.div>
+      <Footer />
+    </main>
   );
 }

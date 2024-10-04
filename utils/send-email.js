@@ -1,4 +1,4 @@
-import { FormData } from '../components/contact';
+import { FormData } from "../components/form";
 
 export function sendEmail(data) {
   // TODO: send email
