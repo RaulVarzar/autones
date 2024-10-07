@@ -53,7 +53,7 @@ export const Topic = ({ selectedTopic, changeTopic }) => {
       <motion.div
         onHoverEnd={() => setHovering(false)}
         ref={ref}
-        className="grid grid-cols-1 gap-4 mx-auto mt-4 mb-24 overflow-hidden border md:grid-cols-3 sm:mt-12 max-w-7xl"
+        className="grid grid-cols-1 gap-4 mx-auto mt-4 mb-24 overflow-hidden md:grid-cols-3 sm:mt-12 max-w-7xl"
       >
         {TOPICS.map((item, i) => (
           <Card
@@ -66,25 +66,6 @@ export const Topic = ({ selectedTopic, changeTopic }) => {
           />
         ))}
       </motion.div>
-      <div className="window">
-        <ul className="flex w-full">
-          {TOPICS.map((item) => (
-            <li
-              key={item.id}
-              className="test"
-              onClick={() => setSelectedTab(item)}
-            >
-              CONTENT
-              {item === selectedTab && (
-                <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-4 bg-indigo-700"
-                  layoutId="underline"
-                />
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
     </>
   );
 };
@@ -101,8 +82,9 @@ export const Card = ({
   return (
     <motion.div
       className="relative w-full max-w-4xl mx-auto cursor-pointer rounded-3xl"
-      onHoverStart={() => setHovering(id)}
+      // onHoverStart={() => setHovering(id)}
       key={id}
+      layout
     >
       <motion.div
         // style={{ scale }}
@@ -112,6 +94,7 @@ export const Card = ({
           y: 0,
           transition: { duration: 1.2, delay: 0.4 },
         }}
+        layout
         // viewport={{ once: true, margin: "-10%" }}
         // onClick={() => changeTopic(id)}
         className={`flex flex-col gap-2 border-neutral  h-full rounded-3xl border-opacity-100 p-6 md:p-10
@@ -129,7 +112,7 @@ export const Card = ({
         <motion.span
           layoutId="cards"
           transition={{ duration: 0.35, ease: "easeOut" }}
-          initial={{ scale: 1.05, opacity: 0, y: "100%" }}
+          initial={{ scale: 1, opacity: 0, y: "100%" }}
           animate={{
             scale: 1,
             opacity: 1,
@@ -137,7 +120,7 @@ export const Card = ({
             transition: { duration: 0.25, ease: "easeInOut" },
           }}
           exit={{
-            scale: 1.08,
+            scale: 1,
             opacity: 0,
             transition: { duration: 0.15, ease: "easeInOut" },
           }}

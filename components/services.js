@@ -14,21 +14,24 @@ const Services = () => {
 
   const { scrollYProgress } = useScroll({
     target: imageRef,
-    offset: ["0.45 end", "end 0.9"],
+    offset: ["0.35 end", "start"],
   });
 
-  const photoScale = useTransform(scrollYProgress, [0, 1], ["40%", "100%"]);
+  const photoScale = useTransform(scrollYProgress, [0, 0.55], ["40%", "100%"]);
+  const y = useTransform(scrollYProgress, [0.2, 1], ["50%", "35%"]);
 
-  const borderRadius = useTransform(scrollYProgress, [0, 1], ["15vh", "0vh"]);
+  const borderRadius = useTransform(scrollYProgress, [0, 0.6], ["35vh", "0vh"]);
 
   return (
-    <section className="relative flex flex-col items-center w-full min-h-screen gap-1 px-4 sm:px-6 md:px-8 lg:px-12">
+    <section
+      ref={imageRef}
+      className="relative  flex flex-col items-center w-full min-h-screen pt-[8vh] gap-1 px-4 bg-transparent sm:px-6 md:px-8 lg:px-12 "
+    >
       <motion.div
         initial={{ opacity: 0, y: "30%", scale: 0.8 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.9, delay: 1.2, ease: "easeOut" }}
-        className="w-full overflow-hidden rounded-3xl max-w-7xl"
-        ref={imageRef}
+        className="z-10 w-full overflow-hidden rounded-3xl max-w-7xl"
       >
         <motion.img
           style={{ borderRadius, scale: photoScale }}
@@ -38,6 +41,11 @@ const Services = () => {
       </motion.div>
 
       <Topic selectedTopic={selectedTopic} changeTopic={changeTopic} />
+      <div className="absolute inset-0 w-full h-full bg-base-100 -z-10"></div>
+      <motion.div
+        style={{ y }}
+        className="absolute inset-0 w-full h-full bg-base-100 -z-10"
+      ></motion.div>
     </section>
   );
 };

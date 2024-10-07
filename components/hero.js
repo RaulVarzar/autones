@@ -22,30 +22,32 @@ const Hero = () => {
   );
 
   return (
-    <motion.div
-      ref={ref}
-      // style={{ scale: sectionScale }}
-      className="flex   top-0  flex-col items-center justify-center gap-2 text-center min-h-[75vh] md:gap-4 max-w-7xl "
-    >
+    <>
+      <div className="bg-base-100 min-h-[65vh] fixed top-0  w-full"></div>
       <motion.div
-        initial={{ opacity: 0, y: "40px", scale: 0.85 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 1, delay: 0.8, ease: "easeInOut" }}
+        ref={ref}
+        // style={{ scale: sectionScale }}
+        className="flex z-20  flex-col items-center justify-end pb-24 gap-4 text-center min-h-[65vh] md:gap-12 max-w-7xl "
       >
-        <motion.h1
-          style={{ scale: titleScale, opacity, y }}
-          className="text-6xl font-bold md:text-8xl xl:text-9xl "
+        <motion.div
+          initial={{ opacity: 0, y: "40px", scale: 0.85 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1, delay: 0.8, ease: "easeInOut" }}
         >
-          AUTONES
-        </motion.h1>
-        <motion.div style={{ opacity: subOpacity, y }}>
-          <h2 className="text-lg sm:text-xl md:text-2xl opacity-60">
-            Tractări auto | Cluj-Napoca
-          </h2>
+          <motion.h1
+            style={{ scale: titleScale, opacity, y }}
+            className="text-6xl font-bold md:text-8xl xl:text-9xl "
+          >
+            AUTONES
+          </motion.h1>
+          <motion.div style={{ opacity: subOpacity, y }}>
+            <h2 className="text-lg sm:text-xl md:text-2xl opacity-60">
+              Tractări auto | Cluj-Napoca
+            </h2>
+          </motion.div>
         </motion.div>
-      </motion.div>
 
-      <motion.div
+        {/* <motion.div
         style={{ opacity: subOpacity, y }}
         className="flex flex-row justify-center gap-0 w-fit sm:gap-x-4 sm:justify-stretch"
       >
@@ -68,25 +70,26 @@ const Hero = () => {
           <FaInstagramSquare className="text-3xl" />
           <p className="hidden text-xl sm:block ">@autones</p>
         </motion.span>
-      </motion.div>
+      </motion.div> */}
 
-      <motion.div
-        initial={{ opacity: 0, y: "60px", scale: 0.85 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 1.1, delay: 1, ease: "easeInOut" }}
-        // style={{ opacity: descOpacity }}
-      >
-        <motion.h1
-          style={{ scale: subTitleScale, opacity: descOpacity, y }}
-          className="max-w-4xl px-6 text-lg text-pretty font-extralight text-base-content md:px-10 md:text-xl xl:text-2xl"
+        <motion.div
+          initial={{ opacity: 0, y: "60px", scale: 0.85 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.1, delay: 1, ease: "easeInOut" }}
+          // style={{ opacity: descOpacity }}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla
-          corporis blanditiis ex maxime adipisci incidunt totam ea ad ducimus
-          tenetur placeat corrupti aliquam voluptas inventore voluptate quas
-          animi porro?
-        </motion.h1>
+          <motion.h1
+            style={{ scale: subTitleScale, opacity: descOpacity, y }}
+            className="max-w-4xl px-6 text-lg text-pretty font-extralight text-base-content md:px-10 md:text-xl xl:text-2xl"
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla
+            corporis blanditiis ex maxime adipisci incidunt totam ea ad ducimus
+            tenetur placeat corrupti aliquam voluptas inventore voluptate quas
+            animi porro?
+          </motion.h1>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </>
   );
 };
 
