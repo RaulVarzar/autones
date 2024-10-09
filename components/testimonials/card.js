@@ -5,7 +5,7 @@ const Card = () => {
     <motion.div
       onMouseDown={() => console.log("mouse down")}
       onMouseLeave={() => console.log("mouse up")}
-      className="flex-none h-72 backdrop-brightness-[120%] w-[450px] rounded-2xl border border-neutral-content border-opacity-60"
+      className="flex-none h-72 bg-base-200 w-[450px] rounded-2xl border border-neutral-content border-opacity-80"
     ></motion.div>
   );
 };

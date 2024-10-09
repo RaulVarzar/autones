@@ -34,7 +34,7 @@ export default function Home() {
         <Hero />
         <Services />
         <Gallery />
-        <Testimonials />
+        {/* <Testimonials /> */}
       </motion.div>
       <Footer />
     </main>

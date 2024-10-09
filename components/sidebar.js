@@ -1,6 +1,9 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useDragControls } from "framer-motion";
 import ModalActions from "./modal-actions";
+// import DragCloseDrawer from "/Sidebar/dragToClose.js";
+
+import DragCloseDrawer from "./dragToClose";
 
 const variants = {
   hidden: {
@@ -15,9 +18,10 @@ const variants = {
 };
 
 const Sidebar = ({ isOpen, closeSidebar }) => {
+  const controls = useDragControls();
   return (
     <>
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -27,17 +31,21 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
             onClick={closeSidebar}
           ></motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
 
-      <motion.div
+      {/* <motion.div
         initial="hidden"
         layout
         variants={variants}
         animate={isOpen ? "visible" : "hidden"}
-        className="fixed top-0 right-0 z-50 flex flex-col items-center justify-center w-full h-screen px-8 text-3xl font-black bg-base-200 sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl sm:px-12 lg:px-16 text-base-content "
+        className="fixed top-0 right-0 z-50 flex flex-col items-center justify-center w-full h-screen px-8 text-3xl font-black border border-info bg-base-200 sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl sm:px-12 lg:px-16 text-base-content "
       >
+        
         <ModalActions />
-      </motion.div>
+      </motion.div> */}
+      <DragCloseDrawer open={isOpen} setOpen={closeSidebar}>
+        <ModalActions />
+      </DragCloseDrawer>
     </>
   );
 };

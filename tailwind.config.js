@@ -12,6 +12,7 @@ module.exports = {
       aspectRatio: {
         "4/3": "4 / 3",
       },
+      fontSize: { md: "0.85rem", xxl: "10rem" },
       borderWidth: {
         DEFAULT: "1px",
         0: "0",
