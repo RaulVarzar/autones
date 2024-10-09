@@ -21,7 +21,7 @@ export default function Home() {
   //   mass: 0.1,
   // });
 
-  const scale = useTransform(scrollYProgress, [0.1, 1], ["100%", "92%"]);
+  const scale = useTransform(scrollYProgress, [0.1, 1], ["100%", "97%"]);
   const y = useTransform(scrollYProgress, [0.1, 1], ["0vh", "3vh"]);
 
   return (
@@ -29,9 +29,11 @@ export default function Home() {
       <motion.div
         ref={ref}
         style={{ scale, y }}
-        className="z-10 flex flex-col items-center w-full pb-24 rounded-b-2xl bg-base-100"
+        className="z-10 flex flex-col items-center w-full pb-48 rounded-b-2xl bg-base-100"
       >
+        {/* <div className="p-4 bg-indigo-950 rounded-2xl"> */}
         <Hero />
+        {/* </div> */}
         <Services />
         <Gallery />
         {/* <Testimonials /> */}

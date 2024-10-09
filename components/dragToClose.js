@@ -51,12 +51,12 @@ const DragCloseDrawer = ({ open, setOpen, children }) => {
               mass: 0.3,
               duration: 0.2,
             }}
-            className="fixed top-0 right-0 z-50 flex flex-col items-center justify-center w-full h-screen px-12 text-3xl font-black bg-base-200 sm:max-w-md md:max-w-xl lg:max-w-4xl xl:max-w-6xl text-base-content "
+            className="fixed top-0 right-0 z-50 flex flex-col items-center justify-center w-full h-screen pl-8 text-3xl font-black sm:px-8 bg-base-300 sm:max-w-md md:max-w-xl lg:max-w-4xl xl:max-w-6xl text-base-content "
             style={{ x }}
             drag="x"
             dragControls={controls}
             onDragEnd={() => {
-              if (x.get() >= 100) {
+              if (x.get() >= 70) {
                 handleClose();
               }
             }}
@@ -74,7 +74,7 @@ const DragCloseDrawer = ({ open, setOpen, children }) => {
               onPointerDown={(e) => {
                 controls.start(e);
               }}
-              className="absolute top-0 left-0 z-10 flex items-center justify-center h-full p-8"
+              className="absolute top-0 left-0 z-10 flex items-center justify-center h-full p-6 sm:p-8"
             >
               <div className="flex flex-col gap-2.5 cursor-grab touch-none active:cursor-grabbing">
                 <span className="w-1.5 h-1.5 rounded-full bg-base-content"></span>

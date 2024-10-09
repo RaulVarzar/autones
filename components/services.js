@@ -14,28 +14,28 @@ const Services = () => {
 
   const { scrollYProgress } = useScroll({
     target: imageRef,
-    offset: ["0.3 end", "start"],
+    offset: ["start 0.7", "start"],
   });
 
-  const photoScale = useTransform(scrollYProgress, [0, 0.6], ["30%", "100%"]);
-  const borderRadius = useTransform(scrollYProgress, [0, 0.6], ["3vh", "3vh"]);
+  const scale = useTransform(scrollYProgress, [0, 0.57], ["40%", "100%"]);
+  const borderRadius = useTransform(scrollYProgress, [0, 0.6], ["8vh", "3vh"]);
+  const y = useTransform(scrollYProgress, [0, 0.6], ["0vh", "30vh"]);
 
   return (
-    <section
-      ref={imageRef}
-      className="relative flex flex-col  items-center  w-full min-h-screen pt-[8vh] gap-1 px-4 bg-transparent sm:px-6 md:px-8 lg:px-12 "
-    >
+    <section className="relative bottom-0 flex flex-col h-[200vh] items-center w-full min-h-screen gap-1 px-4 bg-transparent  border-error sm:px-6 md:px-8 lg:px-12 ">
       <motion.div
         initial={{ opacity: 0, y: "30%", scale: 0.8 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.9, delay: 1.2, ease: "easeOut" }}
-        className="z-10 w-full overflow-hidden max-w-7xl "
+        className="z-10 w-full h-screen grow border-info max-w-7xl"
       >
-        <motion.img
-          style={{ scale: photoScale, borderRadius }}
-          src={IMAGES[selectedTopic]}
-          className="object-cover w-full mx-auto origin-top max-w-7xl aspect-video"
-        />
+        <div ref={imageRef} className="sticky top-[70vh]  border-fuchsia-900">
+          <motion.img
+            style={{ scale, borderRadius }}
+            src={IMAGES[selectedTopic]}
+            className="object-cover w-full mx-auto origin-top max-w-7xl aspect-video "
+          />
+        </div>
       </motion.div>
 
       <Topic selectedTopic={selectedTopic} changeTopic={changeTopic} />
