@@ -17,7 +17,7 @@ const DragCloseDrawer = ({ open, setOpen, children }) => {
     const xStart = typeof x.get() === "number" ? x.get() : 0;
 
     await animate("#drawer", {
-      x: [xStart, width],
+      x: [xStart, width + 50],
     });
     setOpen();
   };
@@ -32,7 +32,7 @@ const DragCloseDrawer = ({ open, setOpen, children }) => {
               animate={{ opacity: 1, transition: { duration: 0.3 } }}
               exit={{ opacity: 0, transition: { duration: 0.15, delay: 0 } }}
               onClick={handleClose}
-              className="fixed inset-0 z-50 bg-neutral-950/90 backdrop-blur-sm"
+              className="fixed inset-0 z-50 bg-neutral-900/30 backdrop-blur-md"
             ></motion.div>
           )}
         </AnimatePresence>
@@ -44,14 +44,12 @@ const DragCloseDrawer = ({ open, setOpen, children }) => {
             initial={{ x: "100%" }}
             animate={{ x: "0%" }}
             transition={{
-              ease: "easeInOut",
               type: "spring",
-              stiffness: 150,
-              damping: 16,
-              mass: 0.3,
-              duration: 0.2,
+              stiffness: 220,
+              damping: 25,
+              mass: 1.2,
             }}
-            className="fixed top-0 right-0 z-50 flex flex-col items-center justify-center w-full h-screen pl-8 text-3xl font-black sm:px-8 bg-base-300 sm:max-w-md md:max-w-xl lg:max-w-4xl xl:max-w-6xl text-base-content "
+            className="fixed top-0 right-[2vh] rounded-2xl z-50 flex flex-col items-center justify-center w-fit h-[96vh] mt-[2vh] pl-10 text-3xl font-black sm:pl-16 bg-base-100 sm:max-w-md md:max-w-xl lg:max-w-4xl xl:max-w-6xl text-base-content "
             style={{ x }}
             drag="x"
             dragControls={controls}
@@ -82,7 +80,7 @@ const DragCloseDrawer = ({ open, setOpen, children }) => {
                 <span className="w-1.5 h-1.5 rounded-full bg-base-content"></span>
               </div>
             </button>
-            <div className="relative z-0 flex flex-row h-full w-fit">
+            <div className="relative z-0 flex flex-row h-full w-full  px-8">
               {children}
             </div>
           </motion.div>

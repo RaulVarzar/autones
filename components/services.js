@@ -1,12 +1,20 @@
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import {
+  motion,
+  useInView,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { Topic } from "./topics";
 
 const IMAGES = ["/main1.jpg", "/main2.jpg", "/main3.jpg"];
 
-const Services = () => {
+const Services = ({ sectionIsActive }) => {
   const imageRef = useRef(null);
   const [selectedTopic, setSelectedTopic] = useState(0);
+
+  const isInView = useInView(imageRef, { margin: "-10% 0% -60% 0%" });
 
   function changeTopic(topic) {
     setSelectedTopic(topic);
@@ -21,15 +29,29 @@ const Services = () => {
   const borderRadius = useTransform(scrollYProgress, [0, 0.6], ["8vh", "3vh"]);
   const y = useTransform(scrollYProgress, [0, 0.6], ["0vh", "30vh"]);
 
+  useEffect(() => {
+    if (isInView) {
+      sectionIsActive(true);
+    } else {
+      sectionIsActive(false);
+    }
+  }, [isInView]);
+
   return (
-    <section className="relative bottom-0 flex flex-col h-[200vh] items-center w-full min-h-screen gap-1 px-4 bg-transparent  border-error sm:px-6 md:px-8 lg:px-12 ">
+    <section className="relative bottom-0 flex flex-col h-[250vh]  items-center w-full min-h-screen gap-1 px-4 bg-transparent sm:px-6 md:px-8 lg:px-12 ">
       <motion.div
         initial={{ opacity: 0, y: "30%", scale: 0.8 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.9, delay: 1.2, ease: "easeOut" }}
-        className="z-10 w-full h-screen grow border-info max-w-7xl"
+        transition={{
+          delay: 3,
+          type: "spring",
+          mass: 1.4,
+          stiffness: 80,
+          damping: 30,
+        }}
+        className="z-10 w-full h-screen grow max-w-7xl"
       >
-        <div ref={imageRef} className="sticky top-[70vh]  border-fuchsia-900">
+        <div ref={imageRef} className="sticky top-[70vh] ">
           <motion.img
             style={{ scale, borderRadius }}
             src={IMAGES[selectedTopic]}

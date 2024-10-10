@@ -12,7 +12,7 @@ module.exports = {
       aspectRatio: {
         "4/3": "4 / 3",
       },
-      fontSize: { md: "0.85rem", xxl: "10rem" },
+      fontSize: { md: "0.85rem", xxl: "11rem" },
       borderWidth: {
         DEFAULT: "1px",
         0: "0",
@@ -34,8 +34,10 @@ module.exports = {
           "base-200": "#101112",
           "base-300": "#131416",
           "neutral-content": "#232425",
-          accent: "#101111",
+          neutral: "#181919",
+          accent: "#5b49ab",
           primary: "#101511",
+          error: "#FF6B6B",
           secondary: "#111412",
         },
       },

@@ -77,13 +77,27 @@ export const Card = ({
   id,
   selectedTopic,
   changeTopic,
-  hovering,
   setHovering,
 }) => {
+  const cardRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start 0.1", "center start"],
+  });
+
+  const contentSpring = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 16,
+    mass: 0.1,
+  });
+
+  const y = useTransform(contentSpring, [0, 1], ["0%", "-50%"]);
   return (
     <motion.div
       className="relative w-full max-w-4xl mx-auto cursor-pointer rounded-3xl"
       onHoverStart={() => setHovering(id)}
+      ref={cardRef}
+      style={{ y }}
       layout
     >
       <motion.div
@@ -99,15 +113,15 @@ export const Card = ({
         animate={selectedTopic === id ? { scale: 1.03 } : { scale: 1 }}
         transition={{ duration: 0.4 }}
         onClick={() => changeTopic(id)}
-        className={`flex flex-col gap-2 border-neutral border relative bg-base-200 h-full z-10 rounded-3xl  p-6 md:p-10 transition-colors duration-300 ${
+        className={`flex flex-col gap-2 border-neutral border relative bg-neutral-content h-full z-10 rounded-3xl  p-6 md:p-10 transition-colors duration-300 ${
           selectedTopic === id
-            ? "bg-opacity-100 border-opacity-60 "
-            : "bg-opacity-0 hover:bg-opacity-50 border-opacity-0"
+            ? "bg-opacity-40 border-opacity-60 "
+            : "bg-opacity-0 hover:bg-opacity-30 border-opacity-0"
         }
        `}
       >
         <div
-          className={`text-2xl lg:text-3xl 2xl:text-4xl text-balance text-center uppercase whitespace-normal transition-opacity duration-300 stat-value md:text-4xl ${
+          className={`text-2xl lg:text-3xl 2xl:text-4xl text-balance tracking-wide leading-none text-center uppercase whitespace-normal transition-opacity duration-300 stat-value md:text-4xl ${
             selectedTopic === id ? "opacity-100" : "opacity-75"
           }`}
         >
@@ -121,32 +135,6 @@ export const Card = ({
           {description}
         </div>
       </motion.div>
-      {/* <AnimatePresence>
-        {hovering === id ||
-          (selectedTopic === id && (
-            <motion.span
-              layoutId="cards"
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              initial={{ scale: 1, opacity: 0 }}
-              animate={{
-                scale: 1,
-                opacity: 1,
-
-                transition: { duration: 0.25, ease: "easeInOut" },
-              }}
-              exit={{
-                scale: 1,
-                opacity: 0,
-                transition: { duration: 0.15, ease: "easeInOut" },
-              }}
-              className={`absolute inset-0 w-full h-full border border-base-content bg-base-200 -z-0 rounded-3xl bg-opacity-60 border-opacity-40 ${
-                selectedTopic === id
-                  ? "bg-opacity-100 border-opacity-20"
-                  : "bg-opacity-60 border-opacity-40"
-              }`}
-            />
-          ))}
-      </AnimatePresence> */}
     </motion.div>
   );
 };

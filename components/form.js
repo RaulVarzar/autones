@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { sendEmail } from "../utils/send-email";
+import { sendEmail } from "../utils/splitStrings";
 import { easeInOut, motion } from "framer-motion";
 import { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
@@ -64,12 +64,12 @@ const Form = ({ closeForm }) => {
               onChange={(e) => handleChange(e)}
               required
               className={
-                "peer px-3 block  appearance-none opacity-60  hover:opacity-100 font-bold focus:border-emerald-700 transition duration-300 border-b-2  bg-transparent py-2.5 text-base text-gray-200 md:text-xl focus:outline-none focus:ring-0 " +
+                "peer px-3 block  appearance-none opacity-60  hover:opacity-100  focus:border-white transition duration-300 border-b-2  bg-transparent py-2.5 text-base text-gray-200 md:text-xl focus:outline-none focus:ring-0 " +
                 (formData.name.length > 1 && " text-white")
               }
               placeholder=" "
             />
-            <label className="absolute text-sm top-0 left-0 opacity-60  hover:opacity-100 peer-focus:opacity-100 peer-focus:text-emerald-700 -z-10 origin-[0] -translate-y-6  transform md:text-base text-neutral-content duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 ">
+            <label className="absolute text-sm top-0 left-0 opacity-60 text-base-content hover:opacity-100 peer-focus:opacity-100 peer-focus:text-white -z-10 origin-[0]  font-light transform md:text-base  duration-300 peer-placeholder-shown:translate-y-2 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-90 ">
               Nume
             </label>
           </motion.div>
@@ -85,10 +85,13 @@ const Form = ({ closeForm }) => {
               value={formData.phone}
               onChange={(e) => handleChange(e)}
               name="phone"
-              className="peer px-4 block  appearance-none opacity-60  hover:opacity-100 focus:border-emerald-700 transition duration-300  border-b-2  bg-transparent py-2.5 text-base text-gray-200 md:text-xl focus:outline-none focus:ring-0"
+              className={
+                "peer px-3 block  appearance-none opacity-60  hover:opacity-100  focus:border-white transition duration-300 border-b-2  bg-transparent py-2.5 text-base text-gray-200 md:text-xl focus:outline-none focus:ring-0 " +
+                (formData.phone.length > 8 && " text-white")
+              }
               placeholder=" "
             />
-            <label className="absolute top-0 text-s left-0 opacity-60  hover:opacity-100  peer-focus:text-emerald-700 peer-focus:opacity-100 -z-10 origin-[0] -translate-y-6  transform md:text-base text-neutral-content duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 ">
+            <label className="absolute text-sm top-0 left-0 opacity-60 text-base-content hover:opacity-100 peer-focus:opacity-100 peer-focus:text-white -z-10 origin-[0]  font-light transform md:text-base  duration-300 peer-placeholder-shown:translate-y-2 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-90 ">
               Numar de telefon
             </label>
           </motion.div>
@@ -108,10 +111,13 @@ const Form = ({ closeForm }) => {
               required
               value={formData.message}
               onChange={(e) => handleChange(e)}
-              className="peer px-4 block appearance-none opacity-60  hover:opacity-100 transition duration-300 border-b-2 bg-transparent py-2.5 text-base text-gray-200 md:text-xl focus:outline-none focus:ring-0 focus:border-emerald-700"
+              className={
+                "peer px-3 block  appearance-none opacity-60  hover:opacity-100  focus:border-white transition duration-300 border-b-2  bg-transparent py-2.5 text-base text-gray-200 md:text-xl focus:outline-none focus:ring-0 " +
+                (formData.message.length > 12 && " text-white")
+              }
               placeholder=" "
             ></textarea>
-            <label className="absolute top-0 text-sm left-0 opacity-60  hover:opacity-100  peer-focus:text-emerald-700 peer-focus:opacity-100 -z-10 origin-[0] -translate-y-6  transform md:text-base text-neutral-content duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 ">
+            <label className="absolute text-sm top-0 left-0 opacity-60 text-base-content hover:opacity-100 peer-focus:opacity-100 peer-focus:text-white -z-10 origin-[0]  font-light transform md:text-base  duration-300 peer-placeholder-shown:translate-y-2 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-90 ">
               Mesajul dvs.
             </label>
           </motion.div>
