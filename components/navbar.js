@@ -4,7 +4,7 @@ import { Logo } from "./logo";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Modal from "./modal";
 import Sidebar from "./sidebar";
-import { FaPhoneAlt } from "react-icons/fa";
+import Navlinks from "./navlinks";
 
 const Navbar = () => {
   // Toggle the sidebar
@@ -15,7 +15,7 @@ const Navbar = () => {
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
-    setHidden(latest > previous && latest > 200 ? true : false);
+    setHidden(latest > previous && latest > 200000 ? true : false);
   });
 
   return (
@@ -31,24 +31,11 @@ const Navbar = () => {
         }}
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className="flex w-full mx-auto fixed  z-40 top-0 inset-0 items-center justify-between py-4 md:py-8 xl:py-12 h-fit max-w-[2000px] px-4 sm:px-6 md:px-12 xl:px-24"
+        className="fixed inset-0 top-0 z-40 flex items-center justify-between w-full px-4 py-4 mx-auto md:py-8 xl:py-12 h-fit sm:px-6 md:px-12 xl:px-24"
       >
         <Logo />
-        <motion.button
-          initial={{ opacity: 0, y: "-15px", scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 1, ease: "easeInOut" }}
-          className="flex flex-row items-center justify-center gap-5 py-4 pl-5 font-normal rounded-full pr-7 bg-base-300"
-          onClick={() => setSidebarOpen(true)}
-        >
-          <div className="p-3 rounded-full bg-neutral bg-opacity-60">
-            <FaPhoneAlt />
-          </div>
 
-          <span className="font-medium tracking-wide max-sm:hidden">
-            CONTACT
-          </span>
-        </motion.button>
+        <Navlinks openSidebar={() => setSidebarOpen(true)} />
 
         <Modal />
       </motion.nav>

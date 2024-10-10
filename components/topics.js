@@ -1,3 +1,4 @@
+"use client";
 import {
   AnimatePresence,
   LayoutGroup,
@@ -53,7 +54,7 @@ export const Topic = ({ selectedTopic, changeTopic }) => {
       <motion.div
         onHoverEnd={() => setHovering(false)}
         ref={ref}
-        className="grid grid-cols-1 gap-4 mx-auto mt-4 mb-24 overflow-hidden border md:grid-cols-3 sm:mt-12 max-w-7xl"
+        className="grid grid-cols-1 gap-4 mx-auto mt-4 mb-24 md:gap-8 lg:grid-cols-3 sm:mt-12 max-w-7xl"
       >
         {TOPICS.map((item, i) => (
           <Card
@@ -66,25 +67,6 @@ export const Topic = ({ selectedTopic, changeTopic }) => {
           />
         ))}
       </motion.div>
-      <div className="window">
-        <ul className="flex w-full">
-          {TOPICS.map((item) => (
-            <li
-              key={item.id}
-              className="test"
-              onClick={() => setSelectedTab(item)}
-            >
-              CONTENT
-              {item === selectedTab && (
-                <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-4 bg-indigo-700"
-                  layoutId="underline"
-                />
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
     </>
   );
 };
@@ -102,7 +84,7 @@ export const Card = ({
     <motion.div
       className="relative w-full max-w-4xl mx-auto cursor-pointer rounded-3xl"
       onHoverStart={() => setHovering(id)}
-      key={id}
+      layout
     >
       <motion.div
         // style={{ scale }}
@@ -110,40 +92,61 @@ export const Card = ({
         whileInView={{
           opacity: 1,
           y: 0,
-          transition: { duration: 1.2, delay: 0.4 },
+          transition: { duration: 1.2, delay: 0.4 + id * 0.3 },
         }}
-        // viewport={{ once: true, margin: "-10%" }}
-        // onClick={() => changeTopic(id)}
-        className={`flex flex-col gap-2 border-neutral  h-full rounded-3xl border-opacity-100 p-6 md:p-10
+        layout
+        viewport={{ once: true, margin: "-10%" }}
+        animate={selectedTopic === id ? { scale: 1.03 } : { scale: 1 }}
+        transition={{ duration: 0.4 }}
+        onClick={() => changeTopic(id)}
+        className={`flex flex-col gap-2 border-neutral border relative bg-base-200 h-full z-10 rounded-3xl  p-6 md:p-10 transition-colors duration-300 ${
+          selectedTopic === id
+            ? "bg-opacity-100 border-opacity-60 "
+            : "bg-opacity-0 hover:bg-opacity-50 border-opacity-0"
+        }
        `}
       >
-        <div className="text-3xl text-center uppercase whitespace-normal stat-value md:text-4xl">
+        <div
+          className={`text-2xl lg:text-3xl 2xl:text-4xl text-balance text-center uppercase whitespace-normal transition-opacity duration-300 stat-value md:text-4xl ${
+            selectedTopic === id ? "opacity-100" : "opacity-75"
+          }`}
+        >
           {title}
         </div>
-        <div className="mx-auto text-lg leading-tight text-center whitespace-normal stat-desc xl:text-xl max-w-72 md:max-w-80">
+        <div
+          className={`mx-auto text-md text-pretty leading-tight text-center whitespace-normal sm:text-base md:text-lg stat-desc xl:text-xl transition-opacity duration-300 max-w-72 md:max-w-80 ${
+            selectedTopic === id ? "opacity-90" : "opacity-60"
+          }`}
+        >
           {description}
         </div>
       </motion.div>
+      {/* <AnimatePresence>
+        {hovering === id ||
+          (selectedTopic === id && (
+            <motion.span
+              layoutId="cards"
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              initial={{ scale: 1, opacity: 0 }}
+              animate={{
+                scale: 1,
+                opacity: 1,
 
-      {hovering === id && (
-        <motion.span
-          layoutId="cards"
-          transition={{ duration: 0.35, ease: "easeOut" }}
-          initial={{ scale: 1.05, opacity: 0, y: "100%" }}
-          animate={{
-            scale: 1,
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.25, ease: "easeInOut" },
-          }}
-          exit={{
-            scale: 1.08,
-            opacity: 0,
-            transition: { duration: 0.15, ease: "easeInOut" },
-          }}
-          className="absolute inset-0 z-20 w-full h-full bg-indigo-900 rounded-3xl"
-        ></motion.span>
-      )}
+                transition: { duration: 0.25, ease: "easeInOut" },
+              }}
+              exit={{
+                scale: 1,
+                opacity: 0,
+                transition: { duration: 0.15, ease: "easeInOut" },
+              }}
+              className={`absolute inset-0 w-full h-full border border-base-content bg-base-200 -z-0 rounded-3xl bg-opacity-60 border-opacity-40 ${
+                selectedTopic === id
+                  ? "bg-opacity-100 border-opacity-20"
+                  : "bg-opacity-60 border-opacity-40"
+              }`}
+            />
+          ))}
+      </AnimatePresence> */}
     </motion.div>
   );
 };

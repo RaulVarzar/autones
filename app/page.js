@@ -6,6 +6,7 @@ import Hero from "../components/hero.js";
 import Gallery from "../components/gallery";
 import Footer from "../components/footer";
 import Services from "../components/services.js";
+import Testimonials from "../components/testimonials/testimonials.js";
 
 export default function Home() {
   const ref = useRef(null);
@@ -14,25 +15,28 @@ export default function Home() {
     offset: ["end", "end center"],
   });
 
-  const contentSpring = useSpring(scrollYProgress, {
-    stiffness: 350,
-    damping: 50,
-    mass: 0.1,
-  });
+  // const contentSpring = useSpring(scrollYProgress, {
+  //   stiffness: 350,
+  //   damping: 50,
+  //   mass: 0.1,
+  // });
 
-  const scale = useTransform(contentSpring, [0.1, 1], ["100%", "92%"]);
-  const y = useTransform(contentSpring, [0.1, 1], ["0vh", "3vh"]);
+  const scale = useTransform(scrollYProgress, [0.1, 1], ["100%", "97%"]);
+  const y = useTransform(scrollYProgress, [0.1, 1], ["0vh", "3vh"]);
 
   return (
     <main>
       <motion.div
         ref={ref}
         style={{ scale, y }}
-        className="z-10 flex flex-col items-center w-full pb-24 rounded-b-2xl bg-base-100"
+        className="z-10 flex flex-col items-center w-full pb-48 rounded-b-2xl bg-base-100"
       >
+        {/* <div className="p-4 bg-indigo-950 rounded-2xl"> */}
         <Hero />
+        {/* </div> */}
         <Services />
         <Gallery />
+        {/* <Testimonials /> */}
       </motion.div>
       <Footer />
     </main>

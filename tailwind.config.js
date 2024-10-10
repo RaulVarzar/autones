@@ -12,6 +12,7 @@ module.exports = {
       aspectRatio: {
         "4/3": "4 / 3",
       },
+      fontSize: { md: "0.85rem", xxl: "10rem" },
       borderWidth: {
         DEFAULT: "1px",
         0: "0",
@@ -29,9 +30,10 @@ module.exports = {
       {
         black: {
           ...require("daisyui/src/theming/themes")["black"],
-          "base-100": "#0E0F11",
+          "base-100": "#0b0c0e",
           "base-200": "#101112",
-          "base-300": "#161718",
+          "base-300": "#131416",
+          "neutral-content": "#232425",
           accent: "#101111",
           primary: "#101511",
           secondary: "#111412",

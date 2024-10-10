@@ -8,12 +8,12 @@ export const Logo = () => {
       transition={{ duration: 0.8, delay: 1, ease: "easeInOut" }}
       className="text-xl tracking-wide sm:text-2xl md:text-3xl rubik"
     >
-      {/* <img
-        src="https://img.logoipsum.com/317.svg"
+      <img
+        src="https://img.logoipsum.com/280.svg"
         alt="logo"
-        className="w-24 sm:w-32 invert saturate-0"
-      /> */}
-      AUTONES
+        className="w-204 sm:w-24 invert saturate-0 "
+      />
+      {/* AUTONES */}
     </motion.span>
   );
 };

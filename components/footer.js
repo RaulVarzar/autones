@@ -24,10 +24,16 @@ const Footer = () => {
   );
 
   return (
-    <div ref={ref} className="w-full px-4 py-4 mx-auto md:px-24 lg:px-48 h-fit">
+    <div
+      ref={ref}
+      className="flex flex-col items-center justify-center w-full gap-12 px-4 py-4 mx-auto md:px-24 lg:px-48"
+    >
+      <button className="px-12 py-8 mx-auto text-2xl font-semibold tracking-wider border rounded-full border-base-content bg-neutral-content bg-opacity-30">
+        CONTACT
+      </button>
       <motion.div
         style={{ scale, y, opacity }}
-        className="flex flex-col justify-center gap-6 mb-8 gap-y-8 md:flex-row md:gap-24 h-fit "
+        className="flex flex-col justify-center w-full gap-6 mb-8 gap-y-8 md:flex-row md:gap-24 h-fit "
       >
         <div className="flex flex-col w-full md:items-end lg:w-1/2 max-md:text-center">
           <span className="text-2xl font-bold tracking-wide uppercase max-md:text-center md:text-3xl">

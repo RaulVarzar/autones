@@ -11,7 +11,10 @@ export default function ModalActions({}) {
 
   return (
     <LayoutGroup>
-      <motion.div layout className="flex flex-col gap-8 sm:gap-10 lg:gap-16 ">
+      <motion.div
+        layout
+        className="flex flex-col justify-center gap-8 sm:gap-10 lg:gap-16 "
+      >
         <AnimatePresence mode="sync">
           {!showForm && (
             <motion.div
@@ -23,13 +26,13 @@ export default function ModalActions({}) {
                 duration: 0.02,
               }}
               key="hello"
-              className="flex flex-col justify-center gap-3 text-3xl text-center"
+              className="flex flex-col justify-center gap-3 px-4 text-3xl text-center "
             >
               <span className="text-lg font-light leading-tight text-balance opacity-40 sm:text-sx lg:text-2xl">
                 Ai nevoie de ajutorul nostru? Contacteaza-ne acum!
               </span>
-              <div className="flex flex-col justify-center sm:flex-row gap-y-0 gap-x-2">
-                <h1 className="text-base opacity-80 sm:text-2xl lg:text-3xl">
+              <div className="flex flex-col justify-center gap-y-0 ">
+                <h1 className="text-base leading-3 opacity-80 sm:text-2xl lg:text-3xl">
                   Program
                 </h1>
                 <h3 className="text-lg font-bold uppercase sm:text-2xl lg:text-3xl">
@@ -39,7 +42,7 @@ export default function ModalActions({}) {
             </motion.div>
           )}
         </AnimatePresence>
-        <motion.div className="flex flex-col gap-4 ">
+        <motion.div className="flex flex-col gap-4 px-6">
           <div className="grid gap-4 max-sm:grid-cols-2 sm:grid-cols-2 md:flex-row">
             <ContactButton
               primary={"Telefon"}

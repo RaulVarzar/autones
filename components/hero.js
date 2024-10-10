@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { FaFacebookSquare, FaInstagramSquare } from "react-icons/fa";
 
@@ -7,14 +7,38 @@ const Hero = () => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start", "end start"],
+    offset: ["start 0.7", "end -0.55"],
   });
 
-  const titleScale = useTransform(scrollYProgress, [0, 0.8], ["100%", "60%"]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [0.05, 0.15, 0.5],
+    ["100%", "30%", "0%"]
+  );
+  const x = useTransform(scrollYProgress, [0.05, 0.45], ["0%", "-200%"]);
+  const springX = useSpring(x, {
+    stiffness: 100,
+    damping: 8,
+    mass: 0.1,
+  });
+
+  const mainOpacity = useTransform(scrollYProgress, [0.8, 1], ["100%", "0%"]);
+  const mainScale = useTransform(
+    scrollYProgress,
+    [0.05, 0.3, 0.7, 1],
+    ["100%", "110%", "110%", "130%"]
+  );
+
+  const subOpacity = useTransform(
+    scrollYProgress,
+    [0.05, 0.2, 0.55],
+    ["100%", "30%", "0%"]
+  );
+  const subX = useTransform(scrollYProgress, [0.05, 0.5], ["0%", "200%"]);
+  const springSubX = useSpring(subX, { stiffness: 100, damping: 8, mass: 0.1 });
+
   const subTitleScale = useTransform(scrollYProgress, [0, 1], ["100%", "80%"]);
-  const opacity = useTransform(scrollYProgress, [0.1, 0.3], ["100%", "10%"]);
-  const y = useTransform(scrollYProgress, [0.05, 0.6], ["0vh", "-6vh"]);
-  const subOpacity = useTransform(scrollYProgress, [0.1, 0.4], ["100%", "0%"]);
+
   const descOpacity = useTransform(
     scrollYProgress,
     [0.15, 0.45],
@@ -22,71 +46,40 @@ const Hero = () => {
   );
 
   return (
-    <motion.div
-      ref={ref}
-      // style={{ scale: sectionScale }}
-      className="flex   top-0  flex-col items-center justify-center gap-2 text-center min-h-[75vh] md:gap-4 max-w-7xl "
-    >
-      <motion.div
-        initial={{ opacity: 0, y: "40px", scale: 0.85 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 1, delay: 0.8, ease: "easeInOut" }}
-      >
-        <motion.h1
-          style={{ scale: titleScale, opacity, y }}
-          className="text-6xl font-bold md:text-8xl xl:text-9xl "
+    <>
+      <motion.div className="sticky top-0  h-[70vh] -z-50 flex flex-col items-center overflow-x-hidden justify-end w-full gap-2 px-6 text-center md:gap-6 max-w-8xl sm:px-8 md:px-12 lg:px-24 ">
+        <motion.div
+          initial={{ opacity: 0, y: "40px", scale: 0.85 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1, delay: 0.8, ease: "easeInOut" }}
+          className="sticky top-0 z-50 flex flex-col justify-center w-full h-5/6 max-w-7xl "
         >
-          AUTONES
-        </motion.h1>
-        <motion.div style={{ opacity: subOpacity, y }}>
-          <h2 className="text-lg sm:text-xl md:text-2xl opacity-60">
-            Tractări auto | Cluj-Napoca
-          </h2>
+          <motion.h1
+            style={{ opacity, x: springX }}
+            className="text-3xl font-bold tracking-wider sm:text-4xl md:text-6xl xl:text-7xl opacity-60 place-self-start"
+          >
+            AUTONES
+          </motion.h1>
+          <motion.div
+            style={{ opacity: mainOpacity, scale: mainScale }}
+            className=" place-self-center"
+          >
+            <h2 className="text-6xl font-black leading-none tracking-wide uppercase md:text-8xl xl:text-9xl">
+              Tractări auto
+            </h2>
+          </motion.div>
+          <motion.div
+            style={{ opacity: subOpacity, x: springSubX }}
+            className="place-self-end"
+          >
+            <h2 className="text-2xl font-semibold tracking-wide sm:text-4xl md:text-6xl xl:text-7xl opacity-80">
+              Cluj-Napoca
+            </h2>
+          </motion.div>
         </motion.div>
       </motion.div>
-
-      <motion.div
-        style={{ opacity: subOpacity, y }}
-        className="flex flex-row justify-center gap-0 w-fit sm:gap-x-4 sm:justify-stretch"
-      >
-        <motion.span
-          initial={{ opacity: 0, y: "-12px", scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 2, ease: "easeInOut" }}
-          className="flex items-center justify-center gap-4 px-6 py-3 border border-opacity-0 cursor-pointer grow border-base-content hover:border-opacity-20 rounded-xl"
-        >
-          <FaFacebookSquare className="text-3xl" />
-          <p className="hidden text-xl sm:block">Autones Tractari</p>
-        </motion.span>
-
-        <motion.span
-          initial={{ opacity: 0, y: "-12px", scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 2, ease: "easeInOut" }}
-          className="flex items-center justify-center gap-4 px-6 py-3 border border-opacity-0 cursor-pointer grow border-base-content hover:border-opacity-20 rounded-xl"
-        >
-          <FaInstagramSquare className="text-3xl" />
-          <p className="hidden text-xl sm:block ">@autones</p>
-        </motion.span>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: "60px", scale: 0.85 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 1.1, delay: 1, ease: "easeInOut" }}
-        // style={{ opacity: descOpacity }}
-      >
-        <motion.h1
-          style={{ scale: subTitleScale, opacity: descOpacity, y }}
-          className="max-w-4xl px-6 text-lg text-pretty font-extralight text-base-content md:px-10 md:text-xl xl:text-2xl"
-        >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nulla
-          corporis blanditiis ex maxime adipisci incidunt totam ea ad ducimus
-          tenetur placeat corrupti aliquam voluptas inventore voluptate quas
-          animi porro?
-        </motion.h1>
-      </motion.div>
-    </motion.div>
+      <div className="relative h-0" ref={ref} />
+    </>
   );
 };
 
