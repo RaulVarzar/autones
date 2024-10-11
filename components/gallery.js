@@ -52,7 +52,7 @@ const Photo = ({ image, index }) => {
     [0, 0.4, 0.65, 1],
     ["94%", "100%", "100%", "92%"]
   );
-  const y = useTransform(scrollYProgress, [0, 0.9, 1], ["-30%", "80%", "30%"]);
+  const y = useTransform(scrollYProgress, [0, 0.9, 1], ["-50%", "100%", "50%"]);
   const opacity = useTransform(
     scrollYProgress,
     [0.15, 0.3, 0.75, 0.85],

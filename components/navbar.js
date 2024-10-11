@@ -2,13 +2,11 @@
 import React, { useState } from "react";
 import { Logo } from "./logo";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
-import Modal from "./modal";
-import Sidebar from "./sidebar";
-import Navlinks from "./navlinks";
+import Sidebar from "./sidebar/sidebar";
+import SidebarToggle from "./SidebarToggle";
 
 const Navbar = () => {
   // Toggle the sidebar
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Hide or show the navbar based on scroll direction
   const [hidden, setHidden] = useState(false);
@@ -20,10 +18,6 @@ const Navbar = () => {
 
   return (
     <div className="relative ">
-      <Sidebar
-        isOpen={sidebarOpen}
-        closeSidebar={() => setSidebarOpen(false)}
-      />
       <motion.nav
         variants={{
           visible: { y: 0 },
@@ -31,13 +25,10 @@ const Navbar = () => {
         }}
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className="fixed inset-0 top-0 z-40 flex items-center justify-between w-full px-4 py-4 mx-auto md:py-8 xl:py-12 h-fit sm:px-6 md:px-10 xl:px-24"
+        className="fixed inset-0 top-0 z-40 flex items-start justify-between w-full px-4 py-4 mx-auto md:py-8 xl:py-12 h-fit sm:px-6 md:px-10 xl:px-16"
       >
         <Logo />
-
-        <Navlinks openSidebar={() => setSidebarOpen(true)} />
-
-        <Modal />
+        <SidebarToggle />
       </motion.nav>
     </div>
   );

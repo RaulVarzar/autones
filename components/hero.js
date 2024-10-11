@@ -7,7 +7,7 @@ const Hero = () => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.7", "end -1"],
+    offset: ["start 0.7", "end -1.75"],
   });
 
   const opacity = useTransform(

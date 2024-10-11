@@ -38,7 +38,7 @@ const Services = ({ sectionIsActive }) => {
   }, [isInView]);
 
   return (
-    <section className="relative bottom-0 flex flex-col h-[250vh]  items-center w-full min-h-screen gap-1 px-4 bg-transparent sm:px-6 md:px-8 lg:px-12 ">
+    <section className="relative bottom-0 flex flex-col h-[350vh]  items-center w-full min-h-screen gap-1 px-4 bg-transparent sm:px-6 md:px-8 lg:px-12 ">
       <motion.div
         initial={{ opacity: 0, y: "30%", scale: 0.8 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}

@@ -22,9 +22,8 @@ export default function ContactButton({
         x: 0,
         transition: { delay: 0.4, type: "spring", duration: 0.8, bounce: 0.3 },
       }}
-      className="relative flex flex-col items-center justify-center px-4 py-1 overflow-hidden text-center cursor-pointer sm:gap-2 md:gap-4 sm:py-6 contact-btn sm:px-16 group bg-base-300 rounded-2xl "
+      className="relative flex flex-col items-center justify-center px-4 min-w-48 w-full grow py-1 overflow-hidden text-center cursor-pointer sm:gap-2 md:gap-4 sm:py-6 contact-btn sm:px-16 group transition-colors duration-300 hover:bg-accent-content bg-neutral-content rounded-2xl "
     >
-      <div className="absolute inset-0  bg-base-content opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
       <motion.span layout className="pt-4 pb-1 text-4xl z-10">
         {icon}
       </motion.span>

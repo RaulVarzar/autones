@@ -28,7 +28,7 @@ export default function Home() {
         ref={ref}
         style={{ scale, y }}
         className={`z-10 flex flex-col items-center w-full pb-48 rounded-b-2xl transition-colors  duration-500  ${
-          colored ? "bg-base-300" : " bg-base-100"
+          colored ? "bg-base-100" : " bg-base-100"
         }`}
       >
         {/* <div className="p-4 bg-indigo-950 rounded-2xl"> */}

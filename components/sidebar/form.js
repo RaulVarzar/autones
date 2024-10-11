@@ -1,10 +1,11 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { sendEmail } from "../utils/splitStrings";
-import { easeInOut, motion } from "framer-motion";
+import { sendEmail } from "../../utils/splitStrings";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
+import { IoIosSend } from "react-icons/io";
 
 const Form = ({ closeForm }) => {
   const [formData, setFormData] = useState({
@@ -27,13 +28,12 @@ const Form = ({ closeForm }) => {
     <motion.div
       initial={{ scale: 0.95, y: 100, opacity: 0 }}
       animate={{ scale: 1, y: 0, opacity: 1 }}
-      exit={{ opacity: 0 }}
       transition={{ duration: 0.3, delay: 0.3, type: "spring", mass: 0.2 }}
       className="relative flex flex-col "
     >
       <span
         onClick={closeForm}
-        className="absolute cursor-pointer top-3 left-3 md:text-4xl"
+        className=" pt-3 px-3 sm:pt-6 sm:px-6 cursor-pointer text-3xl md:text-5xl "
       >
         <IoCloseOutline />
       </span>
@@ -41,14 +41,14 @@ const Form = ({ closeForm }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.6, type: "tween" }}
-        className="w-full mx-auto mt-12 text-sm font-semibold tracking-wide text-center sm:w-8/12 sm:text-xl lg:text-2xl"
+        className=" mx-auto pt-4 text-base font-semibold tracking-wide text-center w-10/12 sm:w-8/12 sm:text-xl lg:text-2xl"
       >
         Trimite-ne un mesaj si iti vom răspunde cat de repede posibil!
       </motion.h1>
       <form
         // ref={form}
         // onSubmit={sendEmail}
-        className="flex flex-col items-center justify-center px-12 pt-6 pb-12 mt-8 "
+        className="flex flex-col items-center justify-center px-12 pt-6 pb-12 "
       >
         <motion.div className="flex flex-col gap-8 ">
           <motion.div
@@ -130,10 +130,12 @@ const Form = ({ closeForm }) => {
             transition: { delay: 1.2, duration: 0.8 },
           }}
           type="submit"
-          className="flex mx-auto mt-5 text-sm font-normal tracking-wide uppercase transition-all duration-300 rounded-md shadow-md text-base-content border-base-content hover:font-semibold hover:gap-2 group btn btn-md btn-outline hover:border-opacity-0 hover:bg-base-content hover:text-accent hover:scale-105"
+          className="flex mx-auto mt-5 text-sm  font-normal tracking-wide uppercase transition-all duration-300 rounded-md shadow-md text-base-content border-base-content hover:font-semibold hover:gap-2 group btn btn-md btn-outline hover:border-opacity-0 hover:bg-base-content hover:text-accent hover:scale-105"
         >
           Trimite
-          <i className="transition-transform duration-300 fa-regular fa-paper-plane hover:rotate-45"></i>
+          <i className="transition-transform duration-300  text-2xl group-hover:rotate-45">
+            <IoIosSend />
+          </i>
         </motion.button>
       </form>
     </motion.div>
