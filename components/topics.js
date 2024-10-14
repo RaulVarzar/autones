@@ -1,13 +1,6 @@
 "use client";
-import {
-  AnimatePresence,
-  LayoutGroup,
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
-import React, { useRef, useState } from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
 
 const TOPICS = [
   {
@@ -82,26 +75,20 @@ export const Card = ({
   const cardRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: cardRef,
-    offset: ["start 0.1", "center start"],
+    offset: ["start 0.25", "end start"],
   });
 
-  const contentSpring = useSpring(scrollYProgress, {
-    stiffness: 140,
-    damping: 16,
-    mass: 0.1,
-  });
-
-  const y = useTransform(contentSpring, [0, 1], ["0%", "-50%"]);
+  const y = useTransform(scrollYProgress, [0.3, 1], ["0%", "-60%"]);
   return (
     <motion.div
       className="relative w-full max-w-4xl mx-auto cursor-pointer rounded-3xl"
       onHoverStart={() => setHovering(id)}
       ref={cardRef}
       style={{ y }}
+      transition={{ duration: 0.5, ease: "anticipate" }}
       layout
     >
       <motion.div
-        // style={{ scale }}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{
           opacity: 1,

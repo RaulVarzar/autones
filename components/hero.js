@@ -13,7 +13,7 @@ const Hero = () => {
   const opacity = useTransform(
     scrollYProgress,
     [0.02, 0.15, 0.5],
-    ["100%", "30%", "0%"]
+    ["80%", "30%", "0%"]
   );
   const x = useTransform(scrollYProgress, [0.02, 0.45], ["0%", "-200%"]);
   const springX = useSpring(x, {
@@ -24,20 +24,20 @@ const Hero = () => {
 
   const mainOpacity = useTransform(
     scrollYProgress,
-    [0.7, 0.95],
+    [0.45, 0.95],
     ["100%", "0%"]
   );
   const mainScale = useTransform(
     scrollYProgress,
-    [0.5, 0.6, 0.9],
-    ["100%", "110%", "120%"]
+    [0.45, 0.9],
+    ["100%", "120%"]
   );
   const mainY = useTransform(scrollYProgress, [0.65, 0.95], ["0vh", "-0vh"]);
 
   const subOpacity = useTransform(
     scrollYProgress,
     [0.02, 0.2, 0.55],
-    ["100%", "30%", "0%"]
+    ["80%", "30%", "0%"]
   );
   const subX = useTransform(scrollYProgress, [0.02, 0.5], ["0%", "200%"]);
   const springSubX = useSpring(subX, { stiffness: 100, damping: 8, mass: 0.1 });
@@ -64,13 +64,13 @@ const Hero = () => {
             }}
             viewport={{ once: true }}
             style={{ opacity, x: springX }}
-            className="text-3xl font-bold tracking-wide uppercase sm:text-4xl md:text-6xl xl:text-6xl opacity-60 place-self-start"
+            className="text-3xl font-bold tracking-wide uppercase sm:text-4xl md:text-6xl xl:text-6xl place-self-start"
           >
             Tractări auto
           </motion.h1>
           <motion.div
             style={{ opacity: mainOpacity, scale: mainScale, y: mainY }}
-            className=" place-self-center overflow-hidden  pt-1"
+            className="pt-1 overflow-hidden place-self-center"
           >
             <motion.h2
               initial={{ y: "150%" }}

@@ -29,19 +29,26 @@ const Form = ({ closeForm }) => {
       initial={{ scale: 0.95, y: 100, opacity: 0 }}
       animate={{ scale: 1, y: 0, opacity: 1 }}
       transition={{ duration: 0.3, delay: 0.3, type: "spring", mass: 0.2 }}
-      className="relative flex flex-col "
+      className="z-50 flex flex-col "
     >
-      <span
+      <div
         onClick={closeForm}
-        className=" pt-3 px-3 sm:pt-6 sm:px-6 cursor-pointer text-3xl md:text-5xl "
+        className="flex flex-row justify-center py-10 text-3xl cursor-pointer sm:px-6 md:text-5xl"
       >
-        <IoCloseOutline />
-      </span>
+        <motion.span
+          className="z-50 w-8 h-0.5 origin-top rounded-full bg-base-content"
+          style={{ rotate: -25, x: 2 }}
+        />
+        <motion.span
+          className="z-50 w-8 h-0.5 origin-top rounded-full bg-base-content"
+          style={{ rotate: 25, x: -2 }}
+        />
+      </div>
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.6, type: "tween" }}
-        className=" mx-auto pt-4 text-base font-semibold tracking-wide text-center w-10/12 sm:w-8/12 sm:text-xl lg:text-2xl"
+        className="w-10/12 pt-4 mx-auto text-base font-semibold tracking-wide text-center sm:w-8/12 sm:text-xl lg:text-2xl"
       >
         Trimite-ne un mesaj si iti vom răspunde cat de repede posibil!
       </motion.h1>
@@ -130,10 +137,10 @@ const Form = ({ closeForm }) => {
             transition: { delay: 1.2, duration: 0.8 },
           }}
           type="submit"
-          className="flex mx-auto mt-5 text-sm  font-normal tracking-wide uppercase transition-all duration-300 rounded-md shadow-md text-base-content border-base-content hover:font-semibold hover:gap-2 group btn btn-md btn-outline hover:border-opacity-0 hover:bg-base-content hover:text-accent hover:scale-105"
+          className="flex mx-auto mt-5 text-sm font-normal tracking-wide uppercase transition-all duration-300 rounded-md shadow-md text-base-content border-base-content hover:font-semibold hover:gap-2 group btn btn-md btn-outline hover:border-opacity-0 hover:bg-base-content hover:text-accent hover:scale-105"
         >
           Trimite
-          <i className="transition-transform duration-300  text-2xl group-hover:rotate-45">
+          <i className="text-2xl transition-transform duration-300 group-hover:rotate-45">
             <IoIosSend />
           </i>
         </motion.button>

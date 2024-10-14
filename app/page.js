@@ -1,12 +1,13 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Navbar from "components/navbar";
 import Hero from "../components/hero.js";
 import Gallery from "../components/gallery";
 import Footer from "../components/footer";
 import Services from "../components/services.js";
-import Testimonials from "../components/testimonials/testimonials.js";
+import AboutSection from "../components/About/AboutSection.js";
 
 export default function Home() {
   const ref = useRef(null);
@@ -24,19 +25,17 @@ export default function Home() {
   const [colored, setColored] = useState(false);
   return (
     <main>
+      <Navbar colored={colored} />
       <motion.div
         ref={ref}
         style={{ scale, y }}
-        className={`z-10 flex flex-col items-center w-full pb-48 rounded-b-2xl transition-colors  duration-500  ${
-          colored ? "bg-base-100" : " bg-base-100"
-        }`}
+        className="z-10 bg-base-100 rounded-b-3xl"
       >
-        {/* <div className="p-4 bg-indigo-950 rounded-2xl"> */}
         <Hero />
-        {/* </div> */}
-        <Services sectionIsActive={(e) => setColored(e)} />
+
+        <Services />
         <Gallery />
-        {/* <Testimonials /> */}
+        <AboutSection sectionIsActive={(e) => setColored(e)} />
       </motion.div>
       <Footer />
     </main>

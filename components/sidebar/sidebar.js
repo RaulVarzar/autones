@@ -9,7 +9,7 @@ import {
 
 import SidebarContent from "./SidebarContent";
 
-const Sidebar = ({ open, closeSidebar, children }) => {
+const Sidebar = ({ open, closeSidebar }) => {
   const [scope, animate] = useAnimate();
   const [drawerRef, { width }] = useMeasure();
   const x = useMotionValue();
@@ -26,17 +26,6 @@ const Sidebar = ({ open, closeSidebar, children }) => {
 
   return (
     <motion.div ref={scope}>
-      {/* <AnimatePresence mode="sync">
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { duration: 0.3 } }}
-            exit={{ opacity: 0, transition: { duration: 0.15, delay: 0 } }}
-            onClick={handleClose}
-            className="fixed inset-0 z-50 bg-neutral-950/80 backdrop-blur-md"
-          ></motion.div>
-        )}
-      </AnimatePresence> */}
       {open && (
         <motion.div
           id="drawer"
@@ -51,7 +40,7 @@ const Sidebar = ({ open, closeSidebar, children }) => {
           //   mass: 1.2,
           // }}
           layout
-          className=" rounded-2xl z-50 flex flex-col items-center justify-center md:w-fit h-fit px-2 text-3xl font-black md:px-4  w-full lg:max-w-4xl xl:max-w-6xl text-base-content "
+          className="z-50 flex flex-col items-center justify-center w-full px-2 text-3xl font-black rounded-2xl md:w-fit h-fit md:px-4 lg:max-w-4xl xl:max-w-6xl text-base-content"
           // style={{ x }}
           // drag="x"
           // dragControls={controls}

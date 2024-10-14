@@ -8,6 +8,7 @@ const Gallery = () => {
   const imageList = images.keys().map((image) => images(image));
 
   const ref = useRef(null);
+  const secondaryRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -17,24 +18,45 @@ const Gallery = () => {
   const contentSpring = useSpring(scrollYProgress, {
     stiffness: 150,
     damping: 16,
-    mass: 0.2,
+    mass: 0.1,
   });
 
-  const scale = useTransform(contentSpring, [0, 1], ["85%", "100%"]);
-  const y = useTransform(contentSpring, [0, 1], ["15vh", "0vh"]);
+  const animateScale = useTransform(contentSpring, [0, 0.7], ["90%", "100%"]);
+  const animateY = useTransform(contentSpring, [0, 1], ["10vh", "0vh"]);
+
+  const { scrollYProgress: exitProgress } = useScroll({
+    target: secondaryRef,
+    offset: ["end", "start"],
+  });
+  const exitSpring = useSpring(exitProgress, {
+    stiffness: 150,
+    damping: 16,
+    mass: 0.2,
+  });
+  const scale = useTransform(exitSpring, [0.2, 1], ["100%", "92%"]);
+  const y = useTransform(exitSpring, [0.2, 1], ["0vh", "10vh"]);
+  const opacity = useTransform(exitSpring, [0.99, 1], ["100%", "0%"]);
 
   return (
-    <motion.section
-      ref={ref}
-      // style={{ scale, y }}
-      className="relative w-full px-2 py-4 mx-auto sm:py-20 lg:px-6"
-    >
-      <div className="flex flex-col flex-wrap gap-[40vh] pt-[10vh] pb-[30vh] mx-auto max-w-screen-2xl">
-        {imageList.map((image, index) => (
-          <Photo key={index} index={index} image={image} />
-        ))}
-      </div>
-    </motion.section>
+    <>
+      <motion.section
+        ref={ref}
+        style={{ scale, y, opacity }}
+        className="sticky top-0 w-full px-2 py-4 mx-auto sm:py-20 lg:px-6"
+      >
+        <motion.div
+          style={{ scale: animateScale, y }}
+          className="sticky top-[10vh] mx-auto grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-screen-3xl"
+        >
+          {imageList.map((image, index) => (
+            <Photo key={index} index={index} image={image} />
+          ))}
+        </motion.div>
+
+        <div className="h-[40vh] max-sm:hidden"></div>
+      </motion.section>
+      <motion.div ref={secondaryRef} className="h-0 " />
+    </>
   );
 };
 
@@ -44,7 +66,7 @@ const Photo = ({ image, index }) => {
   const imageRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: imageRef,
-    offset: ["center end", "end start"],
+    offset: ["start end", "end start"],
   });
 
   const rawScale = useTransform(
@@ -52,7 +74,7 @@ const Photo = ({ image, index }) => {
     [0, 0.4, 0.65, 1],
     ["94%", "100%", "100%", "92%"]
   );
-  const y = useTransform(scrollYProgress, [0, 0.9, 1], ["-50%", "100%", "50%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-18%", "18%"]);
   const opacity = useTransform(
     scrollYProgress,
     [0.15, 0.3, 0.75, 0.85],
@@ -64,31 +86,20 @@ const Photo = ({ image, index }) => {
   return (
     <motion.div
       ref={imageRef}
-      className={`p-2 w-full h-[65vh] max-w-7xl mx-auto  flex ${
-        (index + 1) / 3 === 1
-          ? "justify-center"
-          : index % 2 === 0 && "justify-end"
-      }`}
+      className={`w-full aspect-4/3 cursor-pointer overflow-hidden rounded-md inset-0 m-auto max-w-7xl mx-auto`}
     >
-      {/* <div className="max-w-5xl "> */}
       <PhotoProvider>
         <PhotoView src={image.default.src}>
           <motion.img
             src={image.default.src}
             alt={`image-${image.default.src}`}
-            // initial={{ opacity: 0, y: "10vh", scale: 0.96 }}
-            // whileInView={{ opacity: 1, y: "0vh", scale: 1 }}
-            transition={{
-              duration: 0.5,
-              delay: 0.2,
-              ease: "easeInOut",
-            }}
-            style={{ scale: rawScale, y, opacity }}
-            className="object-cover w-auto h-full rounded-3xl "
+            style={{ y, scale: 1.2 }}
+            whileHover={{ scale: 1.25 }}
+            transition={{ duration: 0.3 }}
+            className="object-cover w-full h-full"
           />
         </PhotoView>
       </PhotoProvider>
-      {/* </div> */}
     </motion.div>
   );
 };

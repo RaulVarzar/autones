@@ -14,14 +14,17 @@ export default function SidebarContent({}) {
     <LayoutGroup>
       <motion.div
         layout
-        className="flex relative  flex-col px-8 justify-start gap-y-2 sm:gap-y-4 pt-2 pb-20 lg:gap-y-6 "
+        className="relative flex flex-col justify-start pt-2 pb-20 md:px-2 lg:px-8 gap-y-2 sm:gap-y-4 lg:gap-y-6 "
       >
-        <AnimatePresence mode="sync">{!showForm && <Header />}</AnimatePresence>
-        <Socials />
-        <motion.div className="h-full flex justify-center gap-4 w-full px-0">
-          <motion.div className="  w-full  flex flex-col gap-4">
+        {" "}
+        <Header />
+        <AnimatePresence mode="sync">
+          {!showForm && <Socials />}
+        </AnimatePresence>
+        <motion.div className="flex justify-center w-full h-full gap-4 px-0">
+          <motion.div className="flex flex-col w-full gap-4 ">
             {!showForm && (
-              <div className="flex flex-col sm:flex-row  h-fit  gap-4 justify-center items-center  w-full">
+              <div className="flex flex-col items-center justify-center w-full gap-4 sm:flex-row h-fit">
                 <ContactButton
                   primary={"Telefon"}
                   secondary={"0743 483 293"}

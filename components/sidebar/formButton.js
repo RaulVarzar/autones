@@ -37,7 +37,8 @@ const FormButton = ({ showForm, setShowForm }) => {
               damping: 8,
               mass: 0.3,
             }}
-            className="relative flex flex-row items-center justify-center gap-2 px-4 py-6 cursor-pointer md:px-8 lg:px-12 md:py-12 sm:gap-4  "
+            layoutId="form"
+            className="relative flex flex-row items-center justify-center gap-2 px-4 py-6 cursor-pointer md:px-8 lg:px-12 md:py-12 sm:gap-4 "
           >
             <MdOutlineMessage />
             <span className="text-xl font-medium transition-opacity sm:text-2xl lg:text-3xl opacity-70 group-hover:opacity-100">

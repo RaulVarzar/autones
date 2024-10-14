@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { IoIosArrowRoundForward } from "react-icons/io";
-
+import { FaSquareInstagram, FaSquareFacebook } from "react-icons/fa6";
 const variants = {
   initial: { opacity: 0, x: 50 },
   visible: {
@@ -14,20 +14,23 @@ const variants = {
 const Socials = () => {
   const [hovering, setHovering] = useState(false);
   return (
-    <motion.div className="grid grid-cols-2 py-3 md:py-6 xl:py-8 items-stretch h-full gap-4  justify-stretch ">
+    <motion.div className="grid items-stretch h-full grid-cols-2 gap-4 py-3 md:py-6 xl:py-8 justify-stretch ">
       <motion.div
         // initial={{ opacity: 0, x: "50px" }}
         // animate={{ opacity: 1, x: 0 }}
         // transition={{ delay: 0.2, type: "spring", duration: 1, bounce: 0.3 }}
         onHoverStart={() => setHovering(1)}
         onHoverEnd={() => setHovering(null)}
-        className="w-full h-full min-w-72"
+        className="w-full h-full "
       >
         <motion.button
-          className={`flex relative h-full flex-col transition-colors duration-300 overflow-hidden justify-center w-full rounded-xl gap-1  font-normal p-4 md:p-6  text-base-content ${
+          className={`flex relative h-full max-sm:items-center flex-col transition-colors duration-300 overflow-hidden justify-center w-full rounded-xl gap-1 gap-y-3  font-normal p-4 md:p-6  text-base-content ${
             hovering === 1 ? "bg-violet-800" : "bg-neutral-content"
           }`}
         >
+          <motion.span className="text-2xl sm:hidden opacity-80">
+            <FaSquareInstagram />
+          </motion.span>
           <motion.span
             layout
             transition={{ layout: { delay: 0 } }}
@@ -51,7 +54,7 @@ const Socials = () => {
                   mass: 0.3,
                   stiffness: 120,
                 }}
-                className="text-2xl font-normal tracking-wide leading-none"
+                className="text-2xl font-normal leading-none tracking-wide max-sm:hidden"
               >
                 @autones
               </motion.span>
@@ -63,7 +66,7 @@ const Socials = () => {
               hovering === 1 ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }
             }
             transition={{ type: "spring", duration: 0.6, bounce: 0.2 }}
-            className="absolute right-3 top-0 flex items-center my-auto h-full  text-4xl "
+            className="absolute top-0 flex items-center h-full my-auto text-4xl max-sm:hidden right-3 "
           >
             <IoIosArrowRoundForward />
           </motion.div>
@@ -76,13 +79,16 @@ const Socials = () => {
         // transition={{ delay: 1.25, type: "spring", duration: 1, bounce: 0.3 }}
         onHoverStart={() => setHovering(2)}
         onHoverEnd={() => setHovering(null)}
-        className="w-full h-full min-w-72"
+        className="w-full h-full grow "
       >
         <motion.button
-          className={`flex relative h-full flex-col transition-colors duration-300 overflow-hidden justify-center w-full rounded-xl gap-1  font-normal p-4 md:p-6  text-base-content ${
+          className={`flex relative max-sm:items-center h-full flex-col transition-colors duration-300 overflow-hidden justify-center w-full rounded-xl gap-1 gap-y-3  font-normal p-4 md:p-6  text-base-content ${
             hovering === 2 ? "bg-secondary" : "bg-neutral-content"
           }`}
         >
+          <motion.span className="text-2xl sm:hidden opacity-80">
+            <FaSquareFacebook />
+          </motion.span>
           <motion.div
             layout
             transition={{ layout: { delay: 0 } }}
@@ -106,7 +112,7 @@ const Socials = () => {
                   mass: 0.3,
                   stiffness: 120,
                 }}
-                className="text-2xl font-normal tracking-wide leading-none text-left w-full line-clamp-1"
+                className="w-full text-2xl font-normal leading-none tracking-wide text-left max-sm:hidden line-clamp-1"
               >
                 Autones Tractări
               </motion.span>
@@ -118,7 +124,7 @@ const Socials = () => {
               hovering === 2 ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }
             }
             transition={{ type: "spring", duration: 0.6, bounce: 0.2 }}
-            className="absolute right-3 top-0 flex items-center my-auto h-full  text-4xl "
+            className="absolute top-0 flex items-center h-full my-auto text-4xl max-sm:hidden right-3 "
           >
             <IoIosArrowRoundForward />
           </motion.div>
