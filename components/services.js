@@ -1,18 +1,19 @@
 import {
   AnimatePresence,
   motion,
-  useInView,
   useScroll,
   useSpring,
   useTransform,
 } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Topic } from "./topics";
+import useWidth from "../lib/isMobile.js";
 
 const IMAGES = ["/main1.jpg", "/main2.jpg", "/main3.jpg"];
 
 const Services = () => {
-  const isMobile = window.innerWidth < 768;
+  const isMobile = useWidth();
+
   const imageRef = useRef(null);
   const [selectedTopic, setSelectedTopic] = useState(0);
 

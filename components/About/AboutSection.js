@@ -152,13 +152,13 @@ const AboutSection = ({ sectionIsActive }) => {
             </AboutCard>
           </motion.div>
         </motion.div>
-        <Testimonials position={testimonialsX} />
+        {/* <Testimonials position={testimonialsX} /> */}
       </motion.section>
       <div ref={titleHelper} className="h-[120vh] -z-50"></div>
-      <motion.div className="h-[240vh] -z-50 ">
-        <div ref={firstRef} className="h-[80vh] "></div>
-        <div ref={secondRef} className="h-[80vh] "></div>
-        <div ref={thirdRef} className="h-[80vh] "></div>
+      <motion.div className="h-[180vh] -z-50 ">
+        <div ref={firstRef} className="h-[60vh] "></div>
+        <div ref={secondRef} className="h-[60vh] "></div>
+        <div ref={thirdRef} className="h-[60vh] "></div>
       </motion.div>
       <motion.div
         ref={testimonialsRef}

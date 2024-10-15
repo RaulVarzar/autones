@@ -15,9 +15,9 @@ export default function Home() {
     target: ref,
     offset: ["end", "end center"],
   });
-  useEffect(() => {
-    window.history.scrollRestoration = "manual";
-  }, []);
+  // useEffect(() => {
+  //   window.history.scrollRestoration = "manual";
+  // }, []);
 
   const scale = useTransform(scrollYProgress, [0.1, 1], ["100%", "97%"]);
   const y = useTransform(scrollYProgress, [0.1, 1], ["0vh", "3vh"]);
