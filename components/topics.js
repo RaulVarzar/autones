@@ -81,7 +81,7 @@ export const Card = ({
   const y = useTransform(scrollYProgress, [0.3, 1], ["0%", "-60%"]);
   return (
     <motion.div
-      className="relative w-full max-w-4xl mx-auto cursor-pointer rounded-3xl"
+      className="relative w-full max-w-4xl mx-auto cursor-pointer rounded-xl"
       onHoverStart={() => setHovering(id)}
       ref={cardRef}
       style={{ y }}
@@ -100,7 +100,7 @@ export const Card = ({
         animate={selectedTopic === id ? { scale: 1.03 } : { scale: 1 }}
         transition={{ duration: 0.4 }}
         onClick={() => changeTopic(id)}
-        className={`flex flex-col gap-2 border-neutral border relative bg-neutral-content h-full z-10 rounded-3xl  p-6 md:p-10 transition-colors duration-300 ${
+        className={`flex flex-col gap-2 border-neutral border relative bg-neutral-content h-full z-10 rounded-lg  p-6 md:p-10 transition-colors duration-300 ${
           selectedTopic === id
             ? "bg-opacity-40 border-opacity-60 "
             : "bg-opacity-0 hover:bg-opacity-30 border-opacity-0"

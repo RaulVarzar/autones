@@ -8,19 +8,22 @@ import {
   useVelocity,
   useSpring,
 } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GiPayMoney } from "react-icons/gi";
 import { MdOutlineAvTimer, MdHealthAndSafety } from "react-icons/md";
+import Contact from "./Contact";
 
 const AboutSection = ({ sectionIsActive }) => {
+  const [dark, setDark] = useState(false);
   const sectionRef = useRef(null);
   const titleHelper = useRef(null);
   const firstRef = useRef(null);
   const secondRef = useRef(null);
   const thirdRef = useRef(null);
+  const exitRef = useRef(null);
 
   // track if section is in fully in view
-  const isInView = useInView(sectionRef, { margin: "-10% 0% -99% 0%" });
+  const isInView = useInView(sectionRef, { margin: "0% 50% -100% 0%" });
   useEffect(() => {
     if (isInView) {
       sectionIsActive(true);
@@ -55,41 +58,32 @@ const AboutSection = ({ sectionIsActive }) => {
   );
   ///////////////////////
 
+  // Section Y offset before entering viewport
   const sectionY = useTransform(scrollYProgress, [0.3, 0.95], ["30vh", "0vh"]);
+  //////////////////////
 
-  const contentOpacity = useTransform(
-    scrollYProgress,
-    [0.9, 1],
-    ["0%", "100%"]
-  );
-
+  // Tracking progress of helpers to display each card one by one
   const firstInView = useInView(firstRef, { margin: "300% 0% -20% 0%" });
   const secondInView = useInView(secondRef, { margin: "300% 0% -20% 0%" });
   const thirdInView = useInView(thirdRef, { margin: "300% 0% -20% 0%" });
+  ////////////////////
 
-  const testimonialsRef = useRef(null);
+  // const testimonialsRef = useRef(null);
 
-  const { scrollYProgress: testimonialsProgress } = useScroll({
-    target: testimonialsRef,
-    offset: ["start end", "start"],
+  // const { scrollYProgress: testimonialsProgress } = useScroll({
+  //   target: testimonialsRef,
+  //   offset: ["start end", "start"],
+  // });
+
+  const { scrollYProgress: exitProgress } = useScroll({
+    target: exitRef,
+    offset: ["start end", "end"],
   });
-  const aboutX = useTransform(testimonialsProgress, [0, 1], ["0%", "-100%"]);
-  const testimonialsX = useTransform(
-    testimonialsProgress,
-    [0, 1],
-    ["100%", "0%"]
-  );
 
-  const titleExitX = useTransform(
-    testimonialsProgress,
-    [0.1, 0.6],
-    ["0%", "-90%"]
-  );
-  const cardsExitX = useTransform(
-    testimonialsProgress,
-    [0.1, 0.8],
-    ["0%", "-25%"]
-  );
+  const aboutX = useTransform(exitProgress, [0, 1], ["0%", "-100%"]);
+
+  const titleExitX = useTransform(exitProgress, [0.1, 0.6], ["0%", "-90%"]);
+  const cardsExitX = useTransform(exitProgress, [0.1, 0.8], ["0%", "-25%"]);
 
   // const { scrollY } = useScroll();
   // const scrollVelocity = useVelocity(scrollY);
@@ -104,26 +98,42 @@ const AboutSection = ({ sectionIsActive }) => {
   //   ["70%", "100%", "70%"]
   // );
 
+  // About Section animations
+  const aboutRef = useRef(null);
+  const showTestimonialsContent = useInView(aboutRef, {
+    margin: "0% 0% 20% 0%",
+  });
+  useEffect(() => {
+    if (showTestimonialsContent) {
+      setDark(true);
+    } else {
+      setDark(false);
+    }
+  }, [showTestimonialsContent]);
+  ///////////////////////
+
   return (
     <>
       <motion.section
         style={{ borderRadius, scale: sectionScale, y: sectionY }}
-        className="sticky top-0 flex w-full overflow-hidden flex-nowrap bg-primary "
+        className={`sticky top-0  w-full overflow-hidden transition-colors duration-500 ${
+          dark ? "bg-secondary" : "bg-primary"
+        }`}
       >
         <motion.div
           ref={sectionRef}
           style={{ x: aboutX }}
-          className="top-0 flex flex-col items-center w-full min-h-screen overflow-hidden justify-evenly"
+          className="top-0 flex flex-col items-center w-full min-h-screen overflow-hidden justify-evenly "
         >
           <motion.div
             style={{ y: rawTitleY, x: titleExitX, scale: titleScale }}
-            className=" text-5xl items-end  flex font-black uppercase tracking-wider ppercase max-sm:pt-16 sm:min-h-[20vh] md:text-7xl xl:text-8xl"
+            className="  text-5xl items-end  flex font-black uppercase tracking-wider max-sm:pt-16 sm:min-h-[20vh] md:text-7xl xl:text-8xl"
           >
             <h1>Ce îți oferim</h1>
           </motion.div>
 
           <motion.div
-            style={{ opacity: contentOpacity, x: cardsExitX }}
+            style={{ x: cardsExitX }}
             className="grid grid-cols-1 gap-4 px-4 md:px-6 lg:px-8 sm:grid-cols-3 h-fit md:gap-6 lg:gap-8 justify-evenly"
           >
             <AboutCard
@@ -133,7 +143,6 @@ const AboutSection = ({ sectionIsActive }) => {
             >
               <GiPayMoney />
             </AboutCard>
-
             <AboutCard
               title="Disponibilitate non-stop"
               description="24 de ore pe zi, 7 zile pe săptămână, 365 de zile pe an"
@@ -152,18 +161,17 @@ const AboutSection = ({ sectionIsActive }) => {
             </AboutCard>
           </motion.div>
         </motion.div>
-        {/* <Testimonials position={testimonialsX} /> */}
+        <Contact showContent={showTestimonialsContent} />
       </motion.section>
-      <div ref={titleHelper} className="h-[120vh] -z-50"></div>
-      <motion.div className="h-[180vh] -z-50 ">
-        <div ref={firstRef} className="h-[60vh] "></div>
-        <div ref={secondRef} className="h-[60vh] "></div>
-        <div ref={thirdRef} className="h-[60vh] "></div>
+      {/* Helpers for tracking progress and animating elements */}
+      <div ref={titleHelper} className="h-[80vh] -z-50"></div>
+      <motion.div className="-z-">
+        <div ref={firstRef} className="h-[70vh]"></div>
+        <div ref={secondRef} className="h-[70vh] "></div>
+        <div ref={thirdRef} className="h-[90vh] "></div>
+        <div ref={exitRef} className="h-[100vh] -z-50"></div>
+        <motion.div ref={aboutRef} className=" h-[50vh] "></motion.div>
       </motion.div>
-      <motion.div
-        ref={testimonialsRef}
-        className="top-0 h-screen border-4 border-success"
-      ></motion.div>
     </>
   );
 };

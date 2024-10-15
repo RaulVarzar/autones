@@ -9,7 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-accent">
+      <body className="bg-secondary">
         <ScrollContext>{children}</ScrollContext>
       </body>
     </html>

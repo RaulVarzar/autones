@@ -19,8 +19,8 @@ export default function Home() {
   //   window.history.scrollRestoration = "manual";
   // }, []);
 
-  const scale = useTransform(scrollYProgress, [0.1, 1], ["100%", "97%"]);
-  const y = useTransform(scrollYProgress, [0.1, 1], ["0vh", "3vh"]);
+  const scale = useTransform(scrollYProgress, [0.15, 1], ["100%", "97%"]);
+  const y = useTransform(scrollYProgress, [0.15, 1], ["0vh", "3vh"]);
 
   const [colored, setColored] = useState(false);
   return (
@@ -29,7 +29,7 @@ export default function Home() {
       <motion.div
         ref={ref}
         style={{ scale, y }}
-        className="z-10 bg-base-100 rounded-b-3xl"
+        className="z-50  bg-base-100 rounded-b-3xl"
       >
         <Hero />
 

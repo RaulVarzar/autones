@@ -83,7 +83,7 @@ const Hero = () => {
                 damping: 22,
               }}
               viewport={{ once: true }}
-              className="text-6xl font-black leading-none tracking-wide uppercase md:text-9xl xl:text-xxl"
+              className="text-6xl font-medium rubik leading-none tracking-wide uppercase md:text-9xl xl:text-xxl"
             >
               AUTONES
             </motion.h2>

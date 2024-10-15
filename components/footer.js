@@ -6,7 +6,7 @@ const Footer = () => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "0.8 end"],
+    offset: ["start end", "end"],
   });
 
   const contentSpring = useSpring(scrollYProgress, {
@@ -16,7 +16,7 @@ const Footer = () => {
   });
 
   const scale = useTransform(contentSpring, [0, 1], ["90%", "100%"]);
-  const y = useTransform(contentSpring, [0, 1], ["-30%", "0%"]);
+  const y = useTransform(contentSpring, [0, 1], ["50%", "0%"]);
   const opacity = useTransform(
     contentSpring,
     [0.2, 0.8, 1],
@@ -28,9 +28,6 @@ const Footer = () => {
       ref={ref}
       className="flex flex-col items-center justify-center w-full gap-12 px-4 py-4 mx-auto md:px-24 lg:px-48"
     >
-      <button className="px-12 py-8 mx-auto text-2xl font-semibold tracking-wider border rounded-full border-base-content bg-neutral-content bg-opacity-30">
-        CONTACT
-      </button>
       <motion.div
         style={{ scale, y, opacity }}
         className="flex flex-col justify-center w-full gap-6 mb-8 gap-y-8 md:flex-row md:gap-24 h-fit "

@@ -21,8 +21,8 @@ const Gallery = () => {
     mass: 0.1,
   });
 
-  const animateScale = useTransform(contentSpring, [0, 0.7], ["90%", "100%"]);
-  const animateY = useTransform(contentSpring, [0, 1], ["10vh", "0vh"]);
+  const animateScale = useTransform(contentSpring, [0, 0.7], ["85%", "100%"]);
+  const animateY = useTransform(contentSpring, [0, 0.9], ["15vh", "0vh"]);
 
   const { scrollYProgress: exitProgress } = useScroll({
     target: secondaryRef,
@@ -41,19 +41,19 @@ const Gallery = () => {
     <>
       <motion.section
         ref={ref}
-        style={{ scale, y, opacity }}
+        style={{ scale, y: animateY, opacity }}
         className="sticky top-0 w-full px-2 py-4 mx-auto sm:py-20 lg:px-6"
       >
         <motion.div
           style={{ scale: animateScale, y }}
-          className="sticky top-[10vh] mx-auto grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-screen-3xl"
+          className="sticky top-[10vh] mx-auto  grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-screen-3xl"
         >
           {imageList.map((image, index) => (
             <Photo key={index} index={index} image={image} />
           ))}
         </motion.div>
 
-        <div className="h-[40vh] max-sm:hidden"></div>
+        <div className="h-[50vh] max-sm:hidden"></div>
       </motion.section>
       <motion.div ref={secondaryRef} className="h-0 " />
     </>

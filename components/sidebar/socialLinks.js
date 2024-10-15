@@ -31,7 +31,7 @@ const Socials = () => {
           {/* <motion.span className="text-2xl sm:hidden opacity-80">
             <FaSquareInstagram />
           </motion.span> */}
-          <div className="flex flex-col items-start justify-center w-10/12 border">
+          <div className="flex flex-col items-start justify-center w-10/12 ">
             <motion.span
               layout
               transition={{ layout: { delay: 0 } }}

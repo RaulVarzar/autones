@@ -5,6 +5,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import { useRef } from "react";
 
 const AboutCard = ({ visible, children, title, description }) => {
   const cardVariants = {
@@ -71,36 +72,39 @@ const AboutCard = ({ visible, children, title, description }) => {
   };
 
   return (
-    <motion.div
-      variants={cardVariants}
-      initial="hidden"
-      animate={visible ? "visible" : "hidden"}
-      className="flex flex-col items-center justify-center w-full h-full max-w-2xl px-4 py-5 text-center rounded-lg sm:px-6 sm:py-8 md:px-12 md:py-24 bg-accent bg-opacity-60 text-balance "
-    >
-      <motion.span
-        variants={iconVariants}
+    <motion.div>
+      <motion.div
+        // ref={cardRef}
+        variants={cardVariants}
         initial="hidden"
         animate={visible ? "visible" : "hidden"}
-        className="pb-3 text-6xl sm:pb-4 sm:text-8xl"
+        className="flex flex-col items-center justify-center w-full h-full max-w-2xl px-4 py-5 text-center rounded-lg sm:px-6 sm:py-8 md:px-12 md:py-12 lg:py-16 xl:py-24 bg-accent bg-opacity-60 text-balance "
       >
-        {children}
-      </motion.span>
-      <motion.h1
-        variants={titleVariants}
-        initial="hidden"
-        animate={visible ? "visible" : "hidden"}
-        className="pb-2 text-2xl font-bold leading-6 tracking-wide uppercase sm:pb-6 sm:text-3xl md:text-4xl xl:text-5xl"
-      >
-        {title}
-      </motion.h1>
-      <motion.span
-        variants={subTitleVariants}
-        initial="hidden"
-        animate={visible ? "visible" : "hidden"}
-        className="text-xl font-light leading-5 sm:tracking-tight opacity-30 md:text-2xl lg:text-3xl"
-      >
-        {description}
-      </motion.span>
+        <motion.span
+          variants={iconVariants}
+          initial="hidden"
+          animate={visible ? "visible" : "hidden"}
+          className="pb-3 text-6xl sm:pb-4 sm:text-8xl"
+        >
+          {children}
+        </motion.span>
+        <motion.h1
+          variants={titleVariants}
+          initial="hidden"
+          animate={visible ? "visible" : "hidden"}
+          className="pb-2 text-2xl font-bold leading-6 tracking-wide uppercase sm:pb-6 sm:text-3xl md:text-4xl xl:text-5xl"
+        >
+          {title}
+        </motion.h1>
+        <motion.span
+          variants={subTitleVariants}
+          initial="hidden"
+          animate={visible ? "visible" : "hidden"}
+          className="text-xl font-light leading-5 sm:tracking-tight opacity-30 md:text-2xl lg:text-3xl"
+        >
+          {description}
+        </motion.span>
+      </motion.div>
     </motion.div>
   );
 };

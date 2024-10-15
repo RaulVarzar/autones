@@ -38,9 +38,9 @@ const SidebarToggle = ({ colored }) => {
         )}
       </AnimatePresence>
       <motion.div
-        onMouseMove={handleMouse}
-        onHoverStart={() => setHovering(true)}
-        onHoverEnd={() => setHovering(null)}
+        // onMouseMove={handleMouse}
+        // onHoverStart={() => setHovering(true)}
+        // onHoverEnd={() => setHovering(null)}
         initial={{ opacity: 0, y: "-150px" }}
         animate={{
           opacity: 1,
@@ -51,14 +51,22 @@ const SidebarToggle = ({ colored }) => {
           sidebarOpen ? { borderRadius: "16px" } : { borderRadius: "12px" }
         }
         className={`flex fixed top-3 right-3 sm:top-4 sm:right-4 lg:top-8 lg:right-8 z-50  flex-col items-end  justify-center overflow-hidden  font-normal  ${
-          sidebarOpen ? "bg-neutral p-4" : "bg-base-300 p-2 cursor-pointer"
-        } ${colored && "bg-accent"} `}
+          sidebarOpen ? " p-4" : "p-2 cursor-pointer"
+        } ${
+          colored && sidebarOpen
+            ? "bg-accent"
+            : colored && !sidebarOpen
+            ? "bg-secondary"
+            : !colored && "bg-base-200"
+        } `}
         layout
       >
         <motion.div
           layout
           onClick={toggleSidebar}
-          className="flex flex-row items-center h-full gap-2 px-3 py-1 md:gap-4 xl:gap-8 sm:px-6 sm:py-3"
+          className={`flex flex-row t items-center h-full gap-2 px-3 py-1 md:gap-4 xl:gap-8 sm:px-6 sm:py-3 ${
+            colored ? " text-white" : "text-base-content"
+          }`}
         >
           <motion.span
             layout
@@ -75,7 +83,9 @@ const SidebarToggle = ({ colored }) => {
               animate={
                 sidebarOpen ? { rotate: 225, y: 5 } : { rotate: 0, y: 0 }
               }
-              className="w-9 h-0.5 rounded-full bg-base-content"
+              className={`w-9 h-0.5 rounded-full ${
+                colored ? " bg-white" : "bg-base-content"
+              }`}
             ></motion.span>
             <motion.span
               animate={
@@ -83,22 +93,11 @@ const SidebarToggle = ({ colored }) => {
               }
               className={`h-0.5 rounded-full bg-base-content ${
                 sidebarOpen ? "w-9" : "w-7"
-              }`}
+              } ${colored ? " bg-white" : "bg-base-content"}`}
             ></motion.span>
           </motion.span>
         </motion.div>
-        {/* <AnimatePresence>
-          {hovering && !sidebarOpen && (
-            <motion.div
-              animate={hovering ? { scale: 25 } : { scale: 1 }}
-              style={{ x: translateX, y: translateY }}
-              exit={{ scale: 0.1, transition: { duration: 0.1 } }}
-              transition={{ duration: 0.4 }}
-              onClick={toggleSidebar}
-              className="absolute top-0 left-0 h-6 rounded-full -z-0 bg-neutral-content aspect-square"
-            ></motion.div>
-          )}
-        </AnimatePresence> */}
+
         <Sidebar open={sidebarOpen} />
       </motion.div>
     </>
