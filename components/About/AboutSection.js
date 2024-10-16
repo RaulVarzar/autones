@@ -147,7 +147,7 @@ const AboutSection = ({ sectionIsActive }) => {
               x: titleExitX,
               scale: !isMobile && titleScale,
             }}
-            className="  text-5xl items-end  flex font-black uppercase opacity-90 tracking-wider max-sm:pt-16 sm:min-h-[20vh] md:text-7xl xl:text-8xl"
+            className="  text-4xl sm:text-5xl items-end  flex font-black uppercase opacity-90 tracking-wider max-sm:pt-16 sm:min-h-[20vh] md:text-7xl xl:text-8xl"
           >
             <h1>Ce îți oferim</h1>
           </motion.div>
@@ -156,7 +156,7 @@ const AboutSection = ({ sectionIsActive }) => {
             className=" grow grid md:pt-12 place-items-start"
             style={{ x: cardsExitX }}
           >
-            <motion.div className="grid h-fit grid-cols-1 gap-4  px-4 md:px-6 lg:px-8 sm:grid-cols-3 md:gap-6 lg:gap-8 justify-evenly">
+            <motion.div className="grid h-fit grid-cols-1 gap-2 sm:gap-4  px-4 md:px-6 lg:px-8 sm:grid-cols-3 md:gap-6 lg:gap-8 justify-evenly">
               <AboutCard
                 title="Prețuri competitive"
                 description="Fără taxe ascunse"
@@ -174,7 +174,7 @@ const AboutSection = ({ sectionIsActive }) => {
 
               <AboutCard
                 title="Siguranță și încredere"
-                description="Când apelezi la noi, știi cu siguranță ca mașina ta va ajunge la
+                description="Când apelezi la noi, știi că mașina ta va ajunge la
                 destinație in cel mai scurt timp și în condiții de siguranță"
                 visible={thirdInView}
               >

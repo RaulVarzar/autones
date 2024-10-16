@@ -61,7 +61,7 @@ const Contact = ({ showTestimonials, showContact }) => {
       <div className="fixed top-0 -z-20 w-full h-full">
         <AnimatePresence>
           <motion.div className="flex flex-col justify-evenly  sm:justify-end items-stretch w-full h-full">
-            <motion.div className="flex items-center sm:grow">
+            <motion.div className="flex items-center sm:grow pt-[10vh]">
               <AnimatePresence>
                 {showTestimonials && <Testimonials />}
               </AnimatePresence>
@@ -73,7 +73,7 @@ const Contact = ({ showTestimonials, showContact }) => {
                 animate={showContact ? "visible" : "exit"}
                 exit="exit"
                 variants={variants}
-                className="text-6xl  sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-wider"
+                className="text-4xl  sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-wider"
               >
                 Contact
               </motion.h1>
@@ -83,7 +83,7 @@ const Contact = ({ showTestimonials, showContact }) => {
                 animate={showContact ? "visible" : "exit"}
                 exit="exit"
                 variants={contactInfoVariants}
-                className="text-xl sm:text-2xl w-full max-w-screen-2xl gap-y-4  lg:text-2xl xl:text-3xl 2xl:text-4xl items-end justify-between  flex flex-col sm:flex-row sm:items-center  font-extralight tracking-wider text-base-content opacity-75"
+                className="text-lg sm:text-2xl w-full max-w-screen-2xl gap-y-4  lg:text-2xl xl:text-3xl 2xl:text-4xl items-end justify-between  flex flex-col sm:flex-row sm:items-center  font-extralight tracking-wider text-base-content opacity-75"
               >
                 <h1 className="sm:py-6 sm:px-4  2xl:px-8 cursor-pointer ">
                   +40 744 540 583

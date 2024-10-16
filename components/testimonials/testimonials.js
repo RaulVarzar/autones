@@ -87,7 +87,7 @@ const Testimonials = ({ position }) => {
     <motion.section
       ref={section}
       style={{ x: position }}
-      className="flex flex-col items-start gap-4 overflow-hidden md:flex-col"
+      className="flex flex-col items-start gap-1 sm:gap-4 lg:gap-6 overflow-hidden md:flex-col"
     >
       <div className="flex flex-col pl-2 sm:pl-10 md:pl-12 lg:pl-16">
         <motion.h1

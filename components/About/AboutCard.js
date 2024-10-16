@@ -80,7 +80,7 @@ const AboutCard = ({ visible, children, title, description }) => {
           variants={iconVariants}
           initial="hidden"
           animate={visible ? "visible" : "hidden"}
-          className="pb-3 text-5xl md:text-6xl sm:pb-4 lg:text-8xl"
+          className="pb-3 text-4xl md:text-6xl sm:pb-4 lg:text-8xl"
         >
           {children}
         </motion.span>
@@ -88,7 +88,7 @@ const AboutCard = ({ visible, children, title, description }) => {
           variants={titleVariants}
           initial="hidden"
           animate={visible ? "visible" : "hidden"}
-          className="pb-2 text-2xl font-bold leading-6 tracking-wide uppercase sm:pb-6 sm:text-3xl md:text-4xl xl:text-5xl"
+          className="sm:pb-2 text-xl font-bold leading-6 tracking-wide uppercase sm:pb-6 sm:text-3xl md:text-4xl xl:text-5xl"
         >
           {title}
         </motion.h1>
@@ -96,7 +96,7 @@ const AboutCard = ({ visible, children, title, description }) => {
           variants={subTitleVariants}
           initial="hidden"
           animate={visible ? "visible" : "hidden"}
-          className="text-lg font-light leading-6 text-info-content sm:tracking-tight opacity-30 md:text-2xl lg:text-3xl"
+          className="text-base font-light leading-5 text-info-content sm:tracking-tight opacity-30 md:text-2xl lg:text-3xl"
         >
           {description}
         </motion.span>

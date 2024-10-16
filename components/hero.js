@@ -64,7 +64,7 @@ const Hero = () => {
             }}
             viewport={{ once: true }}
             style={{ opacity, x: springX }}
-            className="text-3xl font-bold text-info-content tracking-wide uppercase sm:text-4xl md:text-6xl xl:text-6xl place-self-start"
+            className="text-2xl sm:text-3xl font-bold text-info-content tracking-wide uppercase md:text-4xl lg:text-6xl  place-self-start"
           >
             Tractări auto
           </motion.h1>
@@ -83,7 +83,7 @@ const Hero = () => {
                 damping: 22,
               }}
               viewport={{ once: true }}
-              className="text-6xl font-medium rubik leading-none tracking-wide uppercase md:text-9xl xl:text-xxl"
+              className="text-5xl sm:text-6xl  font-medium rubik leading-none tracking-wide uppercase md:text-9xl xl:text-xxl"
             >
               AUTONES
             </motion.h2>
