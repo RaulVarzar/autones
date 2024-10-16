@@ -33,7 +33,7 @@ const SidebarToggle = ({ colored }) => {
             animate={{ opacity: 1, transition: { duration: 0.3 } }}
             exit={{ opacity: 0, transition: { duration: 0.35, delay: 0.1 } }}
             onClick={toggleSidebar}
-            className="fixed inset-0 z-10 bg-neutral-950/70 backdrop-blur-md"
+            className="fixed inset-0 z-50 bg-neutral-950/70 backdrop-blur-md"
           ></motion.div>
         )}
       </AnimatePresence>
@@ -50,13 +50,13 @@ const SidebarToggle = ({ colored }) => {
         style={
           sidebarOpen ? { borderRadius: "16px" } : { borderRadius: "12px" }
         }
-        className={`flex fixed top-3 right-3 sm:top-4 sm:right-4 lg:top-8 lg:right-8 z-50  flex-col items-end  justify-center overflow-hidden  font-normal  ${
+        className={`flex fixed top-3 right-3 sm:top-4 sm:right-4 lg:top-8 lg:right-8 z-50 transition-colors duration-300 flex-col items-end  justify-center overflow-hidden  font-normal  ${
           sidebarOpen ? " p-4" : "p-2 cursor-pointer"
         } ${
           colored && sidebarOpen
-            ? "bg-accent"
+            ? "bg-primary"
             : colored && !sidebarOpen
-            ? "bg-secondary"
+            ? "bg-accent"
             : !colored && "bg-base-200"
         } `}
         layout
@@ -70,7 +70,7 @@ const SidebarToggle = ({ colored }) => {
         >
           <motion.span
             layout
-            className="z-20 h-full pt-1 text-xl font-medium tracking-widest text-center align-baseline sm:text-2xl opacity-80 mix-blend-difference"
+            className="z-20 max-sm:hidden h-full pt-1 text-xl font-medium tracking-widest text-center align-baseline sm:text-2xl opacity-80 mix-blend-difference"
           >
             {!sidebarOpen && "Contact"}
           </motion.span>
@@ -84,16 +84,16 @@ const SidebarToggle = ({ colored }) => {
                 sidebarOpen ? { rotate: 225, y: 5 } : { rotate: 0, y: 0 }
               }
               className={`w-9 h-0.5 rounded-full ${
-                colored ? " bg-white" : "bg-base-content"
+                colored ? " bg-white" : "bg-white"
               }`}
             ></motion.span>
             <motion.span
               animate={
                 sidebarOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }
               }
-              className={`h-0.5 rounded-full bg-base-content ${
+              className={`h-0.5 rounded-full bg-white ${
                 sidebarOpen ? "w-9" : "w-7"
-              } ${colored ? " bg-white" : "bg-base-content"}`}
+              } ${colored ? " bg-white" : "bg-white"}`}
             ></motion.span>
           </motion.span>
         </motion.div>

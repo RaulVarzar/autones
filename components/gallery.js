@@ -1,4 +1,10 @@
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useInView,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { useRef } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
@@ -12,7 +18,7 @@ const Gallery = () => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end end"],
+    offset: ["start end", "start"],
   });
 
   const contentSpring = useSpring(scrollYProgress, {
@@ -22,38 +28,34 @@ const Gallery = () => {
   });
 
   const animateScale = useTransform(contentSpring, [0, 0.7], ["85%", "100%"]);
-  const animateY = useTransform(contentSpring, [0, 0.9], ["15vh", "0vh"]);
+  const animateY = useTransform(contentSpring, [0, 1], ["25vh", "0vh"]);
 
   const { scrollYProgress: exitProgress } = useScroll({
     target: secondaryRef,
     offset: ["end", "start"],
   });
-  const exitSpring = useSpring(exitProgress, {
-    stiffness: 150,
-    damping: 16,
-    mass: 0.2,
-  });
-  const scale = useTransform(exitSpring, [0.2, 1], ["100%", "92%"]);
-  const y = useTransform(exitSpring, [0.2, 1], ["0vh", "10vh"]);
-  const opacity = useTransform(exitSpring, [0.99, 1], ["100%", "0%"]);
+
+  const scale = useTransform(exitProgress, [0.2, 1], ["100%", "92%"]);
+  const y = useTransform(exitProgress, [0, 0.2, 1], ["0vh", "20vh", "150vh"]);
+  const opacity = useTransform(exitProgress, [0.99, 1], ["100%", "0%"]);
 
   return (
     <>
       <motion.section
         ref={ref}
         style={{ scale, y: animateY, opacity }}
-        className="sticky top-0 w-full px-2 py-4 mx-auto sm:py-20 lg:px-6"
+        className="   top-0 w-full overflow-visible px-2 py-4 mx-auto sm:py-20 lg:px-6  min-h-screen"
       >
         <motion.div
           style={{ scale: animateScale, y }}
-          className="sticky top-[10vh] mx-auto  grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-screen-3xl"
+          className="  tp-[10vh] h-fit mx-auto  grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-screen-3xl"
         >
           {imageList.map((image, index) => (
             <Photo key={index} index={index} image={image} />
           ))}
         </motion.div>
 
-        <div className="h-[50vh] max-sm:hidden"></div>
+        {/* <div className="h-[50vh] max-sm:hidden"></div> */}
       </motion.section>
       <motion.div ref={secondaryRef} className="h-0 " />
     </>
@@ -62,35 +64,49 @@ const Gallery = () => {
 
 export default Gallery;
 
-const Photo = ({ image, index }) => {
+const Photo = ({ image }) => {
+  const variants = {
+    hidden: {
+      filter: "blur(10px)",
+    },
+    visible: {
+      filter: "blur(0px)",
+      transition: {
+        ease: [0.25, 0.1, 0.25, 1],
+        duration: 0.8,
+        delay: 0.2,
+      },
+    },
+  };
+
   const imageRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: imageRef,
     offset: ["start end", "end start"],
   });
 
-  const rawScale = useTransform(
-    scrollYProgress,
-    [0, 0.4, 0.65, 1],
-    ["94%", "100%", "100%", "92%"]
-  );
-  const y = useTransform(scrollYProgress, [0, 1], ["-18%", "18%"]);
-  const opacity = useTransform(
-    scrollYProgress,
-    [0.15, 0.3, 0.75, 0.85],
-    ["0%", "100%", "100%", "0%"]
-  );
+  const y = useTransform(scrollYProgress, [0, 1], ["-18%", "10%"]);
 
-  const scale = useSpring(rawScale, { stiffness: 70, damping: 15, mass: 0.2 });
+  const { scrollYProgress: cardEnterProgress } = useScroll({
+    target: imageRef,
+    offset: ["start end", "center end"],
+  });
+  const cardScale = useTransform(cardEnterProgress, [0, 1], ["97%", "100%"]);
+
+  const imgInView = useInView(imageRef, { margin: "0% 0% -15% 0%" });
 
   return (
     <motion.div
       ref={imageRef}
-      className={`w-full aspect-4/3 cursor-pointer overflow-hidden rounded-md inset-0 m-auto max-w-7xl mx-auto`}
+      style={{ scale: cardScale }}
+      className={`w-full aspect-video sm:aspect-4/3  cursor-pointer overflow-hidden rounded-md inset-0 m-auto max-w-7xl mx-auto`}
     >
       <PhotoProvider>
         <PhotoView src={image.default.src}>
           <motion.img
+            variants={variants}
+            initial="hidden"
+            animate={imgInView ? "visible" : "hidden"}
             src={image.default.src}
             alt={`image-${image.default.src}`}
             style={{ y, scale: 1.2 }}

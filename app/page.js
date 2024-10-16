@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "components/navbar";
 import Hero from "../components/hero.js";
 import Gallery from "../components/gallery";
@@ -10,33 +9,18 @@ import Services from "../components/services.js";
 import AboutSection from "../components/About/AboutSection.js";
 
 export default function Home() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["end", "end center"],
-  });
-  // useEffect(() => {
-  //   window.history.scrollRestoration = "manual";
-  // }, []);
-
-  const scale = useTransform(scrollYProgress, [0.15, 1], ["100%", "97%"]);
-  const y = useTransform(scrollYProgress, [0.15, 1], ["0vh", "3vh"]);
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
+  }, []);
 
   const [colored, setColored] = useState(false);
   return (
-    <main>
+    <main className="bg-base-100">
       <Navbar colored={colored} />
-      <motion.div
-        ref={ref}
-        style={{ scale, y }}
-        className="z-50  bg-base-100 rounded-b-3xl"
-      >
-        <Hero />
-
-        <Services />
-        <Gallery />
-        <AboutSection sectionIsActive={(e) => setColored(e)} />
-      </motion.div>
+      <Hero />
+      <Services />
+      <Gallery />
+      <AboutSection sectionIsActive={(e) => setColored(e)} />
       <Footer />
     </main>
   );

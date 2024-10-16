@@ -13,17 +13,16 @@ import { useRef } from "react";
 const titleVariants = {
   hidden: {
     opacity: 0,
-    x: "-50%",
+    x: "-20%",
+    filter: "blur(10px)",
   },
   visible: {
-    opacity: 0.7,
+    opacity: 1,
     x: "0%",
+    filter: "blur(0px)",
     transition: {
-      type: "spring",
-      stiffness: 100,
-      mass: 0.5,
-      damping: 12,
-      delay: 0.2,
+      ease: [0.25, 0.1, 0.25, 1],
+      duration: 0.7,
     },
   },
   exit: {
@@ -38,17 +37,17 @@ const titleVariants = {
 const subTitleVariants = {
   hidden: {
     opacity: 0,
-    x: "-50%",
+    x: "-20%",
+    filter: "blur(10px)",
   },
   visible: {
     opacity: 1,
     x: "0%",
+    filter: "blur(0px)",
     transition: {
-      type: "spring",
-      stiffness: 100,
-      mass: 0.9,
-      damping: 12,
-      delay: 0.4,
+      ease: [0.25, 0.1, 0.25, 1],
+      duration: 0.7,
+      delay: 0.15,
     },
   },
   exit: {
@@ -96,7 +95,7 @@ const Testimonials = ({ position }) => {
           initial="hidden"
           animate="visible"
           exit={{ x: 200, opacity: 0, transition: { delay: 0, duration: 0.2 } }}
-          className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-none tracking-wide uppercase  text-balance"
+          className="text-xl sm:text-xl md:text-2xl lg:text-3xl text-info-content  xl:text-4xl font-medium leading-3 tracking-wide uppercase  text-balance"
         >
           Ce spun
         </motion.h1>
@@ -109,7 +108,7 @@ const Testimonials = ({ position }) => {
             opacity: 0,
             transition: { delay: 0.05, duration: 0.2 },
           }}
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold leading-none uppercase"
+          className="text-3xl sm:text-3xl md:text-4xl lg:text-6xl  xl:text-7xl font-bold uppercase"
         >
           clientii nostri
         </motion.h2>
@@ -118,15 +117,13 @@ const Testimonials = ({ position }) => {
         initial={{ x: "-110%" }}
         animate={{ x: 0 }}
         transition={{
-          delay: 0.45,
-          type: "spring",
-          stiffness: 50,
-          mass: 1,
-          damping: 10,
+          ease: [0.25, 0.1, 0.25, 1],
+          duration: 1.2,
+          delay: 0.3,
         }}
         ref={constraintsRef}
         exit={{ x: 300, opacity: 0, transition: { delay: 0.1, duration: 0.2 } }}
-        className="flex flex-row w-full gap-16 p-2 overflow-hidden flex-nowrap"
+        className="flex flex-row w-full gap-16 p-2 overflow-hidden flex-nowrap "
       >
         <motion.div
           drag="x"

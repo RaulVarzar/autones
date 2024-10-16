@@ -89,11 +89,16 @@ export const Card = ({
       layout
     >
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
         whileInView={{
           opacity: 1,
           y: 0,
-          transition: { duration: 1.2, delay: 0.4 + id * 0.3 },
+          filter: "blur(0px)",
+          transition: {
+            duration: 1.2,
+            delay: 0.4 + id * 0.3,
+            ease: [0.25, 0.1, 0.25, 1],
+          },
         }}
         layout
         viewport={{ once: true, margin: "-10%" }}
@@ -115,8 +120,8 @@ export const Card = ({
           {title}
         </div>
         <div
-          className={`mx-auto text-md text-pretty leading-tight text-center whitespace-normal sm:text-base md:text-lg stat-desc xl:text-xl transition-opacity duration-300 max-w-72 md:max-w-80 ${
-            selectedTopic === id ? "opacity-90" : "opacity-60"
+          className={`mx-auto text-md text-pretty leading-tight text-info-content text-center whitespace-normal sm:text-base md:text-lg stat-desc xl:text-xl transition-opacity duration-300 max-w-72 md:max-w-80 ${
+            selectedTopic === id ? "opacity-100" : "opacity-70"
           }`}
         >
           {description}

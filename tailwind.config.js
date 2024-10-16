@@ -31,17 +31,20 @@ module.exports = {
       {
         black: {
           ...require("daisyui/src/theming/themes")["black"],
-          "base-100": "#0c0d0d",
-          "base-200": "#101111",
-          "base-300": "#131416",
+          "base-100": "#090A0A",
+          "base-200": "#0e0f11",
+          "base-300": "#121416",
 
-          neutral: "#161718",
-          "neutral-content": "#1b1c1d",
-          "accent-content": "#202122",
-          accent: "#25213b",
-          primary: "#211d35",
+          neutral: "#131718",
+          "neutral-content": "#151719",
+          "accent-content": "#17191c",
+          "info-content": "#b5ada1",
+
+          accent: "#062220",
+          primary: "#062726",
+          secondary: "#092f2e",
+
           error: "#FF6B6B",
-          secondary: "#1d192e",
         },
       },
     ],

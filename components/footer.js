@@ -26,14 +26,14 @@ const Footer = () => {
   return (
     <div
       ref={ref}
-      className="flex flex-col items-center justify-center w-full gap-12 px-4 py-4 mx-auto md:px-24 lg:px-48"
+      className="flex flex-col items-center justify-center w-full bg-accent gap-12 px-4 py-4 mx-auto md:px-24 lg:px-48 md:py-16 xl:py-24"
     >
       <motion.div
         style={{ scale, y, opacity }}
         className="flex flex-col justify-center w-full gap-6 mb-8 gap-y-8 md:flex-row md:gap-24 h-fit "
       >
-        <div className="flex flex-col w-full md:items-end lg:w-1/2 max-md:text-center">
-          <span className="text-2xl font-bold tracking-wide uppercase max-md:text-center md:text-3xl">
+        <div className="flex flex-col w-full md:items-end lg:w-1/2 max-md:text-center ">
+          <span className="text-2xl font-black tracking-wider uppercase max-md:text-center md:text-9xl">
             Autones
           </span>
           <div className="md:text-right lg:max-w-md opacity-60">
@@ -47,33 +47,35 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <div className="w-full space-y-2 text-lg lg:w-1/2 md:space-y-4">
+        <div className="w-full space-y-2 text-lg lg:w-1/2 flex flex-col justify-evenly py-2 md:space-y-4 ">
           <div className="flex flex-col max-md:mx-auto max-md:w-fit">
-            <p className="leading-none max-md:text-center opacity-60">
+            <p className="leading-none max-md:text-center opacity-60 text-2xl">
               Telefon:
             </p>
             <a
               href="tel:0744-765-543"
               aria-label="Our phone"
               title="Our phone"
-              className="text-xl font-bold transition-colors duration-300"
+              className="text-xl font-semibold transition-colors tracking-wide duration-300 lg:text-3xl"
             >
-              0744.765.543
+              0744 765 543
             </a>
           </div>
           <div className="flex flex-col max-md:mx-auto max-md:w-fit">
-            <p className="leading-none max-md:text-center opacity-60">Email:</p>
+            <p className="leading-none max-md:text-center opacity-60 text-2xl">
+              Email:
+            </p>
             <a
               href="mailto:info@lorem.mail"
               aria-label="Our email"
               title="Our email"
-              className="text-xl font-bold transition-colors duration-300"
+              className="text-xl font-semibold transition-colors tracking-wide duration-300 lg:text-3xl"
             >
               info@lorem.mail
             </a>
           </div>
           <div className="flex flex-col max-md:mx-auto max-md:w-fit flex-nowrap text-nowrap">
-            <p className="leading-none max-md:text-center opacity-60">
+            <p className="leading-none max-md:text-center opacity-60 text-2xl">
               Adresa:
             </p>
             <a
@@ -82,7 +84,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               aria-label="Adresa"
               title="Adresa noastra"
-              className="text-xl font-bold transition-colors duration-300 flex-nowrap text-nowrap"
+              className="text-xl font-semibold transition-colors tracking-wide duration-300 lg:text-3xl"
             >
               Strada bla bla bla, nr 32
             </a>

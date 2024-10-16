@@ -24,12 +24,12 @@ const Hero = () => {
 
   const mainOpacity = useTransform(
     scrollYProgress,
-    [0.45, 0.95],
+    [0.35, 0.65],
     ["100%", "0%"]
   );
   const mainScale = useTransform(
     scrollYProgress,
-    [0.45, 0.9],
+    [0.35, 0.9],
     ["100%", "120%"]
   );
   const mainY = useTransform(scrollYProgress, [0.65, 0.95], ["0vh", "-0vh"]);
@@ -53,8 +53,8 @@ const Hero = () => {
   const TITLE = splitStringUsingRegex("Tractări auto");
   return (
     <>
-      <motion.div className="sticky top-0  h-[70vh] -z-50 flex flex-col items-center overflow-x-hidden justify-end w-full gap-2 px-6 text-center md:gap-6 max-w-8xl sm:px-8 md:px-12 lg:px-24 ">
-        <motion.div className="sticky top-0 z-50 flex flex-col justify-center w-full h-5/6 max-w-7xl ">
+      <motion.div className="sm:sticky top-0  h-[70vh] -z-0 flex flex-col items-center overflow-x-hidden justify-end w-full gap-2 px-6 text-center md:gap-6 max-w-8xl sm:px-8 md:px-12 lg:px-24 ">
+        <motion.div className="sticky top-0 flex flex-col justify-center w-full h-5/6 max-w-7xl ">
           <motion.h1
             initial={{ x: "-50%", opacity: 0 }}
             animate={{ x: "0%", opacity: 1 }}
@@ -64,13 +64,13 @@ const Hero = () => {
             }}
             viewport={{ once: true }}
             style={{ opacity, x: springX }}
-            className="text-3xl font-bold tracking-wide uppercase sm:text-4xl md:text-6xl xl:text-6xl place-self-start"
+            className="text-3xl font-bold text-info-content tracking-wide uppercase sm:text-4xl md:text-6xl xl:text-6xl place-self-start"
           >
             Tractări auto
           </motion.h1>
           <motion.div
             style={{ opacity: mainOpacity, scale: mainScale, y: mainY }}
-            className="pt-1 overflow-hidden place-self-center"
+            className="pb-1 overflow-hidden place-self-center"
           >
             <motion.h2
               initial={{ y: "150%" }}
@@ -97,14 +97,14 @@ const Hero = () => {
               animate={{ x: "0%", opacity: 1 }}
               transition={{ duration: 1.2, delay: 2.3, ease: "easeInOut" }}
               viewport={{ once: true }}
-              className="text-2xl font-semibold tracking-normal sm:text-4xl md:text-6xl xl:text-7xl opacity-80"
+              className="text-2xl font-semibold text-info-content tracking-normal sm:text-4xl md:text-6xl xl:text-7xl opacity-80"
             >
               Cluj-Napoca
             </motion.h2>
           </motion.div>
         </motion.div>
       </motion.div>
-      <div className="relative h-0" ref={ref} />
+      <div className="h-0" ref={ref} />
     </>
   );
 };

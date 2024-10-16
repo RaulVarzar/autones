@@ -33,7 +33,7 @@ const Services = () => {
   const y = useSpring(rawY, { stiffness: 100, damping: 8, mass: 0.5 });
 
   return (
-    <section className="relative bottom-0 flex flex-col h-[250vh]  items-center w-full min-h-screen gap-1 px-4 bg-transparent sm:px-6 md:px-8 lg:px-12 ">
+    <section className="relative bottom-0 flex flex-col  sm:h-[250vh]  items-center w-full sm:min-h-screen gap-1 px-4 bg-transparent sm:px-6 md:px-8 lg:px-12 ">
       <motion.div
         initial={{ opacity: 0, y: "30%", scale: 0.8 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -44,9 +44,9 @@ const Services = () => {
           stiffness: 80,
           damping: 30,
         }}
-        className="z-10 w-full h-screen grow max-w-7xl"
+        className="z-10 w-full sm:h-screen grow max-w-7xl"
       >
-        <div ref={imageRef} className="sticky top-[70vh] w-full">
+        <div ref={imageRef} className="sm:sticky sm:top-[70vh] w-full">
           <AnimatePresence mode="wait">
             <motion.img
               style={{ scale, borderRadius, y }}
