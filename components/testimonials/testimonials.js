@@ -114,7 +114,7 @@ const Testimonials = ({ position }) => {
         </motion.h2>
       </div>
       <motion.div
-        initial={{ x: "-110%" }}
+        initial={{ x: "110%" }}
         animate={{ x: 0 }}
         transition={{
           ease: [0.25, 0.1, 0.25, 1],
