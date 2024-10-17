@@ -1,6 +1,7 @@
 import {
   motion,
   useInView,
+  useMotionTemplate,
   useScroll,
   useSpring,
   useTransform,
@@ -95,10 +96,19 @@ const Photo = ({ image }) => {
 
   const imgInView = useInView(imageRef, { margin: "0% 0% -15% 0%" });
 
+  const { scrollYProgress: clipPathProgress } = useScroll({
+    target: imageRef,
+    offset: ["start end", "end"],
+  });
+  const clipPath1 = useTransform(clipPathProgress, [0, 1], [30, 0]);
+  const clipPath2 = useTransform(clipPathProgress, [0, 1], [70, 100]);
+
+  const clipPath = useMotionTemplate`polygon(0% ${clipPath1}% , 100% ${clipPath1}%,100% ${clipPath2}% , 0% ${clipPath2}% )`;
+
   return (
     <motion.div
       ref={imageRef}
-      style={{ scale: cardScale }}
+      style={{ scale: cardScale, clipPath }}
       className={`w-full aspect-video sm:aspect-4/3  cursor-pointer overflow-hidden rounded-md inset-0 m-auto max-w-7xl mx-auto`}
     >
       <PhotoProvider>

@@ -18,6 +18,22 @@ html {
   font-variation-settings: "slnt" 0;
 }
 
+::-webkit-scrollbar {
+  height: 5px;
+  width: 10px;
+  background: theme("colors.base-100");
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme("colors.secondary");
+  border-radius: 2px;
+  width: 12px;
+}
+
+::-webkit-scrollbar-corner {
+  background: theme("colors.base-100");
+}
+
 .rubik {
   font-family: "Rubik Mono One", monospace;
 

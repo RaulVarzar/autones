@@ -81,13 +81,19 @@ export const Card = ({
   const y = useTransform(scrollYProgress, [0.3, 1], ["0%", "-60%"]);
   return (
     <motion.div
-      className="relative w-full max-w-4xl mx-auto cursor-pointer rounded-xl"
+      className="relative w-full max-w-4xl mx-auto overflow-hidden cursor-pointer rounded-xl"
       onHoverStart={() => setHovering(id)}
       ref={cardRef}
       style={{ y }}
       transition={{ duration: 0.5, ease: "anticipate" }}
       layout
     >
+      {/* <motion.div
+        initial={{ x: "-100%" }}
+        whileInView={{ x: "0%" }}
+        transition={{ duration: 7, delay: 1 }}
+        className="absolute inset-x-0 z-20 w-11/12 h-2 mx-auto bottom-2 rounded-xl bg-secondary"
+      ></motion.div> */}
       <motion.div
         initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
         whileInView={{
@@ -107,7 +113,7 @@ export const Card = ({
         onClick={() => changeTopic(id)}
         className={`flex flex-col gap-2 border-neutral border relative bg-neutral-content h-full z-10 rounded-lg  p-6 md:p-10 transition-colors duration-300 ${
           selectedTopic === id
-            ? "bg-opacity-40 border-opacity-60 "
+            ? "bg-opacity-50 border-opacity-60 "
             : "bg-opacity-0 hover:bg-opacity-30 border-opacity-0"
         }
        `}

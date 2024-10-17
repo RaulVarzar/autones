@@ -3,6 +3,7 @@ import {
   AnimatePresence,
   motion,
   useInView,
+  useMotionTemplate,
   useScroll,
   useTransform,
 } from "framer-motion";
@@ -118,13 +119,18 @@ const AboutSection = ({ sectionIsActive }) => {
 
   ////////////////////
 
+  const clipPath1 = useTransform(scrollYProgress, [0, 0.65, 0.9], [30, 23, 0]);
+
+  const clipPath = useMotionTemplate`ellipse(60% ${clipPath1}% at 50% 102%)`;
+
   return (
     <motion.div>
+      <motion.div style={{ clipPath }}>
+        <div className="w-full bg-primary h-96"></div>
+      </motion.div>
       <motion.section
         // ref={sectionRef}
         style={{
-          borderTopLeftRadius: borderRadius,
-          borderTopRightRadius: borderRadius,
           borderBottomLeftRadius: sectionBorderRadius,
           borderBottomRightRadius: sectionBorderRadius,
           scale: exitScale,
