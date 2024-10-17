@@ -1,13 +1,6 @@
-import {
-  motion,
-  useInView,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
-const AboutCard = ({ visible, children, title, description }) => {
+const AboutCard = ({ visible, children, title, description, isFirst }) => {
   const cardVariants = {
     hidden: {
       opacity: 0,
@@ -21,7 +14,11 @@ const AboutCard = ({ visible, children, title, description }) => {
       filter: "blur(0px)",
       y: "0%",
       scale: 1,
-      transition: { ease: [0.25, 0.1, 0.25, 1], duration: 0.4 },
+      transition: {
+        ease: [0.25, 0.1, 0.25, 1],
+        duration: 0.4,
+        delay: isFirst && 0.65,
+      },
     },
   };
 
@@ -74,7 +71,7 @@ const AboutCard = ({ visible, children, title, description }) => {
         variants={cardVariants}
         initial="hidden"
         animate={visible ? "visible" : "hidden"}
-        className="flex flex-col items-center justify-center w-full h-full max-w-2xl px-4 py-5 text-center rounded-lg sm:px-6 sm:py-8 md:px-12 md:py-12 lg:py-16 xl:py-24 bg-secondary bg-opacity-50 text-balance "
+        className="flex flex-col items-center justify-center w-full h-full max-w-2xl px-4 py-5 text-center bg-opacity-50 rounded-lg sm:px-6 sm:py-8 md:px-12 md:py-12 lg:py-16 xl:py-24 bg-secondary text-balance "
       >
         <motion.span
           variants={iconVariants}
@@ -88,7 +85,7 @@ const AboutCard = ({ visible, children, title, description }) => {
           variants={titleVariants}
           initial="hidden"
           animate={visible ? "visible" : "hidden"}
-          className="sm:pb-2 text-xl font-bold leading-6 tracking-wide uppercase sm:pb-6 sm:text-3xl md:text-4xl xl:text-5xl"
+          className="text-xl font-bold leading-6 tracking-wide uppercase sm:pb-2 sm:text-3xl md:text-4xl xl:text-5xl"
         >
           {title}
         </motion.h1>

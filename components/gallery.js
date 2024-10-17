@@ -44,11 +44,11 @@ const Gallery = () => {
       <motion.section
         ref={ref}
         style={{ scale, y: animateY, opacity }}
-        className="   top-0 w-full overflow-visible px-2 py-4 mx-auto sm:py-20 lg:px-6  min-h-screen"
+        className="top-0 grid w-full min-h-screen px-2 py-4 mx-auto overflow-visible place-content-center sm:py-20 lg:px-6"
       >
         <motion.div
           style={{ scale: animateScale, y }}
-          className="  tp-[10vh] h-fit mx-auto  grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-screen-3xl"
+          className="  tp-[10vh] h-fit mx-auto grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-screen-3xl"
         >
           {imageList.map((image, index) => (
             <Photo key={index} index={index} image={image} />

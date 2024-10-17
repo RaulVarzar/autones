@@ -1,10 +1,17 @@
 import AboutCard from "./AboutCard";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useInView,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { GiPayMoney } from "react-icons/gi";
 import { MdOutlineAvTimer, MdHealthAndSafety } from "react-icons/md";
 import Contact from "./Contact";
 import useWidth from "lib/isMobile";
+import { BsChevronCompactDown } from "react-icons/bs";
 
 const AboutSection = ({ sectionIsActive }) => {
   const isMobile = useWidth();
@@ -34,7 +41,7 @@ const AboutSection = ({ sectionIsActive }) => {
 
   const sectionScale = useTransform(scrollYProgress, [0, 1], ["100%", "100%"]);
 
-  const borderRadius = useTransform(scrollYProgress, [0, 1], ["8vw", "0vw"]);
+  const borderRadius = useTransform(scrollYProgress, [0, 1], ["50%", "0%"]);
 
   // PROGRESS BAR
   const progressBarInView = useInView(progressBarHelper, {
@@ -48,20 +55,11 @@ const AboutSection = ({ sectionIsActive }) => {
   ///////////////////////////
 
   // Section title animations
-  const { scrollYProgress: titleHelperProgress } = useScroll({
-    target: titleHelper,
-    offset: ["start end", "start"],
+
+  const titleInView = useInView(titleHelper, {
+    margin: "1000% 0% -25% 0%",
   });
-  const rawTitleY = useTransform(
-    titleHelperProgress,
-    [0.1, 0.7],
-    ["20vh", "0vh"]
-  );
-  const titleScale = useTransform(
-    titleHelperProgress,
-    [0.1, 0.7],
-    ["150%", "100%"]
-  );
+
   ///////////////////////
 
   // Section Y offset before entering viewport
@@ -139,28 +137,60 @@ const AboutSection = ({ sectionIsActive }) => {
         <motion.div
           ref={aboutRef}
           style={{ x: aboutX }}
-          className="top-0 flex flex-col  gap-4 sm:gap-6 lg:gap-12 items-center w-full min-h-screen  overflow-hidden justify-evenly "
+          className="flex flex-col items-center justify-start w-full h-screen gap-4 overflow-hidden flex-nowrap sm:gap-6 lg:gap-12 "
         >
           <motion.div
-            style={{
-              y: rawTitleY,
-              x: titleExitX,
-              scale: !isMobile && titleScale,
+            initial={{ minHeight: "100vh" }}
+            animate={
+              titleInView ? { minHeight: "10vh" } : { minHeight: "100vh" }
+            }
+            transition={{
+              duration: 0.85,
+              delay: 0,
+              ease: [0.45, 0.45, 0.86, 0.85],
             }}
-            className="  text-4xl sm:text-5xl items-end  flex font-black uppercase opacity-90 tracking-wider max-sm:pt-16 sm:min-h-[20vh] md:text-7xl xl:text-8xl"
+            className={`flex flex-col items-center justify-center font-black tracking-wider uppercase  py-[5vh] sm:py-[10vh] lg:py-[12vh] max-sm:pt-16 `}
           >
-            <h1>Ce îți oferim</h1>
+            <motion.h1
+              className="text-4xl sm:text-5xl md:text-7xl xl:text-8xl"
+              initial={{ scale: 1.4 }}
+              animate={titleInView ? { scale: 1 } : { scale: 1.4 }}
+              transition={{
+                duration: 0.65,
+                delay: 0,
+                ease: [0.45, 0.45, 0.86, 0.85],
+              }}
+            >
+              Ce îți oferim
+            </motion.h1>
+            <AnimatePresence>
+              {!titleInView && (
+                <motion.div
+                  exit={{ y: "200%", opacity: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: 0,
+                    ease: [0.635, 0, 0.13, 1],
+                  }}
+                  className="absolute flex flex-col items-center justify-center gap-0 pt-12 bottom-12 opacity-70"
+                >
+                  <p className="text-2xl font-normal leading-4">Scroll</p>
+                  <BsChevronCompactDown className="text-3xl " />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
 
           <motion.div
-            className=" grow grid md:pt-12 place-items-start"
-            style={{ x: cardsExitX }}
+            layout
+            className="grid w-full py-2 grow place-content-center"
           >
-            <motion.div className="grid h-fit grid-cols-1 gap-2 sm:gap-4  px-4 md:px-6 lg:px-8 sm:grid-cols-3 md:gap-6 lg:gap-8 justify-evenly">
+            <motion.div className="grid grid-cols-1 gap-2 px-4 sm:gap-4 md:px-6 lg:px-8 sm:grid-cols-3 md:gap-6 lg:gap-8 justify-evenly">
               <AboutCard
                 title="Prețuri competitive"
                 description="Fără taxe ascunse"
                 visible={firstInView}
+                isFirst={true}
               >
                 <GiPayMoney />
               </AboutCard>
@@ -182,23 +212,23 @@ const AboutSection = ({ sectionIsActive }) => {
               </AboutCard>
             </motion.div>
           </motion.div>
+
           <ProgressBar progress={progressBar} visible={progressBarInView} />
         </motion.div>
-        {/* <motion.div style={{ filter: testBlur }}> */}
+
         <Contact
           showTestimonials={showTestimonialsContent}
           showContact={showContactContent}
         />
-        {/* </motion.div> */}
       </motion.section>
       {/* Helpers for tracking progress and animating elements */}
-      <div ref={titleHelper} className="h-[80vh] -z-50 "></div>
+      <div ref={titleHelper} className="-z-[50] h-[25vh] "></div>
       <motion.div ref={progressBarHelper} className="">
-        <div ref={firstRef} className="h-[40vh]"></div>
+        <div ref={firstRef} className="-z-[50] h-[40vh]"></div>
         <div ref={secondRef} className="h-[70vh] "></div>
         <div ref={thirdRef} className="h-[60vh] "></div>
       </motion.div>
-      <div ref={exitRef} className="h-[100vh] -z-50"></div>
+      <div ref={exitRef} className="h-[100vh] "></div>
       <motion.div
         ref={contactRef}
         className=" h-[70vh] bg-accent w-full "
@@ -228,6 +258,7 @@ const ProgressBar = ({ progress, visible }) => {
         stiffness: 70,
         mass: 0.3,
         damping: 6,
+        delay: 0.8,
       },
     },
   };
@@ -236,11 +267,11 @@ const ProgressBar = ({ progress, visible }) => {
       variants={progressBarVariants}
       initial="hidden"
       animate={visible ? "visible" : "hidden"}
-      className=" my-4  overflow-hidden h-3 flex items-start justify-start rounded-full w-10/12 max-w-7xl mx-auto bg-accent"
+      className="flex items-start justify-start w-10/12 h-3 mx-auto my-4 overflow-hidden rounded-full max-w-7xl bg-accent"
     >
       <motion.div
         style={{ x: progress }}
-        className="bg-secondary h-full w-full"
+        className="w-full h-full bg-secondary"
       ></motion.div>
     </motion.div>
   );

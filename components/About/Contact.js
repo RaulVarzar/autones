@@ -56,24 +56,25 @@ const Contact = ({ showTestimonials, showContact }) => {
       },
     },
   };
+
   return (
     <>
-      <div className="fixed top-0 -z-20 w-full h-full">
+      <div className="fixed top-0 w-full h-full -z-20">
         <AnimatePresence>
-          <motion.div className="flex flex-col justify-evenly  sm:justify-end items-stretch w-full h-full">
+          <motion.div className="flex flex-col items-stretch w-full h-full justify-evenly sm:justify-end">
             <motion.div className="flex items-center sm:grow pt-[10vh]">
               <AnimatePresence>
                 {showTestimonials && <Testimonials />}
               </AnimatePresence>
             </motion.div>
 
-            <div className=" text-right  w-full flex items-end gap-4 flex-col justify-end px-6 sm:px-10 md:px-16 lg:px-24 xl:px-24 pb-8 sm:pb-10 md:pb-12 lg:pb-16">
+            <div className="flex flex-col items-end justify-end w-full gap-4 px-6 pb-8 text-right  sm:px-10 md:px-16 lg:px-24 xl:px-24 sm:pb-10 md:pb-12 lg:pb-16">
               <motion.h1
                 initial="hidden"
                 animate={showContact ? "visible" : "exit"}
                 exit="exit"
                 variants={variants}
-                className="text-4xl  sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-wider"
+                className="text-4xl font-black tracking-wider uppercase sm:text-6xl md:text-7xl lg:text-8xl"
               >
                 Contact
               </motion.h1>
@@ -83,22 +84,22 @@ const Contact = ({ showTestimonials, showContact }) => {
                 animate={showContact ? "visible" : "exit"}
                 exit="exit"
                 variants={contactInfoVariants}
-                className="text-lg sm:text-2xl w-full max-w-screen-2xl gap-y-4  lg:text-2xl xl:text-3xl 2xl:text-4xl items-end justify-between  flex flex-col sm:flex-row sm:items-center  font-extralight tracking-wider text-base-content opacity-75"
+                className="flex flex-col items-end justify-between w-full text-lg tracking-wider opacity-75 sm:text-2xl max-w-screen-2xl gap-y-4 lg:text-2xl xl:text-3xl 2xl:text-4xl sm:flex-row sm:items-center font-extralight text-base-content"
               >
-                <h1 className="sm:py-6 sm:px-4  2xl:px-8 cursor-pointer ">
+                <h1 className="cursor-pointer sm:py-6 sm:px-4 2xl:px-8 ">
                   +40 744 540 583
                 </h1>
 
                 <div className="h-0.5 w-1/2 sm:w-10 bg-base-content opacity-20" />
-                <h1 className="sm:py-6 sm:px-4 2xl:px-8 cursor-pointer ">
+                <h1 className="cursor-pointer sm:py-6 sm:px-4 2xl:px-8 ">
                   tractari@autones.ro
                 </h1>
                 <div className="h-0.5 w-1/2 sm:w-10 bg-base-content opacity-20" />
-                <h1 className="sm:py-6 sm:px-4 2xl:px-8 cursor-pointer ">
+                <h1 className="cursor-pointer sm:py-6 sm:px-4 2xl:px-8 ">
                   facebook
                 </h1>
                 <div className="h-0.5 w-1/2 sm:w-10 bg-base-content opacity-20" />
-                <h1 className="sm:py-6 sm:px-4 2xl:px-8 cursor-pointer ">
+                <h1 className="cursor-pointer sm:py-6 sm:px-4 2xl:px-8 ">
                   instagram
                 </h1>
               </motion.div>
