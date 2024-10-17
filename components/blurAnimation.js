@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 const BlurInAnimation = ({ children }) => {
   const variants = {
     hidden: {
