@@ -17,7 +17,7 @@ const AboutCard = ({ visible, children, title, description, isFirst }) => {
       transition: {
         ease: [0.25, 0.1, 0.25, 1],
         duration: 0.4,
-        delay: isFirst && 0.65,
+        delay: isFirst && 0.45,
       },
     },
   };
@@ -71,13 +71,13 @@ const AboutCard = ({ visible, children, title, description, isFirst }) => {
         variants={cardVariants}
         initial="hidden"
         animate={visible ? "visible" : "hidden"}
-        className="flex flex-col items-center justify-center w-full h-full max-w-2xl px-4 py-5 text-center bg-opacity-50 rounded-lg sm:px-6 sm:py-8 md:px-12 md:py-12 lg:py-16 xl:py-24 bg-secondary text-balance "
+        className="flex flex-col items-center justify-center w-full h-full max-w-2xl px-4 py-5 text-center bg-opacity-50 rounded-lg sm:px-6 sm:py-8 md:px-12 md:py-12 lg:py-16 xl:py-24 bg-primary text-balance "
       >
         <motion.span
           variants={iconVariants}
           initial="hidden"
           animate={visible ? "visible" : "hidden"}
-          className="pb-3 text-4xl md:text-6xl sm:pb-4 lg:text-8xl"
+          className="pb-3 text-4xl md:text-6xl sm:pb-4 lg:text-7xl xl:text-8xl"
         >
           {children}
         </motion.span>
@@ -85,7 +85,7 @@ const AboutCard = ({ visible, children, title, description, isFirst }) => {
           variants={titleVariants}
           initial="hidden"
           animate={visible ? "visible" : "hidden"}
-          className="text-xl font-bold leading-6 tracking-wide uppercase sm:pb-2 sm:text-3xl md:text-4xl xl:text-5xl"
+          className="text-xl font-bold leading-6 tracking-wide uppercase sm:pb-2 sm:text-3xl md:text-4xl 2xl:text-5xl"
         >
           {title}
         </motion.h1>
@@ -93,7 +93,7 @@ const AboutCard = ({ visible, children, title, description, isFirst }) => {
           variants={subTitleVariants}
           initial="hidden"
           animate={visible ? "visible" : "hidden"}
-          className="text-base font-light leading-5 text-info-content sm:tracking-tight opacity-30 md:text-2xl lg:text-3xl"
+          className="text-base font-light leading-5 text-info-content sm:tracking-tight opacity-30 md:text-2xl xl:text-3xl"
         >
           {description}
         </motion.span>

@@ -6,22 +6,20 @@ const FormButton = ({ showForm, setShowForm }) => {
   return (
     <motion.div
       layout
-      initial={{ x: 50, opacity: 0 }}
+      initial={{ x: 100, opacity: 0 }}
       animate={{
         opacity: 1,
         x: 0,
         transition: {
-          delay: 0.52,
-          type: "spring",
-          duration: 0.8,
-          bounce: 0.3,
+          delay: 0.7,
+          duration: 1,
+          ease: [0.25, 0.1, 0.25, 1],
         },
       }}
-      style={{ borderRadius: "12px" }}
-      className={`max-w-2xl relative group overflow-hidden w-full grow  ${
-        !showForm
-          ? " bg-neutral-content hover:bg-accent-content transition-colors duration-300"
-          : " bg-accent-content"
+      style={{ backdropFilter: "brightness(120%)", borderRadius: "10px" }}
+      whileHover={!showForm && { backdropFilter: "brightness(160%)" }}
+      className={`max-w-2xl relative group overflow-hidden w-full grow rounded-xl ${
+        !showForm ? "  transition-colors duration-300" : " "
       }`}
     >
       <AnimatePresence mode="popLayout">
@@ -40,7 +38,9 @@ const FormButton = ({ showForm, setShowForm }) => {
             layoutId="form"
             className="relative flex flex-row items-center justify-center gap-2 px-4 py-6 cursor-pointer md:px-8 lg:px-12 md:py-12 sm:gap-4 "
           >
-            <MdOutlineMessage />
+            <span className="text-3xl">
+              <MdOutlineMessage />
+            </span>
             <span className="text-xl font-medium transition-opacity sm:text-2xl lg:text-3xl opacity-70 group-hover:opacity-100">
               Trimite-ne un mesaj
             </span>

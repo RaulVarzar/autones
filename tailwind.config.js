@@ -31,18 +31,18 @@ module.exports = {
       {
         black: {
           ...require("daisyui/src/theming/themes")["black"],
-          "base-100": "#090A0A",
-          "base-200": "#0e0f11",
-          "base-300": "#121416",
+          "base-100": "#0C0D0D",
+          "base-200": "##111113",
+          "base-300": "#131416",
 
           neutral: "#131718",
           "neutral-content": "#151719",
           "accent-content": "#17191c",
           "info-content": "#b5ada1",
 
-          accent: "#062220",
-          primary: "#062726",
-          secondary: "#092f2e",
+          accent: "#383A6B",
+          primary: "#464886",
+          secondary: "#51539A",
 
           error: "#FF6B6B",
         },

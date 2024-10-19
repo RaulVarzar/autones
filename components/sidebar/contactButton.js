@@ -12,17 +12,24 @@ export default function ContactButton({
   const [isHovering, setIsHovering] = useState(false);
 
   return (
-    <motion.a
+    <motion.div
       href={href}
       target="_blank"
-      layout
-      initial={{ x: 50, opacity: 0 }}
+      // layout
+      initial={{ opacity: 0, x: "50%" }}
       animate={{
         opacity: 1,
-        x: 0,
-        transition: { delay: 0.4, type: "spring", duration: 0.8, bounce: 0.3 },
+        x: "0%",
+        transition: {
+          delay: 0.4,
+          duration: 1,
+          ease: [0.25, 0.1, 0.25, 1],
+        },
       }}
-      className="relative flex flex-col items-center justify-center px-4 min-w-48 w-full grow py-1 overflow-hidden text-center cursor-pointer sm:gap-2 md:gap-4 sm:py-6 contact-btn sm:px-16 group transition-colors duration-300 hover:bg-accent-content bg-neutral-content rounded-2xl "
+      exit={{ opacity: 0, x: "50%" }}
+      style={{ backdropFilter: "brightness(120%)", borderRadius: "10px" }}
+      whileHover={{ backdropFilter: "brightness(160%)" }}
+      className="relative flex flex-col items-center justify-center px-4 min-w-48 w-full grow py-1 overflow-hidden text-center cursor-pointer sm:gap-2  sm:py-6 contact-btn sm:px-6 group transition-colors duration-300 rounded-2xl "
     >
       <motion.span layout className="pt-4 pb-1 text-4xl z-10">
         {icon}
@@ -38,6 +45,6 @@ export default function ContactButton({
         </motion.div>
       )}
       {/* </motion.div> */}
-    </motion.a>
+    </motion.div>
   );
 }

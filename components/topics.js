@@ -88,12 +88,6 @@ export const Card = ({
       transition={{ duration: 0.5, ease: "anticipate" }}
       layout
     >
-      {/* <motion.div
-        initial={{ x: "-100%" }}
-        whileInView={{ x: "0%" }}
-        transition={{ duration: 7, delay: 1 }}
-        className="absolute inset-x-0 z-20 w-11/12 h-2 mx-auto bottom-2 rounded-xl bg-secondary"
-      ></motion.div> */}
       <motion.div
         initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
         whileInView={{

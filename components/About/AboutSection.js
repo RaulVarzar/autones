@@ -11,6 +11,7 @@ import { useEffect, useRef, useState } from "react";
 import { GiPayMoney } from "react-icons/gi";
 import { MdOutlineAvTimer, MdHealthAndSafety } from "react-icons/md";
 import Contact from "./Contact";
+import RoundedTop from "./RoundedTop";
 import useWidth from "lib/isMobile";
 import { BsChevronCompactDown } from "react-icons/bs";
 
@@ -22,27 +23,14 @@ const AboutSection = ({ sectionIsActive }) => {
   const firstRef = useRef(null);
   const secondRef = useRef(null);
   const thirdRef = useRef(null);
-  const exitRef = useRef(null);
   const progressBarHelper = useRef(null);
 
-  // track if section is in fully in view
-  const isInView = useInView(aboutRef, { margin: "0% 0% -98% 0%" });
-  useEffect(() => {
-    if (isInView) {
-      sectionIsActive(true);
-    } else {
-      sectionIsActive(false);
-    }
-  }, [isInView]);
-
+  // track section progress coming into view
   const { scrollYProgress } = useScroll({
     target: aboutRef,
     offset: ["start end", "start"],
   });
-
-  const sectionScale = useTransform(scrollYProgress, [0, 1], ["100%", "100%"]);
-
-  const borderRadius = useTransform(scrollYProgress, [0, 1], ["50%", "0%"]);
+  ////////////////////////
 
   // PROGRESS BAR
   const progressBarInView = useInView(progressBarHelper, {
@@ -56,49 +44,43 @@ const AboutSection = ({ sectionIsActive }) => {
   ///////////////////////////
 
   // Section title animations
-
   const titleInView = useInView(titleHelper, {
     margin: "1000% 0% -25% 0%",
   });
-
   ///////////////////////
 
   // Section Y offset before entering viewport
-  const sectionY = useTransform(scrollYProgress, [0.3, 0.95], ["40vh", "0vh"]);
+  const titleY = useTransform(scrollYProgress, [0.3, 1], ["20vh", "0vh"]);
   //////////////////////
 
   // Tracking progress of helpers to display each card one by one
   const firstInView = useInView(firstRef, { margin: "300% 0% 0% 0%" });
-  const secondInView = useInView(secondRef, { margin: "300% 0% -10% 0%" });
+  const secondInView = useInView(secondRef, { margin: "300% 0% 0% 0%" });
   const thirdInView = useInView(thirdRef, { margin: "300% 0% -5% 0%" });
   ////////////////////
 
-  const { scrollYProgress: exitProgress } = useScroll({
-    target: exitRef,
-    offset: ["start end", "end"],
-  });
-
-  const aboutX = useTransform(exitProgress, [0, 1], ["0%", "-101%"]);
-
-  const titleExitX = useTransform(exitProgress, [0.1, 0.6], ["0%", "-90%"]);
-  const cardsExitX = useTransform(exitProgress, [0.1, 0.8], ["0%", "-25%"]);
-
   // About Section animations
   const contactRef = useRef(null);
-  const showTestimonialsContent = useInView(contactRef, {
-    margin: "0% 0% 12% 0%",
-  });
-  const showContactContent = useInView(contactRef, {
-    margin: "0% 0% -15% 0%",
-  });
+  const contactInView = useInView(contactRef, { margin: "300% 0% -20% 0%" });
+  //////////////////////////
+
   useEffect(() => {
-    if (showTestimonialsContent) {
+    if (contactInView) {
       setDark(true);
     } else {
       setDark(false);
     }
-  }, [showTestimonialsContent]);
+  }, [contactInView]);
   ///////////////////////
+
+  const isInView = useInView(aboutRef, { margin: "-1% 0% -98% 0%" });
+  useEffect(() => {
+    if (isInView && !contactInView) {
+      sectionIsActive(true);
+    } else {
+      sectionIsActive(false);
+    }
+  }, [isInView]);
 
   // Shring section when footer visible
   // const sectionRef = useRef(null);
@@ -106,28 +88,19 @@ const AboutSection = ({ sectionIsActive }) => {
     target: contactRef,
     offset: ["end", "end center"],
   });
-  const exitScale = useTransform(sectionExit, [0, 1], ["100%", "97%"]);
+  const contactY = useTransform(sectionExit, [0, 0.9], ["0px", "-75px"]);
+  const exitScale = useTransform(sectionExit, [0.3, 1], ["100%", "97%"]);
   const sectionBorderRadius = useTransform(
     sectionExit,
-    [0, 1],
-    ["0vh", "10vh"]
-  );
-  const testBlur = useTransform(
-    sectionExit,
-    (v) => `blur(${((v * 10) / 2).toFixed(0)}px)`
+    [0.05, 0.3, 1],
+    ["0vh", "5vh", "7vh"]
   );
 
   ////////////////////
 
-  const clipPath1 = useTransform(scrollYProgress, [0, 0.65, 0.9], [30, 23, 0]);
-
-  const clipPath = useMotionTemplate`ellipse(60% ${clipPath1}% at 50% 102%)`;
-
   return (
     <motion.div>
-      <motion.div style={{ clipPath }}>
-        <div className="w-full bg-primary h-96"></div>
-      </motion.div>
+      <RoundedTop scrollProgress={scrollYProgress} />
       <motion.section
         // ref={sectionRef}
         style={{
@@ -136,14 +109,30 @@ const AboutSection = ({ sectionIsActive }) => {
           scale: exitScale,
           // y: sectionY,
         }}
-        className={`sticky top-0 w-full overflow-hidden transition-colors duration-500 ${
-          dark ? "bg-base-200" : "bg-primary"
+        className={`sticky top-0 w-full overflow-hidden transition-colors delay-100 duration-500 ${
+          dark ? "bg-base-100" : "bg-accent"
         }`}
       >
         <motion.div
           ref={aboutRef}
-          style={{ x: aboutX }}
-          className="flex flex-col items-center justify-start w-full h-screen gap-4 overflow-hidden flex-nowrap sm:gap-6 lg:gap-12 "
+          initial={{ y: 0 }}
+          animate={
+            contactInView
+              ? { y: "-100%" }
+              : {
+                  y: 0,
+                  transition: {
+                    delay: 0.4,
+                    duration: 0.55,
+                    ease: [0.25, 0.1, 0.25, 1],
+                  },
+                }
+          }
+          transition={{
+            duration: 0.55,
+            ease: [0.25, 0.1, 0.25, 1],
+          }}
+          className="flex flex-col items-center  justify-start w-full h-screen gap-4 overflow-hidden flex-nowrap sm:gap-6 lg:gap-12 "
         >
           <motion.div
             initial={{ minHeight: "100vh" }}
@@ -151,9 +140,9 @@ const AboutSection = ({ sectionIsActive }) => {
               titleInView ? { minHeight: "10vh" } : { minHeight: "100vh" }
             }
             transition={{
-              duration: 0.85,
-              delay: 0,
-              ease: [0.45, 0.45, 0.86, 0.85],
+              duration: 0.55,
+              delay: 0.1,
+              ease: [0.15, 0.4, 0.65, 0.9],
             }}
             className={`flex flex-col items-center justify-center font-black tracking-wider uppercase  py-[5vh] sm:py-[10vh] lg:py-[12vh] max-sm:pt-16 `}
           >
@@ -162,9 +151,12 @@ const AboutSection = ({ sectionIsActive }) => {
               initial={{ scale: 1.4 }}
               animate={titleInView ? { scale: 1 } : { scale: 1.4 }}
               transition={{
-                duration: 0.65,
+                duration: 0.4,
+                ease: [0.15, 0.4, 0.65, 0.9],
                 delay: 0,
-                ease: [0.45, 0.45, 0.86, 0.85],
+              }}
+              style={{
+                y: titleY,
               }}
             >
               Ce îți oferim
@@ -221,23 +213,20 @@ const AboutSection = ({ sectionIsActive }) => {
 
           <ProgressBar progress={progressBar} visible={progressBarInView} />
         </motion.div>
-
-        <Contact
-          showTestimonials={showTestimonialsContent}
-          showContact={showContactContent}
-        />
+        <AnimatePresence mode="sync">
+          {contactInView && <Contact moveY={contactY} />}
+        </AnimatePresence>
       </motion.section>
       {/* Helpers for tracking progress and animating elements */}
       <div ref={titleHelper} className="-z-[50] h-[25vh] "></div>
       <motion.div ref={progressBarHelper} className="">
-        <div ref={firstRef} className="-z-[50] h-[40vh]"></div>
-        <div ref={secondRef} className="h-[70vh] "></div>
-        <div ref={thirdRef} className="h-[60vh] "></div>
+        <div ref={firstRef} className="-z-[50] h-[50vh]"></div>
+        <div ref={secondRef} className="h-[50vh] "></div>
+        <div ref={thirdRef} className="h-[50vh] bg-accent w-full"></div>
       </motion.div>
-      <div ref={exitRef} className="h-[100vh] "></div>
       <motion.div
         ref={contactRef}
-        className=" h-[70vh] bg-accent w-full "
+        className=" h-[50vh] bg-accent w-full "
       ></motion.div>
     </motion.div>
   );
@@ -273,11 +262,11 @@ const ProgressBar = ({ progress, visible }) => {
       variants={progressBarVariants}
       initial="hidden"
       animate={visible ? "visible" : "hidden"}
-      className="flex items-start justify-start w-10/12 h-3 mx-auto my-4 overflow-hidden rounded-full max-w-7xl bg-accent"
+      className="flex items-start justify-start w-10/12 h-2 mx-auto my-4 overflow-hidden rounded-full max-w-7xl backdrop-brightness-75"
     >
       <motion.div
         style={{ x: progress }}
-        className="w-full h-full bg-secondary"
+        className="w-full h-full bg-primary"
       ></motion.div>
     </motion.div>
   );

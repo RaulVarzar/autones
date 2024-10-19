@@ -32,10 +32,10 @@ const Footer = () => {
     >
       <motion.div
         style={{ scale, y, opacity }}
-        className="flex flex-col justify-center w-full gap-6 mb-8 gap-y-8 md:flex-row md:gap-24 h-fit "
+        className="flex flex-col justify-start w-full gap-6 mb-8 gap-y-8 md:flex-row md:gap-12 h-fit "
       >
         <div className="flex flex-col w-full md:items-end lg:w-1/2 max-md:text-center ">
-          <span className="text-2xl font-black tracking-wider uppercase max-md:text-center md:text-9xl">
+          <span className="text-3xl font-black  tracking-wider  leading-3 uppercase max-md:text-center md:text-9xl">
             Autones
           </span>
           <div className="md:text-right lg:max-w-md opacity-60">
@@ -49,44 +49,44 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <div className="flex flex-col w-full py-2 space-y-3 text-lg lg:w-1/2 justify-evenly md:space-y-8 ">
-          <div className="flex flex-col gap-2 max-md:mx-auto max-md:w-fit">
-            <span className="text-3xl leading-none max-md:text-center opacity-80">
+        <div className="flex flex-col w-full py-2 space-y-3 text-lg h-fit pt-8 lg:w-1/2 justify-center  md:space-y-4 lg:space-y-6 ">
+          <div className="flex flex-row gap-4 md:gap-6 items-center max-md:mx-auto max-md:w-fit">
+            {/* <span className="text-2xl leading-none max-md:text-center opacity-80">
               <FaPhoneAlt />
-            </span>
+            </span> */}
             <a
               href="tel:0744-765-543"
               aria-label="Our phone"
               title="Our phone"
-              className="text-xl font-semibold tracking-wide transition-colors duration-300 lg:text-3xl"
+              className="text-xl font-medium tracking-wide border-b-4 border-secondary pb-1 transition-colors duration-300 lg:text-3xl"
             >
               0744 765 543
             </a>
           </div>
-          <div className="flex flex-col gap-2 max-md:mx-auto max-md:w-fit">
-            <span className="text-3xl leading-none max-md:text-center opacity-80">
+          <div className="flex flex-row gap-4 md:gap-6 items-center max-md:mx-auto max-md:w-fit">
+            {/* <span className="text-2xl leading-none max-md:text-center opacity-80">
               <FaEnvelope />
-            </span>
+            </span> */}
             <a
               href="mailto:info@lorem.mail"
               aria-label="Our email"
               title="Our email"
-              className="text-xl font-semibold tracking-wide transition-colors duration-300 lg:text-3xl"
+              className="text-xl font-medium tracking-wide transition-colors pb-1 border-b-4 border-secondary duration-300 lg:text-3xl"
             >
               info@lorem.mail
             </a>
           </div>
-          <div className="flex flex-col gap-2 max-md:mx-auto max-md:w-fit">
-            <span className="text-3xl leading-none max-md:text-center opacity-80">
+          <div className="flex flex-row gap-4 md:gap-6 items-center max-md:mx-auto max-md:w-fit">
+            {/* <span className="text-2xl leading-none max-md:text-center opacity-80">
               <FaLocationDot />
-            </span>
+            </span> */}
             <a
               href="https://www.google.com/maps"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Adresa"
               title="Adresa noastra"
-              className="text-xl font-semibold tracking-wide transition-colors duration-300 lg:text-3xl"
+              className="text-xl font-medium tracking-wide transition-colors border-b-4 pb-1 border-secondary duration-300 lg:text-3xl"
             >
               Strada bla bla bla, nr 32
             </a>

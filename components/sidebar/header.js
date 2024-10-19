@@ -6,7 +6,7 @@ const Header = () => {
       layout="position"
       exit={{ opacity: 0, transition: { duration: 0.01 } }}
       key="hello"
-      className="flex flex-col justify-end gap-1 text-left"
+      className="flex flex-col justify-end  text-left"
     >
       <motion.span
         initial={{ opacity: 0, x: 30 }}
@@ -36,7 +36,7 @@ const Header = () => {
             bounce: 0.5,
           },
         }}
-        className="flex flex-col  justify-center text-2xl sm:text-3xl lg:text-4xl  tracking-wide uppercase"
+        className="flex flex-col  justify-center text-2xl sm:text-3xl lg:text-4xl font-bold tracking-wide uppercase"
       >
         Contactează-ne acum!
       </motion.span>

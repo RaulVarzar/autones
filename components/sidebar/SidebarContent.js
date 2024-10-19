@@ -1,6 +1,6 @@
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { useState } from "react";
-import ContactButton from "./contact-button";
+import ContactButton from "./contactButton";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiPhoneCall } from "react-icons/fi";
 import FormButton from "./formButton";
@@ -14,37 +14,37 @@ export default function SidebarContent({}) {
     <LayoutGroup>
       <motion.div
         layout
-        className="relative flex flex-col justify-start pt-2 pb-20 md:px-2 lg:px-8 gap-y-2 sm:gap-y-4 lg:gap-y-6 "
+        className="relative  flex flex-col justify-start pt-2 pb-16 md:px-2 gap-y-8 xl:pb-20 lg:px-12 2xl:px-16  "
       >
-        {" "}
         <Header />
-        <AnimatePresence mode="sync">
-          {!showForm && <Socials />}
-        </AnimatePresence>
-        <motion.div className="flex justify-center w-full h-full gap-4 px-0">
-          <motion.div className="flex flex-col w-full gap-4 ">
+
+        <div className="px-4 gap-3 flex flex-col">
+          <AnimatePresence>{!showForm && <Socials />}</AnimatePresence>
+
+          <AnimatePresence>
             {!showForm && (
-              <div className="flex flex-col items-center justify-center w-full gap-4 sm:flex-row h-fit">
+              <div className="flex flex-col items-center justify-center w-full gap-3 sm:flex-row h-fit">
                 <ContactButton
                   primary={"Telefon"}
                   secondary={"0743 483 293"}
-                  href={"tel:+40744840417"}
+                  href={"tel:+0743483293"}
                   icon={<FiPhoneCall />}
                   hideText={showForm}
                 />
 
                 <ContactButton
                   primary={"Whatsapp"}
-                  secondary={"Deschide Whatsapp"}
-                  href={"https://wa.me/+40744840417"}
+                  secondary={"0743 483 293"}
+                  href={"https://wa.me/0743483293"}
                   icon={<FaWhatsapp />}
                   hideText={showForm}
                 />
               </div>
             )}
-            <FormButton showForm={showForm} setShowForm={setShowForm} />
-          </motion.div>
-        </motion.div>
+          </AnimatePresence>
+
+          <FormButton showForm={showForm} setShowForm={setShowForm} />
+        </div>
       </motion.div>
     </LayoutGroup>
   );

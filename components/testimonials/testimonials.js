@@ -23,14 +23,16 @@ const titleVariants = {
     transition: {
       ease: [0.25, 0.1, 0.25, 1],
       duration: 0.7,
+      delay: 0.4,
     },
   },
   exit: {
-    y: "50%",
+    x: "-50%",
     opacity: 0,
     transition: {
       ease: "anticipate",
-      duration: 0.4,
+      duration: 0.2,
+      delay: 0.05,
     },
   },
 };
@@ -47,15 +49,15 @@ const subTitleVariants = {
     transition: {
       ease: [0.25, 0.1, 0.25, 1],
       duration: 0.7,
-      delay: 0.15,
+      delay: 0.55,
     },
   },
   exit: {
-    y: "50%",
+    x: "-50%",
     opacity: 0,
     transition: {
       ease: "anticipate",
-      duration: 0.4,
+      duration: 0.25,
     },
   },
 };
@@ -94,7 +96,7 @@ const Testimonials = ({ position }) => {
           variants={titleVariants}
           initial="hidden"
           animate="visible"
-          exit={{ x: 200, opacity: 0, transition: { delay: 0, duration: 0.2 } }}
+          exit="exit"
           className="text-xl sm:text-xl md:text-2xl lg:text-3xl text-info-content  xl:text-4xl font-medium leading-3 tracking-wide uppercase  text-balance"
         >
           Ce spun
@@ -103,11 +105,7 @@ const Testimonials = ({ position }) => {
           variants={subTitleVariants}
           initial="hidden"
           animate="visible"
-          exit={{
-            x: 250,
-            opacity: 0,
-            transition: { delay: 0.05, duration: 0.2 },
-          }}
+          exit="exit"
           className="text-3xl sm:text-3xl md:text-4xl lg:text-6xl  xl:text-7xl font-bold uppercase"
         >
           clientii nostri
@@ -116,13 +114,20 @@ const Testimonials = ({ position }) => {
       <motion.div
         initial={{ x: "110%" }}
         animate={{ x: 0 }}
+        exit={{
+          x: "80%",
+          opacity: 0,
+          transition: {
+            ease: "anticipate",
+            duration: 0.25,
+          },
+        }}
         transition={{
           ease: [0.25, 0.1, 0.25, 1],
           duration: 1.2,
-          delay: 0.3,
+          delay: 0.6,
         }}
         ref={constraintsRef}
-        exit={{ x: 300, opacity: 0, transition: { delay: 0.1, duration: 0.2 } }}
         className="flex flex-row w-full gap-16 p-2 overflow-hidden flex-nowrap "
       >
         <motion.div

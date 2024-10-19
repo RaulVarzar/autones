@@ -12,7 +12,7 @@ const Hero = () => {
 
   const opacity = useTransform(
     scrollYProgress,
-    [0.02, 0.15, 0.5],
+    [0.02, 0.15, 0.3],
     ["80%", "30%", "0%"]
   );
   const x = useTransform(scrollYProgress, [0.02, 0.45], ["0%", "-200%"]);
@@ -36,7 +36,7 @@ const Hero = () => {
 
   const subOpacity = useTransform(
     scrollYProgress,
-    [0.02, 0.2, 0.55],
+    [0.02, 0.2, 0.35],
     ["80%", "30%", "0%"]
   );
   const subX = useTransform(scrollYProgress, [0.02, 0.5], ["0%", "200%"]);

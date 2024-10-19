@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import Navbar from "components/navbar";
 import Hero from "../components/hero.js";
@@ -9,9 +8,9 @@ import Services from "../components/services.js";
 import AboutSection from "../components/About/AboutSection.js";
 
 export default function Home() {
-  useEffect(() => {
-    window.history.scrollRestoration = "manual";
-  }, []);
+  // useEffect(() => {
+  //   window.history.scrollRestoration = "manual";
+  // }, []);
 
   const [colored, setColored] = useState(false);
   return (

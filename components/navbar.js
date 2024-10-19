@@ -1,8 +1,5 @@
-"use client";
-import React, { useState } from "react";
 import { Logo } from "./logo";
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
-import Sidebar from "./sidebar/sidebar";
+import { motion } from "framer-motion";
 import SidebarToggle from "./SidebarToggle";
 
 const Navbar = ({ colored }) => {
