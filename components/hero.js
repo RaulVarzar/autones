@@ -7,7 +7,7 @@ const Hero = () => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.7", "end -1.75"],
+    offset: ["start 0.7", "start"],
   });
 
   const opacity = useTransform(
@@ -24,15 +24,11 @@ const Hero = () => {
 
   const mainOpacity = useTransform(
     scrollYProgress,
-    [0.35, 0.65],
+    [0.3, 0.65],
     ["100%", "0%"]
   );
-  const mainScale = useTransform(
-    scrollYProgress,
-    [0.35, 0.9],
-    ["100%", "120%"]
-  );
-  const mainY = useTransform(scrollYProgress, [0.65, 0.95], ["0vh", "-0vh"]);
+  const mainScale = useTransform(scrollYProgress, [0, 0.65], ["100%", "130%"]);
+  const mainY = useTransform(scrollYProgress, [0, 0.95], ["0vh", "-0vh"]);
 
   const subOpacity = useTransform(
     scrollYProgress,
@@ -42,7 +38,7 @@ const Hero = () => {
   const subX = useTransform(scrollYProgress, [0.02, 0.5], ["0%", "200%"]);
   const springSubX = useSpring(subX, { stiffness: 100, damping: 8, mass: 0.1 });
 
-  const subTitleScale = useTransform(scrollYProgress, [0, 1], ["100%", "80%"]);
+  const sectionY = useTransform(scrollYProgress, [0, 1], ["0vh", "-40vh"]);
 
   const descOpacity = useTransform(
     scrollYProgress,
@@ -54,7 +50,10 @@ const Hero = () => {
   return (
     <>
       <motion.div className="sm:sticky top-0  h-[70vh] -z-0 flex flex-col items-center overflow-x-hidden justify-end w-full gap-2 px-6 text-center md:gap-6 max-w-8xl sm:px-8 md:px-12 lg:px-24 ">
-        <motion.div className="sticky top-0 flex flex-col justify-center w-full h-5/6 max-w-7xl ">
+        <motion.div
+          style={{ y: sectionY }}
+          className=" flex  flex-col justify-center w-full h-5/6 max-w-7xl "
+        >
           <motion.h1
             initial={{ x: "-50%", opacity: 0 }}
             animate={{ x: "0%", opacity: 1 }}

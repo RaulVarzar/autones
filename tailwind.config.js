@@ -38,7 +38,7 @@ module.exports = {
           neutral: "#131718",
           "neutral-content": "#151719",
           "accent-content": "#17191c",
-          "info-content": "#b5ada1",
+          "info-content": "#c9c3ba",
 
           accent: "#383A6B",
           primary: "#464886",

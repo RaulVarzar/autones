@@ -47,7 +47,7 @@ export const Topic = ({ selectedTopic, changeTopic }) => {
       <motion.div
         onHoverEnd={() => setHovering(false)}
         ref={ref}
-        className="grid grid-cols-1 gap-4 mx-auto mt-4 mb-24 md:gap-8 lg:grid-cols-3 sm:mt-12 max-w-7xl"
+        className="grid grid-cols-1 gap-4 mx-auto mt-2 mb-24 md:gap-6 lg:grid-cols-3 sm:mt-4 md:mt-8 xl:mt-10 max-w-7xl"
       >
         {TOPICS.map((item, i) => (
           <Card
@@ -81,7 +81,7 @@ export const Card = ({
   const y = useTransform(scrollYProgress, [0.3, 1], ["0%", "-60%"]);
   return (
     <motion.div
-      className="relative w-full max-w-4xl mx-auto overflow-hidden cursor-pointer rounded-xl"
+      className="relative w-full max-w-4xl  mx-auto overflow-hidden cursor-pointer rounded-2xl"
       onHoverStart={() => setHovering(id)}
       ref={cardRef}
       style={{ y }}
@@ -105,9 +105,9 @@ export const Card = ({
         animate={selectedTopic === id ? { scale: 1.03 } : { scale: 1 }}
         transition={{ duration: 0.4 }}
         onClick={() => changeTopic(id)}
-        className={`flex flex-col gap-2 border-neutral border relative bg-neutral-content h-full z-10 rounded-lg  p-6 md:p-10 transition-colors duration-300 ${
+        className={`flex flex-col gap-2 border-neutral border relative bg-neutral-content h-full z-10   p-6 md:p-10 transition-colors duration-300 ${
           selectedTopic === id
-            ? "bg-opacity-50 border-opacity-60 "
+            ? "bg-opacity-80 border-opacity-60 "
             : "bg-opacity-0 hover:bg-opacity-30 border-opacity-0"
         }
        `}
