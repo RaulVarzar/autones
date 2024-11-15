@@ -15,7 +15,7 @@ const Services = () => {
   const isMobile = useWidth();
 
   const imageRef = useRef(null);
-  const [selectedTopic, setSelectedTopic] = useState(0);
+  const [selectedTopic, setSelectedTopic] = useState(1);
 
   function changeTopic(topic) {
     setSelectedTopic(topic);
@@ -26,7 +26,7 @@ const Services = () => {
     offset: ["start 0.7", "end start"],
   });
   const customScale = isMobile ? "70%" : "40%";
-  const scale = useTransform(scrollYProgress, [0, 0.32], [customScale, "100%"]);
+  const scale = useTransform(scrollYProgress, [0, 0.3], [customScale, "100%"]);
 
   const borderRadius = useTransform(scrollYProgress, [0, 0.3], ["8vw", "1vw"]);
   const rawY = useTransform(scrollYProgress, [0.82, 1], ["0vh", "-8vh"]);

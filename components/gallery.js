@@ -48,11 +48,11 @@ const Gallery = () => {
       <motion.section
         ref={ref}
         style={{ scale, y: animateY }}
-        className="top-0 grid w-full  min-h-screen px-2 py-4 mx-auto overflow-visible place-content-center sm:py-20 lg:px-6"
+        className="top-0 grid w-full border border-info min-h-screen px-2 py-4 mx-auto overflow-visible place-content-center sm:py-20 lg:px-6"
       >
         <motion.div
           style={{ scale: animateScale, y }}
-          className="  tp-[10vh] h-fit mx-auto grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-screen-3xl"
+          className="  tp-[10vh] h-fit mx-auto border border-warning grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 sm:gap-2 lg:gap-4 max-w-screen-3xl"
         >
           {imageList.map((image, index) => (
             <Photo
@@ -105,56 +105,36 @@ const Photo = ({ image, index, active, setActive }) => {
 
   const { scrollYProgress: clipPathProgress } = useScroll({
     target: imageRef,
-    offset: ["start end", "0.8 end"],
+    offset: ["start end", " 0.9 end"],
   });
-  const clipPath1 = useTransform(clipPathProgress, [0, 1], [30, 0]);
+  const clipPath1 = useTransform(clipPathProgress, [0, 1], [20, 0]);
   const clipPath2 = useTransform(clipPathProgress, [0, 1], [70, 100]);
 
   const clipPath = useMotionTemplate`polygon(0% ${clipPath1}% , 100% ${clipPath1}%,100% ${clipPath2}% , 0% ${clipPath2}% )`;
 
   return (
-    <motion.div className="p-1.5  relative rounded-2xl overflow-hidden">
-      <AnimatePresence>
-        {active === index && (
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{
-              scale: 1,
-              opacity: 1,
-              transition: { delay: 0, duration: 0.3 },
-            }}
-            exit={{
-              scale: 0.9,
-              opacity: 0.8,
-              transition: { delay: 0, duration: 0.5 },
-            }}
-            className="absolute w-full h-full inset-0 bg-primary rounded-xl"
-          ></motion.div>
-        )}
-      </AnimatePresence>
-      <motion.div
-        ref={imageRef}
-        style={{ scale: cardScale, clipPath }}
-        onHoverStart={() => setActive(index)}
-        onHoverEnd={() => setActive(null)}
-        className={`w-full aspect-video sm:aspect-4/3 border-3 border-base-100 relative cursor-pointer overflow-hidden rounded-xl m-auto max-w-7xl mx-auto`}
-      >
-        <PhotoProvider>
-          <PhotoView src={image.default.src}>
-            <motion.img
-              variants={variants}
-              initial="hidden"
-              animate={imgInView ? "visible" : "hidden"}
-              src={image.default.src}
-              alt={`image-${image.default.src}`}
-              style={{ y, scale: 1.2 }}
-              whileHover={{ scale: 1.25 }}
-              transition={{ duration: 0.3 }}
-              className="object-cover w-full h-full "
-            />
-          </PhotoView>
-        </PhotoProvider>
-      </motion.div>{" "}
+    <motion.div
+      ref={imageRef}
+      style={{ scale: cardScale, clipPath }}
+      onHoverStart={() => setActive(index)}
+      onHoverEnd={() => setActive(null)}
+      className={`w-full aspect-video sm:aspect-4/3 border-3 border-base-100 relative cursor-pointer overflow-hidden rounded-xl m-auto max-w-7xl mx-auto`}
+    >
+      <PhotoProvider>
+        <PhotoView src={image.default.src}>
+          <motion.img
+            variants={variants}
+            initial="hidden"
+            animate={imgInView ? "visible" : "hidden"}
+            src={image.default.src}
+            alt={`image-${image.default.src}`}
+            style={{ y, scale: 1.2 }}
+            whileHover={{ scale: 1.25 }}
+            transition={{ duration: 0.3 }}
+            className="object-cover w-full h-full "
+          />
+        </PhotoView>
+      </PhotoProvider>
     </motion.div>
   );
 };

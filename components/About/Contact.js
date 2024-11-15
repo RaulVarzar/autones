@@ -32,22 +32,15 @@ const Contact = ({ moveY }) => {
   const contactInfoVariants = {
     hidden: {
       opacity: 0,
-      y: "70%",
-      filter: "blur(10px)",
     },
     visible: {
       opacity: 1,
-      y: "0%",
-      filter: "blur(0px)",
-
       transition: {
-        ease: [0.25, 0.1, 0.25, 1],
-        delay: 1,
-        duration: 0.8,
+        staggerChildren: 0.2,
+        delayChildren: 1,
       },
     },
     exit: {
-      y: "80%",
       opacity: 0,
       transition: {
         ease: "anticipate",
@@ -68,13 +61,13 @@ const Contact = ({ moveY }) => {
           {/* </AnimatePresence> */}
         </div>
 
-        <div className="flex flex-col items-end justify-end w-full gap-4 px-6 pb-8 text-right  sm:px-10 md:px-16 lg:px-24 xl:px-24 sm:pb-10 md:pb-12 lg:pb-16">
+        <div className="flex flex-col  items-end  border justify-end w-full gap-4 px-6 pb-8 text-right md:gap-4 lg:gap-8 xl:gap-10 sm:px-10 md:px-16 lg:px-24 xl:px-24 sm:pb-10 md:pb-12 lg:pb-16">
           <motion.h1
             initial="hidden"
             animate="visible"
             exit="exit"
             variants={variants}
-            className="text-4xl font-black tracking-wider uppercase sm:text-6xl md:text-7xl lg:text-8xl"
+            className="text-4xl font-black  tracking-wider uppercase sm:text-6xl md:text-7xl lg:text-8xl"
           >
             Contact
           </motion.h1>
@@ -84,24 +77,24 @@ const Contact = ({ moveY }) => {
             animate="visible"
             exit="exit"
             variants={contactInfoVariants}
-            className="flex flex-col items-end justify-between w-full text-lg tracking-wider opacity-75 sm:text-2xl max-w-screen-2xl gap-y-4 lg:text-2xl xl:text-3xl 2xl:text-4xl sm:flex-row sm:items-center font-extralight text-base-content"
+            className="flex flex-col items-end  overflow-hidden  w-full justify-end gap-6 md:gap-8 lg:gap-10  sm:flex-row sm:items-end "
           >
-            <h1 className="cursor-pointer sm:py-6 sm:px-4 xl:px-6 ">
-              +40 744 540 583
-            </h1>
-
-            <div className="h-3 w-3 rounded-xl bg-secondary " />
-            <h1 className="cursor-pointer sm:py-6 sm:px-4 xl:px-6 ">
-              tractari@autones.ro
-            </h1>
-            <div className="h-3 w-3 rounded-xl bg-secondary " />
-            <h1 className="cursor-pointer sm:py-6 sm:px-4 xl:px-6 ">
-              facebook
-            </h1>
-            <div className="h-3 w-3 rounded-xl bg-secondary " />
-            <h1 className="cursor-pointer sm:py-6 sm:px-4 xl:px-6 ">
-              instagram
-            </h1>
+            <ContactLink
+              title={"phone"}
+              content={"+40 744 540 583"}
+              link={""}
+            />
+            <ContactLink
+              title={"e-mail"}
+              content={"tractari@autones.ro"}
+              link={""}
+            />
+            <ContactLink
+              title={"facebook"}
+              content={"Autones Tractari"}
+              link={""}
+            />
+            <ContactLink title={"instagram"} content={"@autones"} link={""} />
           </motion.div>
         </div>
       </motion.div>
@@ -110,3 +103,32 @@ const Contact = ({ moveY }) => {
 };
 
 export default Contact;
+
+const ContactLink = ({ title, link, content }) => {
+  const childrenVariants = {
+    hidden: { y: "100%", filter: "blur(10px)" },
+    visible: {
+      y: "0%",
+      filter: "blur(0px)",
+      transition: { ease: [0.25, 0.1, 0.25, 1], duration: 0.7 },
+    },
+    exit: { y: "80%" },
+  };
+
+  return (
+    <motion.a
+      href={link}
+      className="flex flex-col rounded-xl py-5 px-6 w-fit items-start  "
+    >
+      <motion.h1
+        variants={childrenVariants}
+        className="cursor-pointer text-2xl md:text-3xl xl:text-4xl tracking-wide font-medium"
+      >
+        {content}
+      </motion.h1>
+      <motion.h3 className="font-extralight text-base opacity-6 text-secondary brightness-150">
+        {title}
+      </motion.h3>
+    </motion.a>
+  );
+};

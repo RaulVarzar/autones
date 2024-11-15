@@ -192,21 +192,22 @@ const AboutSection = ({ sectionIsActive }) => {
               >
                 <GiPayMoney />
               </AboutCard>
-              <AboutCard
-                title="Disponibilitate non-stop"
-                description="24 de ore pe zi, 7 zile pe săptămână, 365 de zile pe an"
-                visible={secondInView}
-              >
-                <MdOutlineAvTimer />
-              </AboutCard>
 
               <AboutCard
                 title="Siguranță și încredere"
                 description="Când apelezi la noi, știi că mașina ta va ajunge la
                 destinație in cel mai scurt timp și în condiții de siguranță"
-                visible={thirdInView}
+                visible={secondInView}
               >
                 <MdHealthAndSafety />
+              </AboutCard>
+
+              <AboutCard
+                title="Disponibilitate non-stop"
+                description="24 de ore pe zi, 7 zile pe săptămână, 365 de zile pe an"
+                visible={thirdInView}
+              >
+                <MdOutlineAvTimer />
               </AboutCard>
             </motion.div>
           </motion.div>

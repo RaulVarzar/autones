@@ -39,7 +39,7 @@ export const Topic = ({ selectedTopic, changeTopic }) => {
   });
 
   const scale = useTransform(contentSpring, [0, 1], ["85%", "100%"]);
-  const y = useTransform(contentSpring, [0, 1], ["12vh", "0vh"]);
+  const sectionY = useTransform(contentSpring, [0, 1], ["10vh", "0vh"]);
   const [selectedTab, setSelectedTab] = useState(TOPICS[0]);
 
   return (
@@ -47,6 +47,7 @@ export const Topic = ({ selectedTopic, changeTopic }) => {
       <motion.div
         onHoverEnd={() => setHovering(false)}
         ref={ref}
+        style={{ y: sectionY }}
         className="grid grid-cols-1 gap-4 mx-auto mt-2 mb-24 md:gap-6 lg:grid-cols-3 sm:mt-4 md:mt-8 xl:mt-10 max-w-7xl"
       >
         {TOPICS.map((item, i) => (
@@ -81,12 +82,11 @@ export const Card = ({
   const y = useTransform(scrollYProgress, [0.3, 1], ["0%", "-60%"]);
   return (
     <motion.div
-      className="relative w-full max-w-4xl  mx-auto overflow-hidden cursor-pointer rounded-2xl"
+      className="relative w-full max-w-4xl  mx-auto  cursor-pointer "
       onHoverStart={() => setHovering(id)}
       ref={cardRef}
       style={{ y }}
       transition={{ duration: 0.5, ease: "anticipate" }}
-      layout
     >
       <motion.div
         initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
@@ -100,28 +100,28 @@ export const Card = ({
             ease: [0.25, 0.1, 0.25, 1],
           },
         }}
-        layout
+        // layout
         viewport={{ once: true, margin: "-10%" }}
         animate={selectedTopic === id ? { scale: 1.03 } : { scale: 1 }}
         transition={{ duration: 0.4 }}
         onClick={() => changeTopic(id)}
-        className={`flex flex-col gap-2 border-neutral border relative bg-neutral-content h-full z-10   p-6 md:p-10 transition-colors duration-300 ${
+        className={`flex flex-col gap-2 border-base-content border rounded-2xl relative bg-neutral-content h-full z-10 group  p-6 md:p-10 transition-colors duration-300 ${
           selectedTopic === id
-            ? "bg-opacity-80 border-opacity-60 "
-            : "bg-opacity-0 hover:bg-opacity-30 border-opacity-0"
+            ? "bg-opacity-60 border-opacity-15"
+            : "bg-opacity-15 hover:bg-opacity-40 border-opacity-5 "
         }
        `}
       >
         <div
-          className={`text-2xl lg:text-3xl 2xl:text-4xl text-balance tracking-wide leading-none text-center uppercase whitespace-normal transition-opacity duration-300 stat-value md:text-4xl ${
-            selectedTopic === id ? "opacity-100" : "opacity-75"
+          className={`text-2xl lg:text-3xl 2xl:text-4xl text-balance group-hover:opacity-100 tracking-wide leading-none text-center uppercase whitespace-normal transition-opacity duration-300 stat-value md:text-4xl ${
+            selectedTopic === id ? "opacity-100" : "opacity-80"
           }`}
         >
           {title}
         </div>
         <div
-          className={`mx-auto text-md text-pretty leading-tight text-info-content text-center whitespace-normal sm:text-base md:text-lg stat-desc xl:text-xl transition-opacity duration-300 max-w-72 md:max-w-80 ${
-            selectedTopic === id ? "opacity-100" : "opacity-70"
+          className={`mx-auto text-md text-pretty leading-tight text-info-content  group-hover:opacity-100 text-center whitespace-normal sm:text-base md:text-lg stat-desc xl:text-xl transition-opacity duration-300 max-w-72 md:max-w-80 ${
+            selectedTopic === id ? "opacity-100" : "opacity-75"
           }`}
         >
           {description}

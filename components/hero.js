@@ -1,4 +1,10 @@
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionTemplate,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { useRef } from "react";
 import splitStringUsingRegex from "../utils/splitStrings";
 
@@ -7,49 +13,39 @@ const Hero = () => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.7", "start"],
+    offset: ["start 0.7", "end start"],
   });
 
-  const opacity = useTransform(
+  const supOpacity = useTransform(
     scrollYProgress,
-    [0.02, 0.15, 0.3],
+    [0.02, 0.11, 0.25],
     ["80%", "30%", "0%"]
   );
-  const x = useTransform(scrollYProgress, [0.02, 0.45], ["0%", "-200%"]);
-  const springX = useSpring(x, {
-    stiffness: 100,
-    damping: 8,
-    mass: 0.1,
-  });
+  const supX = useTransform(scrollYProgress, [0.02, 0.45], ["0%", "-50%"]);
 
   const mainOpacity = useTransform(
     scrollYProgress,
-    [0.3, 0.65],
-    ["100%", "0%"]
+    [0.45, 0.65],
+    ["100%", "100%"]
   );
-  const mainScale = useTransform(scrollYProgress, [0, 0.65], ["100%", "130%"]);
-  const mainY = useTransform(scrollYProgress, [0, 0.95], ["0vh", "-0vh"]);
+  const mainScale = useTransform(scrollYProgress, [0, 0.6], ["100%", "80%"]);
+  const mainY = useTransform(scrollYProgress, [0.6, 1], ["0vh", "-12vh"]);
 
   const subOpacity = useTransform(
     scrollYProgress,
-    [0.02, 0.2, 0.35],
+    [0.02, 0.1, 0.22],
     ["80%", "30%", "0%"]
   );
-  const subX = useTransform(scrollYProgress, [0.02, 0.5], ["0%", "200%"]);
-  const springSubX = useSpring(subX, { stiffness: 100, damping: 8, mass: 0.1 });
+  const subX = useTransform(scrollYProgress, [0.02, 0.5], ["0%", "50%"]);
 
-  const sectionY = useTransform(scrollYProgress, [0, 1], ["0vh", "-40vh"]);
+  const sectionY = useTransform(scrollYProgress, [0, 1], ["0vh", "-20vh"]);
 
-  const descOpacity = useTransform(
-    scrollYProgress,
-    [0.15, 0.45],
-    ["60%", "0%"]
-  );
+  const titleBlurRaw = useTransform(scrollYProgress, [0.1, 0.8], [0, 10]);
+  const filter = useMotionTemplate`blur(${titleBlurRaw}px)`;
 
-  const TITLE = splitStringUsingRegex("Tractări auto");
   return (
     <>
-      <motion.div className="sm:sticky top-0  h-[70vh] -z-0 flex flex-col items-center overflow-x-hidden justify-end w-full gap-2 px-6 text-center md:gap-6 max-w-8xl sm:px-8 md:px-12 lg:px-24 ">
+      <motion.div className="sm:stick top-0 border h-[70vh] -z-0 flex flex-col items-center overflow-x-hidden justify-end w-full gap-2 px-6 text-center md:gap-6 max-w-8xl sm:px-8 md:px-12 lg:px-24 ">
         <motion.div
           style={{ y: sectionY }}
           className=" flex  flex-col justify-center w-full h-5/6 max-w-7xl "
@@ -62,14 +58,19 @@ const Hero = () => {
               delay: 2.2,
             }}
             viewport={{ once: true }}
-            style={{ opacity, x: springX }}
+            style={{ opacity: supOpacity, x: supX }}
             className="text-2xl sm:text-3xl font-bold text-info-content tracking-wide uppercase md:text-4xl lg:text-6xl  place-self-start"
           >
             Tractări auto
           </motion.h1>
           <motion.div
-            style={{ opacity: mainOpacity, scale: mainScale, y: mainY }}
-            className="pb-1 overflow-hidden place-self-center"
+            style={{
+              opacity: mainOpacity,
+              scale: mainScale,
+              // y: mainY,
+              filter,
+            }}
+            className="pb-1 overflow-hidden place-self-center "
           >
             <motion.h2
               initial={{ y: "150%" }}
@@ -88,7 +89,7 @@ const Hero = () => {
             </motion.h2>
           </motion.div>
           <motion.div
-            style={{ opacity: subOpacity, x: springSubX }}
+            style={{ opacity: subOpacity, x: subX }}
             className="place-self-end"
           >
             <motion.h2

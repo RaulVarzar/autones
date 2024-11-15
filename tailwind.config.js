@@ -32,7 +32,7 @@ module.exports = {
         black: {
           ...require("daisyui/src/theming/themes")["black"],
           "base-100": "#0C0D0D",
-          "base-200": "##111113",
+          "base-200": "#111113",
           "base-300": "#131416",
 
           neutral: "#131718",
