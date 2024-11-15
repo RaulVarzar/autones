@@ -99,7 +99,7 @@ const AboutSection = ({ sectionIsActive }) => {
   ////////////////////
 
   return (
-    <motion.div>
+    <motion.div className="relative z-50 ">
       <RoundedTop scrollProgress={scrollYProgress} />
       <motion.section
         // ref={sectionRef}
@@ -132,19 +132,19 @@ const AboutSection = ({ sectionIsActive }) => {
             duration: 0.55,
             ease: [0.25, 0.1, 0.25, 1],
           }}
-          className="flex flex-col items-center  justify-start w-full h-screen gap-4 overflow-hidden flex-nowrap sm:gap-6 lg:gap-12 "
+          className="flex flex-col items-center justify-start w-full h-screen gap-4 overflow-hidden flex-nowrap sm:gap-6 lg:gap-12 "
         >
           <motion.div
             initial={{ minHeight: "100vh" }}
             animate={
-              titleInView ? { minHeight: "10vh" } : { minHeight: "100vh" }
+              titleInView ? { minHeight: "20vh" } : { minHeight: "100vh" }
             }
             transition={{
               duration: 0.55,
               delay: 0.1,
               ease: [0.15, 0.4, 0.65, 0.9],
             }}
-            className={`flex flex-col items-center justify-center font-black tracking-wider uppercase  py-[5vh] sm:py-[10vh] lg:py-[12vh] max-sm:pt-16 `}
+            className={`flex flex-col  items-center justify-center font-black tracking-wider uppercase  sm:py-[10vh] lg:py-[12vh] max-sm:pt-24 `}
           >
             <motion.h1
               className="text-4xl sm:text-5xl md:text-7xl xl:text-8xl"
@@ -179,11 +179,8 @@ const AboutSection = ({ sectionIsActive }) => {
             </AnimatePresence>
           </motion.div>
 
-          <motion.div
-            layout
-            className="grid w-full py-2 grow place-content-center"
-          >
-            <motion.div className="grid grid-cols-1 gap-2 px-4 sm:gap-4 md:px-6 lg:px-8 sm:grid-cols-3 md:gap-6 lg:gap-8 justify-evenly">
+          <motion.div layout className="grid w-full py-2 grow">
+            <motion.div className="grid grid-cols-1 gap-2 px-4 lg:h-full sm:gap-4 md:px-6 lg:px-8 lg:grid-cols-3 md:gap-6 lg:gap-8 justify-evenly">
               <AboutCard
                 title="Prețuri competitive"
                 description="Fără taxe ascunse"
@@ -221,9 +218,12 @@ const AboutSection = ({ sectionIsActive }) => {
       {/* Helpers for tracking progress and animating elements */}
       <div ref={titleHelper} className="-z-[50] h-[25vh] "></div>
       <motion.div ref={progressBarHelper} className="">
-        <div ref={firstRef} className="-z-[50] h-[50vh]"></div>
-        <div ref={secondRef} className="h-[50vh] "></div>
-        <div ref={thirdRef} className="h-[50vh] bg-accent w-full"></div>
+        <div ref={firstRef} className="-z-[50] h-[30vh] sm:h-[50vh]"></div>
+        <div ref={secondRef} className="sm:h-[50vh] h-[30vh]"></div>
+        <div
+          ref={thirdRef}
+          className="sm:h-[50vh] h-[30vh] bg-accent w-full"
+        ></div>
       </motion.div>
       <motion.div
         ref={contactRef}

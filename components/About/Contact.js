@@ -15,7 +15,7 @@ const Contact = ({ moveY }) => {
       transition: {
         ease: [0.25, 0.1, 0.25, 1],
         duration: 0.75,
-        delay: 0.85,
+        delay: 1,
       },
     },
     exit: {
@@ -36,8 +36,8 @@ const Contact = ({ moveY }) => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 1,
+        staggerChildren: 0.15,
+        delayChildren: 1.1,
       },
     },
     exit: {
@@ -61,13 +61,13 @@ const Contact = ({ moveY }) => {
           {/* </AnimatePresence> */}
         </div>
 
-        <div className="flex flex-col  items-end  border justify-end w-full gap-4 px-6 pb-8 text-right md:gap-4 lg:gap-8 xl:gap-10 sm:px-10 md:px-16 lg:px-24 xl:px-24 sm:pb-10 md:pb-12 lg:pb-16">
+        <div className="flex flex-col items-end justify-end w-full gap-1 px-6 pb-8 text-right md:gap-2 sm:px-10 md:px-16 lg:px-24 xl:px-24 sm:pb-10 md:pb-12 lg:pb-16">
           <motion.h1
             initial="hidden"
             animate="visible"
             exit="exit"
             variants={variants}
-            className="text-4xl font-black  tracking-wider uppercase sm:text-6xl md:text-7xl lg:text-8xl"
+            className="text-4xl font-black tracking-wider uppercase sm:text-6xl md:text-7xl lg:text-8xl"
           >
             Contact
           </motion.h1>
@@ -77,7 +77,7 @@ const Contact = ({ moveY }) => {
             animate="visible"
             exit="exit"
             variants={contactInfoVariants}
-            className="flex flex-col items-end  overflow-hidden  w-full justify-end gap-6 md:gap-8 lg:gap-10  sm:flex-row sm:items-end "
+            className="flex flex-col items-end justify-end w-full gap-6 overflow-hidden md:gap-8 lg:gap-8 sm:flex-row-reverse sm:justify-start "
           >
             <ContactLink
               title={"phone"}
@@ -89,12 +89,8 @@ const Contact = ({ moveY }) => {
               content={"tractari@autones.ro"}
               link={""}
             />
-            <ContactLink
-              title={"facebook"}
-              content={"Autones Tractari"}
-              link={""}
-            />
-            <ContactLink title={"instagram"} content={"@autones"} link={""} />
+            <ContactLink title={"facebook"} content={"Facebook"} link={""} />
+            <ContactLink title={"instagram"} content={"Instagram"} link={""} />
           </motion.div>
         </div>
       </motion.div>
@@ -106,11 +102,11 @@ export default Contact;
 
 const ContactLink = ({ title, link, content }) => {
   const childrenVariants = {
-    hidden: { y: "100%", filter: "blur(10px)" },
+    hidden: { y: "200%", filter: "blur(8px)" },
     visible: {
       y: "0%",
       filter: "blur(0px)",
-      transition: { ease: [0.25, 0.1, 0.25, 1], duration: 0.7 },
+      transition: { ease: [0.25, 0.1, 0.25, 1], duration: 1 },
     },
     exit: { y: "80%" },
   };
@@ -118,17 +114,14 @@ const ContactLink = ({ title, link, content }) => {
   return (
     <motion.a
       href={link}
-      className="flex flex-col rounded-xl py-5 px-6 w-fit items-start  "
+      className="flex flex-col items-start px-6 py-5 transition-transform duration-300 rounded-xl w-fit hover:scale-105"
     >
       <motion.h1
         variants={childrenVariants}
-        className="cursor-pointer text-2xl md:text-3xl xl:text-4xl tracking-wide font-medium"
+        className="text-2xl font-light tracking-wide transition-opacity duration-300 cursor-pointer md:text-3xl xl:text-4xl opacity-70 hover:opacity-100 "
       >
         {content}
       </motion.h1>
-      <motion.h3 className="font-extralight text-base opacity-6 text-secondary brightness-150">
-        {title}
-      </motion.h3>
     </motion.a>
   );
 };

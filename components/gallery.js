@@ -1,10 +1,8 @@
 import {
-  AnimatePresence,
   motion,
   useInView,
   useMotionTemplate,
   useScroll,
-  useSpring,
   useTransform,
 } from "framer-motion";
 import { useRef, useState } from "react";
@@ -22,17 +20,11 @@ const Gallery = () => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "start"],
+    offset: ["start end", "start center"],
   });
 
-  const contentSpring = useSpring(scrollYProgress, {
-    stiffness: 150,
-    damping: 16,
-    mass: 0.1,
-  });
-
-  const animateScale = useTransform(contentSpring, [0, 0.7], ["85%", "100%"]);
-  const animateY = useTransform(contentSpring, [0, 1], ["15vh", "0vh"]);
+  const animateScale = useTransform(scrollYProgress, [0, 0.7], ["85%", "100%"]);
+  const enterY = useTransform(scrollYProgress, [0, 1], ["15vh", "0vh"]);
 
   const { scrollYProgress: exitProgress } = useScroll({
     target: secondaryRef,
@@ -40,19 +32,18 @@ const Gallery = () => {
   });
 
   const scale = useTransform(exitProgress, [0.2, 1], ["100%", "92%"]);
-  const y = useTransform(exitProgress, [0, 1], ["0vh", "150vh"]);
-  const opacity = useTransform(exitProgress, [0.99, 1], ["100%", "0%"]);
+  const exitY = useTransform(exitProgress, [0, 1], ["0%", "20%"]);
 
   return (
     <>
       <motion.section
         ref={ref}
-        style={{ scale, y: animateY }}
-        className="top-0 grid w-full border border-info min-h-screen px-2 py-4 mx-auto overflow-visible place-content-center sm:py-20 lg:px-6"
+        style={{ y: enterY }}
+        className="top-0 grid w-full px-2 py-4 mx-auto overflow-hidden sm:sticky sm:h-screen place-content-center sm:py-20 lg:px-6"
       >
         <motion.div
-          style={{ scale: animateScale, y }}
-          className="  tp-[10vh] h-fit mx-auto border border-warning grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 sm:gap-2 lg:gap-4 max-w-screen-3xl"
+          style={{ y: exitY }}
+          className="z-0 grid w-full grid-cols-1 gap-1 mx-auto h-fit sm:grid-cols-2 md:grid-cols-3 sm:gap-2 lg:gap-4 max-w-screen-3xl"
         >
           {imageList.map((image, index) => (
             <Photo
@@ -65,7 +56,7 @@ const Gallery = () => {
           ))}
         </motion.div>
       </motion.section>
-      <motion.div ref={secondaryRef} className="h-0 " />
+      <motion.div ref={secondaryRef} className="h-0" />
     </>
   );
 };

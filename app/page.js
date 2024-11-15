@@ -15,8 +15,9 @@ export default function Home() {
   const [colored, setColored] = useState(false);
   return (
     <main className="bg-base-100">
-      <Navbar colored={colored} />
       <Hero />
+      <Navbar colored={colored} />
+
       <Services />
       <Gallery />
       <AboutSection sectionIsActive={(e) => setColored(e)} />

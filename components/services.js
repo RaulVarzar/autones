@@ -1,6 +1,7 @@
 import {
   AnimatePresence,
   motion,
+  useMotionTemplate,
   useScroll,
   useSpring,
   useTransform,
@@ -25,15 +26,20 @@ const Services = () => {
     target: imageRef,
     offset: ["start 0.7", "end start"],
   });
-  const customScale = isMobile ? "70%" : "40%";
+  const customScale = isMobile ? "70%" : "60%";
   const scale = useTransform(scrollYProgress, [0, 0.3], [customScale, "100%"]);
 
   const borderRadius = useTransform(scrollYProgress, [0, 0.3], ["8vw", "1vw"]);
-  const rawY = useTransform(scrollYProgress, [0.82, 1], ["0vh", "-8vh"]);
+  const rawY = useTransform(scrollYProgress, [0, 0.3], ["30vh", "0vh"]);
   const y = useSpring(rawY, { stiffness: 100, damping: 8, mass: 0.5 });
 
+  const clipPath1 = useTransform(scrollYProgress, [0, 0.35], [15, 0]);
+  const clipPath2 = useTransform(scrollYProgress, [0, 0.35], [85, 100]);
+
+  const clipPath = useMotionTemplate`polygon(${clipPath1}% 0, ${clipPath2}% 0, ${clipPath2}% 100%, ${clipPath1}% 100%)`;
+
   return (
-    <section className="relative flex flex-col  sm:min-h-fit items-center w-full px-4 bg-transparent sm:px-6 md:px-8 lg:px-12 ">
+    <section className="relative flex flex-col items-center w-full px-4 bg-transparent sm:min-h-fit sm:px-6 md:px-8 lg:px-12 ">
       <motion.div
         initial={{ opacity: 0, y: "30%", scale: 0.8 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -44,9 +50,9 @@ const Services = () => {
           stiffness: 80,
           damping: 30,
         }}
-        className="z-10 w-full grow max-w-7xl"
+        className="z-10 w-full max-w-8xl grow"
       >
-        <div ref={imageRef} className="sm:sticky w-full">
+        <div ref={imageRef} className="w-full">
           <AnimatePresence mode="wait">
             <motion.img
               style={{ scale, borderRadius, y }}

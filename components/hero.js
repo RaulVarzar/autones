@@ -2,7 +2,6 @@ import {
   motion,
   useMotionTemplate,
   useScroll,
-  useSpring,
   useTransform,
 } from "framer-motion";
 import { useRef } from "react";
@@ -23,12 +22,8 @@ const Hero = () => {
   );
   const supX = useTransform(scrollYProgress, [0.02, 0.45], ["0%", "-50%"]);
 
-  const mainOpacity = useTransform(
-    scrollYProgress,
-    [0.45, 0.65],
-    ["100%", "100%"]
-  );
-  const mainScale = useTransform(scrollYProgress, [0, 0.6], ["100%", "80%"]);
+  const mainOpacity = useTransform(scrollYProgress, [0.1, 0.6], ["100%", "0%"]);
+  const mainScale = useTransform(scrollYProgress, [0, 0.6], ["100%", "85%"]);
   const mainY = useTransform(scrollYProgress, [0.6, 1], ["0vh", "-12vh"]);
 
   const subOpacity = useTransform(
@@ -36,21 +31,21 @@ const Hero = () => {
     [0.02, 0.1, 0.22],
     ["80%", "30%", "0%"]
   );
-  const subX = useTransform(scrollYProgress, [0.02, 0.5], ["0%", "50%"]);
+  const subX = useTransform(scrollYProgress, [0.02, 0.5], ["0%", "-100%"]);
 
   const sectionY = useTransform(scrollYProgress, [0, 1], ["0vh", "-20vh"]);
 
-  const titleBlurRaw = useTransform(scrollYProgress, [0.1, 0.8], [0, 10]);
+  const titleBlurRaw = useTransform(scrollYProgress, [0.1, 0.7], [0, 20]);
   const filter = useMotionTemplate`blur(${titleBlurRaw}px)`;
 
   return (
     <>
-      <motion.div className="sm:stick top-0 border h-[70vh] -z-0 flex flex-col items-center overflow-x-hidden justify-end w-full gap-2 px-6 text-center md:gap-6 max-w-8xl sm:px-8 md:px-12 lg:px-24 ">
+      <motion.div className="top-0 sticky z-0 flex flex-col items-center justify-end w-full gap-2 overflow-x-hidden text-center sm:stick h-[70vh] md:gap-6 ">
         <motion.div
           style={{ y: sectionY }}
-          className=" flex  flex-col justify-center w-full h-5/6 max-w-7xl "
+          className="flex flex-col justify-center w-full h-5/6"
         >
-          <motion.h1
+          {/* <motion.h1
             initial={{ x: "-50%", opacity: 0 }}
             animate={{ x: "0%", opacity: 1 }}
             transition={{
@@ -59,10 +54,11 @@ const Hero = () => {
             }}
             viewport={{ once: true }}
             style={{ opacity: supOpacity, x: supX }}
-            className="text-2xl sm:text-3xl font-bold text-info-content tracking-wide uppercase md:text-4xl lg:text-6xl  place-self-start"
+            className="text-2xl font-bold tracking-wide uppercase sm:text-3xl text-info-content md:text-4xl lg:text-6xl place-self-start"
           >
             Tractări auto
-          </motion.h1>
+          </motion.h1> */}
+
           <motion.div
             style={{
               opacity: mainOpacity,
@@ -70,7 +66,7 @@ const Hero = () => {
               // y: mainY,
               filter,
             }}
-            className="pb-1 overflow-hidden place-self-center "
+            className="p-0 overflow-hidden border-info h-fit place-self-center"
           >
             <motion.h2
               initial={{ y: "150%" }}
@@ -83,23 +79,24 @@ const Hero = () => {
                 damping: 22,
               }}
               viewport={{ once: true }}
-              className="text-5xl sm:text-6xl  font-medium rubik leading-none tracking-wide uppercase md:text-9xl xl:text-xxl"
+              className="p-0 text-5xl font-black leading-tight tracking-tight uppercase h-fit sm:text-6xl md:text-9xl xl:text-xxl 2xl:text-[16rem]"
             >
               AUTONES
             </motion.h2>
           </motion.div>
+
           <motion.div
-            style={{ opacity: subOpacity, x: subX }}
-            className="place-self-end"
+            style={{ opacity: subOpacity, y: subX }}
+            className="place-self-center"
           >
             <motion.h2
               initial={{ x: "50%", opacity: 0 }}
               animate={{ x: "0%", opacity: 1 }}
               transition={{ duration: 1.2, delay: 2.3, ease: "easeInOut" }}
               viewport={{ once: true }}
-              className="text-2xl font-semibold text-info-content tracking-normal sm:text-4xl md:text-6xl xl:text-7xl opacity-80"
+              className="px-24 text-xl font-semibold tracking-normal text-info-content sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl opacity-80"
             >
-              Cluj-Napoca
+              Tractări auto | Cluj-Napoca
             </motion.h2>
           </motion.div>
         </motion.div>
