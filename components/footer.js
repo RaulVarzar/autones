@@ -1,3 +1,4 @@
+"use client";
 import { useScroll, useTransform, motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
@@ -51,7 +52,7 @@ const Footer = () => {
   return (
     <div
       ref={ref}
-      className="relative z-30 flex flex-col items-center justify-center w-full gap-12 px-4 py-4 mx-auto bg-accent md:px-24 lg:px-48 md:py-16 xl:py-24"
+      className="relative  flex  z-40 flex-col items-center justify-center w-full  gap-12 px-4 py-4 mx-auto bg-accent md:px-24 lg:px-48 md:py-16 xl:py-24"
     >
       <motion.div
         // style={{ scale, y, opacity }}

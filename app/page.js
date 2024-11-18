@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Navbar from "components/navbar";
 import Hero from "../components/hero.js";
 import Gallery from "../components/gallery";

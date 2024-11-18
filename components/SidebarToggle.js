@@ -1,3 +1,4 @@
+"use client";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { useState } from "react";
@@ -66,7 +67,7 @@ const Button = ({ toggleSidebar, colored, sidebarOpen }) => {
       transition={{
         layout: { duration: 0.6, ease: [0.25, 0, 0.25, 1] },
       }}
-      className={`flex flex-row items-center h-full gap-2  md:gap-4  w-fit justify-end xl:gap-8   px-5 sm:px-8 ${
+      className={`flex flex-row items-center h-full gap-2  md:gap-4  w-fit justify-end xl:gap-8   px-5 py-5 sm:px-8 ${
         colored ? " text-white" : "text-base-content opacity-70"
       }`}
     >
@@ -96,7 +97,7 @@ const Button = ({ toggleSidebar, colored, sidebarOpen }) => {
       </AnimatePresence>
       <motion.span
         layout
-        className="z-20 flex flex-col items-end h-full gap-2 py-6 text-2xl cursor-pointer md:py-8 sm:text-3xl"
+        className="z-20 flex flex-col items-end h-full gap-2 text-2xl cursor-pointer  sm:text-3xl"
       >
         <motion.span
           animate={sidebarOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}

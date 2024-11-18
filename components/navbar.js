@@ -22,7 +22,7 @@ const Navbar = ({ colored }) => {
         // }}
         // animate={hidden ? "hidden" : "visible"}
         // transition={{ duration: 0.4, ease: "easeOut" }}
-        className="fixed inset-0 top-0 z-10 flex items-start justify-between w-full px-4 py-8 mx-auto md:py-10 xl:py-12 h-fit sm:px-6 md:px-10 xl:px-16"
+        className="fixed inset-0 top-0 z-50 flex items-start justify-between w-full px-4 py-4 mx-auto md:py-10 xl:py-12 h-fit sm:px-6 md:px-10 xl:px-16"
       >
         <Logo />
       </motion.nav>

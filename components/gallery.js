@@ -1,3 +1,4 @@
+"use client";
 import {
   motion,
   useInView,
@@ -39,7 +40,7 @@ const Gallery = () => {
       <motion.section
         ref={ref}
         style={{ y: enterY }}
-        className="top-0 grid w-full px-2 py-4 mx-auto overflow-hidden sm:sticky sm:h-screen place-content-center sm:py-20 lg:px-6"
+        className="top-0 grid w-full px-2 max-sm:pb-60 py-4 mx-auto overflow-hidden sm:sticky sm:h-screen place-content-center sm:py-20 lg:px-6"
       >
         <motion.div
           style={{ y: exitY }}

@@ -79,7 +79,7 @@ export const Card = ({
     offset: ["start 0.25", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0.3, 1], ["0%", "-60%"]);
+  const y = useTransform(scrollYProgress, [0.5, 1], ["0%", "-30%"]);
   return (
     <motion.div
       className="relative w-full max-w-4xl  mx-auto  cursor-pointer "

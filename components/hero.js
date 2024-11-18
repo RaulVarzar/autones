@@ -1,3 +1,4 @@
+"use client";
 import {
   motion,
   useMotionTemplate,
@@ -15,28 +16,21 @@ const Hero = () => {
     offset: ["start 0.7", "end start"],
   });
 
-  const supOpacity = useTransform(
+  const mainOpacity = useTransform(
     scrollYProgress,
-    [0.02, 0.11, 0.25],
-    ["80%", "30%", "0%"]
+    [0.25, 0.6],
+    ["100%", "0%"]
   );
-  const supX = useTransform(scrollYProgress, [0.02, 0.45], ["0%", "-50%"]);
-
-  const mainOpacity = useTransform(scrollYProgress, [0.1, 0.6], ["100%", "0%"]);
   const mainScale = useTransform(scrollYProgress, [0, 0.6], ["100%", "85%"]);
-  const mainY = useTransform(scrollYProgress, [0.6, 1], ["0vh", "-12vh"]);
+  const titleBlurRaw = useTransform(scrollYProgress, [0.25, 0.55], [0, 20]);
+  const filter = useMotionTemplate`blur(${titleBlurRaw}px)`;
 
-  const subOpacity = useTransform(
-    scrollYProgress,
-    [0.02, 0.1, 0.22],
-    ["80%", "30%", "0%"]
-  );
-  const subX = useTransform(scrollYProgress, [0.02, 0.5], ["0%", "-100%"]);
+  const subOpacity = useTransform(scrollYProgress, [0.25, 0.35], ["80%", "0%"]);
+  const subY = useTransform(scrollYProgress, [0.0, 0.3], ["0%", "-80%"]);
+  const subBlurRaw = useTransform(scrollYProgress, [0.2, 0.4], [0, 12]);
+  const subFilter = useMotionTemplate`blur(${subBlurRaw}px)`;
 
   const sectionY = useTransform(scrollYProgress, [0, 1], ["0vh", "-20vh"]);
-
-  const titleBlurRaw = useTransform(scrollYProgress, [0.1, 0.7], [0, 20]);
-  const filter = useMotionTemplate`blur(${titleBlurRaw}px)`;
 
   return (
     <>
@@ -45,20 +39,6 @@ const Hero = () => {
           style={{ y: sectionY }}
           className="flex flex-col justify-center w-full h-5/6"
         >
-          {/* <motion.h1
-            initial={{ x: "-50%", opacity: 0 }}
-            animate={{ x: "0%", opacity: 1 }}
-            transition={{
-              duration: 1.2,
-              delay: 2.2,
-            }}
-            viewport={{ once: true }}
-            style={{ opacity: supOpacity, x: supX }}
-            className="text-2xl font-bold tracking-wide uppercase sm:text-3xl text-info-content md:text-4xl lg:text-6xl place-self-start"
-          >
-            Tractări auto
-          </motion.h1> */}
-
           <motion.div
             style={{
               opacity: mainOpacity,
@@ -79,22 +59,21 @@ const Hero = () => {
                 damping: 22,
               }}
               viewport={{ once: true }}
-              className="p-0 text-5xl font-black leading-tight tracking-tight uppercase h-fit sm:text-6xl md:text-9xl xl:text-xxl 2xl:text-[16rem]"
+              className="p-0 text-7xl font-black leading-tight tracking-tight uppercase h-fit sm:text-8xl md:text-9xl xl:text-xxl 2xl:text-[16rem]"
             >
               AUTONES
             </motion.h2>
           </motion.div>
 
           <motion.div
-            style={{ opacity: subOpacity, y: subX }}
-            className="place-self-center"
+            style={{ opacity: subOpacity, y: subY, filter: subFilter }}
           >
             <motion.h2
-              initial={{ x: "50%", opacity: 0 }}
-              animate={{ x: "0%", opacity: 1 }}
-              transition={{ duration: 1.2, delay: 2.3, ease: "easeInOut" }}
+              initial={{ y: "-50%", opacity: 0 }}
+              animate={{ y: "0%", opacity: 1 }}
+              transition={{ duration: 0.7, delay: 3, ease: "easeInOut" }}
               viewport={{ once: true }}
-              className="px-24 text-xl font-semibold tracking-normal text-info-content sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl opacity-80"
+              className="px-24 text-xl font-semibold tracking-normal whitespace-nowrap w-full text-info-content sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl opacity-80"
             >
               Tractări auto | Cluj-Napoca
             </motion.h2>

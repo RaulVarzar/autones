@@ -50,18 +50,18 @@ const Contact = ({ moveY }) => {
   };
 
   return (
-    <motion.div className="fixed top-0 w-full h-full -z-20 ">
+    <>
       <motion.div
         style={{ y: moveY }}
         className="flex flex-col items-stretch w-full h-full justify-evenly sm:justify-end"
       >
-        <div className="flex items-center sm:grow pt-[10vh]">
+        <div className="flex items-center sm:grow h-fit  sm:pt-[10vh] py-4">
           {/* <AnimatePresence> */}
           <Testimonials />
           {/* </AnimatePresence> */}
         </div>
 
-        <div className="flex flex-col items-end justify-end w-full gap-1 px-6 pb-8 text-right md:gap-2 sm:px-10 md:px-16 lg:px-24 xl:px-24 sm:pb-10 md:pb-12 lg:pb-16">
+        <div className="flex flex-col  items-end justify-end w-full gap-1 px-6 pb-8 text-right md:gap-2 sm:px-10 md:px-16 lg:px-24 xl:px-24 sm:pb-10 md:pb-12 lg:pb-16">
           <motion.h1
             initial="hidden"
             animate="visible"
@@ -77,7 +77,7 @@ const Contact = ({ moveY }) => {
             animate="visible"
             exit="exit"
             variants={contactInfoVariants}
-            className="flex flex-col items-end justify-end w-full gap-6 overflow-hidden md:gap-8 lg:gap-8 sm:flex-row-reverse sm:justify-start "
+            className="flex flex-col items-end justify-end w-full  sm:gap-3  md:gap-6 overflow-hidden lg:gap-8  sm:flex-row-reverse sm:justify-start "
           >
             <ContactLink
               title={"phone"}
@@ -94,13 +94,13 @@ const Contact = ({ moveY }) => {
           </motion.div>
         </div>
       </motion.div>
-    </motion.div>
+    </>
   );
 };
 
 export default Contact;
 
-const ContactLink = ({ title, link, content }) => {
+const ContactLink = ({ link, content }) => {
   const childrenVariants = {
     hidden: { y: "200%", filter: "blur(8px)" },
     visible: {
@@ -114,11 +114,11 @@ const ContactLink = ({ title, link, content }) => {
   return (
     <motion.a
       href={link}
-      className="flex flex-col items-start px-6 py-5 transition-transform duration-300 rounded-xl w-fit hover:scale-105"
+      className="flex flex-col items-start sm:px-6 py-1 sm:py-5 transition-transform duration-500 rounded-xl w-fit hover:scale-105 hover:-translate-y-0.5"
     >
       <motion.h1
         variants={childrenVariants}
-        className="text-2xl font-light tracking-wide transition-opacity duration-300 cursor-pointer md:text-3xl xl:text-4xl opacity-70 hover:opacity-100 "
+        className="text-xl sm:text-2xl font-light tracking-wide transition-opacity duration-300 cursor-pointer md:text-3xl xl:text-4xl opacity-70 hover:opacity-100 "
       >
         {content}
       </motion.h1>

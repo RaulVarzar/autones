@@ -3,7 +3,6 @@ import {
   motion,
   useDragControls,
   useMotionValue,
-  useScroll,
   useSpring,
   useTransform,
   useVelocity,
@@ -62,15 +61,9 @@ const subTitleVariants = {
   },
 };
 
-const Testimonials = ({ position }) => {
+const Testimonials = () => {
   const section = useRef(null);
   const constraintsRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: section,
-    offset: ["start end", "end"],
-  });
-  // const x = useTransform(scrollYProgress, [0, 0.5, 1], ["15%", "0%", "-50%"]);
-  const scale = useTransform(scrollYProgress, [0, 0.25], ["80%", "100%"]);
   const controls = useDragControls();
 
   // SKEW ON DRAG
@@ -88,8 +81,7 @@ const Testimonials = ({ position }) => {
   return (
     <motion.section
       ref={section}
-      style={{ x: position }}
-      className="flex flex-col items-start gap-1 sm:gap-4 lg:gap-6 overflow-hidden md:flex-col"
+      className="flex flex-col items-start gap-1 sm:gap-4 lg:gap-6 h-fit md:flex-col "
     >
       <div className="flex flex-col pl-2 sm:pl-10 md:pl-12 lg:pl-16">
         <motion.h1
@@ -128,7 +120,7 @@ const Testimonials = ({ position }) => {
           delay: 0.6,
         }}
         ref={constraintsRef}
-        className="flex flex-row w-full gap-16 p-2 overflow-hidden flex-nowrap "
+        className="flex flex-row  w-fit gap-16 p-2 overflow-hidden flex-nowrap "
       >
         <motion.div
           drag="x"
