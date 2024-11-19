@@ -1,27 +1,21 @@
-"use client";
-import { useState } from "react";
 import Navbar from "components/navbar";
 import Hero from "../components/hero.js";
 import Gallery from "../components/gallery";
-import Footer from "../components/footer";
+import Footer from "../components/Footer/footer.js";
 import Services from "../components/services.js";
 import AboutSection from "../components/About/AboutSection.js";
 
 export default function Home() {
-  // useEffect(() => {
-  //   window.history.scrollRestoration = "manual";
-  // }, []);
-
-  const [colored, setColored] = useState(false);
   return (
-    <main className="bg-base-100">
-      <Hero />
-      <Navbar colored={colored} />
-
-      <Services />
-      <Gallery />
-      <AboutSection sectionIsActive={(e) => setColored(e)} />
+    <>
+      <Navbar />
+      <main className="relative z-10 bg-base-100">
+        <Hero />
+        <Services />
+        <Gallery />
+        <AboutSection />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

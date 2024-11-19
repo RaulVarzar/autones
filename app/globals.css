@@ -43,9 +43,10 @@ html {
 
 .contact-btn-container {
   min-height: 50px;
-  min-width: 140px;
+  min-width: 240px;
   position: relative;
   overflow: hidden;
+  text-align: start;
 }
 
 .contact-btn span {

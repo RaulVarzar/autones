@@ -22,15 +22,15 @@ const RoundedTop = ({ scrollProgress }) => {
 
   const clipPathRoundness = useTransform(
     scrollProgress,
-    [0, 0.65, 0.9],
-    [30, 20, 0]
+    [0, 0.7, 1],
+    [90, 65, 0]
   );
 
   const clipPath = useMotionTemplate`ellipse(60% ${clipPathRoundness}% at 50% 102%)`;
 
   return (
     <motion.div style={{ clipPath }}>
-      <div className="w-full bg-accent z-50 h-28 sm:h-32 md:h-48 lg:h-96 "></div>
+      <div className="z-50 w-full h-12 bg-accent sm:h-32 "></div>
     </motion.div>
   );
 };

@@ -1,8 +1,9 @@
+"use client";
 import { Logo } from "./logo";
 import { motion } from "framer-motion";
 import SidebarToggle from "./SidebarToggle";
 
-const Navbar = ({ colored }) => {
+const Navbar = () => {
   // Toggle the sidebar
 
   // Hide or show the navbar based on scroll direction
@@ -22,11 +23,11 @@ const Navbar = ({ colored }) => {
         // }}
         // animate={hidden ? "hidden" : "visible"}
         // transition={{ duration: 0.4, ease: "easeOut" }}
-        className="fixed inset-0 top-0 z-50 flex items-start justify-between w-full px-4 py-4 mx-auto md:py-10 xl:py-12 h-fit sm:px-6 md:px-10 xl:px-16"
+        className="fixed inset-0 top-0 z-40 flex items-start justify-between w-full px-4 py-4 mx-auto md:py-10 xl:py-12 h-fit sm:px-6 md:px-10 xl:px-16"
       >
         <Logo />
       </motion.nav>
-      <SidebarToggle colored={colored} />
+      <SidebarToggle />
     </>
   );
 };

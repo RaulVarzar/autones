@@ -4,13 +4,13 @@ import { useRef, useState } from "react";
 
 const TOPICS = [
   {
-    id: 0,
+    id: 1,
     title: "Tractări auto 24/7",
     description:
       "Tractări, remorcări și transportam autovehiculul pe platforma auto indiferent daca este accidentat sau este defect atat in Romania cat si in Europa",
   },
   {
-    id: 1,
+    id: 0,
     title: "Transport auto intern",
     description:
       "Serviciul nostru de asistenta rutiera este non stop, o pana de cauciuc, combustibil, masina nu mai porneste",
@@ -82,7 +82,7 @@ export const Card = ({
   const y = useTransform(scrollYProgress, [0.5, 1], ["0%", "-30%"]);
   return (
     <motion.div
-      className="relative w-full max-w-4xl  mx-auto  cursor-pointer "
+      className="relative w-full max-w-4xl mx-auto cursor-pointer "
       onHoverStart={() => setHovering(id)}
       ref={cardRef}
       style={{ y }}
@@ -96,7 +96,7 @@ export const Card = ({
           filter: "blur(0px)",
           transition: {
             duration: 1.2,
-            delay: 0.4 + id * 0.3,
+            delay: 0.2 + id * 0.3,
             ease: [0.25, 0.1, 0.25, 1],
           },
         }}

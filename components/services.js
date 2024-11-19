@@ -17,7 +17,7 @@ const Services = () => {
   const isMobile = useWidth();
 
   const imageRef = useRef(null);
-  const [selectedTopic, setSelectedTopic] = useState(1);
+  const [selectedTopic, setSelectedTopic] = useState(0);
 
   function changeTopic(topic) {
     setSelectedTopic(topic);
@@ -51,20 +51,41 @@ const Services = () => {
           stiffness: 80,
           damping: 30,
         }}
-        className="z-10 w-full max-w-8xl grow"
+        className="z-10 w-full overflow-hidden max-w-8xl grow"
       >
-        <div ref={imageRef} className="w-full">
-          <AnimatePresence mode="wait">
+        <motion.div
+          style={{ scale, borderRadius, y }}
+          ref={imageRef}
+          className="w-full overflow-hidden origin-top"
+        >
+          <AnimatePresence mode="popLayout">
             <motion.img
-              style={{ scale, borderRadius, y }}
-              initial={{ opacity: 0.4 }}
-              animate={{ opacity: 1, transition: { duration: 0.3 } }}
+              // style={{ scale, borderRadius, y }}
+              initial={{ opacity: 0.4, y: "-100%" }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 1,
+                  ease: [0.13, 0.97, 0.665, 0.985],
+                },
+              }}
+              exit={{
+                filter: "blur(10px) brightness(70%)",
+                y: "8%",
+                scale: 1.02,
+                transition: {
+                  delay: 0.05,
+                  duration: 0.95,
+                  ease: [0.13, 0.97, 0.665, 0.985],
+                },
+              }}
               src={IMAGES[selectedTopic]}
               key={selectedTopic}
               className="object-cover w-full mx-auto origin-top aspect-video "
             />
           </AnimatePresence>
-        </div>
+        </motion.div>
       </motion.div>
 
       <Topic selectedTopic={selectedTopic} changeTopic={changeTopic} />

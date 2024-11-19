@@ -1,12 +1,29 @@
 import { motion } from "framer-motion";
 
-const Header = () => {
+const Header = ({ visible }) => {
+  const variants = {
+    hidden: {
+      y: "-50%",
+      opacity: 0,
+      filter: "blur(3px)",
+    },
+    visible: {
+      y: "0%",
+      opacity: 1,
+      filter: "blur(0px)",
+      transition: {
+        ease: [0.25, 0.1, 0.25, 1],
+        duration: 0.5,
+        delay: 0.3,
+      },
+    },
+  };
   return (
     <motion.div
-      layout="position"
-      exit={{ opacity: 0, transition: { duration: 0.01 } }}
-      key="hello"
-      className="flex flex-col justify-end  text-left"
+      variants={variants}
+      animate={visible ? "visible" : "hidden"}
+      initial="hidden"
+      className="flex flex-col justify-end px-4 py-2 text-left sm:py-8 sm:px-10 md:px-12 lg:px-16 w-fit"
     >
       <motion.span
         initial={{ opacity: 0, x: 30 }}
@@ -20,7 +37,7 @@ const Header = () => {
             bounce: 0.5,
           },
         }}
-        className="text-lg  font-light leading-tight text-balance opacity-40 sm:text-sx lg:text-2xl"
+        className="text-xl leading-tight text-balance opacity-40 lg:text-2xl"
       >
         Ai nevoie de ajutorul nostru?
       </motion.span>
@@ -36,7 +53,7 @@ const Header = () => {
             bounce: 0.5,
           },
         }}
-        className="flex flex-col  justify-center text-2xl sm:text-3xl lg:text-4xl font-bold tracking-wide uppercase"
+        className="flex flex-col justify-center text-3xl font-black tracking-wide uppercase sm:text-3xl lg:text-4xl"
       >
         Contactează-ne acum!
       </motion.span>

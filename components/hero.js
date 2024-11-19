@@ -34,7 +34,7 @@ const Hero = () => {
 
   return (
     <>
-      <motion.div className="top-0 sticky z-0 flex flex-col items-center justify-end w-full gap-2 overflow-x-hidden text-center sm:stick h-[70vh] md:gap-6 ">
+      <motion.div className="top-0 sticky z-0  flex flex-col items-center justify-end w-full gap-2 overflow-x-hidden text-center sm:stick h-[70vh] md:gap-6 ">
         <motion.div
           style={{ y: sectionY }}
           className="flex flex-col justify-center w-full h-5/6"
@@ -53,10 +53,8 @@ const Hero = () => {
               animate={{ y: "10%" }}
               transition={{
                 delay: 2,
-                type: "spring",
-                stiffness: 80,
-                mass: 1,
-                damping: 22,
+                ease: [0.13, 0.97, 0.665, 0.985],
+                duration: 1,
               }}
               viewport={{ once: true }}
               className="p-0 text-7xl font-black leading-tight tracking-tight uppercase h-fit sm:text-8xl md:text-9xl xl:text-xxl 2xl:text-[16rem]"
@@ -71,9 +69,13 @@ const Hero = () => {
             <motion.h2
               initial={{ y: "-50%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
-              transition={{ duration: 0.7, delay: 3, ease: "easeInOut" }}
+              transition={{
+                duration: 0.7,
+                delay: 2.5,
+                ease: [0.13, 0.97, 0.665, 0.985],
+              }}
               viewport={{ once: true }}
-              className="px-24 text-xl font-semibold tracking-normal whitespace-nowrap w-full text-info-content sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl opacity-80"
+              className="w-full px-24 text-xl font-semibold tracking-normal whitespace-nowrap text-info-content sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl opacity-80"
             >
               Tractări auto | Cluj-Napoca
             </motion.h2>

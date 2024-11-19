@@ -38,7 +38,7 @@ const WhatWeOffer = ({
       </motion.div>
 
       <div className="grid w-full py-2 grow">
-        <motion.div className="grid grid-cols-1 gap-2 px-4 lg:h-full sm:gap-4 md:px-6 lg:px-8 lg:grid-cols-3 md:gap-6 lg:gap-8 justify-evenly">
+        <motion.div className="grid grid-cols-1 gap-2 px-4 mx-auto max-w-screen-3xl lg:h-full sm:gap-4 md:px-6 lg:px-8 lg:grid-cols-3 md:gap-6 lg:gap-8 justify-evenly">
           <AboutCard
             title="Prețuri competitive"
             description="Fără taxe ascunse"
