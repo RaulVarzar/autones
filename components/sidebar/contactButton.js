@@ -59,7 +59,7 @@ export default function ContactButton({
         },
       }}
       exit={{ opacity: 0, x: "50%" }}
-      className="relative flex flex-row items-center justify-start w-full gap-6 px-8 py-1 overflow-hidden text-center transition-colors duration-300 bg-transparent border-t border-dotted cursor-pointer group md:gap-10 contact-btn border-opacity-15 border-base-content min-w-48 grow sm:py-6 md:py-8 sm:px-6 md:px-10 lg:px-16 "
+      className="relative flex flex-row items-center justify-start w-full gap-6 px-8 py-1 overflow-hidden text-center transition-colors duration-300 bg-transparent border-t border-dotted cursor-pointer group md:gap-10 contact-btn border-opacity-15 border-base-content min-w-48 grow sm:py-6 md:py-8 lg:py-10 sm:px-6 md:px-10 lg:px-16 "
     >
       <motion.span
         variants={iconVariants}

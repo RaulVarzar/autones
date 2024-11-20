@@ -43,7 +43,7 @@ export default function SidebarContent({ visible }) {
 
       <AnimatePresence mode="popLayout">
         {!showForm && (
-          <div className="flex flex-col items-center justify-center w-full pb-12 grow md:pb-20 lg:pb-24 xl:pb-32 h-fit ">
+          <div className="flex flex-col items-center justify-center w-full pb-12 grow md:pb-20 h-fit ">
             <ContactButton
               primary={"Telefon"}
               secondary={"0743 483 293"}

@@ -75,7 +75,7 @@ const Hero = () => {
                 ease: [0.13, 0.97, 0.665, 0.985],
               }}
               viewport={{ once: true }}
-              className="w-full px-24 text-xl font-semibold tracking-normal whitespace-nowrap text-info-content sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl opacity-80"
+              className="w-full text-2xl font-semibold tracking-normal whitespace-nowrap text-info-content sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl opacity-80"
             >
               Tractări auto | Cluj-Napoca
             </motion.h2>
