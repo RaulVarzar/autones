@@ -57,7 +57,7 @@ const Hero = () => {
                 duration: 1,
               }}
               viewport={{ once: true }}
-              className="p-0 text-7xl font-black leading-tight tracking-tight uppercase h-fit sm:text-8xl md:text-9xl xl:text-xxl 2xl:text-[16rem]"
+              className="p-0 text-7xl font-black leading-tight tracking-tight uppercase h-fit sm:text-9xl md:text-9xl lg:text-xxl 2xl:text-[16rem]"
             >
               AUTONES
             </motion.h2>

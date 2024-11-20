@@ -61,13 +61,13 @@ const Contact = ({ moveY }) => {
           {/* </AnimatePresence> */}
         </div>
 
-        <div className="flex flex-col  items-end justify-end w-full gap-1 px-6 pb-8 text-right md:gap-2 sm:px-10 md:px-16 lg:px-24 xl:px-24 sm:pb-10 md:pb-12 lg:pb-16">
+        <div className="flex flex-col items-end justify-end w-full gap-1 px-6 pb-8 text-right md:gap-2 sm:px-10 md:px-16 lg:px-24 xl:px-24 sm:pb-10 md:pb-12 lg:pb-16">
           <motion.h1
             initial="hidden"
             animate="visible"
             exit="exit"
             variants={variants}
-            className="text-4xl font-black tracking-wider uppercase sm:text-6xl md:text-7xl lg:text-8xl"
+            className="text-5xl font-black tracking-wider uppercase sm:text-6xl md:text-7xl lg:text-8xl"
           >
             Contact
           </motion.h1>
@@ -77,7 +77,7 @@ const Contact = ({ moveY }) => {
             animate="visible"
             exit="exit"
             variants={contactInfoVariants}
-            className="flex flex-col items-end justify-end w-full  sm:gap-3  md:gap-6 overflow-hidden lg:gap-8  sm:flex-row-reverse sm:justify-start "
+            className="flex flex-col items-end justify-end w-full overflow-hidden sm:gap-1 lg:gap-3 xl:gap-8 lg:flex-row-reverse sm:justify-start "
           >
             <ContactLink
               title={"phone"}
@@ -102,11 +102,12 @@ export default Contact;
 
 const ContactLink = ({ link, content }) => {
   const childrenVariants = {
-    hidden: { y: "200%", filter: "blur(8px)" },
+    hidden: { y: "200%", filter: "blur(8px)", opacity: 0 },
     visible: {
       y: "0%",
       filter: "blur(0px)",
       transition: { ease: [0.25, 0.1, 0.25, 1], duration: 1 },
+      opacity: 1,
     },
     exit: { y: "80%" },
   };
@@ -118,7 +119,7 @@ const ContactLink = ({ link, content }) => {
     >
       <motion.h1
         variants={childrenVariants}
-        className="text-xl sm:text-2xl font-light tracking-wide transition-opacity duration-300 cursor-pointer md:text-3xl xl:text-4xl opacity-70 hover:opacity-100 "
+        className="text-xl font-light tracking-wide transition-opacity duration-300 cursor-pointer sm:text-2xl md:text-3xl xl:text-4xl opacity-70 hover:opacity-100 "
       >
         {content}
       </motion.h1>

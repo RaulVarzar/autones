@@ -9,10 +9,12 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="relative z-10 bg-base-100">
-        <Hero />
-        <Services />
-        <Gallery />
+      <main className="relative z-10 ">
+        <div className="bg-base-100">
+          <Hero />
+          <Services />
+          <Gallery />
+        </div>
         <AboutSection />
       </main>
       <Footer />

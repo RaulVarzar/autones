@@ -7,8 +7,8 @@ import {
   useMotionTemplate,
 } from "framer-motion";
 import { useRef } from "react";
-import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
+import { FaEnvelope } from "react-icons/fa";
+import { FaLocationDot, FaPhoneFlip, FaFacebookF } from "react-icons/fa6";
 
 const variants = {
   hidden: {
@@ -37,108 +37,164 @@ const variants = {
   },
 };
 
+const socialVariants = {
+  hidden: {
+    transition: {
+      duration: 1,
+      staggerChildren: 0.1,
+    },
+  },
+  visible: {
+    transition: {
+      duration: 1,
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const textVariants = {
+  hidden: {
+    opacity: 0,
+    filter: "blur(3px)",
+    transition: {
+      ease: [0.25, 0.1, 0.25, 1],
+      delay: 0.5,
+    },
+  },
+  visible: {
+    opacity: 1,
+    y: "0%",
+    filter: "blur(0px)",
+    transition: {
+      ease: [0.25, 0.1, 0.25, 1],
+      duration: 0.5,
+      delay: 0.2,
+    },
+  },
+};
+
+const childrenVariants = {
+  hidden: {
+    opacity: 0,
+    y: "50%",
+    filter: "blur(5px)",
+    // transition: {
+    //   ease: [0.25, 0.1, 0.25, 1],
+    //   // delay: 0.5,
+    // },
+  },
+  visible: {
+    opacity: 0.6,
+    y: "0%",
+    filter: "blur(0px)",
+    // transition: {
+    //   ease: [0.25, 0.1, 0.25, 1],
+    //   // duration: 0.5,
+    // },
+  },
+  hovering: { opacity: 1 },
+};
+
 const Footer = () => {
   const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "center 0.7"],
+    offset: ["start end", "start 0.85"],
   });
 
-  const scale = useTransform(scrollYProgress, [0.3, 1], ["96%", "100%"]);
-  const y = useTransform(scrollYProgress, [0.3, 1], ["-15%", "0%"]);
+  const scale = useTransform(scrollYProgress, [0.1, 1], ["98%", "100%"]);
+  const y = useTransform(scrollYProgress, [0.1, 1], ["2vh", "0vh"]);
   const opacity = useTransform(
     scrollYProgress,
     [0.2, 0.8, 1],
-    ["0%", "20%", "100%"]
+    ["30%", "60%", "100%"]
   );
-  const blurRaw = useTransform(scrollYProgress, [0, 0.8, 0.9], [7, 6, 0]);
+  const blurRaw = useTransform(scrollYProgress, [0, 0.6], [4, 0]);
   const filter = useMotionTemplate`blur(${blurRaw}px)`;
 
-  const isInView = useInView(ref, { margin: "0% 0% -15% 0%" });
+  const logoOpacity = useTransform(
+    scrollYProgress,
+    [0.1, 0.9],
+    ["20%", "100%"]
+  );
+
+  const isInView = useInView(ref, {
+    margin: "0% 0% -10% 0%",
+  });
 
   return (
     <>
       <div ref={ref} className="relative h-0 "></div>
-      <div className="sticky bottom-0 flex flex-col items-center justify-center w-full min-h-[30vh] gap-12 px-4 py-12 mx-auto  bg-accent md:px-24 lg:px-48 md:py-16 xl:py-24">
-        <motion.div
-          style={{ scale, y, opacity, filter }}
-          variants={variants}
-          // animate={isInView ? "visible" : "hidden"}
-          className="flex flex-col justify-start w-full gap-6 mb-8 gap-y-8 md:flex-row md:gap-12 h-fit "
+      <div className="sticky bottom-0 flex flex-col items-center pb-36 2xl:pb-4 justify-center w-full min-h-[15vh] gap-12 px-4 py-8 mx-auto  bg-accent md:px-24 lg:px-48 ">
+        <motion.span
+          style={{ opacity: logoOpacity, filter, y, opacity }}
+          className="absolute bottom-0 text-3xl font-black leading-3 tracking-wider uppercase opacity-50 md:text-5xl sm:text-4xl left-4 lg:text-6xl xl:text-8xl"
         >
-          <div className="flex flex-col w-full md:items-end lg:w-1/2 max-md:text-center ">
-            <span className="text-4xl font-black leading-3 tracking-wider uppercase max-md:text-center md:text-8xl">
-              Autones
-            </span>
-            <div className="md:text-right lg:max-w-md opacity-70">
-              <p className="mt-3 text-md md:text-lg xl:text-xl">
+          Autones
+        </motion.span>
+        <motion.div className="flex flex-col items-center justify-center w-full max-w-5xl gap-x-8 2xl:gap-x-12 xl:flex-row h-fit ">
+          <div className="flex flex-col w-full md:flex-row md:items-end lg:w-1/2 max-md:text-center ">
+            <div className="md:text-right lg:max-w-md opacity-90">
+              <motion.p
+                variants={textVariants}
+                animate={isInView ? "visible" : "hidden"}
+                className="mt-3 text-center text-md md:text-lg xl:text-xl"
+              >
                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                 accusantium doloremque laudantium, totam rem aperiam.
-              </p>
-              <p className="mt-2 text-md md:text-lg xl:text-xl">
-                Eaque ipsa quae ab illo inventore veritatis et quasi architecto
-                beatae vitae dicta sunt explicabo.
-              </p>
+              </motion.p>
             </div>
           </div>
-          <div className="flex flex-col justify-center w-full py-2 pt-8 space-y-3 text-lg h-fit lg:w-1/2 md:space-y-4 lg:space-y-6 ">
-            <div className="flex flex-row items-center gap-4 md:gap-6 max-md:mx-auto max-md:w-fit">
-              {/* <span className="text-2xl leading-none max-md:text-center opacity-80">
-              <FaPhoneAlt />
-            </span> */}
-              <a
-                href="tel:0744-765-543"
-                aria-label="Our phone"
-                title="Our phone"
-                className="pb-1 text-xl font-medium tracking-wide transition-colors duration-300 border-b-4 border-secondary lg:text-3xl"
-              >
-                0744 765 543
-              </a>
-            </div>
-            <div className="flex flex-row items-center gap-4 md:gap-6 max-md:mx-auto max-md:w-fit">
-              {/* <span className="text-2xl leading-none max-md:text-center opacity-80">
+          <motion.div
+            variants={socialVariants}
+            animate={isInView ? "visible" : "hidden"}
+            className="flex flex-row justify-center w-full gap-4 py-2 pt-8 text-lg lg:gap-6 h-fit lg:w-1/2 "
+          >
+            <motion.a
+              variants={childrenVariants}
+              animate={isInView ? "visible" : "hidden"}
+              whileHover="hovering"
+              transition={{ delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+              href="tel:0744-765-543"
+              className="px-4 py-3 text-lg font-medium tracking-wide border-2 sm:px-6 sm:py-5 w-fit rounded-2xl border-base-content text-base-content lg:text-2xl"
+            >
+              <FaPhoneFlip />
+            </motion.a>
+
+            <motion.a
+              variants={childrenVariants}
+              animate={isInView ? "visible" : "hidden"}
+              transition={{ delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+              whileHover="hovering"
+              href="tel:0744-765-543"
+              className="px-4 py-3 text-lg font-medium tracking-wide border-2 sm:px-6 sm:py-5 w-fit rounded-2xl border-base-content text-base-content lg:text-2xl"
+            >
               <FaEnvelope />
-            </span> */}
-              <a
-                href="mailto:info@lorem.mail"
-                aria-label="Our email"
-                title="Our email"
-                className="pb-1 text-xl font-medium tracking-wide transition-colors duration-300 border-b-4 border-secondary lg:text-3xl"
-              >
-                info@lorem.mail
-              </a>
-            </div>
-            <div className="flex flex-row items-center gap-4 md:gap-6 max-md:mx-auto max-md:w-fit">
-              {/* <span className="text-2xl leading-none max-md:text-center opacity-80">
+            </motion.a>
+
+            <motion.a
+              variants={childrenVariants}
+              whileHover="hovering"
+              href="tel:0744-765-543"
+              animate={isInView ? "visible" : "hidden"}
+              transition={{ delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              className="px-4 py-3 text-lg font-medium tracking-wide border-2 sm:px-6 sm:py-5 w-fit rounded-2xl border-base-content text-base-content lg:text-2xl"
+            >
               <FaLocationDot />
-            </span> */}
-              <a
-                href="https://www.google.com/maps"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Adresa"
-                title="Adresa noastra"
-                className="pb-1 text-xl font-medium tracking-wide transition-colors duration-300 border-b-4 border-secondary lg:text-3xl"
-              >
-                Strada bla bla bla, nr 32
-              </a>
-            </div>
-            <div className="flex items-center mt-1 space-x-3 max-md:mx-auto w-fit md:space-x-4">
-              <a
-                href="/"
-                className="text-2xl transition-opacity duration-300 opacity-70 hover:opacity-100 md:text-4xl "
-              >
-                <i className="fa-brands fa-square-facebook"></i>
-              </a>
-              <a
-                href="/"
-                className="text-2xl transition-opacity duration-300 opacity-70 hover:opacity-100 md:text-4xl "
-              >
-                <i className="fa-brands fa-square-instagram"></i>
-              </a>
-            </div>
-          </div>
+            </motion.a>
+
+            <motion.a
+              variants={childrenVariants}
+              whileHover="hovering"
+              href="tel:0744-765-543"
+              animate={isInView ? "visible" : "hidden"}
+              transition={{ delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+              className="px-4 py-3 text-lg font-medium tracking-wide border-2 sm:px-6 sm:py-5 w-fit rounded-2xl border-base-content text-base-content lg:text-2xl"
+            >
+              <FaFacebookF />
+            </motion.a>
+          </motion.div>
         </motion.div>
       </div>
     </>

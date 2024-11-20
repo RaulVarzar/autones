@@ -83,13 +83,13 @@ const Testimonials = () => {
       ref={section}
       className="flex flex-col items-start gap-1 sm:gap-4 lg:gap-6 h-fit md:flex-col "
     >
-      <div className="flex flex-col pl-2 sm:pl-10 md:pl-12 lg:pl-16">
+      <div className="flex flex-col pl-6 sm:pl-10 md:pl-12 lg:pl-16">
         <motion.h1
           variants={titleVariants}
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="text-xl sm:text-xl md:text-2xl lg:text-3xl text-info-content  xl:text-4xl font-medium leading-3 tracking-wide uppercase  text-balance"
+          className="text-xl font-medium leading-3 tracking-wide uppercase sm:text-xl md:text-2xl lg:text-3xl text-info-content xl:text-4xl text-balance"
         >
           Ce spun
         </motion.h1>
@@ -98,7 +98,7 @@ const Testimonials = () => {
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="text-3xl sm:text-3xl md:text-4xl lg:text-6xl  xl:text-7xl font-bold uppercase"
+          className="text-3xl font-bold uppercase sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl"
         >
           clientii nostri
         </motion.h2>
@@ -120,7 +120,7 @@ const Testimonials = () => {
           delay: 0.6,
         }}
         ref={constraintsRef}
-        className="flex flex-row  w-fit gap-16 p-2 overflow-hidden flex-nowrap "
+        className="flex flex-row gap-16 p-2 overflow-hidden w-fit flex-nowrap "
       >
         <motion.div
           drag="x"
@@ -130,7 +130,7 @@ const Testimonials = () => {
           dragTransition={{ bounceDamping: 60, bounceStiffness: 300 }}
           dragConstraints={constraintsRef}
           style={{ x }}
-          className="flex flex-row gap-4 sm:gap-6 px-8 sm:px-10 md:px-12 lg:px-16 xl:px-16 cursor-grab active:cursor-grabbing"
+          className="flex flex-row gap-4 px-8 sm:gap-6 sm:px-10 md:px-12 lg:px-16 xl:px-16 cursor-grab active:cursor-grabbing"
         >
           <Card skew={cardSkew} x={cardX} />
           <Card skew={cardSkew} x={cardX} />

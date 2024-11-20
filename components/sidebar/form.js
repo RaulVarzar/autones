@@ -7,7 +7,7 @@ import { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { IoIosSend } from "react-icons/io";
 
-const Form = ({ closeForm }) => {
+const Form = ({}) => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -31,27 +31,6 @@ const Form = ({ closeForm }) => {
       transition={{ duration: 0.3, delay: 0.3, type: "spring", mass: 0.2 }}
       className="z-50 flex flex-col "
     >
-      <div
-        onClick={closeForm}
-        className="flex flex-row justify-center py-10 text-3xl cursor-pointer sm:px-6 md:text-5xl"
-      >
-        <motion.span
-          className="z-50 w-8 h-0.5 origin-top rounded-full bg-base-content"
-          style={{ rotate: -25, x: 2 }}
-        />
-        <motion.span
-          className="z-50 w-8 h-0.5 origin-top rounded-full bg-base-content"
-          style={{ rotate: 25, x: -2 }}
-        />
-      </div>
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.6, type: "tween" }}
-        className="w-10/12 pt-4 mx-auto text-base font-semibold tracking-wide text-center sm:w-8/12 sm:text-xl lg:text-2xl"
-      >
-        Trimite-ne un mesaj si iti vom răspunde cat de repede posibil!
-      </motion.h1>
       <form
         // ref={form}
         // onSubmit={sendEmail}

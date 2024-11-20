@@ -72,31 +72,20 @@ const AboutSection = ({}) => {
 
   const { scrollYProgress: sectionExit } = useScroll({
     target: contactRef,
-    offset: ["end", "end center"],
+    offset: ["end", "end 0.8"],
   });
   const contactY = useTransform(sectionExit, [0, 0.9], ["0px", "-75px"]);
-  const sectionBorderRadius = useTransform(
-    sectionExit,
-    [0.05, 0.3, 1],
-    ["0vh", "5vh", "7vh"]
-  );
-
   ////////////////////
 
   return (
-    <div ref={sectionRef} className="relative z-40 ">
+    <motion.div ref={sectionRef} className="relative z-40 bg-base-100">
       <RoundedTop scrollProgress={scrollYProgress} />
       <div
         ref={aboutRef}
         className="h-[40vh] md:h-[30vh] w-full bg-accent"
       ></div>
-      <motion.section
-        style={{
-          borderBottomLeftRadius: sectionBorderRadius,
-          borderBottomRightRadius: sectionBorderRadius,
-          // scale: exitScale,
-        }}
-        className={`sticky top-0 w-full h-screen  overflow-hidden transition-colors delay-75 duration-500 ${
+      <section
+        className={`sticky top-0  w-full h-screen  overflow-hidden transition-colors delay-75 duration-500 ${
           dark ? "bg-base-100" : "bg-accent"
         }`}
       >
@@ -117,27 +106,18 @@ const AboutSection = ({}) => {
         <AnimatePresence mode="sync">
           {contactInView && <Contact moveY={contactY} />}
         </AnimatePresence>
-      </motion.section>
+      </section>
 
       {/* Helpers for tracking progress and animating elements */}
       <div className="h-[10vh]"></div>
 
       <motion.div ref={progressBarHelper}>
-        <div
-          ref={firstRef}
-          className="h-[30vh] sm:h-[70vh] w-full bg-red-700 opacity-100 z-50"
-        ></div>
-        <div
-          ref={secondRef}
-          className="sm:h-[60vh] h-[30vh] w-full bg-green-700 opacity-100 z-50"
-        ></div>
-        <div
-          ref={thirdRef}
-          className="sm:h-[60vh] h-[30vh] w-full bg-blue-700 opacity-100 z-50 "
-        ></div>
+        <div ref={firstRef} className="h-[30vh] sm:h-[70vh] "></div>
+        <div ref={secondRef} className="sm:h-[60vh] h-[30vh]  "></div>
+        <div ref={thirdRef} className="sm:h-[60vh] h-[30vh] "></div>
       </motion.div>
-      <motion.div ref={contactRef} className=" h-[80vh]  "></motion.div>
-    </div>
+      <motion.div ref={contactRef} className=" h-[50vh]  "></motion.div>
+    </motion.div>
   );
 };
 

@@ -1,5 +1,5 @@
 "use client";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { useState } from "react";
 import ContactButton from "./contactButton";
 import { FaWhatsapp } from "react-icons/fa";
@@ -37,13 +37,17 @@ export default function SidebarContent({ visible }) {
       variants={variants}
       initial="hidden"
       animate={visible ? "visible" : "hidden"}
-      className="fixed top-0 right-0 z-40 flex flex-col justify-start w-full h-screen max-w-2xl px-0 pt-20 overflow-hidden md:h-fit md:rounded-b-lg bg-base-300 md:right-4 md:pt-16 lg:pt-20 lg:right-8 gap-y-8 "
+      className="absolute top-0 right-0 z-40 flex flex-col justify-end w-full max-sm:h-[100svh] px-0 pt-20 overflow-hidden md:max-w-2xl md:rounded-b-lg bg-base-200 md:right-4 md:pt-16 lg:pt-20 xl:right-8 gap-y-2 "
     >
       <Header visible={visible} />
 
       <AnimatePresence mode="popLayout">
         {!showForm && (
-          <div className="flex flex-col items-center justify-center w-full pb-12 grow md:pb-20 h-fit ">
+          <motion.div
+            exit={{ opacity: "0%" }}
+            layout
+            className="flex flex-col items-center justify-center w-full pt-6 pb-8 md:pt-12 grow md:pb-12 h-fit "
+          >
             <ContactButton
               primary={"Telefon"}
               secondary={"0743 483 293"}
@@ -78,7 +82,7 @@ export default function SidebarContent({ visible }) {
               visible={visible}
               id={3}
             />
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
 

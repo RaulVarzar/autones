@@ -26,8 +26,8 @@ const Navbar = () => {
         className="fixed inset-0 top-0 z-40 flex items-start justify-between w-full px-4 py-4 mx-auto md:py-10 xl:py-12 h-fit sm:px-6 md:px-10 xl:px-16"
       >
         <Logo />
+        <SidebarToggle />
       </motion.nav>
-      <SidebarToggle />
     </>
   );
 };

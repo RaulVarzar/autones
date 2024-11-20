@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Form from "./form";
-import { MdOutlineMessage } from "react-icons/md";
 import { BsChevronRight } from "react-icons/bs";
 
 const FormButton = ({ showForm, setShowForm }) => {
@@ -17,39 +16,33 @@ const FormButton = ({ showForm, setShowForm }) => {
           ease: [0.25, 0.1, 0.25, 1],
         },
       }}
-      style={{ backdropFilter: "brightness(120%)" }}
-      whileHover={!showForm && { backdropFilter: "brightness(160%)" }}
-      className={` relative group overflow-hidden w-full  bg-accent ${
-        !showForm ? "  transition-colors duration-300" : " "
+      className={`relative group z-[100]  overflow-hidden w-full bg-primary  ${
+        !showForm
+          ? "  transition-colors duration-300 hover:bg-secondary"
+          : " bg-secondary"
       }`}
     >
-      <AnimatePresence mode="popLayout">
-        {!showForm && (
-          <motion.div
-            layout="position"
-            onClick={() => setShowForm(true)}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
-            exit={{ opacity: 0, y: -100 }}
-            transition={{
-              type: "spring",
-              damping: 8,
-              mass: 0.3,
-            }}
-            layoutId="form"
-            className="relative flex flex-row items-center justify-center cursor-pointer "
-          >
-            <span className="w-full py-10 text-xl font-medium tracking-wide text-center uppercase transition-all duration-300 border-r border-opacity-40 border-base-content grow md:py-12 sm:text-2xl lg:text-3xl group-hover:brightness-150">
-              Trimite-ne un mesaj
-            </span>
+      <motion.button
+        onClick={() => setShowForm(!showForm)}
+        layout
+        className="relative flex flex-row items-center justify-center w-full cursor-pointer"
+      >
+        <motion.span
+          layout="position"
+          className="w-full py-10 text-xl font-medium tracking-wide text-center uppercase transition-all duration-300 grow md:py-12 sm:text-2xl lg:text-3xl group-hover:brightness-150"
+        >
+          Trimite-ne un mesaj
+        </motion.span>
 
-            <span className="px-8 text-4xl sm:px-10 lg:px-12 sm:text-6xl lg:text-5xl">
-              <BsChevronRight />
-            </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      {showForm && <Form closeForm={() => setShowForm(false)} />}
+        <motion.span
+          animate={showForm ? { rotate: 90 } : { rotate: 0 }}
+          className="px-8 text-4xl sm:px-10 lg:px-12 sm:text-6xl lg:text-5xl"
+        >
+          <BsChevronRight />
+        </motion.span>
+      </motion.button>
+
+      {showForm && <Form />}
     </motion.div>
   );
 };

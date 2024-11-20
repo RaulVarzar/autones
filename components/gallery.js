@@ -29,36 +29,35 @@ const Gallery = () => {
 
   const { scrollYProgress: exitProgress } = useScroll({
     target: secondaryRef,
-    offset: ["end", "end -0.2"],
+    offset: ["start 0.7", "start"],
   });
 
   const scale = useTransform(exitProgress, [0.2, 1], ["100%", "92%"]);
-  const exitY = useTransform(exitProgress, [0, 1], ["0%", "20%"]);
+  const exitY = useTransform(exitProgress, [0, 1], ["0vh", "25vh"]);
 
   return (
-    <>
-      <motion.section
+    <div className="relative">
+      <motion.div
+        style={{ y: exitY }}
+        className="sticky bottom-0 z-0 grid w-full grid-cols-1 gap-1 pb-[20vh] mx-auto px-6 sm:px-10 sm:grid-cols-2 lg:grid-cols-3 sm:gap-2 lg:gap-4 max-w-screen-3xl"
+      >
+        {imageList.map((image, index) => (
+          <Photo
+            key={index}
+            index={index}
+            image={image}
+            setActive={setHovering}
+            active={hovering}
+          />
+        ))}
+      </motion.div>
+      {/* <motion.section
         ref={ref}
         style={{ y: enterY }}
-        className="relative top-0 z-10 grid w-full px-2 py-4 mx-auto overflow-hidden max-sm:pb-60 sm:sticky sm:h-screen place-content-center sm:py-20 lg:px-6"
-      >
-        <motion.div
-          style={{ y: exitY }}
-          className="z-0 grid w-full grid-cols-1 gap-1 mx-auto h-fit sm:grid-cols-2 md:grid-cols-3 sm:gap-2 lg:gap-4 max-w-screen-3xl"
-        >
-          {imageList.map((image, index) => (
-            <Photo
-              key={index}
-              index={index}
-              image={image}
-              setActive={setHovering}
-              active={hovering}
-            />
-          ))}
-        </motion.div>
-      </motion.section>
+        className="relative top-0 z-10 grid w-full px-2 py-4 mx-auto border max-sm:pb-60 place-content-center sm:py-20 lg:px-6"
+      ></motion.section> */}
       <motion.div ref={secondaryRef} className="h-0" />
-    </>
+    </div>
   );
 };
 

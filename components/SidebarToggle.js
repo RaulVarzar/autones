@@ -22,17 +22,7 @@ const SidebarToggle = ({ colored }) => {
           ></motion.div>
         )}
       </AnimatePresence>
-      <motion.div
-        className={` fixed flex flex-col bg-opacity-0 overflow-hidden items-end top-3 right-3 sm:top-4 sm:right-4 lg:top-8 lg:right-8 z-50 transition-colors duration-300  font-normal  ${
-          !sidebarOpen && "cursor-pointer"
-        } ${
-          colored && sidebarOpen
-            ? "bg-accent"
-            : colored && !sidebarOpen
-            ? "backdrop-brightness-110"
-            : !colored && "bg-base-300"
-        } `}
-      >
+      <motion.div className="flex flex-col items-end overflow-hidden font-normal ">
         <Button
           toggleSidebar={toggleSidebar}
           sidebarOpen={sidebarOpen}
