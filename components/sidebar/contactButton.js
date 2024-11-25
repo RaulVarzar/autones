@@ -51,7 +51,7 @@ export default function ContactButton({
       initial={{ opacity: 0, y: "-50%" }}
       animate={{
         opacity: 1,
-        x: "0%",
+        y: "0%",
         transition: {
           delay: 0.4,
           duration: 1,
@@ -65,10 +65,11 @@ export default function ContactButton({
         variants={iconVariants}
         animate={visible ? "visible" : "hidden"}
         initial="hidden"
-        style={{ color: "--primary" }}
-        className="z-10 pb-1 text-2xl sm:text-3xl group-hover:text-primary text-base-content"
+        className="z-10 pb-1 text-2xl sm:text-3xl  "
       >
-        {icon}
+        <p className=" text-base-content group-hover:text-accent transition-all duration-300">
+          {icon}
+        </p>
       </motion.span>
 
       <motion.div

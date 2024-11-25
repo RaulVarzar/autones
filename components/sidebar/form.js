@@ -4,10 +4,8 @@ import { useForm } from "react-hook-form";
 import { sendEmail } from "../../utils/splitStrings";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { IoCloseOutline } from "react-icons/io5";
-import { IoIosSend } from "react-icons/io";
 
-const Form = ({}) => {
+const Form = ({ submitRef }) => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -21,110 +19,104 @@ const Form = ({}) => {
         [event.target.name]: event.target.value,
       };
     });
-    console.log(formData);
   }
 
   return (
-    <motion.div
-      initial={{ scale: 0.95, y: 100, opacity: 0 }}
-      animate={{ scale: 1, y: 0, opacity: 1 }}
-      transition={{ duration: 0.3, delay: 0.3, type: "spring", mass: 0.2 }}
-      className="z-50 flex flex-col "
-    >
+    <div className="z-50 flex flex-col ">
       <form
         // ref={form}
         // onSubmit={sendEmail}
-        className="flex flex-col items-center justify-center px-12 pt-6 pb-12 "
+        className="flex flex-col items-center justify-center gap-12  "
       >
-        <motion.div className="flex flex-col gap-8 ">
+        <motion.div className="flex flex-col w-full pb-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: [0, 1, 1, 1], y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8, type: "tween" }}
-            className="relative z-0 group"
-          >
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={(e) => handleChange(e)}
-              required
-              className={
-                "peer px-3 block  appearance-none opacity-60  hover:opacity-100  focus:border-white transition duration-300 border-b-2  bg-transparent py-2.5 text-base text-gray-200 md:text-xl focus:outline-none focus:ring-0 " +
-                (formData.name.length > 1 && " text-white")
-              }
-              placeholder=" "
-            />
-            <label className="absolute text-sm top-0 left-0 opacity-60 text-base-content hover:opacity-100 peer-focus:opacity-100 peer-focus:text-white -z-10 origin-[0]  font-light transform md:text-base  duration-300 peer-placeholder-shown:translate-y-2 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-90 ">
-              Nume
-            </label>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6, type: "tween" }}
-            className="relative z-0 group"
-          >
-            <input
-              type="phone"
-              required
-              value={formData.phone}
-              onChange={(e) => handleChange(e)}
-              name="phone"
-              className={
-                "peer px-3 block  appearance-none opacity-60  hover:opacity-100  focus:border-white transition duration-300 border-b-2  bg-transparent py-2.5 text-base text-gray-200 md:text-xl focus:outline-none focus:ring-0 " +
-                (formData.phone.length > 8 && " text-white")
-              }
-              placeholder=" "
-            />
-            <label className="absolute text-sm top-0 left-0 opacity-60 text-base-content hover:opacity-100 peer-focus:opacity-100 peer-focus:text-white -z-10 origin-[0]  font-light transform md:text-base  duration-300 peer-placeholder-shown:translate-y-2 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-90 ">
-              Numar de telefon
-            </label>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: "-50%", filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{
-              delay: 0.9,
-              duration: 0.4,
-              type: "tween",
+              delay: 0.4,
+              duration: 0.5,
+              ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="relative z-0 group"
+            className="relative border-  border-base-content border-opacity-25 py-6  lg:py-10"
           >
-            <textarea
-              name="message"
-              rows="5"
-              required
-              value={formData.message}
-              onChange={(e) => handleChange(e)}
-              className={
-                "peer px-3 block  appearance-none opacity-60  hover:opacity-100  focus:border-white transition duration-300 border-b-2  bg-transparent py-2.5 text-base text-gray-200 md:text-xl focus:outline-none focus:ring-0 " +
-                (formData.message.length > 12 && " text-white")
-              }
-              placeholder=" "
-            ></textarea>
-            <label className="absolute text-sm top-0 left-0 opacity-60 text-base-content hover:opacity-100 peer-focus:opacity-100 peer-focus:text-white -z-10 origin-[0]  font-light transform md:text-base  duration-300 peer-placeholder-shown:translate-y-2 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-90 ">
-              Mesajul dvs.
+            <label className="input flex-row-reverse text-2xl flex items-center gap-2 w-full outline-none focus:outline-none peer-focus:outline-none focus:border-transparent focus:ring-0 focus-within:ring:0 focus-within:border-transparent focus-within:outline-none bg-transparent py-6 px-8 sm:text-3xl">
+              <input
+                type="text"
+                value={formData.name}
+                onChange={(e) => handleChange(e)}
+                required
+                name="name"
+                className={`grow peer focus:placeholder-transparent  ${
+                  formData.name.length > 0 ? " opacity-100" : "opacity-30"
+                }`}
+                placeholder="Ion Popescu"
+              />
+              <span className=" min-w-28   opacity-100 peer-focus:opacity-60 transition-opacity duration-300 ">
+                Nume
+              </span>
+            </label>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: "-50%", filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{
+              delay: 0.55,
+              duration: 0.5,
+              ease: [0.25, 0.1, 0.25, 1],
+            }}
+            className="relative border-  border-base-content border-opacity-25 py-6 lg:py-10"
+          >
+            <label className="input flex-row-reverse text-2xl flex items-center gap-2 w-full outline-none focus:outline-none peer-focus:outline-none focus:border-transparent focus:ring-0 focus-within:ring:0 focus-within:border-transparent focus-within:outline-none bg-transparent py-6 px-8 sm:text-3xl">
+              <input
+                type="phone"
+                value={formData.phone}
+                onChange={(e) => handleChange(e)}
+                required
+                name="phone"
+                className={`grow peer focus:placeholder-transparent  ${
+                  formData.phone.length > 0 ? " opacity-100" : "opacity-30"
+                }`}
+                placeholder="0712 345 678"
+              />
+              <span className=" min-w-28   opacity-100 peer-focus:opacity-60 transition-opacity duration-300 ">
+                Telefon
+              </span>
+            </label>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: "-50%", filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{
+              delay: 0.7,
+              duration: 0.5,
+              ease: [0.25, 0.1, 0.25, 1],
+            }}
+            className="relative border-  border-base-content border-opacity-25 py-6 lg:py-10"
+          >
+            <label className="input flex-row-reverse text-2xl flex items-center gap-2 w-full outline-none focus:outline-none peer-focus:outline-none focus:border-transparent focus:ring-0 focus-within:ring:0 focus-within:border-transparent focus-within:outline-none bg-transparent py-6 px-8 sm:text-3xl">
+              <input
+                type="text"
+                value={formData.message}
+                onChange={(e) => handleChange(e)}
+                required
+                name="message"
+                className={`grow peer focus:placeholder-transparent  ${
+                  formData.message.length > 0 ? " opacity-100" : "opacity-30"
+                }`}
+                placeholder="Mesajul dumneavoastră"
+              />
+              <span className=" min-w-28   opacity-100 peer-focus:opacity-60 transition-opacity duration-300 ">
+                Mesaj
+              </span>
             </label>
           </motion.div>
         </motion.div>
 
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 1,
-            transition: { delay: 1.2, duration: 0.8 },
-          }}
-          type="submit"
-          className="flex mx-auto mt-5 text-sm font-normal tracking-wide uppercase transition-all duration-300 rounded-md shadow-md text-base-content border-base-content hover:font-semibold hover:gap-2 group btn btn-md btn-outline hover:border-opacity-0 hover:bg-base-content hover:text-accent hover:scale-105"
-        >
-          Trimite
-          <i className="text-2xl transition-transform duration-300 group-hover:rotate-45">
-            <IoIosSend />
-          </i>
-        </motion.button>
+        <button ref={submitRef} type="submit" className="hidden"></button>
       </form>
-    </motion.div>
+    </div>
   );
 };
 

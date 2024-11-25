@@ -126,15 +126,15 @@ const Footer = () => {
   return (
     <>
       <div ref={ref} className="relative h-0 "></div>
-      <div className="sticky bottom-0 flex flex-col items-center pb-36 2xl:pb-4 justify-center w-full min-h-[15vh] gap-12 px-4 py-8 mx-auto  bg-accent md:px-24 lg:px-48 ">
+      <div className="sticky bottom-0 flex flex-col  md:flex-row items-center  2xl:pb-4 justify-between w-full min-h-[15vh] gap-12 px-4 py-8  mx-auto  bg-accent md:px-10">
         <motion.span
           style={{ opacity: logoOpacity, filter, y, opacity }}
-          className="absolute bottom-0 text-3xl font-black leading-3 tracking-wider uppercase opacity-50 md:text-5xl sm:text-4xl left-4 lg:text-6xl xl:text-8xl"
+          className=" text-3xl font-black pt-2 tracking-wider uppercase opacity-50 md:text-5xl sm:text-4xl left-4 lg:text-6xl xl:text-8xl"
         >
           Autones
         </motion.span>
-        <motion.div className="flex flex-col items-center justify-center w-full max-w-5xl gap-x-8 2xl:gap-x-12 xl:flex-row h-fit ">
-          <div className="flex flex-col w-full md:flex-row md:items-end lg:w-1/2 max-md:text-center ">
+        <motion.div className="flex  flex-col items-center justify-center w-full max-w-5xl gap-x-8 2xl:gap-x-12 xl:flex-row h-fit ">
+          <div className="flex  flex-col w-full md:flex-row md:items-end lg:w-1/2 max-md:text-center ">
             <div className="md:text-right lg:max-w-md opacity-90">
               <motion.p
                 variants={textVariants}
@@ -149,7 +149,7 @@ const Footer = () => {
           <motion.div
             variants={socialVariants}
             animate={isInView ? "visible" : "hidden"}
-            className="flex flex-row justify-center w-full gap-4 py-2 pt-8 text-lg lg:gap-6 h-fit lg:w-1/2 "
+            className="flex flex-row  items-center justify-center w-full gap-4 py-2 text-lg lg:gap-6 h-fit lg:w-1/2 "
           >
             <motion.a
               variants={childrenVariants}

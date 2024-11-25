@@ -37,7 +37,7 @@ export default function SidebarContent({ visible }) {
       variants={variants}
       initial="hidden"
       animate={visible ? "visible" : "hidden"}
-      className="absolute top-0 right-0 z-40 flex flex-col justify-end w-full max-sm:h-[100svh] px-0 pt-20 overflow-hidden md:max-w-2xl md:rounded-b-lg bg-base-200 md:right-4 md:pt-16 lg:pt-20 xl:right-8 gap-y-2 "
+      className="absolute top-0 right-0 z-40 flex flex-col justify-end w-full max-sm:h-[100svh] px-0 pt-20 overflow-hidden md:max-w-2xl md:rounded-b-lg bg-base-200 md:right-4 md:pt-16 lg:pt-20 xl:right-8 gap-y-2 md:gap-y-4 xl:gap-y-10 "
     >
       <Header visible={visible} />
 
@@ -46,7 +46,7 @@ export default function SidebarContent({ visible }) {
           <motion.div
             exit={{ opacity: "0%" }}
             layout
-            className="flex flex-col items-center justify-center w-full pt-6 pb-8 md:pt-12 grow md:pb-12 h-fit "
+            className="flex flex-col  w-full "
           >
             <ContactButton
               primary={"Telefon"}
