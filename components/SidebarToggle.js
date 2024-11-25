@@ -19,7 +19,7 @@ const SidebarToggle = ({ colored }) => {
             exit={{ opacity: 0, transition: { duration: 0.35, delay: 0.1 } }}
             onClick={toggleSidebar}
             className="fixed inset-0 z-40 bg-neutral-950/70 backdrop-blur-md"
-          ></motion.div>
+          />
         )}
       </AnimatePresence>
       <motion.div className="flex flex-col items-end overflow-hidden font-normal ">
@@ -46,6 +46,8 @@ const Button = ({ toggleSidebar, colored, sidebarOpen }) => {
     >
       <motion.span
         style={sidebarOpen && { opacity: 0.75 }}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1, transition: { duration: 0.5, delay: 0.5 } }}
         className="z-20 flex flex-col items-end h-full gap-2 text-2xl transition-opacity duration-500 cursor-pointer sm:text-3xl"
       >
         <motion.span

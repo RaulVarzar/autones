@@ -52,7 +52,7 @@ const Hero = () => {
               h-fit place-self-center"
           >
             {TITLE.map((letter, i) => (
-              <Letter i={i} letter={letter} />
+              <Letter i={i} letter={letter} key={i} />
             ))}
           </motion.div>
 
