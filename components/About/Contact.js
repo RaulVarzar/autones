@@ -1,5 +1,7 @@
 import Testimonials from "components/testimonials/testimonials";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
+import { FaInstagram, FaPhoneFlip, FaFacebookF } from "react-icons/fa6";
+import { FaEnvelope } from "react-icons/fa";
 
 const Contact = ({ moveY }) => {
   const variants = {
@@ -77,20 +79,40 @@ const Contact = ({ moveY }) => {
             animate="visible"
             exit="exit"
             variants={contactInfoVariants}
-            className="flex flex-col items-end justify-end w-full overflow-hidden sm:gap-1 lg:gap-3 xl:gap-8 lg:flex-row-reverse sm:justify-start "
+            className="flex flex-col items-end  justify-end w-fit xl:w-full gap-2.5 overflow-hidden sm:gap-2 xl:gap-3 2xl:gap-8 xl:flex-row-reverse sm:justify-start "
           >
             <ContactLink
               title={"phone"}
               content={"+40 744 540 583"}
               link={""}
-            />
+              id={0}
+            >
+              <FaPhoneFlip />
+            </ContactLink>
             <ContactLink
               title={"e-mail"}
               content={"tractari@autones.ro"}
               link={""}
-            />
-            <ContactLink title={"facebook"} content={"Facebook"} link={""} />
-            <ContactLink title={"instagram"} content={"Instagram"} link={""} />
+              id={1}
+            >
+              <FaEnvelope />
+            </ContactLink>
+            <ContactLink
+              title={"facebook"}
+              content={"Facebook"}
+              link={""}
+              id={2}
+            >
+              <FaFacebookF />
+            </ContactLink>
+            <ContactLink
+              title={"instagram"}
+              content={"Instagram"}
+              link={""}
+              id={3}
+            >
+              <FaInstagram />{" "}
+            </ContactLink>
           </motion.div>
         </div>
       </motion.div>
@@ -100,7 +122,7 @@ const Contact = ({ moveY }) => {
 
 export default Contact;
 
-const ContactLink = ({ link, content }) => {
+const ContactLink = ({ link, content, children, id }) => {
   const childrenVariants = {
     hidden: { y: "200%", filter: "blur(8px)", opacity: 0 },
     visible: {
@@ -112,17 +134,68 @@ const ContactLink = ({ link, content }) => {
     exit: { y: "80%" },
   };
 
+  const hoverVariants = {
+    rest: {
+      y: "102%",
+      transition: { ease: [0.25, 0.1, 0.25, 1], duration: 0.25 },
+    },
+    hover: {
+      y: 0,
+      transition: {
+        ease: [0.25, 0.1, 0.25, 1],
+        duration: 0.3,
+      },
+    },
+  };
+
   return (
-    <motion.a
-      href={link}
-      className="flex flex-col items-start sm:px-6 py-1 sm:py-5 transition-transform duration-500 rounded-xl w-fit hover:scale-105 hover:-translate-y-0.5"
-    >
-      <motion.h1
-        variants={childrenVariants}
-        className="text-xl font-light tracking-wide transition-opacity duration-300 cursor-pointer sm:text-2xl md:text-3xl xl:text-4xl opacity-70 hover:opacity-100 "
+    <motion.a href={link} className="max-xl:w-full w-fit group 2xl:w-full">
+      <motion.div
+        whileHover="hover"
+        animate="rest"
+        className="relative flex flex-row items-center justify-end gap-4 px-4 py-3 overflow-hidden transition-transform duration-500 2xl:px-6 sm:py-5"
       >
-        {content}
-      </motion.h1>
+        <motion.h1
+          variants={childrenVariants}
+          initial={{ y: "200%", filter: "blur(6px)" }}
+          animate={{ y: 0, filter: "blur(0px)" }}
+          transition={{
+            duration: 0.75,
+            delay: 1.8 + id * 0.15,
+            ease: [0.25, 0.1, 0.25, 1],
+          }}
+          className="text-2xl font-light tracking-wide transition-opacity duration-300 cursor-pointer sm:text-2xl md:text-3xl xl:text-3xl opacity-70 group-hover:opacity-100 "
+        >
+          {content}
+        </motion.h1>
+        <motion.span
+          initial={{ x: "50%", filter: "blur(4px)", opacity: 0 }}
+          animate={{ x: 0, filter: "blur(0px)", opacity: 1 }}
+          transition={{
+            duration: 0.65,
+            delay: 2.2 + id * 0.15,
+            ease: [0.25, 0.1, 0.25, 1],
+          }}
+          className="text-3xl"
+        >
+          {children}
+        </motion.span>
+
+        <motion.span
+          variants={hoverVariants}
+          className="absolute top-0 left-0 w-full h-full -z-10 bg-primary"
+        />
+        <motion.span
+          initial={{ x: "100%" }}
+          animate={{ x: 0 }}
+          transition={{
+            duration: 0.6,
+            delay: 1.4 + id * 0.15,
+            ease: [0.25, 0.1, 0.25, 1],
+          }}
+          className="absolute bottom-0 left-0 w-full h-0.5 bg-base-content bg-opacity-15"
+        />
+      </motion.div>
     </motion.a>
   );
 };

@@ -37,54 +37,56 @@ export default function SidebarContent({ visible }) {
       variants={variants}
       initial="hidden"
       animate={visible ? "visible" : "hidden"}
-      className="absolute top-0 right-0 z-40 flex flex-col justify-end w-full max-sm:h-[100svh] px-0 pt-20 overflow-hidden md:max-w-2xl md:rounded-b-lg bg-base-200 md:right-4 md:pt-16 lg:pt-20 xl:right-8 gap-y-2 md:gap-y-4 xl:gap-y-10 "
+      className="absolute top-0 right-0 z-40 flex flex-col justify-between w-full max-sm:h-[100svh] px-0 pt-20 overflow-hidden md:max-w-2xl md:rounded-b-lg bg-base-200 md:right-4 md:pt-16 lg:pt-20 xl:right-8 gap-y-2 md:gap-y-4 xl:gap-y-10 "
     >
-      <Header visible={visible} />
+      <div className="flex flex-col justify-center gap-10 sm:gap-6 grow">
+        <Header visible={visible} />
 
-      <AnimatePresence mode="popLayout">
-        {!showForm && (
-          <motion.div
-            exit={{ opacity: "0%" }}
-            layout
-            className="flex flex-col  w-full "
-          >
-            <ContactButton
-              primary={"Telefon"}
-              secondary={"0743 483 293"}
-              href={"tel:+0743483293"}
-              icon={<FiPhoneCall />}
-              visible={visible}
-              id={0}
-            />
+        <AnimatePresence mode="popLayout">
+          {!showForm && (
+            <motion.div
+              exit={{ opacity: "0%" }}
+              layout
+              className="flex flex-col w-full "
+            >
+              <ContactButton
+                primary={"Telefon"}
+                secondary={"0743 483 293"}
+                href={"tel:+0743483293"}
+                icon={<FiPhoneCall />}
+                visible={visible}
+                id={0}
+              />
 
-            <ContactButton
-              primary={"Whatsapp"}
-              secondary={"0743 483 293"}
-              href={"https://wa.me/0743483293"}
-              icon={<FaWhatsapp />}
-              visible={visible}
-              id={1}
-            />
+              <ContactButton
+                primary={"Whatsapp"}
+                secondary={"0743 483 293"}
+                href={"https://wa.me/0743483293"}
+                icon={<FaWhatsapp />}
+                visible={visible}
+                id={1}
+              />
 
-            <ContactButton
-              primary={"Instagram"}
-              secondary={"@autones"}
-              href={"https://instagram.com/autones"}
-              icon={<FiInstagram />}
-              visible={visible}
-              id={2}
-            />
-            <ContactButton
-              primary={"Facebook"}
-              secondary={"Autones"}
-              href={"https://facebook.com/autones"}
-              icon={<FiFacebook />}
-              visible={visible}
-              id={3}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <ContactButton
+                primary={"Instagram"}
+                secondary={"@autones"}
+                href={"https://instagram.com/autones"}
+                icon={<FiInstagram />}
+                visible={visible}
+                id={2}
+              />
+              <ContactButton
+                primary={"Facebook"}
+                secondary={"Autones"}
+                href={"https://facebook.com/autones"}
+                icon={<FiFacebook />}
+                visible={visible}
+                id={3}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
 
       <FormButton showForm={showForm} setShowForm={setShowForm} />
     </motion.div>

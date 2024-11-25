@@ -70,7 +70,10 @@ const Testimonials = () => {
   const x = useMotionValue(0);
   const xSmooth = useSpring(x, { damping: 50, stiffness: 400 });
   const xVelocity = useVelocity(xSmooth);
-  const cardSkew = useTransform(xVelocity, [-1500, 0, 1500], [-6, 1, 6], {
+  const cardSkew = useTransform(xVelocity, [-1500, 0, 1500], [-4, 0, 4], {
+    clamp: false,
+  });
+  const cardScale = useTransform(xVelocity, [-2000, 0, 2000], [0.96, 1, 0.96], {
     clamp: false,
   });
   const cardX = useTransform(xVelocity, [-1500, 0, 1500], [20, 0, -20], {
@@ -89,7 +92,7 @@ const Testimonials = () => {
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="text-xl font-medium leading-3 tracking-wide uppercase sm:text-xl md:text-2xl lg:text-3xl text-info-content xl:text-4xl text-balance"
+          className="text-lg font-medium leading-3 tracking-wide uppercase sm:text-xl md:text-2xl lg:text-3xl text-info-content xl:text-4xl text-balance"
         >
           Ce spun
         </motion.h1>
@@ -98,7 +101,7 @@ const Testimonials = () => {
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="text-3xl font-bold uppercase sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl"
+          className="text-2xl font-bold uppercase sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl"
         >
           clientii nostri
         </motion.h2>
@@ -120,9 +123,9 @@ const Testimonials = () => {
           delay: 0.6,
         }}
         ref={constraintsRef}
-        className="flex flex-row gap-16 p-2 overflow-hidden w-fit flex-nowrap "
+        className="flex flex-row gap-16 p-2 overflow-hidden  w-[100vw] flex-nowrap "
       >
-        <motion.div
+        <motion.ul
           drag="x"
           dragControls={controls}
           dragMomentum={0.1}
@@ -132,15 +135,15 @@ const Testimonials = () => {
           style={{ x }}
           className="flex flex-row gap-4 px-8 sm:gap-6 sm:px-10 md:px-12 lg:px-16 xl:px-16 cursor-grab active:cursor-grabbing"
         >
-          <Card skew={cardSkew} x={cardX} />
-          <Card skew={cardSkew} x={cardX} />
-          <Card skew={cardSkew} x={cardX} />
-          <Card skew={cardSkew} x={cardX} />
-          <Card skew={cardSkew} x={cardX} />
-          <Card skew={cardSkew} x={cardX} />
-          <Card skew={cardSkew} x={cardX} />
-          <Card skew={cardSkew} x={cardX} />
-        </motion.div>
+          <Card skew={cardSkew} x={cardX} scale={cardScale} />
+          <Card skew={cardSkew} x={cardX} scale={cardScale} />
+          <Card skew={cardSkew} x={cardX} scale={cardScale} />
+          <Card skew={cardSkew} x={cardX} scale={cardScale} />
+          <Card skew={cardSkew} x={cardX} scale={cardScale} />
+          <Card skew={cardSkew} x={cardX} scale={cardScale} />
+          <Card skew={cardSkew} x={cardX} scale={cardScale} />
+          <Card skew={cardSkew} x={cardX} scale={cardScale} />
+        </motion.ul>
       </motion.div>
     </motion.section>
   );

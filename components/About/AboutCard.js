@@ -70,7 +70,7 @@ const AboutCard = ({ visible, children, title, description }) => {
         variants={cardVariants}
         initial="hidden"
         animate={visible ? "visible" : "hidden"}
-        className="flex flex-col items-center border-secondary border border-opacity-65 justify-center w-full h-full max-w-2xl px-4 py-5 text-center bg-opacity-40 rounded-2xl sm:px-6 sm:py-8 md:px-12 md:py-12 lg:py-16 xl:py-24 bg-primary text-balance "
+        className="flex flex-col items-center justify-center w-full h-full max-w-2xl px-4 py-5 text-center border border-opacity-40 border-secondary bg-opacity-40 rounded-2xl sm:px-6 md:px-12 md:py-8 lg:py-16 xl:py-24 bg-primary text-balance "
       >
         <motion.span
           variants={iconVariants}

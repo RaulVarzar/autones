@@ -39,7 +39,7 @@ const Gallery = () => {
     <div className="relative">
       <motion.div
         style={{ y: exitY }}
-        className="sticky bottom-0 z-0 grid w-full grid-cols-1 gap-1 pb-[20vh] mx-auto px-6 sm:px-10 sm:grid-cols-2 lg:grid-cols-3 sm:gap-2 lg:gap-4 max-w-screen-3xl"
+        className=" z-0 grid w-full grid-cols-1 gap-1 pb-[25vh] mx-auto px-6 sm:px-10 sm:grid-cols-2 lg:grid-cols-3 sm:gap-2 lg:gap-4 max-w-screen-3xl"
       >
         {imageList.map((image, index) => (
           <Photo
