@@ -40,12 +40,12 @@ const Services = () => {
   const clipPath = useMotionTemplate`polygon(${clipPath1}% 0, ${clipPath2}% 0, ${clipPath2}% 100%, ${clipPath1}% 100%)`;
 
   return (
-    <section className="relative flex flex-col items-center w-full px-4 bg-transparent sm:min-h-fit sm:px-6 md:px-8 lg:px-12 ">
+    <section className="relative flex flex-col items-center w-full px-4 bg-transparent sm:min-h-fit pb-[20vh] sm:px-6 md:px-8 lg:px-12 ">
       <motion.div
         initial={{ opacity: 0, y: "30%", scale: 0.8 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{
-          delay: 3,
+          delay: 2.3,
           type: "spring",
           mass: 1.4,
           stiffness: 80,
