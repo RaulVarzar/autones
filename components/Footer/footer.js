@@ -144,7 +144,7 @@ const Footer = () => {
   return (
     <>
       <div ref={ref} className="relative h-0 "></div>
-      <div className="sticky bottom-0 flex flex-col-reverse  md:flex-row items-center  2xl:pb-4 justify-between w-full min-h-[15vh] gap-8 px-4 py-8  mx-auto  bg-accent md:px-10">
+      <div className="sticky bottom-0 flex flex-col-reverse  md:flex-row items-center  2xl:pb-4 justify-between w-full min-h-[25vh] gap-8 px-4 py-8  mx-auto  bg-base-300  md:px-10">
         <motion.span
           style={{ opacity: logoOpacity, filter, y, opacity }}
           className="pt-2 text-4xl font-black tracking-wider uppercase opacity-50 md:text-5xl sm:text-4xl left-4 lg:text-6xl xl:text-8xl"

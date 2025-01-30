@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 
-const AboutCard = ({ visible, children, title, description }) => {
+const AboutCard = ({ visible, children, title, description, id }) => {
   const cardVariants = {
     hidden: {
       opacity: 0,
-      y: "20%",
+      y: "80%",
       scale: 0.96,
       filter: "blur(12px)",
-      transition: { duration: 0.3 },
+      transition: { duration: 1 },
     },
     visible: {
       opacity: 1,
@@ -15,8 +15,9 @@ const AboutCard = ({ visible, children, title, description }) => {
       y: "0%",
       scale: 1,
       transition: {
-        ease: [0.25, 0.1, 0.25, 1],
-        duration: 0.4,
+        ease: [0.7, 0.05, 0.25, 1],
+        duration: 1.2,
+        delay: id * 0.2,
       },
     },
   };
@@ -70,7 +71,7 @@ const AboutCard = ({ visible, children, title, description }) => {
         variants={cardVariants}
         initial="hidden"
         animate={visible ? "visible" : "hidden"}
-        className="flex flex-col items-center justify-center w-full h-full max-w-2xl px-4 py-5 text-center border border-opacity-40 border-secondary bg-opacity-40 rounded-2xl sm:px-6 md:px-12 md:py-8 lg:py-16 xl:py-24 bg-primary text-balance "
+        className="flex flex-col items-center justify-center w-full h-full max-w-2xl px-4 py-5 text-center rounded-2xl sm:px-6 md:px-12 md:py-8 lg:py-16 xl:py-24 text-balance "
       >
         <motion.span
           variants={iconVariants}

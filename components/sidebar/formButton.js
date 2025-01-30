@@ -4,6 +4,7 @@ import { BsChevronRight } from "react-icons/bs";
 import { useRef } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { IoIosSend } from "react-icons/io";
+import { MdCancel } from "react-icons/md";
 
 const FormButton = ({ showForm, setShowForm }) => {
   const submitRef = useRef();
@@ -20,14 +21,14 @@ const FormButton = ({ showForm, setShowForm }) => {
           ease: [0.25, 0.1, 0.25, 1],
         },
       }}
-      className={`relative group z-[100]  overflow-hidden w-full   `}
+      className={`relative group z-[100]  overflow-hidden w-full px-8 py-6   `}
     >
       {showForm && <Form submitRef={submitRef} />}
 
       <motion.div
         layout
         exit={{ opacity: 0, transition: { duration: 0.2 } }}
-        className={`relative flex  flex-row items-stretch justify-center   w-full cursor-pointer ${
+        className={`relative flex  flex-row items-stretch justify-center rounded-2xl overflow-hidden  w-full cursor-pointer ${
           !showForm
             ? "  transition-colors duration-300 hover:bg-secondary bg-base-300"
             : "bg-base-300 "
@@ -37,7 +38,7 @@ const FormButton = ({ showForm, setShowForm }) => {
           <motion.span
             onClick={() => setShowForm(true)}
             layout="position"
-            className="w-full py-10 text-xl font-medium tracking-wide text-center uppercase transition-all duration-300 grow md:py-12 sm:text-2xl lg:text-3xl group-hover:brightness-150"
+            className="w-full py-6 text-xl font-medium tracking-wide text-center uppercase transition-all duration-300 grow md:py-10 sm:text-2xl lg:text-3xl group-hover:brightness-150"
           >
             Formular de contact
           </motion.span>
@@ -47,11 +48,11 @@ const FormButton = ({ showForm, setShowForm }) => {
             onClick={() => submitRef.current.click()}
             layout
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
-            className="relative flex flex-row items-center justify-center  w-full cursor-pointer gap-2 sm:gap-6 hover:bg-primary transition-colors duration-300"
+            className="relative flex flex-row items-center justify-center w-full gap-2 transition-colors duration-300 cursor-pointer sm:gap-6 hover:bg-primary"
           >
             <motion.span
               layout="position"
-              className=" py-10 text-xl font-medium tracking-wide text-center uppercase transition-all duration-300  md:py-12 sm:text-2xl lg:text-3xl group-hover:brightness-150"
+              className="py-10 text-xl font-medium tracking-wide text-center uppercase transition-all duration-300 md:py-12 sm:text-2xl lg:text-3xl group-hover:brightness-150"
             >
               Trimite
             </motion.span>
@@ -63,9 +64,7 @@ const FormButton = ({ showForm, setShowForm }) => {
             showForm && "hover:bg-error"
           }`}
         >
-          <motion.span animate={showForm ? { rotate: 90 } : { rotate: 0 }}>
-            <BsChevronRight />
-          </motion.span>
+          {showForm ? <MdCancel /> : <BsChevronRight />}
         </motion.button>
       </motion.div>
     </motion.div>

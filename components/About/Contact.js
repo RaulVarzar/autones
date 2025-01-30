@@ -54,10 +54,10 @@ const Contact = ({ moveY }) => {
   return (
     <>
       <motion.div
-        style={{ y: moveY }}
-        className="flex flex-col items-stretch w-full h-full justify-evenly sm:justify-end"
+        style={{}}
+        className="flex flex-col items-stretch h-full overflow-hidden justify-evenly sm:justify-end bg-accent-content"
       >
-        <div className="flex items-center sm:grow h-fit  sm:pt-[10vh] py-4">
+        <div className="flex items-center sm:grow h-fit  sm:pt-[10vh] ">
           {/* <AnimatePresence> */}
           <Testimonials />
           {/* </AnimatePresence> */}

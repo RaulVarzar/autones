@@ -106,7 +106,7 @@ const Photo = ({ image, index, active, setActive }) => {
   return (
     <motion.div
       ref={imageRef}
-      style={{ scale: cardScale, clipPath }}
+      style={{ scale: cardScale }}
       onHoverStart={() => setActive(index)}
       onHoverEnd={() => setActive(null)}
       className={`w-full aspect-video sm:aspect-4/3 border-3 border-base-100 relative cursor-pointer overflow-hidden rounded-xl m-auto max-w-7xl mx-auto`}

@@ -37,7 +37,7 @@ const Hero = () => {
 
   return (
     <>
-      <motion.div className="top-0 sticky z-0  flex flex-col items-center justify-end w-full gap-2 overflow-x-hidden text-center sm:stick h-[75vh] md:gap-6 ">
+      <motion.div className="top-0 sticky z-0   flex flex-col items-center justify-end w-full gap-2 overflow-x-hidden text-center sm:stick h-[75vh] md:gap-6 ">
         <motion.div
           style={{ y: sectionY }}
           className="flex flex-col justify-center w-full h-5/6"

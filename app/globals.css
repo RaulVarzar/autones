@@ -41,23 +41,11 @@ html {
   font-style: normal;
 }
 
-.contact-btn-container {
-  min-height: 50px;
-  min-width: 240px;
-  position: relative;
-  overflow: hidden;
-  text-align: start;
-}
-
-.contact-btn span {
-  transition: top 0.35s;
-}
-
 .btn-icon {
   transition: scale 0.45s;
 }
 
-.contact-btn-text-one {
+.contact-btn-text-ono {
   position: absolute;
   width: 100%;
   top: 50%;

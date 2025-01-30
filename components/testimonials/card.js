@@ -16,13 +16,13 @@ const Card = ({ skew, x, scale }) => {
           : { scale: 1 }
       }
       transition={{ duration: 0.4, delay: 0 }}
-      className="flex-col text-center px-6 py-4 sm:py-6 border border-base-content border-opacity-5 transition-colors duration-300 hover:bg-opacity-70 md:py-8 sm:px-12 flex  gap-4 lg:gap-8 items-center justify-center bg-base-300 bg-opacity-50 min-w-72 md:min-w-96 lg:min-w-[480px] rounded-lg "
+      className="flex-col text-center px-6 py-4 sm:py-6 transition-colors duration-300  md:py-8 sm:px-12 flex  gap-4 lg:gap-8 items-center justify-center backdrop-brightness-105  min-w-72 md:min-w-96 lg:min-w-[480px] rounded-lg "
     >
-      <span className="text-xl sm:text-2xl text-secondary brightness-150">
+      <span className="text-xl sm:text-2xl text-base-content brightness-150">
         <FaQuoteRight />
       </span>
-      <div className="flex flex-col gap-1">
-        <p className="italic font-thin leading-5 tracking-wide text-md sm:text-2xl sm:leading-7">
+      <div className="flex flex-col gap-1 text-base-content">
+        <p className="italic font-light leading-5 tracking-wide text-md sm:text-2xl sm:leading-7">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras congue,
           velit id consequat tincidunt, est ligula porttitor ex.
         </p>

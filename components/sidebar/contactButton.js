@@ -44,22 +44,54 @@ export default function ContactButton({
     },
   };
 
+  const primaryTextVariants = {
+    rest: {
+      transition: {
+        staggerChildren: 0.02,
+      },
+    },
+    hover: {
+      transition: {
+        staggerChildren: 0.02,
+      },
+    },
+  };
+
+  const secondaryTextVariants = {
+    rest: { transition: { staggerChildren: 0.02 } },
+    hover: {
+      transition: { staggerChildren: 0.02 },
+    },
+  };
+
+  const primaryChildrenVariants = {
+    hover: { y: "-100%" },
+    rest: { y: 0 },
+  };
+  const secondaryChildrenVariants = {
+    hover: { y: 0 },
+    rest: { y: "100%" },
+  };
+
   return (
     <motion.div
       href={href}
       target="_blank"
-      initial={{ opacity: 0, y: "-50%" }}
-      animate={{
-        opacity: 1,
-        y: "0%",
-        transition: {
-          delay: 0.4,
-          duration: 1,
-          ease: [0.25, 0.1, 0.25, 1],
-        },
-      }}
-      exit={{ opacity: 0, y: "-100%" }}
-      className="relative flex flex-row items-center justify-start w-full gap-6 px-8 py-3 overflow-hidden text-center transition-colors duration-300 bg-transparent border-t border-dotted cursor-pointer group md:gap-10 contact-btn border-opacity-15 border-base-content min-w-48 grow sm:py-6 md:py-8 lg:py-10 sm:px-10 md:px-10 lg:px-16 "
+      // initial={{ opacity: 0, y: "-50%" }}
+      // animate={{
+      //   opacity: 1,
+      //   y: "0%",
+      //   transition: {
+      //     delay: 0.4,
+      //     duration: 1,
+      //     ease: [0.25, 0.1, 0.25, 1],
+      //   },
+      // }}
+      // exit={{ opacity: 0, y: "-100%" }}
+      initial="rest"
+      whileHover="hover"
+      animate="rest"
+      className="relative flex flex-row items-center justify-start w-full gap-6 px-8 py-3 overflow-hidden text-center transition-colors duration-300 cursor-pointer group md:gap-10 contact-btn min-w-48 grow sm:py-6 md:py-4 lg:py-6 sm:px-10 md:px-10 lg:px-16"
     >
       <motion.span
         variants={iconVariants}
@@ -72,18 +104,34 @@ export default function ContactButton({
         </p>
       </motion.span>
 
-      <motion.div
-        variants={textVariants}
-        animate={visible ? "visible" : "hidden"}
-        initial="hidden"
-        className=" contact-btn-container"
-      >
-        <span className="text-3xl tracking-wide font- contact-btn-text-one sm:text-4xl lg:text-4xl">
-          {primary}
-        </span>
-        <span className="text-3xl font-medium text-primary contact-btn-text-two sm:text-4xl lg:text-4xl">
-          {secondary}
-        </span>
+      <motion.div className="relative overflow-hidden text-start min-w-64 ">
+        <motion.div variants={primaryTextVariants} className="flex flex-row">
+          {primary.split("").map((letter, index) => (
+            <motion.span
+              key={letter + index}
+              variants={primaryChildrenVariants}
+              transition={{ duration: 0.3, ease: [0.7, 0, 0.3, 1] }}
+              className="text-3xl font-normal tracking-wide sm:text-4xl lg:text-4xl"
+            >
+              {letter}
+            </motion.span>
+          ))}
+        </motion.div>
+        <motion.span
+          variants={secondaryTextVariants}
+          className="absolute top-0 left-0 flex flex-row"
+        >
+          {secondary.split("").map((letter, index) => (
+            <motion.span
+              key={letter + index}
+              variants={secondaryChildrenVariants}
+              transition={{ duration: 0.3, ease: [0.7, 0, 0.3, 1] }}
+              className="text-3xl font-normal tracking-wide text-primary sm:text-4xl lg:text-4xl"
+            >
+              {letter}
+            </motion.span>
+          ))}
+        </motion.span>
       </motion.div>
     </motion.div>
   );

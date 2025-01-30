@@ -25,10 +25,10 @@ const Services = () => {
 
   const { scrollYProgress } = useScroll({
     target: imageRef,
-    offset: ["start 0.7", "end start"],
+    offset: ["start 0.75", "end start"],
   });
   const customScale = isMobile ? "70%" : "60%";
-  const scale = useTransform(scrollYProgress, [0, 0.3], [customScale, "100%"]);
+  const scale = useTransform(scrollYProgress, [0, 0.4], [customScale, "100%"]);
 
   const borderRadius = useTransform(scrollYProgress, [0, 0.3], ["8vw", "1vw"]);
   const rawY = useTransform(scrollYProgress, [0, 0.3], ["30vh", "0vh"]);
@@ -56,7 +56,7 @@ const Services = () => {
         <motion.div
           style={{ scale, borderRadius, y }}
           ref={imageRef}
-          className="w-full overflow-hidden origin-top"
+          className="w-full overflow-hidden origin-top "
         >
           <AnimatePresence mode="popLayout">
             <motion.img
