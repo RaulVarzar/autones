@@ -91,7 +91,7 @@ export default function ContactButton({
       initial="rest"
       whileHover="hover"
       animate="rest"
-      className="relative flex flex-row items-center justify-start w-full gap-6 px-8 py-3 overflow-hidden text-center transition-colors duration-300 cursor-pointer group md:gap-10 contact-btn min-w-48 grow sm:py-6 md:py-4 lg:py-6 sm:px-10 md:px-10 lg:px-16"
+      className="relative flex flex-row items-center  justify-start w-fit ml-6 xl:ml-8 gap-6 px-8 py-3 overflow-hidden text-center transition-colors duration-300 cursor-pointer group md:gap-10 contact-btn  grow sm:py-6 md:py-4 lg:py-6  md:px-8 lg:px-10"
     >
       <motion.span
         variants={iconVariants}
@@ -104,7 +104,7 @@ export default function ContactButton({
         </p>
       </motion.span>
 
-      <motion.div className="relative overflow-hidden text-start min-w-64 ">
+      <motion.div className="relative overflow-hidden  text-start min-w-64 ">
         <motion.div variants={primaryTextVariants} className="flex flex-row">
           {primary.split("").map((letter, index) => (
             <motion.span

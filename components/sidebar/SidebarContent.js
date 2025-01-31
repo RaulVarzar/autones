@@ -47,7 +47,7 @@ export default function SidebarContent({ visible }) {
             <motion.div
               exit={{ opacity: "0%" }}
               layout
-              className="flex flex-col w-full "
+              className="flex flex-col w-full gap-1"
             >
               <ContactButton
                 primary={"Telefon"}
