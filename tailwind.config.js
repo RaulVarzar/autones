@@ -36,13 +36,14 @@ module.exports = {
           "base-300": "#131416",
 
           neutral: "#131718",
-          "neutral-content": "#151719",
+          "neutral-content": "#1c1e21",
           "accent-content": "#3f4688",
-          "info-content": "#c9c3ba",
-
+          "info-content": "#B5B6C5",
+          "base-content": "#D7D8E0",
+          "primary-content": "#454d96",
           accent: "#383A6B",
           primary: "#464886",
-          secondary: "#51539A",
+          secondary: "#5457a0",
 
           error: "#FF6B6B",
         },

@@ -37,7 +37,7 @@ export default function SidebarContent({ visible }) {
       variants={variants}
       initial="hidden"
       animate={visible ? "visible" : "hidden"}
-      className="absolute top-0 right-0 z-40 flex flex-col justify-between w-full max-sm:h-[100svh] px-0 pt-20 overflow-hidden md:max-w-2xl md:rounded-b-2xl bg-base-200 md:right-4 md:pt-16 lg:pt-20 xl:right-8 gap-y-2  "
+      className="absolute top-0 sm:top-6 right-0 z-40 flex flex-col justify-between w-full max-sm:h-[100svh] px-0 pt-20 overflow-hidden md:max-w-2xl  md:rounded-2xl bg-base-300 md:right-4 md:pt-16 lg:pt-20  gap-y-2  "
     >
       <div className="flex flex-col justify-center gap-10 sm:gap-3 grow">
         <Header visible={visible} />

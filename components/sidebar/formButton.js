@@ -30,7 +30,7 @@ const FormButton = ({ showForm, setShowForm }) => {
         exit={{ opacity: 0, transition: { duration: 0.2 } }}
         className={`relative flex  flex-row items-stretch justify-center rounded-2xl overflow-hidden  w-full cursor-pointer ${
           !showForm
-            ? "  transition-colors duration-300 hover:bg-secondary bg-base-300"
+            ? "  transition-colors duration-300 hover:bg-secondary bg-neutral-content"
             : "bg-base-300 "
         }`}
       >

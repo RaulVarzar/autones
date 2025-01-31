@@ -23,7 +23,7 @@ const Header = ({ visible }) => {
       variants={variants}
       animate={visible ? "visible" : "hidden"}
       initial="hidden"
-      className="flex flex-col justify-end px-4 py-2 text-left sm:py-8 sm:px-10 md:px-12 lg:px-16 w-fit"
+      className="flex flex-col justify-end gap-1 px-4 xl:gap-1.5 py-2 text-left sm:py-8 sm:px-10 md:px-12 lg:px-16 w-fit"
     >
       <motion.span
         initial={{ opacity: 0, x: 30 }}
@@ -37,7 +37,7 @@ const Header = ({ visible }) => {
             bounce: 0.5,
           },
         }}
-        className="text-xl leading-tight text-balance opacity-40 lg:text-2xl"
+        className="text-xl leading-tight text-balance opacity-40 lg:text-2xl 2xl:text-3xl"
       >
         Ai nevoie de ajutorul nostru?
       </motion.span>
@@ -53,7 +53,7 @@ const Header = ({ visible }) => {
             bounce: 0.5,
           },
         }}
-        className="flex flex-col justify-center text-3xl font-black tracking-wide uppercase sm:text-3xl lg:text-4xl"
+        className="flex flex-col justify-center text-3xl font-black tracking-wide uppercase sm:text-3xl lg:text-4xl 2xl:text-5xl"
       >
         Contactează-ne acum!
       </motion.span>

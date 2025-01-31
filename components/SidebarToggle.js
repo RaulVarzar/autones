@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import SidebarContent from "./sidebar/SidebarContent";
 
-const SidebarToggle = ({ colored }) => {
+const SidebarToggle = ({}) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => setSidebarOpen((current) => !current);
@@ -23,11 +23,7 @@ const SidebarToggle = ({ colored }) => {
         )}
       </AnimatePresence>
       <motion.div className="flex flex-col items-end overflow-hidden font-normal ">
-        <Button
-          toggleSidebar={toggleSidebar}
-          sidebarOpen={sidebarOpen}
-          colored={colored}
-        />
+        <Button toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
       </motion.div>
       <SidebarContent visible={sidebarOpen} />
     </>
@@ -36,16 +32,14 @@ const SidebarToggle = ({ colored }) => {
 
 export default SidebarToggle;
 
-const Button = ({ toggleSidebar, colored, sidebarOpen }) => {
+const Button = ({ toggleSidebar, sidebarOpen }) => {
   return (
     <motion.div
       onClick={toggleSidebar}
-      className={`flex cursor-pointer relative z-50 flex-row items-center h-full gap-2  md:gap-4  w-fit justify-end xl:gap-8   px-5 py-5 sm:px-8 ${
-        colored ? " text-white" : "text-base-content opacity-70"
-      }`}
+      className="relative z-50 flex flex-row items-center justify-end h-full gap-2 px-5 py-5 cursor-pointer md:gap-4 w-fit xl:gap-8 sm:px-8 text-base-content"
     >
       <motion.span
-        style={sidebarOpen && { opacity: 0.75 }}
+        style={sidebarOpen && { opacity: 0.7 }}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1, transition: { duration: 0.5, delay: 0.5 } }}
         className="z-20 flex flex-col items-end h-full gap-2 text-2xl transition-opacity duration-500 cursor-pointer sm:text-3xl"
@@ -57,20 +51,23 @@ const Button = ({ toggleSidebar, colored, sidebarOpen }) => {
                   rotate: 45,
                   y: 5,
                   transition: {
-                    delay: 0.2,
+                    delay: 0.1,
                     duration: 0.5,
-                    ease: [0, 0.4, 0, 1],
+                    ease: [0.7, 0, 0.3, 1],
                   },
                 }
               : {
                   rotate: 0,
                   y: 0,
-                  transition: { delay: 0.2, ease: [0, 0.4, 0, 1] },
+
+                  transition: {
+                    delay: 0,
+                    duration: 0.4,
+                    ease: [0.7, 0, 0.3, 1],
+                  },
                 }
           }
-          className={`w-10 sm:w-12 h-0.5 rounded-full bg-white ${
-            colored ? " bg-white" : "bg-base-content "
-          }`}
+          className="w-10 sm:w-12 h-0.5 rounded-full  bg-base-content "
         ></motion.span>
         <motion.span
           animate={
@@ -78,21 +75,27 @@ const Button = ({ toggleSidebar, colored, sidebarOpen }) => {
               ? {
                   rotate: -45,
                   y: -5,
+                  x: "0%",
+                  scaleX: 1,
                   transition: {
-                    delay: 0.2,
+                    delay: 0.1,
                     duration: 0.5,
-                    ease: [0, 0.4, 0, 1],
+                    ease: [0.7, 0, 0.3, 1],
                   },
                 }
               : {
                   rotate: 0,
+                  scaleX: 0.8,
+                  x: "10%",
                   y: 0,
-                  transition: { delay: 0.2, ease: [0, 0.4, 0, 1] },
+                  transition: {
+                    delay: 0,
+                    duration: 0.4,
+                    ease: [0.7, 0, 0.3, 1],
+                  },
                 }
           }
-          className={`h-0.5 rounded-full bg-white w-10 sm:w-12 ${
-            colored ? " bg-white" : "bg-base-content"
-          }`}
+          className={"h-0.5 rounded-full  w-10 sm:w-12 bg-base-content "}
         ></motion.span>
       </motion.span>
     </motion.div>

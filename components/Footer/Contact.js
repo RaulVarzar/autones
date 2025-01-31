@@ -1,9 +1,9 @@
-import Testimonials from "components/testimonials/testimonials";
+"use client";
 import { motion } from "framer-motion";
 import { FaInstagram, FaPhoneFlip, FaFacebookF } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa";
 
-const Contact = ({ moveY }) => {
+const Contact = () => {
   const variants = {
     hidden: {
       opacity: 0,
@@ -55,14 +55,8 @@ const Contact = ({ moveY }) => {
     <>
       <motion.div
         style={{}}
-        className="flex flex-col items-stretch h-full overflow-hidden justify-evenly sm:justify-end bg-accent-content"
+        className="flex flex-col items-stretch h-full py-8 overflow-hidden justify-evenly sm:justify-end bg-accent-conten md:py-12 xl:py-16"
       >
-        <div className="flex items-center sm:grow h-fit  sm:pt-[10vh] ">
-          {/* <AnimatePresence> */}
-          <Testimonials />
-          {/* </AnimatePresence> */}
-        </div>
-
         <div className="flex flex-col items-end justify-end w-full gap-1 px-6 pb-8 text-right md:gap-2 sm:px-10 md:px-16 lg:px-24 xl:px-24 sm:pb-10 md:pb-12 lg:pb-16">
           <motion.h1
             initial="hidden"

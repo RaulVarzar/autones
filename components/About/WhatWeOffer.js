@@ -1,3 +1,4 @@
+"use client";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { GiPayMoney } from "react-icons/gi";
 import { MdOutlineAvTimer, MdHealthAndSafety } from "react-icons/md";
@@ -21,7 +22,14 @@ const CARDS = [
 
 const WhatWeOffer = ({ progressBar, progressBarInView }) => {
   const cardsRef = useRef(null);
-  const cardsInView = useInView(cardsRef, { margin: "0% 0% -50% 0%" });
+  const sectionRef = useRef(null);
+  const cardsInView = useInView(cardsRef, { margin: "0% 0% -40% 0%" });
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "start"],
+  });
+  const scaleX = useTransform(scrollYProgress, [0, 0.25], [0.88, 1]);
 
   return (
     <>
@@ -35,45 +43,51 @@ const WhatWeOffer = ({ progressBar, progressBarInView }) => {
           duration: 0.55,
           ease: [0.25, 0.1, 0.25, 1],
         }}
-        className="flex flex-col items-center justify-start w-full min-h-[80vh] gap-4 overflow-hidden bg-accent-content flex-nowrap sm:gap-6 lg:gap-16 2xl:gap-20"
+        ref={sectionRef}
+        style={{ scaleX }}
+        className="flex flex-col items-center pb-12 sm:pb-20 md:pb-28 xl:pb-48 justify-start w-full  min-h-[calc(100vh-1rem)] md:min-h-[calc(100vh-1.5rem)] xl:min-h-[calc(100vh-2rem)] 2xl:min-h-[calc(100vh-2.5rem)] gap-4 overflow-hidden rounded-3xl bg-accent-content flex-nowrap sm:gap-6 lg:gap-16 2xl:gap-20"
       >
         <motion.div
-          className={`flex flex-col  items-center justify-center font-black tracking-wider uppercase  sm:pt-[15vh] xl:pt-[20vh] max-sm:pt-20 `}
+          className={`flex flex-col  items-center justify-center font-black tracking-wider uppercase  sm:pt-[12vh] xl:pt-[15vh]  sm:pb-[5vh] xl:pb-[8vh] max-sm:py-16 `}
         >
           <Title />
         </motion.div>
 
-        <div ref={cardsRef} className="grid w-full py-2 grow">
-          <motion.div className="grid grid-cols-1 gap-2 px-4 mx-auto max-w-screen-3xl lg:h-full sm:gap-4 md:px-6 lg:px-8 lg:grid-cols-3 md:gap-6 lg:gap-8 justify-evenly">
-            <AboutCard
-              title="Prețuri competitive"
-              description="Fără taxe ascunse"
-              visible={cardsInView}
-              id={0}
-            >
-              <GiPayMoney />
-            </AboutCard>
+        <motion.div
+          ref={cardsRef}
+          className="grid grid-cols-1 gap-2 px-4 mx-auto max-w-screen-3xl lg:h-full sm:gap-2 md:px-6 lg:px-8 lg:grid-cols-1 justify-evenly"
+        >
+          <AboutCard
+            title="Prețuri competitive"
+            description="Fără taxe ascunse"
+            visible={cardsInView}
+            id={0}
+            rotate={2}
+          >
+            <GiPayMoney />
+          </AboutCard>
 
-            <AboutCard
-              title="Siguranță și încredere"
-              description="Când apelezi la noi, știi că mașina ta va ajunge la
+          <AboutCard
+            title="Siguranță și încredere"
+            description="Când apelezi la noi, știi că mașina ta va ajunge la
             destinație in cel mai scurt timp și în condiții de siguranță"
-              visible={cardsInView}
-              id={1}
-            >
-              <MdHealthAndSafety />
-            </AboutCard>
+            visible={cardsInView}
+            id={1}
+            rotate={-2}
+          >
+            <MdHealthAndSafety />
+          </AboutCard>
 
-            <AboutCard
-              title="Disponibilitate non-stop"
-              description="24 de ore pe zi, 7 zile pe săptămână, 365 de zile pe an"
-              visible={cardsInView}
-              id={2}
-            >
-              <MdOutlineAvTimer />
-            </AboutCard>
-          </motion.div>
-        </div>
+          <AboutCard
+            title="Disponibilitate non-stop"
+            description="24 de ore pe zi, 7 zile pe săptămână, 365 de zile pe an"
+            visible={cardsInView}
+            id={2}
+            rotate={3}
+          >
+            <MdOutlineAvTimer />
+          </AboutCard>
+        </motion.div>
 
         <ProgressBar progress={progressBar} visible={progressBarInView} />
       </motion.div>
@@ -86,12 +100,12 @@ export default WhatWeOffer;
 
 export const Title = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { margin: "0% 0% -40% 0%" });
+  const inView = useInView(ref, { margin: "0% 0% -30% 0%" });
   return (
-    <motion.div ref={ref} className="py-6 overflow-hidden">
+    <motion.div ref={ref} className="py-6 overflow-hidden ">
       <motion.h1
-        initial={{ y: "130%" }}
-        whileInView={{ y: 0 }}
+        initial={{ y: "145%" }}
+        animate={inView && { y: "0%" }}
         transition={{ duration: 1.2, delay: 0.2, ease: [0.7, 0, 0.2, 1] }}
         className="text-4xl sm:text-5xl md:text-7xl xl:text-8xl"
       >
