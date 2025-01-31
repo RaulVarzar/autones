@@ -1,6 +1,6 @@
 // import { useRef } from "react";
 
-import Testimonials from "components/testimonials/Testimonials";
+import Testimonials from "../testimonials/Testimonials";
 
 import RoundedTop from "./RoundedTop";
 import WhatWeOffer from "./WhatWeOffer";
@@ -56,7 +56,8 @@ const AboutSection = ({}) => {
   //   offset: ["end", "end 0.8"],
   // });
   // const contactY = useTransform(sectionExit, [0, 0.9], ["0px", "-75px"]);
-  ////////////////////
+
+  //////////////////
 
   return (
     <div className="relative z-40 overflow-hidden rounded-b-3xl bg-gradient-to-t from-base-200 to-base-100">
