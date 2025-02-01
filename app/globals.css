@@ -19,14 +19,14 @@ html {
 
 ::-webkit-scrollbar {
   height: 5px;
-  width: 10px;
+  width: 0px;
   background: theme("colors.base-100");
 }
 
 ::-webkit-scrollbar-thumb {
   background: theme("colors.secondary");
   border-radius: 2px;
-  width: 12px;
+  width: 0px;
 }
 
 ::-webkit-scrollbar-corner {
@@ -72,4 +72,87 @@ html {
 
 .contact-btn:hover .btn-icon {
   scale: 1.1;
+}
+
+.outline-text {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px;
+}
+
+.outline-text-2 {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 3px;
+}
+
+.outline-text-4 {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 4px;
+}
+
+.outline-text-8 {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 8px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+.wrapper {
+  width: 100%;
+  margin-inline: auto;
+  position: relative;
+  height: 250px;
+  margin-top: 5rem;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+@keyframes scrollLeft {
+  to {
+    left: -200px;
+  }
+}
+
+.item {
+  position: absolute;
+  left: max(calc(400px * 3), 100%);
+  animation-name: scrollLeft;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.item1 {
+  animation-delay: calc(30s / 3 * (3 - 1) * -1);
+}
+
+.item2 {
+  animation-delay: calc(30s / 3 * (3 - 2) * -1);
+}
+
+.item3 {
+  animation-delay: calc(30s / 3 * (3 - 3) * -1);
+}
+
+.gradient-mask {
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 1) 90%,
+    rgba(0, 0, 0, 0)
+  );
 }

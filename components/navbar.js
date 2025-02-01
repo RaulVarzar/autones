@@ -1,7 +1,7 @@
 "use client";
 import { Logo } from "./logo";
 import { motion } from "framer-motion";
-import SidebarToggle from "./SidebarToggle";
+import SidebarToggle from "./sidebar/SidebarToggle";
 
 const Navbar = () => {
   // Toggle the sidebar

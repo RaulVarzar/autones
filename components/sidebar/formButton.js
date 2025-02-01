@@ -1,16 +1,9 @@
-import { AnimatePresence, motion } from "framer-motion";
-import Form from "./form";
+import { motion } from "framer-motion";
 import { BsChevronRight } from "react-icons/bs";
-import { useRef } from "react";
-import { IoCloseOutline } from "react-icons/io5";
-import { IoIosSend } from "react-icons/io";
-import { MdCancel } from "react-icons/md";
 
-const FormButton = ({ showForm, setShowForm }) => {
-  const submitRef = useRef();
+const FormButton = ({}) => {
   return (
     <motion.div
-      layout
       initial={{ y: 100, opacity: 0 }}
       animate={{
         opacity: 1,
@@ -23,50 +16,22 @@ const FormButton = ({ showForm, setShowForm }) => {
       }}
       className={`relative group z-[100]  overflow-hidden w-full px-8 py-6   `}
     >
-      {showForm && <Form submitRef={submitRef} />}
-
-      <motion.div
-        layout
-        exit={{ opacity: 0, transition: { duration: 0.2 } }}
-        className={`relative flex  flex-row items-stretch justify-center rounded-2xl overflow-hidden  w-full cursor-pointer ${
-          !showForm
-            ? "  transition-colors duration-300 hover:bg-secondary bg-neutral-content"
-            : "bg-base-300 "
-        }`}
-      >
-        {!showForm && (
-          <motion.span
-            onClick={() => setShowForm(true)}
-            layout="position"
-            className="w-full py-6 text-xl font-medium tracking-wide text-center uppercase transition-all duration-300 grow md:py-10 sm:text-2xl lg:text-3xl group-hover:brightness-150"
-          >
-            Formular de contact
-          </motion.span>
-        )}
-        {showForm && (
-          <motion.button
-            onClick={() => submitRef.current.click()}
-            layout
-            exit={{ opacity: 0, transition: { duration: 0.2 } }}
-            className="relative flex flex-row items-center justify-center w-full gap-2 transition-colors duration-300 cursor-pointer sm:gap-6 hover:bg-primary"
-          >
-            <motion.span
-              layout="position"
-              className="py-10 text-xl font-medium tracking-wide text-center uppercase transition-all duration-300 md:py-12 sm:text-2xl lg:text-3xl group-hover:brightness-150"
-            >
-              Trimite
-            </motion.span>
-          </motion.button>
-        )}
-        <motion.button
-          onClick={() => setShowForm(!showForm)}
-          className={`px-8 text-4xl sm:px-10 lg:px-12  flex items-center justify-center sm:text-6xl lg:text-5xl transition-colors duration-300 ${
-            showForm && "hover:bg-error"
-          }`}
+      <div className="relative flex  flex-row items-stretch justify-center rounded-2xl overflow-hidden  w-full cursor-pointer hover:bg-opacity-50 transition-all duration-300 bg-neutral-content bg-opacity-25 border border-opacity-5 border-base-content">
+        <motion.span
+          // onClick={() => setShowForm(true)}
+          layout="position"
+          className="w-full py-6 text-xl font-medium tracking-wide text-center uppercase transition-all duration-300 grow md:py-10 sm:text-2xl lg:text-3xl group-hover:brightness-150"
         >
-          {showForm ? <MdCancel /> : <BsChevronRight />}
+          Formular de contact
+        </motion.span>
+
+        <motion.button
+          // onClick={() => setShowForm(!showForm)}
+          className="px-8 text-4xl sm:px-10 lg:px-12  flex items-center justify-center sm:text-6xl lg:text-5xl transition-colors duration-300 "
+        >
+          <BsChevronRight />
         </motion.button>
-      </motion.div>
+      </div>
     </motion.div>
   );
 };

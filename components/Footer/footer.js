@@ -11,6 +11,8 @@ import { FaEnvelope } from "react-icons/fa";
 import { FaLocationDot, FaPhoneFlip, FaFacebookF } from "react-icons/fa6";
 
 import Contact from "../Footer/Contact";
+import Form from "./Form";
+import Title from "./Title";
 
 const variants = {
   hidden: {
@@ -120,7 +122,7 @@ const Footer = () => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "start 0.85"],
+    offset: ["start end", "start 0.15"],
   });
 
   const scale = useTransform(scrollYProgress, [0.1, 1], ["98%", "100%"]);
@@ -139,111 +141,122 @@ const Footer = () => {
     ["20%", "100%"]
   );
 
-  const isInView = useInView(ref, {
-    margin: "0% 0% -10% 0%",
-  });
+  // const isInView = useInView(ref, {
+  //   margin: "0% 0% -10% 0%",
+  // });
+  const isInView = true;
+
+  const sectionY = useTransform(scrollYProgress, [0, 1], ["-35vh", "0vh"]);
 
   return (
     <>
-      <div ref={ref} className="relative h-0 "></div>
-      <Contact />
-      <div className="sticky bottom-0 flex flex-col-reverse  md:flex-row items-center  2xl:pb-4 justify-between w-full min-h-[25vh] gap-8 px-4 py-3  mx-auto  bg-base-100  md:px-10">
-        <motion.span
-          style={{ opacity: logoOpacity, filter, y, opacity }}
-          className="pt-2 text-4xl font-black tracking-wider uppercase opacity-50 md:text-5xl sm:text-4xl left-4 lg:text-6xl xl:text-8xl"
-        >
-          Autones
-        </motion.span>
-        <motion.div className="flex flex-col items-center justify-center w-full max-w-5xl gap-x-8 2xl:gap-x-12 xl:flex-row h-fit ">
-          <div className="flex flex-col w-full md:flex-row md:items-end lg:w-1/2 max-md:text-center ">
-            <div className="md:text-right lg:max-w-md opacity-90">
-              <motion.p
-                variants={textVariants}
+      <div ref={ref} className="relative h-0 bg-red-500 w-full "></div>
+
+      <motion.div
+        style={{ y: sectionY }}
+        className="min-h-[85vh] gap-1 flex flex-col pt-10 md:pt-16 xl:pt-24"
+      >
+        <motion.div className=" flex   grow flex-col md:flex-row items-center w-full 2xl:pb-4 justify-evenly   gap-8  py-3  mx-auto  bg-base-100  ">
+          <div className=" flex flex-col  md:flex-col justify-center items-end  w-full md:w-1/2 max-w-3xl ">
+            <motion.span
+              style={{ opacity: logoOpacity, filter, y, opacity }}
+              className="pt-2 text-4xl font-black tracking-wider uppercase md:text-5xl sm:text-4xl lg:text-6xl xl:text-8xl"
+            >
+              Autones
+            </motion.span>
+            <motion.div className="flex  flex-col  items-end max-w-5xl gap-2 2xl:gap-4  h-fit ">
+              <div className=" lg:max-w-lg opacity-90">
+                <motion.p
+                  variants={textVariants}
+                  animate={isInView ? "visible" : "hidden"}
+                  className="mt-3 text-center md:text-right text-md md:text-lg xl:text-xl"
+                >
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam.
+                </motion.p>
+              </div>
+              <motion.div
+                variants={socialVariants}
                 animate={isInView ? "visible" : "hidden"}
-                className="mt-3 text-center text-md md:text-lg xl:text-xl"
+                className="flex flex-row items-center justify-center   w-fit gap-4 py-2 text-lg lg:gap-6 h-fit "
               >
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam.
-              </motion.p>
-            </div>
+                <motion.span
+                  variants={buttonVariants}
+                  animate={isInView ? "visible" : "hidden"}
+                  custom={0}
+                  className="flex "
+                >
+                  <motion.a
+                    variants={hoverVariants}
+                    whileHover="hovering"
+                    initial="notHovering"
+                    href="tel:0744-765-543"
+                    className="px-4 py-3 text-lg font-medium tracking-wide border-2 sm:px-6 sm:py-5 w-fit rounded-2xl border-base-content text-base-content lg:text-2xl"
+                  >
+                    <FaPhoneFlip />
+                  </motion.a>
+                </motion.span>
+
+                <motion.span
+                  variants={buttonVariants}
+                  animate={isInView ? "visible" : "hidden"}
+                  custom={1}
+                  className="flex"
+                >
+                  <motion.a
+                    variants={hoverVariants}
+                    whileHover="hovering"
+                    initial="notHovering"
+                    href="mailto:test@test.com"
+                    className="px-4 py-3 text-lg font-medium tracking-wide border-2 sm:px-6 sm:py-5 w-fit rounded-2xl border-base-content text-base-content lg:text-2xl"
+                  >
+                    <FaEnvelope />
+                  </motion.a>
+                </motion.span>
+
+                <motion.span
+                  variants={buttonVariants}
+                  animate={isInView ? "visible" : "hidden"}
+                  custom={2}
+                  className="flex"
+                >
+                  <motion.a
+                    variants={hoverVariants}
+                    whileHover="hovering"
+                    initial="notHovering"
+                    href="https://www.google.com/maps"
+                    target="_blank"
+                    className="px-4 py-3 text-lg font-medium tracking-wide border-2 sm:px-6 sm:py-5 w-fit rounded-2xl border-base-content text-base-content lg:text-2xl"
+                  >
+                    <FaLocationDot />
+                  </motion.a>
+                </motion.span>
+
+                <motion.span
+                  variants={buttonVariants}
+                  animate={isInView ? "visible" : "hidden"}
+                  custom={3}
+                  className="flex"
+                >
+                  <motion.a
+                    variants={hoverVariants}
+                    whileHover="hovering"
+                    initial="notHovering"
+                    href="https://www.facebook.com"
+                    target="_blank"
+                    className="px-4 py-3 text-lg font-medium tracking-wide border-2 sm:px-6 sm:py-5 w-fit rounded-2xl border-base-content text-base-content lg:text-2xl"
+                  >
+                    <FaFacebookF />
+                  </motion.a>
+                </motion.span>
+              </motion.div>
+            </motion.div>
           </div>
-          <motion.div
-            variants={socialVariants}
-            animate={isInView ? "visible" : "hidden"}
-            className="flex flex-row items-center justify-center w-full gap-4 py-2 text-lg lg:gap-6 h-fit lg:w-1/2 "
-          >
-            <motion.span
-              variants={buttonVariants}
-              animate={isInView ? "visible" : "hidden"}
-              custom={0}
-              className="flex "
-            >
-              <motion.a
-                variants={hoverVariants}
-                whileHover="hovering"
-                initial="notHovering"
-                href="tel:0744-765-543"
-                className="px-4 py-3 text-lg font-medium tracking-wide border-2 sm:px-6 sm:py-5 w-fit rounded-2xl border-base-content text-base-content lg:text-2xl"
-              >
-                <FaPhoneFlip />
-              </motion.a>
-            </motion.span>
 
-            <motion.span
-              variants={buttonVariants}
-              animate={isInView ? "visible" : "hidden"}
-              custom={1}
-              className="flex"
-            >
-              <motion.a
-                variants={hoverVariants}
-                whileHover="hovering"
-                initial="notHovering"
-                href="mailto:test@test.com"
-                className="px-4 py-3 text-lg font-medium tracking-wide border-2 sm:px-6 sm:py-5 w-fit rounded-2xl border-base-content text-base-content lg:text-2xl"
-              >
-                <FaEnvelope />
-              </motion.a>
-            </motion.span>
-
-            <motion.span
-              variants={buttonVariants}
-              animate={isInView ? "visible" : "hidden"}
-              custom={2}
-              className="flex"
-            >
-              <motion.a
-                variants={hoverVariants}
-                whileHover="hovering"
-                initial="notHovering"
-                href="https://www.google.com/maps"
-                target="_blank"
-                className="px-4 py-3 text-lg font-medium tracking-wide border-2 sm:px-6 sm:py-5 w-fit rounded-2xl border-base-content text-base-content lg:text-2xl"
-              >
-                <FaLocationDot />
-              </motion.a>
-            </motion.span>
-
-            <motion.span
-              variants={buttonVariants}
-              animate={isInView ? "visible" : "hidden"}
-              custom={3}
-              className="flex"
-            >
-              <motion.a
-                variants={hoverVariants}
-                whileHover="hovering"
-                initial="notHovering"
-                href="https://www.facebook.com"
-                target="_blank"
-                className="px-4 py-3 text-lg font-medium tracking-wide border-2 sm:px-6 sm:py-5 w-fit rounded-2xl border-base-content text-base-content lg:text-2xl"
-              >
-                <FaFacebookF />
-              </motion.a>
-            </motion.span>
-          </motion.div>
+          <Form />
         </motion.div>
-      </div>
+        <Title />
+      </motion.div>
     </>
   );
 };

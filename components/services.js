@@ -27,17 +27,22 @@ const Services = () => {
     target: imageRef,
     offset: ["start 0.75", "end start"],
   });
-  const customScale = isMobile ? "70%" : "60%";
-  const scale = useTransform(scrollYProgress, [0, 0.4], [customScale, "100%"]);
+  const customScale = isMobile ? "80%" : "80%";
+  const scale = useTransform(scrollYProgress, [0, 0], [customScale, "100%"]);
 
-  const borderRadius = useTransform(scrollYProgress, [0, 0.3], ["8vw", "1vw"]);
   const rawY = useTransform(scrollYProgress, [0, 0.3], ["30vh", "0vh"]);
   const y = useSpring(rawY, { stiffness: 100, damping: 8, mass: 0.5 });
 
-  const clipPath1 = useTransform(scrollYProgress, [0, 0.35], [15, 0]);
-  const clipPath2 = useTransform(scrollYProgress, [0, 0.35], [85, 100]);
+  const clipPath1 = useTransform(scrollYProgress, [0, 0.35], [20, 0]);
+  const clipPath2 = useTransform(scrollYProgress, [0, 0.35], [20, 0]);
+  const borderRadius = useTransform(
+    scrollYProgress,
+    [0, 0.35],
+    ["8rem", "3rem"]
+  );
 
-  const clipPath = useMotionTemplate`polygon(${clipPath1}% 0, ${clipPath2}% 0, ${clipPath2}% 100%, ${clipPath1}% 100%)`;
+  // const clipPath = useMotionTemplate`polygon(${clipPath1}% 0, ${clipPath2}% 0, ${clipPath2}% 100%, ${clipPath1}% 100%)`;
+  const clipPath = useMotionTemplate`inset( 0 ${clipPath2}% 0 ${clipPath1}% round ${borderRadius})`;
 
   return (
     <section className="relative flex flex-col items-center w-full px-4 bg-transparent sm:min-h-fit pb-[20vh] sm:px-6 md:px-8 lg:px-12 ">
@@ -54,13 +59,13 @@ const Services = () => {
         className="z-10 w-full overflow-hidden max-w-8xl grow"
       >
         <motion.div
-          style={{ scale, borderRadius, y }}
+          style={{ clipPath }}
           ref={imageRef}
           className="w-full overflow-hidden origin-top "
         >
           <AnimatePresence mode="popLayout">
             <motion.img
-              // style={{ scale, borderRadius, y }}
+              style={{ scale }}
               initial={{ opacity: 0.4, y: "-100%" }}
               animate={{
                 opacity: 1,

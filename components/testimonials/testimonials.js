@@ -11,7 +11,7 @@ const Testimonials = async () => {
   console.log(data);
 
   return (
-    <section className="flex flex-col items-start gap-1 py-24 md:py-36 xl:py-48 sm:gap-4 lg:gap-6 h-fit md:flex-col ">
+    <section className="flex flex-col items-start gap-1  sm:gap-4 lg:gap-6 h-fit md:flex-col ">
       <Title />
       <Carousel data={data.reviews} />
     </section>

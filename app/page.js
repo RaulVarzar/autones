@@ -1,5 +1,5 @@
 import Navbar from "components/navbar";
-import Hero from "../components/hero.js";
+import Hero from "../components/Hero/Hero.js";
 import Gallery from "../components/gallery";
 import Footer from "../components/Footer/footer.js";
 import Services from "../components/services.js";

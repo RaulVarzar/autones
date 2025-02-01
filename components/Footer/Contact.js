@@ -52,65 +52,58 @@ const Contact = () => {
   };
 
   return (
-    <>
-      <motion.div
-        style={{}}
-        className="flex flex-col items-stretch h-full py-8 overflow-hidden justify-evenly sm:justify-end bg-accent-conten md:py-12 xl:py-16"
-      >
-        <div className="flex flex-col items-end justify-end w-full gap-1 px-6 pb-8 text-right md:gap-2 sm:px-10 md:px-16 lg:px-24 xl:px-24 sm:pb-10 md:pb-12 lg:pb-16">
-          <motion.h1
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={variants}
-            className="text-5xl font-black tracking-wider uppercase sm:text-6xl md:text-7xl lg:text-8xl"
-          >
-            Contact
-          </motion.h1>
+    <motion.div
+      style={{}}
+      className="flex flex-col w-full items-stretch h-full py-8 overflow-hidden justify-evenly sm:justify-end bg-accent-conten md:py-12 xl:py-16"
+    >
+      <div className="flex flex-col items-end justify-end w-full gap-1 px-6 pb-8 text-right md:gap-2 sm:px-10 md:px-16  xl:px-24 sm:pb-10 md:pb-12 lg:pb-16">
+        {/* <motion.h1
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          variants={variants}
+          className="text-5xl font-black tracking-wider uppercase sm:text-6xl md:text-7xl lg:text-8xl"
+        >
+          Contact
+        </motion.h1> */}
 
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={contactInfoVariants}
-            className="flex flex-col items-end  justify-end w-fit xl:w-full gap-2.5 overflow-hidden sm:gap-2 xl:gap-3 2xl:gap-8 xl:flex-row-reverse sm:justify-start "
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          variants={contactInfoVariants}
+          className="flex flex-col items-end  justify-end w-fit xl:w-full gap-2.5 overflow-hidden sm:gap-2 xl:gap-3 2xl:gap-8 xl:flex-row-reverse sm:justify-start "
+        >
+          <ContactLink
+            title={"phone"}
+            content={"+40 744 540 583"}
+            link={""}
+            id={0}
           >
-            <ContactLink
-              title={"phone"}
-              content={"+40 744 540 583"}
-              link={""}
-              id={0}
-            >
-              <FaPhoneFlip />
-            </ContactLink>
-            <ContactLink
-              title={"e-mail"}
-              content={"tractari@autones.ro"}
-              link={""}
-              id={1}
-            >
-              <FaEnvelope />
-            </ContactLink>
-            <ContactLink
-              title={"facebook"}
-              content={"Facebook"}
-              link={""}
-              id={2}
-            >
-              <FaFacebookF />
-            </ContactLink>
-            <ContactLink
-              title={"instagram"}
-              content={"Instagram"}
-              link={""}
-              id={3}
-            >
-              <FaInstagram />{" "}
-            </ContactLink>
-          </motion.div>
-        </div>
-      </motion.div>
-    </>
+            <FaPhoneFlip />
+          </ContactLink>
+          <ContactLink
+            title={"e-mail"}
+            content={"tractari@autones.ro"}
+            link={""}
+            id={1}
+          >
+            <FaEnvelope />
+          </ContactLink>
+          <ContactLink title={"facebook"} content={"Facebook"} link={""} id={2}>
+            <FaFacebookF />
+          </ContactLink>
+          <ContactLink
+            title={"instagram"}
+            content={"Instagram"}
+            link={""}
+            id={3}
+          >
+            <FaInstagram />
+          </ContactLink>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 };
 

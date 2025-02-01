@@ -17,7 +17,7 @@ const Card = ({ skew, x, scale, data }) => {
           : { scale: 1 }
       }
       transition={{ duration: 0.4, delay: 0 }}
-      className="flex-col text-center px-6 py-4 sm:py-6 border border-base-content border-opacity-5 transition-colors duration-300  md:py-8 sm:px-12 flex  gap-4 lg:gap-8 items-center justify-center backdrop-brightness-110  min-w-72 md:min-w-96 lg:min-w-[480px] rounded-2xl "
+      className="flex-col text-center px-6 py-4 sm:py-6 border border-base-content border-opacity-5 transition-colors duration-300  md:py-8 sm:px-12 flex  gap-4 lg:gap-8 items-center justify-center bg-opacity-20 bg-secondary  min-w-72 md:min-w-96 lg:min-w-[480px] rounded-2xl "
     >
       <span className="text-xl sm:text-2xl text-base-content brightness-150">
         <FaQuoteRight />

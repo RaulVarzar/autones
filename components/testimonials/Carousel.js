@@ -47,7 +47,7 @@ const Carousel = ({ data }) => {
         delay: 0.6,
       }}
       ref={constraintsRef}
-      className="flex flex-row gap-16 p-2 overflow-hidden w-[95vw] flex-nowrap "
+      className="flex flex-row gap-16 p-2 overflow-hidden w-[98vw] mx-auto flex-nowrap  gradient-mask"
     >
       {data.length > 0 && (
         <motion.ul

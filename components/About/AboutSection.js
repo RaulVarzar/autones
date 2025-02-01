@@ -60,14 +60,14 @@ const AboutSection = ({}) => {
   //////////////////
 
   return (
-    <div className="relative z-40 overflow-hidden rounded-b-3xl bg-gradient-to-t from-base-200 to-base-100">
+    <div className="relative z-40 overflow-hidden rounded-3xl bg-gradient-to-t from-base-200 to-base-100">
       {/* <RoundedTop scrollProgress={scrollYProgress} /> */}
       {/* <div ref={aboutRef} className="h-[0vh] md:h-[0vh] w-full bg-accent"></div> */}
-      <section className="relative flex flex-col w-full ">
-        <div className="min-h-screen bg-transparent md:p-3 xl:p-4 2xl:p-5">
+      <section className="relative flex flex-col w-full pb-12 md:pb-24 xl:pb-36 bg-accent-content">
+        <div className=" bg-transparent md:p-3 xl:p-4 2xl:p-5">
           <WhatWeOffer />
         </div>
-        <div className="flex items-center sm:grow h-fit  sm:pt-[10vh] ">
+        <div className="flex items-center sm:grow h-fit  ">
           <Testimonials />
         </div>
       </section>

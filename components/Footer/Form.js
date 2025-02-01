@@ -5,7 +5,7 @@ import { sendEmail } from "../../utils/splitStrings";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const Form = ({ submitRef }) => {
+const Form = ({}) => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -22,13 +22,16 @@ const Form = ({ submitRef }) => {
   }
 
   return (
-    <div className="z-50 flex flex-col ">
+    <div className="z-10 flex flex-col w-full md:w-1/2  max-w-6xl justify-center items-center ">
       <form
         // ref={form}
         // onSubmit={sendEmail}
-        className="flex flex-col items-center justify-center gap-12  "
+        className="flex flex-col items-center  justify-center gap-4  w-fit"
       >
-        <motion.div className="flex flex-col w-full pb-10">
+        {/* <h1 className="text-4xl lg:text-5xl 2xl:text-7xl  font-semibold uppercase">
+          Formular de contact
+        </h1> */}
+        <motion.div className="flex flex-col w-full ">
           <motion.div
             initial={{ opacity: 0, y: "-50%", filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -114,7 +117,12 @@ const Form = ({ submitRef }) => {
           </motion.div>
         </motion.div>
 
-        <button ref={submitRef} type="submit" className="hidden"></button>
+        <button
+          type="submit"
+          className="px-10 py-4 text-2xl bg-base-200 rounded-xl border border-base-content border-opacity-10 w-full max-w-xs"
+        >
+          Trimite
+        </button>
       </form>
     </div>
   );

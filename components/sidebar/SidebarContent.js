@@ -1,4 +1,3 @@
-"use client";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { useState } from "react";
 import ContactButton from "./contactButton";
@@ -29,66 +28,62 @@ export default function SidebarContent({ visible }) {
     },
   };
 
-  const [showForm, setShowForm] = useState(false);
-
   return (
     <motion.div
       layout
       variants={variants}
       initial="hidden"
       animate={visible ? "visible" : "hidden"}
-      className="absolute top-0 sm:top-6 right-0 z-40 flex flex-col justify-between w-full max-sm:h-[100svh] px-0 pt-20 overflow-hidden md:max-w-2xl  md:rounded-2xl bg-base-300 md:right-4 md:pt-16 lg:pt-20  gap-y-2  "
+      className="absolute top-0 sm:top-6 right-0 z-40  flex flex-col justify-between w-full max-sm:h-[100svh] px-0 pt-20 overflow-hidden md:max-w-2xl pb-4 md:rounded-2xl bg-base-300 md:right-4 md:pt-16 lg:pt-20  gap-y-2  "
     >
       <div className="flex flex-col justify-center gap-10 sm:gap-3 grow">
         <Header visible={visible} />
 
         <AnimatePresence mode="popLayout">
-          {!showForm && (
-            <motion.div
-              exit={{ opacity: "0%" }}
-              layout
-              className="flex flex-col w-full gap-1"
-            >
-              <ContactButton
-                primary={"Telefon"}
-                secondary={"0743 483 293"}
-                href={"tel:+0743483293"}
-                icon={<FiPhoneCall />}
-                visible={visible}
-                id={0}
-              />
+          <motion.div
+            exit={{ opacity: "0%" }}
+            layout
+            className="flex flex-col w-full gap-1"
+          >
+            <ContactButton
+              primary={"Telefon"}
+              secondary={"0743 483 293"}
+              href={"tel:+0743483293"}
+              icon={<FiPhoneCall />}
+              visible={visible}
+              id={0}
+            />
 
-              <ContactButton
-                primary={"Whatsapp"}
-                secondary={"0743 483 293"}
-                href={"https://wa.me/0743483293"}
-                icon={<FaWhatsapp />}
-                visible={visible}
-                id={1}
-              />
+            <ContactButton
+              primary={"Whatsapp"}
+              secondary={"0743 483 293"}
+              href={"https://wa.me/0743483293"}
+              icon={<FaWhatsapp />}
+              visible={visible}
+              id={1}
+            />
 
-              <ContactButton
-                primary={"Instagram"}
-                secondary={"@autones"}
-                href={"https://instagram.com/autones"}
-                icon={<FiInstagram />}
-                visible={visible}
-                id={2}
-              />
-              <ContactButton
-                primary={"Facebook"}
-                secondary={"Autones"}
-                href={"https://facebook.com/autones"}
-                icon={<FiFacebook />}
-                visible={visible}
-                id={3}
-              />
-            </motion.div>
-          )}
+            <ContactButton
+              primary={"Instagram"}
+              secondary={"@autones"}
+              href={"https://instagram.com/autones"}
+              icon={<FiInstagram />}
+              visible={visible}
+              id={2}
+            />
+            <ContactButton
+              primary={"Facebook"}
+              secondary={"Autones"}
+              href={"https://facebook.com/autones"}
+              icon={<FiFacebook />}
+              visible={visible}
+              id={3}
+            />
+          </motion.div>
         </AnimatePresence>
       </div>
 
-      <FormButton showForm={showForm} setShowForm={setShowForm} />
+      <FormButton />
     </motion.div>
   );
 }

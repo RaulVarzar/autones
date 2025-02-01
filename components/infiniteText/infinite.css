@@ -1,0 +1,12 @@
+.RightToLeft {
+  animation: RightToLeft 30s infinite linear;
+}
+
+@keyframes RightToLeft {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

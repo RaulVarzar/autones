@@ -7,7 +7,7 @@ const cardVariants = {
     opacity: 0,
     y: "20%",
     filter: "blur(3px)",
-    transition: { duration: 1, ease: [0.7, 0.05, 0.25, 1] },
+    transition: { duration: 0.7, ease: [0.7, 0.05, 0.25, 1] },
   },
   visible: (custom) => ({
     opacity: 1,
@@ -64,7 +64,7 @@ const subTitleVariants = {
 
 const AboutCard = ({ children, title, description, id, rotate }) => {
   const cardRef = useRef(null);
-  const visible = useInView(cardRef, { margin: "1000% 0% -12% 0%" });
+  const visible = useInView(cardRef, { margin: "1000% 0% -17% 0%" });
 
   const { scrollYProgress } = useScroll({
     target: cardRef,
