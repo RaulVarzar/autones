@@ -1,9 +1,9 @@
-import Navbar from "../components/Navbar/Navbar.js";
-import Hero from "../components/Hero/Hero.js";
-import Gallery from "../components/Gallery/Gallery.js";
-import Footer from "../components/Footer/Footer.js";
-import Services from "../components/Services/Services";
-import AboutSection from "../components/About/AboutSection.js";
+import Navbar from "/components/Navbar/Navbar.js";
+import Hero from "/components/Hero/Hero.js";
+import Gallery from "/components/Gallery/Gallery.js";
+import Footer from "/components/Footer/Footer.js";
+import Services from "/components/Services/Services";
+import AboutSection from "/components/About/AboutSection.js";
 
 export default function Home() {
   return (
