@@ -87,7 +87,7 @@ html {
 
 .outline-text {
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px;
+  -webkit-text-stroke: 2px;
 }
 
 @media only screen and (min-width: 480px) {

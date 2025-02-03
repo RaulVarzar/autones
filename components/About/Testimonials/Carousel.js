@@ -10,7 +10,8 @@ import {
 } from "framer-motion";
 
 import { useRef } from "react";
-import { FaQuoteRight } from "react-icons/fa";
+
+import { MdOutlineStar, MdOutlineStarBorder } from "react-icons/md";
 
 const Carousel = ({ data }) => {
   const constraintsRef = useRef(null);
@@ -59,7 +60,7 @@ const Carousel = ({ data }) => {
           dragTransition={{ bounceDamping: 60, bounceStiffness: 300 }}
           dragConstraints={constraintsRef}
           style={{ x }}
-          className="flex flex-row gap-4 px-16 sm:gap-6 cursor-grab active:cursor-grabbing md:px-24 xl:px-32 2xl:px-44"
+          className="flex flex-row gap-4 px-8 md:px-16 lg:px-24 sm:gap-6 cursor-grab active:cursor-grabbing xl:px-32 2xl:px-44"
         >
           {data.map((data, index) => (
             <Card
@@ -93,19 +94,32 @@ const Card = ({ skew, x, scale, data }) => {
           : { scale: 1 }
       }
       transition={{ duration: 0.4, delay: 0 }}
-      className="flex-col text-center px-6 py-4 sm:py-6 border border-base-content border-opacity-5 transition-colors duration-300  md:py-8 sm:px-12 flex  gap-4 lg:gap-8 items-center justify-center bg-opacity-20 bg-secondary  min-w-72 md:min-w-96 lg:min-w-[480px] rounded-2xl "
+      className="flex-col text-center px-3 py-4 sm:py-6 border border-base-content border-opacity-5 transition-colors duration-300  md:py-8 sm:px-4 flex lg:px-8 gap-4 lg:gap-8 items-center justify-center bg-opacity-20 bg-secondary  min-w-72 md:min-w-96 lg:min-w-[480px] rounded-2xl "
     >
-      <span className="text-xl sm:text-2xl text-base-content brightness-150">
-        <FaQuoteRight />
+      <span className="flex flex-row gap-1 text-xl sm:text-2xl text-base-content brightness-150">
+        {Array(5)
+          .fill(0)
+          .map((item, i) => (
+            <Star fill={rating > i} />
+          ))}
       </span>
-      <div className="flex flex-col gap-1 text-base-content">
+
+      <div className="flex flex-col gap-1 sm:gap-2 text-base-content">
         <p className="italic font-light leading-5 tracking-wide text-md sm:text-2xl sm:leading-7">
           {review}
         </p>
-        <h1 className="text-base font-normal text-right opacity-75 sm:text-lg">
+        <h1 className="text-base font-normal text-right opacity-75 sm:text-lg lg:text-xl">
           - {name}
         </h1>
       </div>
     </motion.li>
+  );
+};
+
+const Star = ({ fill }) => {
+  return (
+    <div className="text-xl md:text-2xl text-base-content fill-slate-100 stroke-red-700">
+      {fill ? <MdOutlineStar /> : <MdOutlineStarBorder />}
+    </div>
   );
 };

@@ -29,7 +29,7 @@ const TextCarousel = () => {
     <div id="contact-form" className="flex items-end justify-center h-full ">
       <motion.div
         ref={ref}
-        className="relative flex w-full h-64 p-0 m-0 outline-text opacity-15"
+        className="relative flex w-full p-0 m-0 h-52 md:h-64 outline-text opacity-15"
       >
         <motion.div
           variants={variants}

@@ -52,10 +52,10 @@ const Footer = () => {
           <motion.div
             style={{ scale }}
             ref={headerRef}
-            className="flex flex-col items-end justify-center w-full max-w-3xl md:origin-right md:flex-col md:w-1/2"
+            className="flex flex-col items-center justify-center w-full max-w-3xl md:items-end md:origin-right md:flex-col md:w-1/2"
           >
             <Title visible={headerVisible} />
-            <motion.div className="flex flex-col items-end max-w-5xl gap-2 2xl:gap-4 h-fit ">
+            <motion.div className="flex flex-col items-center max-w-5xl gap-2 md:items-end 2xl:gap-4 h-fit ">
               <SubHeader visible={headerVisible} />
 
               <motion.div className="flex flex-row items-center justify-center gap-4 py-2 text-lg w-fit lg:gap-6 h-fit ">
@@ -161,7 +161,7 @@ export const SubHeader = ({ visible }) => {
       <motion.p
         variants={variants}
         animate={visible ? "visible" : "hidden"}
-        className="mt-3 text-center md:text-right text-md md:text-lg xl:text-xl"
+        className="mt-3 text-base text-center md:text-right max-md:px-4 md:text-lg xl:text-xl"
       >
         Sed ut perspiciatis unde omnis iste natus error sit voluptatem
         accusantium doloremque laudantium, totam rem aperiam.
