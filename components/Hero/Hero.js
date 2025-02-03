@@ -101,7 +101,7 @@ const Letter = ({ i, letter }) => {
       viewport={{ once: true }}
       className="relative inline-block"
     >
-      <motion.span className="inline-block p-0 text-6xl font-semibold tracking-normal min-w-1 lg:min-w-8 h-fit sm:text-7xl md:text-8xl lg:text-9xl xl:text-xxl">
+      <motion.span className="inline-block p-0 text-5xl font-semibold tracking-normal min-w-1 lg:min-w-8 h-fit sm:text-7xl md:text-8xl lg:text-9xl xl:text-xxl">
         {letter}
       </motion.span>
     </motion.div>
