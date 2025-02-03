@@ -1,5 +1,4 @@
 import "./infinite.css";
-import { motion } from "framer-motion";
 
 const InfiniteText = ({ text }) => {
   return (

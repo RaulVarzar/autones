@@ -1,7 +1,5 @@
 import { motion, useAnimation } from "framer-motion";
-import splitStringUsingRegex from "../../utils/splitStrings";
 import { useMotionTemplate, useTransform } from "framer-motion";
-import InfiniteText from "components/infiniteText/InfiniteText";
 import { useEffect, useState } from "react";
 import "./infinite.css";
 

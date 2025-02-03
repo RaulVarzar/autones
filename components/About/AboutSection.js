@@ -1,4 +1,4 @@
-import Testimonials from "./Testimonials/Testimonials.js";
+import Testimonials from "./Testimonials/Testimonials";
 
 import WhatWeOffer from "./WhatWeOffer";
 
