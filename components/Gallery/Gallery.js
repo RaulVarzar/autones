@@ -6,6 +6,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import Image from "next/image";
 import { useRef, useState } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
@@ -51,11 +52,7 @@ const Gallery = () => {
           />
         ))}
       </motion.div>
-      {/* <motion.section
-        ref={ref}
-        style={{ y: enterY }}
-        className="relative top-0 z-10 grid w-full px-2 py-4 mx-auto border max-sm:pb-60 place-content-center sm:py-20 lg:px-6"
-      ></motion.section> */}
+
       <motion.div ref={secondaryRef} className="h-0" />
     </div>
   );
@@ -63,7 +60,7 @@ const Gallery = () => {
 
 export default Gallery;
 
-const Photo = ({ image, index, active, setActive }) => {
+const Photo = ({ image, index, setActive }) => {
   const variants = {
     hidden: {
       filter: "blur(10px)",
@@ -94,15 +91,6 @@ const Photo = ({ image, index, active, setActive }) => {
 
   const imgInView = useInView(imageRef, { margin: "0% 0% -15% 0%" });
 
-  const { scrollYProgress: clipPathProgress } = useScroll({
-    target: imageRef,
-    offset: ["start end", " 0.9 end"],
-  });
-  const clipPath1 = useTransform(clipPathProgress, [0, 1], [20, 0]);
-  const clipPath2 = useTransform(clipPathProgress, [0, 1], [70, 100]);
-
-  const clipPath = useMotionTemplate`polygon(0% ${clipPath1}% , 100% ${clipPath1}%,100% ${clipPath2}% , 0% ${clipPath2}% )`;
-
   return (
     <motion.div
       ref={imageRef}
@@ -113,17 +101,23 @@ const Photo = ({ image, index, active, setActive }) => {
     >
       <PhotoProvider>
         <PhotoView src={image.default.src}>
-          <motion.img
+          <motion.div
+            className="w-full h-full "
             variants={variants}
             initial="hidden"
             animate={imgInView ? "visible" : "hidden"}
-            src={image.default.src}
-            alt={`image-${image.default.src}`}
-            style={{ y, scale: 1.2 }}
-            whileHover={{ scale: 1.25 }}
+            whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
-            className="object-cover w-full h-full "
-          />
+          >
+            <Image
+              src={image.default.src}
+              alt={`image-${image.default.src}`}
+              style={{ y, scale: 1.02 }}
+              width={480}
+              height={420}
+              className="object-cover w-full h-full "
+            />
+          </motion.div>
         </PhotoView>
       </PhotoProvider>
     </motion.div>

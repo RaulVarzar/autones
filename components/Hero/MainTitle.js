@@ -54,10 +54,10 @@ const MainTitle = ({ scrollYProgress }) => {
         className={`banner-row marquee h-fit    ${playMarquee && "animate"}`}
       >
         <motion.div className="font-bold marquee__inner text-9xl md:text-xxl lg:text-xxxl">
-          <AnimatedLetters title={"Autones"} disabled />
           <AnimatedLetters title={"Autones"} />
-          <AnimatedLetters title={"Autones"} disabled />
-          <AnimatedLetters title={"Autones"} disabled />
+          <AnimatedLetters title={"Autones"} />
+          <AnimatedLetters title={"Autones"} />
+          <AnimatedLetters title={"Autones"} />
         </motion.div>
       </motion.div>
 

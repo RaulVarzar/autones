@@ -5,16 +5,17 @@ import { useRef, useState } from "react";
 const TOPICS = [
   {
     id: 0,
-    title: "Tractări auto 24/7",
-    description:
-      "Tractări, remorcări și transportam autovehiculul pe platforma auto indiferent daca este accidentat sau este defect atat in Romania cat si in Europa",
-  },
-  {
-    id: 1,
     title: "Transport auto intern",
     description:
       "Serviciul nostru de asistenta rutiera este non stop, o pana de cauciuc, combustibil, masina nu mai porneste",
   },
+  {
+    id: 1,
+    title: "Tractări auto 24/7",
+    description:
+      "Tractări, remorcări și transportam autovehiculul pe platforma auto indiferent daca este accidentat sau este defect atat in Romania cat si in Europa",
+  },
+
   {
     id: 2,
     title: "Transport utilaje",
@@ -104,27 +105,27 @@ export const Card = ({
         animate={selectedTopic === id ? { scale: 1.03 } : { scale: 1 }}
         transition={{ duration: 0.4 }}
         onClick={() => changeTopic(id)}
-        className={`flex flex-col gap-2 border-base-content border rounded-2xl relative bg-neutral-content h-full z-10 group  p-6 md:p-10 transition-colors duration-300 ${
+        className={`flex flex-col gap-2 justify-center border-base-content border rounded-2xl relative bg-neutral-content h-full z-10 group  p-6 md:p-10 transition-colors duration-300 ${
           selectedTopic === id
             ? "bg-opacity-60 border-opacity-15"
             : "bg-opacity-15 hover:bg-opacity-40 border-opacity-5 "
         }
        `}
       >
-        <div
-          className={`text-2xl lg:text-3xl 2xl:text-4xl text-balance group-hover:opacity-100 tracking-wide leading-none text-center uppercase whitespace-normal transition-opacity duration-300 stat-value md:text-4xl ${
+        <h1
+          className={`text-2xl lg:text-3xl 2xl:text-4xl text-pretty group-hover:opacity-100 tracking-wide leading-none text-center uppercase whitespace-normal transition-opacity duration-300 stat-value md:text-4xl ${
             selectedTopic === id ? "opacity-100" : "opacity-80"
           }`}
         >
           {title}
-        </div>
-        <div
+        </h1>
+        <p
           className={`mx-auto text-md text-pretty leading-tight text-info-content  group-hover:opacity-100 text-center whitespace-normal sm:text-base md:text-lg stat-desc xl:text-xl transition-opacity duration-300 max-w-72 md:max-w-80 ${
             selectedTopic === id ? "opacity-100" : "opacity-75"
           }`}
         >
           {description}
-        </div>
+        </p>
       </motion.div>
     </motion.div>
   );

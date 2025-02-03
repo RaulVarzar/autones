@@ -110,7 +110,7 @@ export const Title = () => {
   return (
     <motion.div ref={ref} className="py-6 overflow-hidden ">
       <motion.h1
-        initial={{ y: "145%" }}
+        initial={{ y: "175%" }}
         animate={inView && { y: "0%" }}
         transition={{ duration: 1.2, delay: 0.2, ease: [0.7, 0, 0.2, 1] }}
         className="text-4xl sm:text-5xl md:text-7xl xl:text-8xl"

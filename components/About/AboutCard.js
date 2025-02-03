@@ -1,6 +1,7 @@
 "use client";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import MagneticButton from "components/MagneticButton";
 
 const cardVariants = {
   hidden: {
@@ -85,46 +86,48 @@ const AboutCard = ({ children, title, description, id, rotate }) => {
       className={
         "w-full max-w-5xl flex  flex-row " +
         (id == 0 && " justify-start z-0") +
-        (id == 1 && " justify-end z-10") +
-        (id == 2 && " justify-center z-20")
+        (id == 1 && " justify-end z-10 mt-2") +
+        (id == 2 && " justify-center z-20 mt-8")
       }
     >
-      <motion.div
-        style={{ rotate, y }}
-        className={
-          "flex  items-start sm:items-center  min-h-60 justify-center h-full w-10/12 gap-2 sm:gap-6 px-8  py-8 sm:py-5  shadow-[0_0_100px_#0000001a] md:gap-8 lg:gap-12 rounded-3xl sm:px-6 md:px-12 md:py-8 lg:py-16 xl:py-12 bg-primary-content  text-balance " +
-          (id % 2 == 1
-            ? " flex-col sm:flex-row text-left"
-            : " flex-col sm:flex-row-reverse sm:text-right")
-        }
-      >
-        <motion.span
-          variants={iconVariants}
-          initial="hidden"
-          animate={visible && "visible"}
-          className="pb-3 text-6xl md:text-7xl sm:pb-4 lg:text-8xl "
+      <MagneticButton className="w-10/12 h-full" amount={[10, 6]}>
+        <motion.div
+          style={{ rotate, y }}
+          className={
+            "flex  items-start sm:items-center min-h-60 justify-center  gap-2 sm:gap-6 px-8  py-8 sm:py-5  shadow-[0_0_100px_#0000001a] md:gap-8 lg:gap-12 rounded-3xl sm:px-6 md:px-12 md:py-8 lg:py-16 xl:py-12 bg-primary-content  text-balance " +
+            (id % 2 == 1
+              ? " flex-col sm:flex-row text-left"
+              : " flex-col sm:flex-row-reverse sm:text-right")
+          }
         >
-          {children}
-        </motion.span>
-        <div className="flex flex-col">
-          <motion.h1
-            variants={titleVariants}
-            initial="hidden"
-            animate={visible && "visible"}
-            className="text-3xl font-semibold leading-8 tracking-wide  sm:pb-1 xl:pb-2.5 sm:text-4xl md:text-5xl 2xl:text-5xl"
-          >
-            {title}
-          </motion.h1>
           <motion.span
-            variants={subTitleVariants}
+            variants={iconVariants}
             initial="hidden"
             animate={visible && "visible"}
-            className="text-lg font-light leading-5 tracking-wide text-base-content opacity-60 sm:text-xl md:text-2xl xl:text-3xl"
+            className="pb-3 text-6xl md:text-7xl sm:pb-4 lg:text-8xl "
           >
-            {description}
+            {children}
           </motion.span>
-        </div>
-      </motion.div>
+          <div className="flex flex-col">
+            <motion.h1
+              variants={titleVariants}
+              initial="hidden"
+              animate={visible && "visible"}
+              className="text-3xl font-semibold leading-8 tracking-wide text-pretty sm:pb-1 xl:pb-2.5 sm:text-4xl md:text-5xl 2xl:text-5xl"
+            >
+              {title}
+            </motion.h1>
+            <motion.span
+              variants={subTitleVariants}
+              initial="hidden"
+              animate={visible && "visible"}
+              className="text-lg font-light leading-5 tracking-wide text-balance text-base-content opacity-60 sm:text-xl md:text-2xl xl:text-3xl"
+            >
+              {description}
+            </motion.span>
+          </div>
+        </motion.div>
+      </MagneticButton>
     </motion.div>
   );
 };
