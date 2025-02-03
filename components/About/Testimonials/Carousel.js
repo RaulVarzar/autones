@@ -100,7 +100,7 @@ const Card = ({ skew, x, scale, data }) => {
         {Array(5)
           .fill(0)
           .map((item, i) => (
-            <Star fill={rating > i} />
+            <Star key={i} fill={rating > i} />
           ))}
       </span>
 
