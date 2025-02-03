@@ -1,4 +1,4 @@
-import Testimonials from "../Testimonials/Testimonials";
+import Testimonials from "components/Testimonials/Testimonials";
 
 import WhatWeOffer from "./WhatWeOffer";
 
