@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import InfiniteText from "../InfiniteText/InfiniteText";
+import InfiniteText from "../../components/InfiniteText/InfiniteText";
 
 const variants = {
   hidden: {
