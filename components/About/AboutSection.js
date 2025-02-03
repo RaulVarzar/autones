@@ -1,4 +1,4 @@
-import Testimonials from "components/Testimonials/Testimonials";
+import Testimonials from "components/Testimonials/Testimonials.js";
 
 import WhatWeOffer from "./WhatWeOffer";
 
