@@ -1,45 +1,11 @@
 "use client";
-import {
-  useScroll,
-  useTransform,
-  motion,
-  useInView,
-  useMotionTemplate,
-} from "framer-motion";
+import { useScroll, useTransform, motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { FaEnvelope } from "react-icons/fa";
 import { FaLocationDot, FaPhoneFlip, FaFacebookF } from "react-icons/fa6";
 
-import Contact from "./Contact";
 import Form from "./Form";
 import TextCarousel from "./TextCarousel";
-
-const variants = {
-  hidden: {
-    opacity: 0,
-    y: "10%",
-    filter: "blur(15px)",
-  },
-  visible: {
-    opacity: 1,
-    y: "0%",
-    filter: "blur(0px)",
-    transition: {
-      ease: [0.25, 0.1, 0.25, 1],
-      duration: 0.75,
-      delay: 0.1,
-    },
-  },
-  exit: {
-    y: "70%",
-    opacity: 0,
-    transition: {
-      ease: "anticipate",
-      duration: 0.6,
-      delay: 0,
-    },
-  },
-};
 
 const hoverVariants = {
   notHovering: {
@@ -56,28 +22,6 @@ const hoverVariants = {
       duration: 0.3,
     },
   },
-};
-
-const buttonVariants = {
-  hidden: {
-    opacity: 0,
-    y: "50%",
-    filter: "blur(5px)",
-    transition: {
-      ease: [0.25, 0.1, 0.25, 1],
-      delay: 0.1,
-    },
-  },
-  visible: (index) => ({
-    opacity: 1,
-    y: "0%",
-    filter: "blur(0px)",
-    transition: {
-      ease: [0.25, 0.1, 0.25, 1],
-      delay: 0.4 + index * 0.15,
-      duration: 0.7,
-    },
-  }),
 };
 
 const Footer = () => {
