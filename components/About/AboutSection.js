@@ -1,8 +1,6 @@
-import Testimonials from "../testimonials/Testimonials";
+import Testimonials from "../Testimonials/Testimonials";
 
-import RoundedTop from "./RoundedTop";
 import WhatWeOffer from "./WhatWeOffer";
-import { useMotionTemplate, useScroll, useTransform } from "framer-motion";
 
 const AboutSection = ({}) => {
   // const isMobile = useWidth();
