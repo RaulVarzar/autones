@@ -1,4 +1,4 @@
-import Testimonials from "components/Testimonials/Testimonials.js";
+import Testimonials from "./Testimonials/Testimonials.js";
 
 import WhatWeOffer from "./WhatWeOffer";
 
@@ -72,8 +72,6 @@ const AboutSection = ({}) => {
 
   return (
     <div className="relative z-40 overflow-hidden bg-gradient-to-t from-base-200 to-base-100p-2">
-      {/* <RoundedTop scrollProgress={scrollYProgress} /> */}
-      {/* <div ref={aboutRef} className="h-[0vh] md:h-[0vh] w-full bg-accent"></div> */}
       <section className="relative flex flex-col w-full pb-12 overflow-hidden md:pb-24 xl:pb-36 rounded-b-3xl">
         <div>
           <WhatWeOffer />
