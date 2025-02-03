@@ -8,7 +8,7 @@ import {
   useVelocity,
 } from "framer-motion";
 
-import Card from "./Card";
+import Card from "components/About/Testimonials/Card";
 import { useRef } from "react";
 
 const Carousel = ({ data }) => {
