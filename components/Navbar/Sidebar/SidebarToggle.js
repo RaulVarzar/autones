@@ -22,10 +22,13 @@ const SidebarToggle = ({}) => {
           />
         )}
       </AnimatePresence>
-      <motion.div className="flex flex-col items-end overflow-hidden font-normal ">
+      <motion.div className="overflow-hidden font-normal">
         <Button toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
       </motion.div>
-      <SidebarContent visible={sidebarOpen} />
+      <SidebarContent
+        visible={sidebarOpen}
+        closeNavbar={() => toggleSidebar()}
+      />
     </>
   );
 };
@@ -36,12 +39,12 @@ const Button = ({ toggleSidebar, sidebarOpen }) => {
   return (
     <motion.div
       onClick={toggleSidebar}
-      className="relative z-50 flex flex-row items-center justify-end h-full gap-2 px-5 py-5 cursor-pointer md:gap-4 w-fit xl:gap-8 sm:px-8 text-base-content"
+      className="relative z-50 flex flex-row items-center justify-end h-full gap-2 px-5 py-5 translate-x-5 cursor-pointer md:gap-4 w-fit xl:gap-8 sm:px-8 text-base-content"
     >
       <motion.span
         style={sidebarOpen && { opacity: 0.7 }}
         initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1, transition: { duration: 0.5, delay: 0.5 } }}
+        animate={{ scaleX: 1, transition: { duration: 0.8, delay: 0.8 } }}
         className="z-20 flex flex-col items-end h-full gap-2 text-2xl transition-opacity duration-500 cursor-pointer sm:text-3xl"
       >
         <motion.span

@@ -1,0 +1,46 @@
+.marquee {
+  position: relative;
+  overflow: hidden;
+}
+.marquee.animate .marquee__inner {
+  animation-play-state: running;
+}
+.marquee .marquee__inner {
+  width: fit-content;
+  display: flex;
+  position: relative;
+  transform: translate3d(calc(-25%), 0, 0);
+  animation: marquee 10s linear infinite;
+  animation-play-state: paused;
+}
+@media (min-width: 1024px) {
+  .marquee .marquee__inner {
+    transform: translate3d(calc(-25% + 5vw), 0, 0);
+    animation: marquee-lg 10s linear infinite;
+    animation-play-state: paused;
+  }
+}
+.marquee .row-title {
+  padding: 0 8vw;
+}
+@media (min-width: 1024px) {
+  .marquee .row-title {
+    padding: 0 5vw;
+  }
+}
+@keyframes marquee {
+  0% {
+    transform: translate3d(calc(-25%), 0, 0);
+  }
+  100% {
+    transform: translate3d(calc(-50%), 0, 0);
+  }
+}
+@keyframes marquee-lg {
+  0% {
+    transform: translate3d(calc(-25% + 5vw), 0, 0);
+  }
+  100% {
+    transform: translate3d(calc(-50% + 5vw), 0, 0);
+  }
+}

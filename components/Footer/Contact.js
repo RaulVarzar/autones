@@ -4,33 +4,6 @@ import { FaInstagram, FaPhoneFlip, FaFacebookF } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa";
 
 const Contact = () => {
-  const variants = {
-    hidden: {
-      opacity: 0,
-      y: "40%",
-      filter: "blur(10px)",
-    },
-    visible: {
-      opacity: 1,
-      y: "0%",
-      filter: "blur(0px)",
-      transition: {
-        ease: [0.25, 0.1, 0.25, 1],
-        duration: 0.75,
-        delay: 1,
-      },
-    },
-    exit: {
-      y: "70%",
-      opacity: 0,
-      transition: {
-        ease: "anticipate",
-        duration: 0.25,
-        delay: 0,
-      },
-    },
-  };
-
   const contactInfoVariants = {
     hidden: {
       opacity: 0,
@@ -54,19 +27,9 @@ const Contact = () => {
   return (
     <motion.div
       style={{}}
-      className="flex flex-col w-full items-stretch h-full py-8 overflow-hidden justify-evenly sm:justify-end bg-accent-conten md:py-12 xl:py-16"
+      className="flex flex-col items-stretch w-full h-full py-8 overflow-hidden justify-evenly sm:justify-end bg-accent-conten md:py-12 xl:py-16"
     >
-      <div className="flex flex-col items-end justify-end w-full gap-1 px-6 pb-8 text-right md:gap-2 sm:px-10 md:px-16  xl:px-24 sm:pb-10 md:pb-12 lg:pb-16">
-        {/* <motion.h1
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          variants={variants}
-          className="text-5xl font-black tracking-wider uppercase sm:text-6xl md:text-7xl lg:text-8xl"
-        >
-          Contact
-        </motion.h1> */}
-
+      <div className="flex flex-col items-end justify-end w-full gap-1 px-6 pb-8 text-right md:gap-2 sm:px-10 md:px-16 xl:px-24 sm:pb-10 md:pb-12 lg:pb-16">
         <motion.div
           initial="hidden"
           animate="visible"

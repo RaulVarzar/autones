@@ -22,16 +22,16 @@ const Form = ({}) => {
   }
 
   return (
-    <div className="z-10 flex flex-col w-full md:w-1/2  max-w-6xl justify-center items-center ">
+    <div className="z-10 flex flex-col items-center justify-center w-full max-w-6xl md:w-1/2 ">
       <form
         // ref={form}
         // onSubmit={sendEmail}
-        className="flex flex-col items-center  justify-center gap-4  w-fit"
+        className="flex flex-col items-center justify-center gap-4 md:gap-8 2xl:gap-12 w-fit"
       >
-        {/* <h1 className="text-4xl lg:text-5xl 2xl:text-7xl  font-semibold uppercase">
+        {/* <h1 className="text-4xl font-semibold uppercase lg:text-5xl 2xl:text-7xl">
           Formular de contact
         </h1> */}
-        <motion.div className="flex flex-col w-full ">
+        <motion.div className="flex flex-col w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
           <motion.div
             initial={{ opacity: 0, y: "-50%", filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -40,9 +40,9 @@ const Form = ({}) => {
               duration: 0.5,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="relative border-  border-base-content border-opacity-25 py-6  lg:py-10"
+            className="relative w-full py-6 border-b border-opacity-25 border-base-content lg:py-10"
           >
-            <label className="input flex-row-reverse text-2xl flex items-center gap-2 w-full outline-none focus:outline-none peer-focus:outline-none focus:border-transparent focus:ring-0 focus-within:ring:0 focus-within:border-transparent focus-within:outline-none bg-transparent py-6 px-8 sm:text-3xl">
+            <label className="flex items-center w-full gap-2 px-8 py-6 text-2xl bg-transparent outline-none sm:flex-row-reverse input focus:outline-none peer-focus:outline-none focus:border-transparent focus:ring-0 focus-within:ring:0 focus-within:border-transparent focus-within:outline-none sm:text-3xl">
               <input
                 type="text"
                 value={formData.name}
@@ -54,7 +54,7 @@ const Form = ({}) => {
                 }`}
                 placeholder="Ion Popescu"
               />
-              <span className=" min-w-28   opacity-100 peer-focus:opacity-60 transition-opacity duration-300 ">
+              <span className="transition-opacity duration-300 opacity-100 max-sm:hidden min-w-28 peer-focus:opacity-60">
                 Nume
               </span>
             </label>
@@ -68,9 +68,9 @@ const Form = ({}) => {
               duration: 0.5,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="relative border-  border-base-content border-opacity-25 py-6 lg:py-10"
+            className="relative py-6 border-b border-opacity-25 border-base-content lg:py-10"
           >
-            <label className="input flex-row-reverse text-2xl flex items-center gap-2 w-full outline-none focus:outline-none peer-focus:outline-none focus:border-transparent focus:ring-0 focus-within:ring:0 focus-within:border-transparent focus-within:outline-none bg-transparent py-6 px-8 sm:text-3xl">
+            <label className="flex flex-row-reverse items-center w-full gap-2 px-8 py-6 text-2xl bg-transparent outline-none input focus:outline-none peer-focus:outline-none focus:border-transparent focus:ring-0 focus-within:ring:0 focus-within:border-transparent focus-within:outline-none sm:text-3xl">
               <input
                 type="phone"
                 value={formData.phone}
@@ -82,7 +82,7 @@ const Form = ({}) => {
                 }`}
                 placeholder="0712 345 678"
               />
-              <span className=" min-w-28   opacity-100 peer-focus:opacity-60 transition-opacity duration-300 ">
+              <span className="transition-opacity duration-300 opacity-100 max-sm:hidden min-w-28 peer-focus:opacity-60">
                 Telefon
               </span>
             </label>
@@ -96,9 +96,9 @@ const Form = ({}) => {
               duration: 0.5,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="relative border-  border-base-content border-opacity-25 py-6 lg:py-10"
+            className="relative py-6 border-b border-opacity-25 border-base-content lg:py-10"
           >
-            <label className="input flex-row-reverse text-2xl flex items-center gap-2 w-full outline-none focus:outline-none peer-focus:outline-none focus:border-transparent focus:ring-0 focus-within:ring:0 focus-within:border-transparent focus-within:outline-none bg-transparent py-6 px-8 sm:text-3xl">
+            <label className="flex flex-row-reverse items-center w-full gap-2 px-8 py-6 text-2xl bg-transparent outline-none input focus:outline-none peer-focus:outline-none focus:border-transparent focus:ring-0 focus-within:ring:0 focus-within:border-transparent focus-within:outline-none sm:text-3xl">
               <input
                 type="text"
                 value={formData.message}
@@ -110,7 +110,7 @@ const Form = ({}) => {
                 }`}
                 placeholder="Mesajul dumneavoastră"
               />
-              <span className=" min-w-28   opacity-100 peer-focus:opacity-60 transition-opacity duration-300 ">
+              <span className="transition-opacity duration-300 opacity-100 max-sm:hidden min-w-28 peer-focus:opacity-60">
                 Mesaj
               </span>
             </label>
@@ -119,7 +119,7 @@ const Form = ({}) => {
 
         <button
           type="submit"
-          className="px-10 py-4 text-2xl bg-base-200 rounded-xl border border-base-content border-opacity-10 w-full max-w-xs"
+          className="w-full max-w-xs px-10 py-4 text-2xl border bg-base-200 rounded-xl border-base-content border-opacity-10"
         >
           Trimite
         </button>

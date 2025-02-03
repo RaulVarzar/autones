@@ -4,13 +4,13 @@ import { useRef, useState } from "react";
 
 const TOPICS = [
   {
-    id: 1,
+    id: 0,
     title: "Tractări auto 24/7",
     description:
       "Tractări, remorcări și transportam autovehiculul pe platforma auto indiferent daca este accidentat sau este defect atat in Romania cat si in Europa",
   },
   {
-    id: 0,
+    id: 1,
     title: "Transport auto intern",
     description:
       "Serviciul nostru de asistenta rutiera este non stop, o pana de cauciuc, combustibil, masina nu mai porneste",
@@ -23,7 +23,7 @@ const TOPICS = [
   },
 ];
 
-export const Topic = ({ selectedTopic, changeTopic }) => {
+const Topic = ({ selectedTopic, changeTopic }) => {
   const ref = useRef(null);
 
   const [hovering, setHovering] = useState(false);
@@ -38,9 +38,7 @@ export const Topic = ({ selectedTopic, changeTopic }) => {
     mass: 0.2,
   });
 
-  const scale = useTransform(contentSpring, [0, 1], ["85%", "100%"]);
   const sectionY = useTransform(contentSpring, [0, 1], ["10vh", "0vh"]);
-  const [selectedTab, setSelectedTab] = useState(TOPICS[0]);
 
   return (
     <>
@@ -48,7 +46,7 @@ export const Topic = ({ selectedTopic, changeTopic }) => {
         onHoverEnd={() => setHovering(false)}
         ref={ref}
         style={{ y: sectionY }}
-        className="grid grid-cols-1 gap-4 mx-auto mt-2 mb-24 md:gap-6 lg:grid-cols-3 sm:mt-4 md:mt-8 xl:mt-10 max-w-7xl"
+        className="grid grid-cols-1 gap-4 mx-auto mt-2 mb-24 max-w-8xl md:gap-6 lg:grid-cols-3 sm:mt-4 md:mt-8 xl:mt-10"
       >
         {TOPICS.map((item, i) => (
           <Card
@@ -65,6 +63,8 @@ export const Topic = ({ selectedTopic, changeTopic }) => {
   );
 };
 
+export default Topic;
+
 export const Card = ({
   title,
   description,
@@ -79,13 +79,13 @@ export const Card = ({
     offset: ["start 0.25", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0.5, 1], ["0%", "-30%"]);
+  const exitY = useTransform(scrollYProgress, [0.5, 1], ["0%", "-30%"]);
   return (
     <motion.div
       className="relative w-full max-w-4xl mx-auto cursor-pointer "
       onHoverStart={() => setHovering(id)}
       ref={cardRef}
-      style={{ y }}
+      style={{ y: exitY }}
       transition={{ duration: 0.5, ease: "anticipate" }}
     >
       <motion.div
@@ -100,7 +100,6 @@ export const Card = ({
             ease: [0.25, 0.1, 0.25, 1],
           },
         }}
-        // layout
         viewport={{ once: true, margin: "-10%" }}
         animate={selectedTopic === id ? { scale: 1.03 } : { scale: 1 }}
         transition={{ duration: 0.4 }}

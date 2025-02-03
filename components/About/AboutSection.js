@@ -1,9 +1,8 @@
-// import { useRef } from "react";
-
 import Testimonials from "../testimonials/Testimonials";
 
 import RoundedTop from "./RoundedTop";
 import WhatWeOffer from "./WhatWeOffer";
+import { useMotionTemplate, useScroll, useTransform } from "framer-motion";
 
 const AboutSection = ({}) => {
   // const isMobile = useWidth();
@@ -59,17 +58,32 @@ const AboutSection = ({}) => {
 
   //////////////////
 
+  // const sectionRef = useRef(null);
+  // const { scrollYProgress } = useScroll({
+  //   target: sectionRef,
+  //   offset: ["start end", "start"],
+  // });
+  // const clipPathRaw = useTransform(scrollYProgress, [0, 0.35], [10, 0]);
+  // const borderRadius = useTransform(
+  //   scrollYProgress,
+  //   [0, 0.35, 0.95, 1],
+  //   ["5rem", "2rem", "2rem", "0rem"]
+  // );
+
+  // const clipPath = useMotionTemplate`inset( 0 ${clipPathRaw}% 0 ${clipPathRaw}% round ${borderRadius} ${borderRadius} 0 0)`;
+
   return (
-    <div className="relative z-40 overflow-hidden rounded-3xl bg-gradient-to-t from-base-200 to-base-100">
+    <div className="relative z-40 overflow-hidden bg-gradient-to-t from-base-200 to-base-100p-2">
       {/* <RoundedTop scrollProgress={scrollYProgress} /> */}
       {/* <div ref={aboutRef} className="h-[0vh] md:h-[0vh] w-full bg-accent"></div> */}
-      <section className="relative flex flex-col w-full pb-12 md:pb-24 xl:pb-36 bg-accent-content">
-        <div className=" bg-transparent md:p-3 xl:p-4 2xl:p-5">
+      <section className="relative flex flex-col w-full pb-12 overflow-hidden md:pb-24 xl:pb-36 rounded-b-3xl">
+        <div>
           <WhatWeOffer />
         </div>
-        <div className="flex items-center sm:grow h-fit  ">
+        <div className="flex items-center py-24 sm:grow h-fit ">
           <Testimonials />
         </div>
+        <div className="absolute bottom-0 left-0 w-full h-screen bg-accent-content -z-10"></div>
       </section>
 
       {/* Helpers for tracking progress and animating elements */}

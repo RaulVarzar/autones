@@ -11,35 +11,35 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 
 const Gallery = () => {
-  const images = require.context("../public/tractari", true);
+  const images = require.context("../../public/tractari", true);
   const imageList = images.keys().map((image) => images(image));
 
   const [hovering, setHovering] = useState(null);
 
-  const ref = useRef(null);
+  // const ref = useRef(null);
   const secondaryRef = useRef(null);
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "start center"],
-  });
+  // const { scrollYProgress } = useScroll({
+  //   target: ref,
+  //   offset: ["start end", "start center"],
+  // });
 
-  const animateScale = useTransform(scrollYProgress, [0, 0.7], ["85%", "100%"]);
-  const enterY = useTransform(scrollYProgress, [0, 1], ["15vh", "0vh"]);
+  // const animateScale = useTransform(scrollYProgress, [0, 0.7], ["85%", "100%"]);
+  // const enterY = useTransform(scrollYProgress, [0, 1], ["15vh", "0vh"]);
 
   const { scrollYProgress: exitProgress } = useScroll({
     target: secondaryRef,
     offset: ["start 0.7", "start"],
   });
 
-  const scale = useTransform(exitProgress, [0.2, 1], ["100%", "92%"]);
+  // const scale = useTransform(exitProgress, [0.2, 1], ["100%", "92%"]);
   const exitY = useTransform(exitProgress, [0, 1], ["0vh", "25vh"]);
 
   return (
     <div className="relative">
       <motion.div
         style={{ y: exitY }}
-        className=" z-0 grid w-full grid-cols-1 gap-1 pb-[25vh] mx-auto px-6 sm:px-10 sm:grid-cols-2 lg:grid-cols-3 sm:gap-2 lg:gap-4 max-w-screen-3xl"
+        className=" z-0 grid w-full grid-cols-1 gap-1 pb-[25vh] mx-auto px-6 sm:px-10 sm:grid-cols-2 lg:grid-cols-3 sm:gap-2 lg:gap-6 max-w-screen-3xl"
       >
         {imageList.map((image, index) => (
           <Photo
@@ -109,7 +109,7 @@ const Photo = ({ image, index, active, setActive }) => {
       style={{ scale: cardScale }}
       onHoverStart={() => setActive(index)}
       onHoverEnd={() => setActive(null)}
-      className={`w-full aspect-video sm:aspect-4/3 border-3 border-base-100 relative cursor-pointer overflow-hidden rounded-xl m-auto max-w-7xl mx-auto`}
+      className={`w-full aspect-video sm:aspect-4/3  border-base-100 relative cursor-pointer overflow-hidden rounded-3xl m-auto max-w-7xl mx-auto`}
     >
       <PhotoProvider>
         <PhotoView src={image.default.src}>

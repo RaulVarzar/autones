@@ -12,7 +12,10 @@ module.exports = {
       aspectRatio: {
         "4/3": "4 / 3",
       },
-      fontSize: { md: "0.85rem", xxl: "13rem", xxxl: "18rem" },
+      screens: {
+        "3xl": "1600px",
+      },
+      fontSize: { md: "0.85rem", "10xl": "10rem", xxl: "12rem", xxxl: "18rem" },
       maxWidth: { "8xl": "1360px", "screen-3xl": "1800px" },
       borderWidth: {
         DEFAULT: "1px",

@@ -1,5 +1,11 @@
 "use client";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useInView,
+  useMotionTemplate,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { GiPayMoney } from "react-icons/gi";
 import { MdOutlineAvTimer, MdHealthAndSafety } from "react-icons/md";
 import AboutCard from "./AboutCard";
@@ -29,23 +35,23 @@ const WhatWeOffer = ({ progressBar, progressBarInView }) => {
     target: sectionRef,
     offset: ["start end", "start"],
   });
-  const scaleX = useTransform(scrollYProgress, [0, 0.25], [0.88, 1]);
+  const scaleX = useTransform(scrollYProgress, [0, 0.5], [0.7, 1]);
+
+  const clipPathRaw = useTransform(scrollYProgress, [0, 0.35], [10, 0]);
+  const borderRadius = useTransform(
+    scrollYProgress,
+    [0, 0.35, 0.9, 1],
+    ["5rem", "2.5rem", "2.5rem", "0rem"]
+  );
+
+  const clipPath = useMotionTemplate`inset( 0 ${clipPathRaw}% 0 ${clipPathRaw}% round ${borderRadius} ${borderRadius} 0 0)`;
 
   return (
     <>
       <motion.div
-        initial={{ y: "-100%" }}
-        animate={{
-          y: 0,
-        }}
-        exit={{ opacity: 0, y: "-100%" }}
-        transition={{
-          duration: 0.55,
-          ease: [0.25, 0.1, 0.25, 1],
-        }}
         ref={sectionRef}
-        style={{ scaleX }}
-        className="flex flex-col items-center pb-5  sm:pb-8 md:pb-10 xl:pb-12 justify-start w-full  min-h-[calc(100vh-1rem)] md:min-h-[calc(100vh-1.5rem)] xl:min-h-[calc(100vh-2rem)] 2xl:min-h-[calc(100vh-2.5rem)] gap-4 overflow-hidden rounded-3xl bg-accent-content flex-nowrap sm:gap-6 lg:gap-16 2xl:gap-20"
+        style={{ clipPath }}
+        className="flex flex-col items-center pb-5  sm:pb-8 md:pb-10 xl:pb-12 justify-start w-full  min-h-[calc(100vh-1rem)] md:min-h-[calc(100vh-1.5rem)] xl:min-h-[calc(100vh-2rem)] 2xl:min-h-[calc(100vh-2.5rem)] gap-4 overflow-hidden  bg-accent-content flex-nowrap sm:gap-6 lg:gap-16 2xl:gap-20"
       >
         <motion.div
           className={`flex flex-col  items-center justify-center font-black tracking-wider uppercase  sm:pt-[12vh] xl:pt-[15vh]  sm:pb-[5vh] xl:pb-[8vh] max-sm:py-16 `}

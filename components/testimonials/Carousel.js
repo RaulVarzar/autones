@@ -47,7 +47,7 @@ const Carousel = ({ data }) => {
         delay: 0.6,
       }}
       ref={constraintsRef}
-      className="flex flex-row gap-16 p-2 overflow-hidden w-[98vw] mx-auto flex-nowrap  gradient-mask"
+      className="flex flex-row gap-16 p-2 overflow-hidden w-[98vw] mx-auto flex-nowrap  gradient-mask "
     >
       {data.length > 0 && (
         <motion.ul
@@ -58,7 +58,7 @@ const Carousel = ({ data }) => {
           dragTransition={{ bounceDamping: 60, bounceStiffness: 300 }}
           dragConstraints={constraintsRef}
           style={{ x }}
-          className="flex flex-row gap-4 px-8 sm:gap-6 sm:px-10 md:px-12 lg:px-16 xl:px-16 cursor-grab active:cursor-grabbing"
+          className="flex flex-row gap-4 px-16 sm:gap-6 cursor-grab active:cursor-grabbing md:px-24 xl:px-32 2xl:px-44"
         >
           {data.map((data, index) => (
             <Card

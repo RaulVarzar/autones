@@ -5,27 +5,46 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FiPhoneCall, FiInstagram, FiFacebook } from "react-icons/fi";
 import FormButton from "./formButton";
 import Header from "./header";
+import { useLenis } from "lenis/react";
 
-export default function SidebarContent({ visible }) {
-  const variants = {
-    hidden: {
-      y: "-105%",
-      filter: "blur(10px)",
-      transition: {
-        ease: [0.25, 0.1, 0.25, 1],
-        duration: 0.25,
-        delay: 0,
-      },
+const variants = {
+  hidden: {
+    y: "-105%",
+    filter: "blur(10px)",
+    transition: {
+      ease: [0.25, 0.1, 0.25, 1],
+      duration: 0.25,
+      delay: 0,
     },
-    visible: {
-      y: "0%",
-      filter: "blur(0px)",
-      transition: {
-        ease: [0.25, 0.1, 0.25, 1],
-        duration: 0.5,
-        delay: 0.1,
-      },
+  },
+  visible: {
+    y: "0%",
+    filter: "blur(0px)",
+    transition: {
+      ease: [0.25, 0.1, 0.25, 1],
+      duration: 0.5,
+      delay: 0.1,
     },
+  },
+};
+
+export default function SidebarContent({ visible, closeNavbar }) {
+  const lenisInstance = useLenis();
+
+  const handleClick = () => {
+    const scrollToOptions = {
+      offset: 0,
+      lerp: 0.1,
+      duration: 2,
+      easing: (t) => {
+        return t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
+      },
+      immediate: false,
+      lock: true,
+      force: false,
+    };
+    lenisInstance.scrollTo("#contact-form", scrollToOptions);
+    closeNavbar();
   };
 
   return (
@@ -83,7 +102,7 @@ export default function SidebarContent({ visible }) {
         </AnimatePresence>
       </div>
 
-      <FormButton />
+      <FormButton onClick={() => handleClick()} />
     </motion.div>
   );
 }

@@ -1,7 +1,11 @@
 "use client";
 import { ReactLenis } from "lenis/react";
+import { useEffect } from "react";
 
 function SmoothScroll({ children }) {
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
+  }, []);
   return (
     <ReactLenis
       root
