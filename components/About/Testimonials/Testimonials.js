@@ -1,7 +1,7 @@
 import Carousel from "./Carousel";
 import Title from "./Title";
 
-import DATA from "../../app/reviews.json";
+import DATA from "app/reviews.json";
 
 const Testimonials = () => {
   // const data = require("../../app/reviews.json");
