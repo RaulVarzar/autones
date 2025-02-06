@@ -21,7 +21,7 @@ const Hero = () => {
 
   return (
     <>
-      <motion.div className="top-0 sm:sticky z-0    flex flex-col items-center justify-center w-full gap-2 overflow-x-hidden text-center sm:stick min-h-[75vh] md:gap-6  ">
+      <motion.div className="top-0 md:sticky z-0 flex flex-col items-center justify-center w-full gap-2 overflow-x-hidden text-center min-h-[65vh] md:min-h-[75vh] md:gap-6  ">
         <motion.div
           style={{ y: sectionY }}
           className="flex flex-col items-center justify-center w-full kanit "

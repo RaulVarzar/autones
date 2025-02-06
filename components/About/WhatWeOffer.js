@@ -40,8 +40,8 @@ const WhatWeOffer = ({ progressBar, progressBarInView }) => {
   const clipPathRaw = useTransform(scrollYProgress, [0, 0.35], [10, 0]);
   const borderRadius = useTransform(
     scrollYProgress,
-    [0, 0.35, 0.9, 1],
-    ["5rem", "2.5rem", "2.5rem", "0rem"]
+    [0, 0.35, 0.85, 1],
+    ["5vw", "2.5vw", "2.5vw", "0vw"]
   );
 
   const clipPath = useMotionTemplate`inset( 0 ${clipPathRaw}% 0 ${clipPathRaw}% round ${borderRadius} ${borderRadius} 0 0)`;
@@ -113,7 +113,7 @@ export const Title = () => {
         initial={{ y: "175%" }}
         animate={inView && { y: "0%" }}
         transition={{ duration: 1.2, delay: 0.2, ease: [0.7, 0, 0.2, 1] }}
-        className="text-4xl sm:text-5xl md:text-7xl xl:text-8xl"
+        className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl 2xl:text-9xl"
       >
         Ce îți oferim
       </motion.h1>

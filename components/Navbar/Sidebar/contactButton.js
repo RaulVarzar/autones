@@ -49,7 +49,7 @@ export default function ContactButton({ primary, secondary, href, icon, id }) {
 
 const Icon = ({ icon }) => {
   return (
-    <span className="pb-1 text-2xl transition-colors duration-[400ms] sm:text-3xl text-base-content group-hover:text-accent">
+    <span className="pb-1 text-2xl transition-colors duration-[400ms] lg:text-4xl text-base-content group-hover:text-accent">
       {icon}
     </span>
   );

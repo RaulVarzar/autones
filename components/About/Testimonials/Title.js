@@ -55,13 +55,13 @@ const subTitleVariants = {
 
 const Title = () => {
   return (
-    <div className="flex flex-col pl-6 sm:pl-10 md:pl-12 lg:pl-16">
+    <div className="flex flex-col gap-2 text-center ">
       <motion.h1
         variants={titleVariants}
         initial="hidden"
         animate="visible"
         exit="exit"
-        className="text-lg font-medium leading-3 tracking-wide uppercase sm:text-xl md:text-2xl lg:text-3xl text-info-content xl:text-4xl text-balance"
+        className="text-3xl font-medium leading-3 tracking-wide uppercase sm:text-xl md:text-2xl lg:text-3xl text-info-content xl:text-4xl 2xl:text-5xl text-balance"
       >
         Ce spun
       </motion.h1>
@@ -70,7 +70,7 @@ const Title = () => {
         initial="hidden"
         animate="visible"
         exit="exit"
-        className="text-2xl font-bold uppercase sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl"
+        className="text-4xl font-bold uppercase sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl 2xl:text-8xl"
       >
         clientii nostri
       </motion.h2>

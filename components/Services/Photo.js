@@ -7,8 +7,9 @@ import {
 } from "framer-motion";
 import useWidth from "../../lib/isMobile.js";
 import { useRef } from "react";
+import Image from "next/image.js";
 
-const IMAGES = ["/main1.jpg", "/main2.jpg", "/main3.jpg"];
+const IMAGES = ["/main1.webp", "/main2.webp", "/main3.webp"];
 
 const Photo = ({ selectedTopic, animationDuration, direction }) => {
   const isMobile = useWidth();
@@ -76,16 +77,24 @@ const Photo = ({ selectedTopic, animationDuration, direction }) => {
       >
         <motion.div style={{ scale }} className="origin-top">
           <AnimatePresence mode="popLayout" custom={direction}>
-            <motion.img
+            <motion.div
               variants={variants}
               initial="initial"
               animate="animate"
               exit="exit"
               custom={direction}
-              src={IMAGES[selectedTopic]}
               key={selectedTopic}
-              className="object-cover w-full mx-auto aspect-video "
-            />
+              className="object-cover w-full mx-auto aspect-4/3 md:aspect-video"
+            >
+              <Image
+                src={IMAGES[selectedTopic]}
+                alt={`image-${IMAGES[selectedTopic]}`}
+                width={1920}
+                height={1080}
+                quality={100}
+                className="object-cover w-full h-full "
+              />
+            </motion.div>
           </AnimatePresence>
         </motion.div>
       </motion.div>

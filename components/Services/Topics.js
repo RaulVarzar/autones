@@ -107,8 +107,8 @@ export const Card = ({
         onClick={() => changeTopic(id)}
         className={`flex flex-col gap-2 justify-center border-base-content border rounded-2xl relative bg-neutral-content h-full z-10 group  p-6 md:p-10 transition-colors duration-300 ${
           selectedTopic === id
-            ? "bg-opacity-60 border-opacity-15"
-            : "bg-opacity-15 hover:bg-opacity-40 border-opacity-5 "
+            ? "bg-opacity-50 border-opacity-15"
+            : "bg-opacity-5 hover:bg-opacity-30 border-opacity-5 "
         }
        `}
       >

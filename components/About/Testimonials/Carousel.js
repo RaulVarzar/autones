@@ -49,7 +49,7 @@ const Carousel = ({ data }) => {
         delay: 0.6,
       }}
       ref={constraintsRef}
-      className="flex flex-row gap-16 p-2 overflow-hidden w-[98vw] mx-auto flex-nowrap  gradient-mask "
+      className="flex flex-row gap-16 p-2 overflow-hidden w-[98vw] md:w-full mx-auto flex-nowrap  gradient-mask"
     >
       {data.length > 0 && (
         <motion.ul
@@ -60,7 +60,7 @@ const Carousel = ({ data }) => {
           dragTransition={{ bounceDamping: 60, bounceStiffness: 300 }}
           dragConstraints={constraintsRef}
           style={{ x }}
-          className="flex flex-row gap-4 px-8 md:px-16 lg:px-24 sm:gap-6 cursor-grab active:cursor-grabbing xl:px-32 2xl:px-44"
+          className="flex flex-row gap-4 px-8 md:px-16 lg:px-20 sm:gap-6 cursor-grab active:cursor-grabbing xl:px-32 "
         >
           {data.map((data, index) => (
             <Card
@@ -94,7 +94,7 @@ const Card = ({ skew, x, scale, data }) => {
           : { scale: 1 }
       }
       transition={{ duration: 0.4, delay: 0 }}
-      className="flex-col text-center px-4 py-6 m sm:py-6 border border-base-content border-opacity-5 transition-colors duration-300  md:py-8 sm:px-4 flex lg:px-8 gap-4 lg:gap-8 items-center justify-center bg-opacity-20 bg-secondary  min-w-64 md:min-w-96 lg:min-w-[480px] rounded-2xl "
+      className="flex-col text-center px-4 py-6 m sm:py-6 border border-base-content border-opacity-5 transition-colors duration-300  md:py-8 sm:px-4 flex lg:px-8 gap-4 lg:gap-8 items-center justify-center bg-opacity-20 bg-secondary  min-w-64 md:min-w-96 lg:min-w-[480px] 2xl:min-w-[600px] rounded-2xl "
     >
       <span className="flex flex-row gap-1 text-xl sm:text-2xl text-base-content brightness-150">
         {Array(5)

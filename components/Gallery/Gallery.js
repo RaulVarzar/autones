@@ -1,11 +1,5 @@
 "use client";
-import {
-  motion,
-  useInView,
-  useMotionTemplate,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
@@ -17,23 +11,13 @@ const Gallery = () => {
 
   const [hovering, setHovering] = useState(null);
 
-  // const ref = useRef(null);
   const secondaryRef = useRef(null);
-
-  // const { scrollYProgress } = useScroll({
-  //   target: ref,
-  //   offset: ["start end", "start center"],
-  // });
-
-  // const animateScale = useTransform(scrollYProgress, [0, 0.7], ["85%", "100%"]);
-  // const enterY = useTransform(scrollYProgress, [0, 1], ["15vh", "0vh"]);
 
   const { scrollYProgress: exitProgress } = useScroll({
     target: secondaryRef,
     offset: ["start 0.7", "start"],
   });
 
-  // const scale = useTransform(exitProgress, [0.2, 1], ["100%", "92%"]);
   const exitY = useTransform(exitProgress, [0, 1], ["0vh", "25vh"]);
 
   return (
@@ -60,17 +44,16 @@ const Gallery = () => {
 
 export default Gallery;
 
-const Photo = ({ image, index, setActive }) => {
+const Photo = ({ image, index, setActive, active }) => {
   const variants = {
     hidden: {
-      filter: "blur(10px)",
+      filter: "blur(8px)",
     },
     visible: {
       filter: "blur(0px)",
       transition: {
         ease: [0.25, 0.1, 0.25, 1],
-        duration: 0.8,
-        delay: 0.2,
+        duration: 0.7,
       },
     },
   };
@@ -90,12 +73,13 @@ const Photo = ({ image, index, setActive }) => {
   const cardScale = useTransform(cardEnterProgress, [0, 1], ["97%", "100%"]);
 
   const imgInView = useInView(imageRef, { margin: "0% 0% -15% 0%" });
+  const isBlurred = active != index + 1 && active;
 
   return (
     <motion.div
       ref={imageRef}
       style={{ scale: cardScale }}
-      onHoverStart={() => setActive(index)}
+      onHoverStart={() => setActive(index + 1)}
       onHoverEnd={() => setActive(null)}
       className={`w-full aspect-video sm:aspect-4/3  border-base-100 relative cursor-pointer overflow-hidden rounded-3xl m-auto max-w-7xl mx-auto`}
     >
@@ -105,7 +89,7 @@ const Photo = ({ image, index, setActive }) => {
             className="w-full h-full "
             variants={variants}
             initial="hidden"
-            animate={imgInView ? "visible" : "hidden"}
+            animate={imgInView && !isBlurred ? "visible" : "hidden"}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
@@ -115,6 +99,7 @@ const Photo = ({ image, index, setActive }) => {
               style={{ y, scale: 1.02 }}
               width={480}
               height={420}
+              quality={90}
               className="object-cover w-full h-full "
             />
           </motion.div>

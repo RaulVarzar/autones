@@ -32,17 +32,17 @@ const FormButton = ({ onClick }) => {
     >
       <button
         onClick={onClick}
-        className="relative flex flex-row items-stretch justify-center w-full px-4 overflow-hidden transition-all duration-300 shadow-sm cursor-pointer hover:shadow-none bg-neutral-content text-base-content hover:text-base-30 rounded-2xl hover:bg-secondary "
+        className="relative flex flex-row items-stretch w-full px-4 overflow-hidden transition-all duration-300 shadow-sm cursor-pointer justify-evenly hover:shadow-none bg-neutral-content text-base-content rounded-2xl hover:bg-secondary "
       >
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { delay: 0.75 } }}
-          className="w-full py-6 text-xl font-semibold tracking-wide text-center grow md:py-10 sm:text-2xl lg:text-3xl 2xl:text-4xl group-hover:brightness-150"
+          className="w-full py-6 text-xl font-semibold tracking-wide text-center md:py-10 sm:text-2xl lg:text-3xl 2xl:text-4xl group-hover:brightness-150"
         >
           Formular de contact
         </motion.span>
 
-        <span className="flex items-center justify-center px-1 text-3xl sm:px-10 lg:px-12 sm:text-4xl lg:text-5xl ">
+        <span className="flex items-center justify-center px-4 text-3xl md:px-2 sm:px-10 lg:px-8 sm:text-4xl lg:text-5xl ">
           <BiMessageDots />
         </span>
       </button>

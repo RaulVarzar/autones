@@ -13,7 +13,7 @@ const MagneticButton = ({
   const ref = useRef(null);
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  console.log(isMobile);
+
   // disable animations on mobile
   if (isMobile) {
     return <motion.div className="border-8">{children}</motion.div>;

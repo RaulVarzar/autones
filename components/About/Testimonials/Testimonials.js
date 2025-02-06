@@ -4,7 +4,7 @@ import REVIEWS from "./reviews";
 
 const Testimonials = () => {
   return (
-    <section className="flex flex-col items-start gap-1 sm:gap-4 lg:gap-6 h-fit md:flex-col ">
+    <section className="flex flex-col items-center gap-4 mx-auto sm:gap-6 lg:gap-8 xl:gap-10 h-fit md:flex-col max-w-screen-3xl">
       <Title />
       <Carousel data={REVIEWS.reviews} />
     </section>
