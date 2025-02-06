@@ -25,6 +25,7 @@ const SidebarToggle = ({}) => {
       <motion.div className="overflow-hidden font-normal">
         <Button toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
       </motion.div>
+
       <SidebarContent
         visible={sidebarOpen}
         closeNavbar={() => toggleSidebar()}

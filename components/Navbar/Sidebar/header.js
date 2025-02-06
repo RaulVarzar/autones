@@ -1,60 +1,40 @@
 import { motion } from "framer-motion";
 
-const Header = ({ visible }) => {
+const Header = ({}) => {
   const variants = {
     hidden: {
-      y: "-50%",
+      y: "-30%",
       opacity: 0,
       filter: "blur(3px)",
+      transition: {
+        ease: [0.76, 0, 0.24, 1],
+        duration: 0.2,
+        delay: 0.3,
+      },
     },
     visible: {
       y: "0%",
       opacity: 1,
       filter: "blur(0px)",
       transition: {
-        ease: [0.25, 0.1, 0.25, 1],
-        duration: 0.5,
-        delay: 0.4,
+        ease: [0.56, 0, 0.24, 1],
+        duration: 1.2,
+        delay: 0.2,
       },
     },
   };
   return (
     <motion.div
       variants={variants}
-      animate={visible ? "visible" : "hidden"}
       initial="hidden"
+      animate="visible"
+      exit="hidden"
       className="flex flex-col justify-end gap-1 px-4 xl:gap-1.5 py-2 text-left sm:py-8 sm:px-10 md:px-12 lg:px-16 w-fit"
     >
-      <motion.span
-        initial={{ opacity: 0, x: 30 }}
-        animate={{
-          opacity: 1,
-          x: 0,
-          transition: {
-            delay: 0.25,
-            type: "spring",
-            duration: 1,
-            bounce: 0.5,
-          },
-        }}
-        className="text-xl leading-tight text-balance opacity-40 lg:text-2xl 2xl:text-3xl"
-      >
+      <motion.span className="text-xl leading-tight text-balance opacity-40 lg:text-2xl 2xl:text-3xl">
         Ai nevoie de ajutorul nostru?
       </motion.span>
-      <motion.span
-        initial={{ opacity: 0, x: 30 }}
-        animate={{
-          opacity: 1,
-          x: 0,
-          transition: {
-            delay: 0.3,
-            type: "spring",
-            duration: 1.1,
-            bounce: 0.5,
-          },
-        }}
-        className="flex flex-col justify-center text-3xl font-black tracking-wide uppercase sm:text-3xl lg:text-4xl 2xl:text-5xl"
-      >
+      <motion.span className="flex flex-col justify-center text-3xl font-black tracking-wide uppercase sm:text-3xl lg:text-4xl 2xl:text-5xl">
         Contactează-ne acum!
       </motion.span>
     </motion.div>

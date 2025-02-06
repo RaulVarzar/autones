@@ -72,11 +72,10 @@ const AboutSection = ({}) => {
 
   return (
     <div className="relative z-40 overflow-hidden bg-gradient-to-t from-base-200 to-base-100p-2">
-      <section className="relative flex flex-col w-full pb-12 overflow-hidden md:pb-24 xl:pb-36 rounded-b-3xl">
-        <div>
-          <WhatWeOffer />
-        </div>
-        <div className="flex items-center py-24 sm:grow h-fit ">
+      <section className="relative flex flex-col w-full pb-8 overflow-hidden md:pb-24 xl:pb-36 rounded-b-3xl">
+        <WhatWeOffer />
+
+        <div className="flex items-center py-16 sm:grow h-fit ">
           <Testimonials />
         </div>
         <div className="absolute bottom-0 left-0 w-full h-screen bg-accent-content -z-10"></div>

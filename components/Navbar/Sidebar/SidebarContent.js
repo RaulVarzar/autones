@@ -9,21 +9,18 @@ import { useLenis } from "lenis/react";
 
 const variants = {
   hidden: {
-    y: "-105%",
-    filter: "blur(10px)",
+    height: 0,
     transition: {
-      ease: [0.25, 0.1, 0.25, 1],
-      duration: 0.25,
-      delay: 0,
+      duration: 0.7,
+      ease: [0.76, 0, 0.24, 1],
+      delay: 0.15,
     },
   },
   visible: {
-    y: "0%",
-    filter: "blur(0px)",
+    height: "100%",
     transition: {
-      ease: [0.25, 0.1, 0.25, 1],
-      duration: 0.5,
-      delay: 0.1,
+      duration: 0.8,
+      ease: [0.76, 0, 0.24, 1],
     },
   },
 };
@@ -48,61 +45,67 @@ export default function SidebarContent({ visible, closeNavbar }) {
   };
 
   return (
-    <motion.div
-      layout
-      variants={variants}
-      initial="hidden"
-      animate={visible ? "visible" : "hidden"}
-      className="absolute top-0 sm:top-6 right-0 z-40  flex flex-col justify-between w-full max-sm:h-[100svh] px-0 pt-20 overflow-hidden md:max-w-2xl pb-4 md:rounded-2xl bg-base-300 md:right-4 md:pt-16 lg:pt-20  gap-y-2  "
-    >
-      <div className="flex flex-col justify-center gap-10 sm:gap-3 grow">
-        <Header visible={visible} />
+    <motion.div className="absolute top-0 right-0 z-40 h-screen sm:pt-5 max-sm:left-0 md:right-4">
+      <AnimatePresence>
+        {visible && (
+          <motion.div className="flex flex-col relative justify-between w-full overflow-hidden max-sm:h-[100svh] sm:h-fit md:max-w-2xl   gap-y-2 ">
+            <motion.div
+              variants={variants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              className="absolute inset-0 bg-base-300 md:rounded-2xl"
+            />
+            <div className="flex flex-col justify-center gap-10 pt-12 sm:gap-3 grow md:pt-16 xl:pt-20">
+              <Header />
+              <Links />
+            </div>
 
-        <AnimatePresence mode="popLayout">
-          <motion.div
-            exit={{ opacity: "0%" }}
-            layout
-            className="flex flex-col w-full gap-1"
-          >
-            <ContactButton
-              primary={"Telefon"}
-              secondary={"0743 483 293"}
-              href={"tel:+0743483293"}
-              icon={<FiPhoneCall />}
-              visible={visible}
-              id={0}
-            />
-
-            <ContactButton
-              primary={"Whatsapp"}
-              secondary={"0743 483 293"}
-              href={"https://wa.me/0743483293"}
-              icon={<FaWhatsapp />}
-              visible={visible}
-              id={1}
-            />
-
-            <ContactButton
-              primary={"Instagram"}
-              secondary={"@autones"}
-              href={"https://instagram.com/autones"}
-              icon={<FiInstagram />}
-              visible={visible}
-              id={2}
-            />
-            <ContactButton
-              primary={"Facebook"}
-              secondary={"Autones"}
-              href={"https://facebook.com/autones"}
-              icon={<FiFacebook />}
-              visible={visible}
-              id={3}
-            />
+            <FormButton onClick={() => handleClick()} />
           </motion.div>
-        </AnimatePresence>
-      </div>
-
-      <FormButton onClick={() => handleClick()} />
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
+
+export const Links = ({ visible }) => {
+  return (
+    <motion.div className="flex flex-col w-full gap-1">
+      <ContactButton
+        primary={"Telefon"}
+        secondary={"0743 483 293"}
+        href={"tel:+0743483293"}
+        icon={<FiPhoneCall />}
+        visible={visible}
+        id={0}
+      />
+
+      <ContactButton
+        primary={"Whatsapp"}
+        secondary={"0743 483 293"}
+        href={"https://wa.me/0743483293"}
+        icon={<FaWhatsapp />}
+        visible={visible}
+        id={1}
+      />
+
+      <ContactButton
+        primary={"Instagram"}
+        secondary={"@autones"}
+        href={"https://instagram.com/autones"}
+        icon={<FiInstagram />}
+        visible={visible}
+        id={2}
+      />
+      <ContactButton
+        primary={"Facebook"}
+        secondary={"Autones"}
+        href={"https://facebook.com/autones"}
+        icon={<FiFacebook />}
+        visible={visible}
+        id={3}
+      />
+    </motion.div>
+  );
+};

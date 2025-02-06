@@ -94,7 +94,7 @@ const Card = ({ skew, x, scale, data }) => {
           : { scale: 1 }
       }
       transition={{ duration: 0.4, delay: 0 }}
-      className="flex-col text-center px-3 py-4 m sm:py-6 border border-base-content border-opacity-5 transition-colors duration-300  md:py-8 sm:px-4 flex lg:px-8 gap-4 lg:gap-8 items-center justify-center bg-opacity-20 bg-secondary  min-w-64 md:min-w-96 lg:min-w-[480px] rounded-2xl "
+      className="flex-col text-center px-4 py-6 m sm:py-6 border border-base-content border-opacity-5 transition-colors duration-300  md:py-8 sm:px-4 flex lg:px-8 gap-4 lg:gap-8 items-center justify-center bg-opacity-20 bg-secondary  min-w-64 md:min-w-96 lg:min-w-[480px] rounded-2xl "
     >
       <span className="flex flex-row gap-1 text-xl sm:text-2xl text-base-content brightness-150">
         {Array(5)
@@ -105,7 +105,7 @@ const Card = ({ skew, x, scale, data }) => {
       </span>
 
       <div className="flex flex-col gap-1 sm:gap-2 text-base-content">
-        <p className="italic font-light leading-5 tracking-wide text-md sm:text-2xl sm:leading-7">
+        <p className="text-lg italic font-light leading-5 tracking-wide sm:text-2xl sm:leading-7">
           {review}
         </p>
         <h1 className="text-base font-normal text-right opacity-75 sm:text-lg lg:text-xl">

@@ -51,7 +51,7 @@ const WhatWeOffer = ({ progressBar, progressBarInView }) => {
       <motion.div
         ref={sectionRef}
         style={{ clipPath }}
-        className="flex flex-col items-center pb-5  sm:pb-8 md:pb-10 xl:pb-12 justify-start w-full  min-h-[calc(100vh-1rem)] md:min-h-[calc(100vh-1.5rem)] xl:min-h-[calc(100vh-2rem)] 2xl:min-h-[calc(100vh-2.5rem)] gap-4 overflow-hidden  bg-accent-content flex-nowrap sm:gap-6 lg:gap-16 2xl:gap-20"
+        className="flex flex-col items-center pb-2  sm:pb-4 md:pb-10 xl:pb-12 justify-start w-full  min-h-[calc(100vh-1rem)] md:min-h-[calc(100vh-1.5rem)] xl:min-h-[calc(100vh-2rem)] 2xl:min-h-[calc(100vh-2.5rem)] gap-4 overflow-hidden  bg-accent-content flex-nowrap sm:gap-6 lg:gap-16 2xl:gap-20"
       >
         <motion.div
           className={`flex flex-col  items-center justify-center font-black tracking-wider uppercase  sm:pt-[12vh] xl:pt-[15vh]  sm:pb-[5vh] xl:pb-[8vh] max-sm:py-16 `}
