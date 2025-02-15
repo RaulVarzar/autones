@@ -45,10 +45,10 @@ export default function SidebarContent({ visible, closeNavbar }) {
   };
 
   return (
-    <motion.div className="absolute top-0 right-0 z-40 sm:pt-5 max-sm:left-0 md:right-4">
+    <motion.div className="absolute top-0 right-0 z-40 md:pt-5 max-md:left-0 md:right-4">
       <AnimatePresence>
         {visible && (
-          <motion.div className="flex flex-col relative justify-between w-full overflow-hidden max-sm:h-[100svh] sm:h-fit md:max-w-2xl   gap-y-2 ">
+          <motion.div className="flex flex-col relative justify-between w-full overflow-hidden max-md:h-[100svh] md:h-fit md:max-w-2xl  pb-2 sm:pb-4  gap-y-2 ">
             <motion.div
               variants={variants}
               initial="hidden"

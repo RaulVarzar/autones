@@ -31,22 +31,14 @@ const Carousel = ({ data }) => {
     clamp: false,
   });
 
+  const carouselInView = useInView(constraintsRef, { amount: 0.8 });
   return (
     <motion.div
-      initial={{ x: "110%" }}
-      animate={{ x: 0 }}
-      exit={{
-        x: "80%",
-        opacity: 0,
-        transition: {
-          ease: "anticipate",
-          duration: 0.25,
-        },
-      }}
+      initial={{ y: "20%", opacity: 0 }}
+      animate={carouselInView && { y: 0, opacity: 1 }}
       transition={{
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: [0.65, 0.1, 0.25, 1],
         duration: 1.2,
-        delay: 0.6,
       }}
       ref={constraintsRef}
       className="flex flex-row gap-16 p-2 overflow-hidden w-[98vw] md:w-full mx-auto flex-nowrap  gradient-mask"
@@ -94,7 +86,7 @@ const Card = ({ skew, x, scale, data }) => {
           : { scale: 1 }
       }
       transition={{ duration: 0.4, delay: 0 }}
-      className="flex-col text-center px-4 py-6 m sm:py-6 border border-base-content border-opacity-5 transition-colors duration-300  md:py-8 sm:px-4 flex lg:px-8 gap-4 lg:gap-8 items-center justify-center bg-opacity-20 bg-secondary  min-w-64 md:min-w-96 lg:min-w-[480px] 2xl:min-w-[600px] rounded-2xl "
+      className="flex-col text-center px-4 py-6 m sm:py-6 border border-base-content border-opacity-5 transition-colors duration-300  md:py-8 sm:px-4 md:px-8 flex lg:px-10 gap-4 lg:gap-8 lg:py-12 2xl:py-16 2xl:px-12 items-center justify-center bg-opacity-20 bg-secondary  min-w-64 md:min-w-96 lg:min-w-[480px] 2xl:min-w-[600px] rounded-2xl "
     >
       <span className="flex flex-row gap-1 text-xl sm:text-2xl text-base-content brightness-150">
         {Array(5)
@@ -118,7 +110,7 @@ const Card = ({ skew, x, scale, data }) => {
 
 const Star = ({ fill }) => {
   return (
-    <div className="text-xl md:text-2xl text-base-content fill-slate-100 stroke-red-700">
+    <div className="text-xl md:text-2xl xl:text-3xl text-base-content fill-slate-100 stroke-red-700">
       {fill ? <MdOutlineStar /> : <MdOutlineStarBorder />}
     </div>
   );

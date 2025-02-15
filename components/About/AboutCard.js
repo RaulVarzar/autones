@@ -69,19 +69,22 @@ const AboutCard = ({ children, title, description, id, rotate }) => {
 
   const { scrollYProgress } = useScroll({
     target: cardRef,
-    offset: ["start end ", "center start"],
+    offset: ["start end ", "end start"],
   });
 
-  const yOffset = id % 2 == 0 ? ["0%", `-${(id + 2) * 5}%`] : ["0%", "0%"];
+  const yOffset =
+    id % 2 == 0
+      ? ["30%", "0%", `-${(id + 2) * 5}%`, "-15%"]
+      : ["30%", "0%", "0%", "-15%"];
 
-  const y = useTransform(scrollYProgress, [0, 1], yOffset);
+  const y = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], yOffset);
 
   return (
     <motion.div
       ref={cardRef}
       variants={cardVariants}
       initial="hidden"
-      animate={visible ? "visible" : "hidden"}
+      animate={visible && "visible"}
       custom={id}
       className={
         "w-full max-w-5xl flex  flex-row " +

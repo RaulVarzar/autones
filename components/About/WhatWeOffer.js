@@ -106,13 +106,13 @@ export default WhatWeOffer;
 
 export const Title = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { margin: "0% 0% -30% 0%" });
+  const inView = useInView(ref, { margin: "0% 0% -25% 0%" });
   return (
     <motion.div ref={ref} className="py-6 overflow-hidden ">
       <motion.h1
         initial={{ y: "175%" }}
         animate={inView && { y: "0%" }}
-        transition={{ duration: 1.2, delay: 0.2, ease: [0.7, 0, 0.2, 1] }}
+        transition={{ duration: 1.8, ease: [0.7, 0, 0.35, 1] }}
         className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl 2xl:text-9xl"
       >
         Ce îți oferim

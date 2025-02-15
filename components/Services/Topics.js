@@ -47,7 +47,7 @@ const Topic = ({ selectedTopic, changeTopic }) => {
         onHoverEnd={() => setHovering(false)}
         ref={ref}
         style={{ y: sectionY }}
-        className="grid grid-cols-1 gap-4 mx-auto mt-2 mb-24 max-w-8xl md:gap-6 lg:grid-cols-3 sm:mt-4 md:mt-8 xl:mt-10"
+        className="grid w-full grid-cols-1 px-1 mx-auto mt-2 mb-24 gap-y-4 max-w-8xl md:gap-6 lg:grid-cols-3 sm:mt-4 md:mt-8 xl:mt-10"
       >
         {TOPICS.map((item, i) => (
           <Card
@@ -107,21 +107,21 @@ export const Card = ({
         onClick={() => changeTopic(id)}
         className={`flex flex-col gap-2 justify-center border-base-content border rounded-2xl relative bg-neutral-content h-full z-10 group  p-6 md:p-10 transition-colors duration-300 ${
           selectedTopic === id
-            ? "bg-opacity-50 border-opacity-15"
-            : "bg-opacity-5 hover:bg-opacity-30 border-opacity-5 "
+            ? "bg-opacity-20 border-opacity-10"
+            : "bg-opacity-0  border-opacity-0 "
         }
        `}
       >
         <h1
           className={`text-2xl lg:text-3xl 2xl:text-4xl text-pretty group-hover:opacity-100 tracking-wide leading-none text-center uppercase whitespace-normal transition-opacity duration-300 stat-value md:text-4xl ${
-            selectedTopic === id ? "opacity-100" : "opacity-80"
+            selectedTopic === id ? "opacity-100" : "opacity-60"
           }`}
         >
           {title}
         </h1>
         <p
           className={`mx-auto text-md text-pretty leading-tight text-info-content  group-hover:opacity-100 text-center whitespace-normal sm:text-base md:text-lg stat-desc xl:text-xl transition-opacity duration-300 max-w-72 md:max-w-80 ${
-            selectedTopic === id ? "opacity-100" : "opacity-75"
+            selectedTopic === id ? "opacity-100" : "opacity-45"
           }`}
         >
           {description}

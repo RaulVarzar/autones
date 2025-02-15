@@ -31,16 +31,16 @@ const Form = ({}) => {
         {/* <h1 className="text-4xl font-semibold uppercase lg:text-5xl 2xl:text-7xl">
           Formular de contact
         </h1> */}
-        <motion.div className="flex flex-col w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
+        <motion.div className="flex flex-col w-full max-w-xs gap-4 md:gap-6 xl:gap-8 sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
           <motion.div
             initial={{ opacity: 0, y: "-50%", filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{
               delay: 0.4,
               duration: 0.5,
-              ease: [0.25, 0.1, 0.25, 1],
+              ease: [0.6, 0.1, 0.25, 1],
             }}
-            className="relative w-full py-6 border-b border-opacity-25 border-base-content lg:py-10"
+            className="relative w-full py-2 border border-opacity-5 bg-base-300 rounded-2xl border-base-content lg:py-4"
           >
             <label className="flex items-center w-full gap-2 px-8 py-6 text-2xl bg-transparent outline-none sm:flex-row-reverse input focus:outline-none peer-focus:outline-none focus:border-transparent focus:ring-0 focus-within:ring:0 focus-within:border-transparent focus-within:outline-none sm:text-3xl">
               <input
@@ -50,11 +50,11 @@ const Form = ({}) => {
                 required
                 name="name"
                 className={`grow peer focus:placeholder-transparent  ${
-                  formData.name.length > 0 ? " opacity-100" : "opacity-30"
+                  formData.name.length > 0 ? " opacity-100" : "opacity-20"
                 }`}
                 placeholder="Ion Popescu"
               />
-              <span className="transition-opacity duration-300 opacity-100 max-sm:hidden min-w-28 peer-focus:opacity-60">
+              <span className="transition-opacity duration-300 opacity-90 max-sm:hidden min-w-28 peer-focus:opacity-70">
                 Nume
               </span>
             </label>
@@ -66,18 +66,18 @@ const Form = ({}) => {
             transition={{
               delay: 0.55,
               duration: 0.5,
-              ease: [0.25, 0.1, 0.25, 1],
+              ease: [0.6, 0.1, 0.25, 1],
             }}
-            className="relative py-6 border-b border-opacity-25 border-base-content lg:py-10"
+            className="relative w-full py-2 border border-opacity-5 bg-base-300 rounded-2xl border-base-content lg:py-4"
           >
-            <label className="flex flex-row-reverse items-center w-full gap-2 px-8 py-6 text-2xl bg-transparent outline-none input focus:outline-none peer-focus:outline-none focus:border-transparent focus:ring-0 focus-within:ring:0 focus-within:border-transparent focus-within:outline-none sm:text-3xl">
+            <label className="flex items-center w-full gap-2 px-8 py-6 text-2xl bg-transparent outline-none sm:flex-row-reverse input focus:outline-none peer-focus:outline-none focus:border-transparent focus:ring-0 focus-within:ring:0 focus-within:border-transparent focus-within:outline-none sm:text-3xl">
               <input
                 type="phone"
                 value={formData.phone}
                 onChange={(e) => handleChange(e)}
                 required
                 name="phone"
-                className={`grow peer focus:placeholder-transparent  ${
+                className={`grow peer focus:placeholder-transparent leading-none  ${
                   formData.phone.length > 0 ? " opacity-100" : "opacity-30"
                 }`}
                 placeholder="0712 345 678"
@@ -94,12 +94,12 @@ const Form = ({}) => {
             transition={{
               delay: 0.7,
               duration: 0.5,
-              ease: [0.25, 0.1, 0.25, 1],
+              ease: [0.6, 0.1, 0.25, 1],
             }}
-            className="relative py-6 border-b border-opacity-25 border-base-content lg:py-10"
+            className="relative w-full py-2 border border-opacity-5 bg-base-300 rounded-2xl border-base-content lg:py-4"
           >
-            <label className="flex flex-row-reverse items-center w-full gap-2 px-8 py-6 text-2xl bg-transparent outline-none input focus:outline-none peer-focus:outline-none focus:border-transparent focus:ring-0 focus-within:ring:0 focus-within:border-transparent focus-within:outline-none sm:text-3xl">
-              <input
+            <label className="flex items-center w-full gap-2 px-8 py-6 text-2xl bg-transparent outline-none sm:flex-row-reverse input focus:outline-none peer-focus:outline-none focus:border-transparent focus:ring-0 focus-within:ring:0 focus-within:border-transparent focus-within:outline-none sm:text-3xl">
+              <textarea
                 type="text"
                 value={formData.message}
                 onChange={(e) => handleChange(e)}

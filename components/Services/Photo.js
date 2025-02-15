@@ -8,6 +8,7 @@ import {
 import useWidth from "../../lib/isMobile.js";
 import { useRef } from "react";
 import Image from "next/image.js";
+import { isMobile } from "react-device-detect";
 
 const IMAGES = ["/main1.webp", "/main2.webp", "/main3.webp"];
 
@@ -20,14 +21,18 @@ const Photo = ({ selectedTopic, animationDuration, direction }) => {
     offset: ["start 0.75", "end start"],
   });
 
-  const customScale = isMobile ? "100%" : "92%";
+  const customScale = isMobile ? "96%" : "92%";
   const scale = useTransform(scrollYProgress, [0, 0.3], [customScale, "100%"]);
 
-  const clipPath1 = useTransform(scrollYProgress, [0, 0.3], [20, 0]);
-  const clipPath2 = useTransform(scrollYProgress, [0, 0.3], [20, 0]);
+  const clipPathLeftRight = useTransform(
+    scrollYProgress,
+    [0, 0.3],
+    isMobile ? [15, 0] : [10, 0]
+  );
+  const clipPathTopBottom = useTransform(scrollYProgress, [0, 0.3], [10, 0]);
   const borderRadius = useTransform(scrollYProgress, [0, 0.3], ["4vw", "2vw"]);
 
-  const clipPath = useMotionTemplate`inset( 0 ${clipPath2}% 0 ${clipPath1}% round ${borderRadius})`;
+  const clipPath = useMotionTemplate`inset(${clipPathTopBottom}% ${clipPathLeftRight}% ${clipPathTopBottom}% ${clipPathLeftRight}% round ${borderRadius})`;
 
   const variants = {
     initial: (direction) => ({
@@ -73,7 +78,7 @@ const Photo = ({ selectedTopic, animationDuration, direction }) => {
       <motion.div
         style={{ clipPath }}
         ref={imageRef}
-        className="w-full overflow-hidden origin-top "
+        className="w-full overflow-hidden origin-top"
       >
         <motion.div style={{ scale }} className="origin-top">
           <AnimatePresence mode="popLayout" custom={direction}>
